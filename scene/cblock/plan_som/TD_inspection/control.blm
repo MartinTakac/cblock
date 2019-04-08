@@ -3,7 +3,7 @@ number_of_values=4
 
 # resulting map for tdi
 value_names[0]=result
-values[0]=real 900 0.
+values[0]=real #PSOMxXPSOMY# 0.
 
 # qml widget cursor coordinates
 value_names[1]=manual_x

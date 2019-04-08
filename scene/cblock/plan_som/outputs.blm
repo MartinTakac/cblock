@@ -11,4 +11,4 @@ value_names[2]=reward
 values[2]=real 1 0.
 
 value_names[3]=activation_map
-values[3]=real 900 0.
+values[3]=real #PSOMxXPSOMY# 0.

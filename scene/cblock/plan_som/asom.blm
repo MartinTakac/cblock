@@ -1,6 +1,6 @@
 BL_associative_self_organizing_map_module
-map_size_x=30
-map_size_y=30
+map_size_x=#P_SOM_SIZE_X#
+map_size_y=#P_SOM_SIZE_Y#
 number_of_inputs=201
 number_of_layers=102
 # all the remaining layers are of input size 1

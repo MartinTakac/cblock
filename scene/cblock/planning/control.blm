@@ -35,14 +35,17 @@ values[9]=real 1 0.
 
 # constants
 value_names[10]=ones
-values[10]=real 900 1.
+values[10]=real #PSOMxXPSOMY# 1.
 
 value_names[11]=zeros
-values[11]=real 900 0.
+values[11]=real #PSOMxXPSOMY# 0.
 
 # auxiliary
 value_names[12]=ior
-values[12]=real 900 0.
+values[12]=real #PSOMxXPSOMY# 0.
+
+
+
 
 # DELTA related
 value_names[13]=delta_achieved

@@ -1,0 +1,39 @@
+{
+  "variables": [
+    {
+        "name": "plan_som_map_size_x",
+        "tag": "#P_SOM_SIZE_X#",
+        "value": 30
+    },
+    {
+        "name": "plan_som_map_size_y",
+        "tag": "#P_SOM_SIZE_Y#",
+        "value": 30
+    },
+    {
+        "name": "plan_som_number_of_inputs",
+        "tag": "#P_SOM_INPUTS#",
+        "value": 201
+    }
+    
+],
+
+"dependent_variables": [
+  {
+      "name":"plan_som_map_size_x_times_plan_som_map_size_y",
+      "tag": "#PSOMxXPSOMY#",
+      "operation": ".",
+      "depends_on": ["plan_som_map_size_x", "plan_som_map_size_y"]
+    },
+    {
+      "name":"pasom_save_variable_size",
+      "tag": "#PSOM_SAVE_SIZE#",
+      "operation": ".",
+      "depends_on": ["plan_som_map_size_x", "plan_som_map_size_y", "plan_som_number_of_inputs"]
+    }
+   
+
+  ],
+  "scripts" : ["scripts//xy_to_loc_som.py"]
+
+}
