@@ -1,0 +1,83 @@
+BL_constant_module
+number_of_values=32
+
+# constants
+value_names[0]=zero
+values[0]=real 1 0.
+value_names[1]=one
+values[1]=real 1 1.
+value_names[2]=zeros
+values[2]=real 100 0.
+
+# for config_cblock and other initialization connetors that should onyll be evaluated once
+value_names[3]=at_start
+values[3]=real 1 1
+
+value_names[4]=stage
+values[4]=real 10 1. 0.
+# when resetting, set stage=reset_stage, but also reset_seq=1, this will set the stage accordingly 
+value_names[5]=reset_stage
+values[5]=real 10 0.
+value_names[6]=goal_inspection_stage
+values[6]=real 10 0. 0. 0. 0. 0. 0. 1. 0. 
+value_names[7]=prediction_error
+values[7]=real 1 0.
+value_names[8]=error_avg
+values[8]=real 1 0.
+value_names[9]=error_avg_reset_value
+values[9]=real 1 2.
+value_names[10]=surprise
+values[10]=real 1 0.
+
+value_names[11]=plan_top_down_on_seq
+values[11]=real 1 0.
+
+value_names[12]=input_weight
+values[12]=real 1 1.
+value_names[13]=tonic_input
+values[13]=real 100 0.
+value_names[14]=context
+values[14]=real 100 0.
+value_names[15]=initial_ctx
+values[15]=real 100 0.
+value_names[16]=current
+values[16]=real 100 0.
+value_names[17]=next
+values[17]=real 100 0.
+
+value_names[18]=init_next_elem
+values[18]=real 1 0.
+value_names[19]=restart_seq
+values[19]=real 1 0.
+value_names[20]=init_finalize
+values[20]=real 1 0.
+value_names[21]=training_step
+values[21]=real 1 0.
+value_names[22]=after_first_cycle
+values[22]=real 1 0. 
+
+value_names[23]=buffered_seq_length
+values[23]=real 1 0.
+value_names[24]=max_seq_length
+values[24]=real 1 0.
+value_names[25]=training_index
+values[25]=real 1 0.
+
+value_names[26]=plan_som_from_plan_only
+values[26]=real 1 0.
+
+value_names[27]=kick_start
+values[27]=real 1 0.
+
+value_names[28]=aux_result_alphas_combined
+values[28]=real 100 0.
+
+value_names[29]=buffer_occupancy
+values[29]=real 100 0.
+
+value_names[30]=buf_display_index
+values[30]=real 1 0.
+
+value_names[31]=valid_buf_display_index
+values[31]=real 1 0.
+

@@ -1,0 +1,7 @@
+BL_constant_module
+number_of_values=2
+
+value_names[0]=status
+values[0]=real 10 0.
+value_names[1]=zeros
+values[1]=real 10 0.

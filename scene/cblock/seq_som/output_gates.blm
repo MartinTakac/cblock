@@ -1,0 +1,21 @@
+BL_constant_module
+number_of_values=6
+
+value_names[0]=current
+values[0]=real 1 1.
+
+value_names[1]=next
+values[1]=real 1 1.
+
+value_names[2]=context
+values[2]=real 1 1.
+
+value_names[3]=tonic
+values[3]=real 1 1.
+
+value_names[4]=eos
+values[4]=real 1 1. 
+
+value_names[5]=activation
+values[5]=real 1 1.
+

@@ -1,0 +1,6 @@
+BL_constant_module
+number_of_values=2
+values[0]=real 3 -1.255 -2.649 -8.173
+value_names[0]=startVertex
+values[1]=real 3 16.874 89.492 -1.85
+value_names[1]=endVertex

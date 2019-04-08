@@ -1,0 +1,47 @@
+BL_constant_module
+
+number_of_values=17
+
+value_names[0]=plasticity
+values[0]=real 1 0.
+
+value_names[1]=reset
+values[1]=real 1 0.
+
+value_names[2]=qmlSensitivityTrain
+values[2]=real 1 20
+value_names[3]=qmlSensitivityPredict
+values[3]=real 1 20.
+value_names[4]=qmlSoftOutput
+values[4]=real 1 1.
+value_names[5]=qmlLfc
+values[5]=real 1 1000.
+value_names[6]=qmlSigma
+values[6]=real 1 0.6
+value_names[7]=qmlCompareNoise
+values[7]=real 1 0.9
+value_names[8]=qmlBestMatchThreshold
+values[8]=real 1 0.9
+value_names[9]=qmlBestMatchLfcMult
+values[9]=real 1 0.01
+value_names[10]=qmlTrainingRecordDecay
+values[10]=real 1 1.
+
+value_names[11]=qmlSaveWeights
+values[11]=real 1 0.
+value_names[12]=saveWeightsPrev
+values[12]=real 1 0.
+value_names[13]=saveWeightsLead
+values[13]=real 1 0.
+value_names[14]=qmlLoadWeights
+values[14]=real 1 0.
+value_names[15]=loadWeightsPrev
+values[15]=real 1 0.
+value_names[16]=loadWeightsLead
+values[16]=real 1 0.
+
+# offsets and weight memories - TODO when needed
+#value_names[16]=offsetVisual
+#values[16]=unsigned 1 0
+#value_names[16]=weightsVisual
+#values[16]=real 10000 0.

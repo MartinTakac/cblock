@@ -1,0 +1,7 @@
+BL_delay_module
+number_of_values=1
+time_step=0.001
+maximum_number_of_time_steps_delay=5000
+number_of_time_steps_delay=1
+value_names[0]=off
+values[0]=real 1 0.
