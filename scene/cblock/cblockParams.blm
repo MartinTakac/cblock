@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=29
+number_of_values=31
 
 # manual control signals
 value_names[0]=resetSeq_qml
@@ -62,12 +62,13 @@ value_names[19]=smoothing
 values[19]=real 100 0.0000000000001
 # if entropy<entropy_thr, prediction is good enough
 value_names[20]=entropy_thr
-values[20]=real 1 0.8
+values[20]=real 1 0.35
 
-# what type of input is cblock connected to (x,y or bitmap) and whether it needs individuation
+# what type of input is cblock connected to (x,y or bitmap)
 value_names[21]=indiv_xy
 values[21]=real 1 0.
-value_names[22]=do_indiv
+# if true, surprise is based on mismatch in winner, otherwise KL and sliding avg based.
+value_names[22]=winner_match_surprise
 values[22]=real 1 0.
 
 # if high, cblock will internally compute and store differences (deltas) between the current state and goal state (or initial and final state of a chunk)
@@ -92,3 +93,10 @@ values[27]=real 1 0.
 
 value_names[28]=display_seq_som_real_time
 values[28]=real 1 0.
+
+# keep seq_som's surprise alphas till resetSeq or finalizeSeq in goal-driven and non-goal-driven 
+value_names[29]=surprise_alphas_till_eos_gd
+values[29]=real 1 0.
+
+value_names[30]=surprise_alphas_till_eos_ngd
+values[30]=real 1 1.

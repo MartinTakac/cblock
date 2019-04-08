@@ -15,6 +15,7 @@ asom/training_record_decay=asomConsts/qmlTrainingRecordDecay
 
 asom/bias_when_equal_activity = randomNoise/values
 randomNoise/trigger = 1
+# asom/activation_mask is set on cblock/control_cycle
 
 # Reset ASOM
 asom/reset_map = asomConsts/reset

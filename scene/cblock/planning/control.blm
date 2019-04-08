@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=17
+number_of_values=15
 
 # parameters
 value_names[0]=internal_goal_reached_reward
@@ -33,26 +33,19 @@ values[8]=real 1 1.
 value_names[9]=goal_reached
 values[9]=real 1 0.
 
-# constants
-value_names[10]=ones
-values[10]=real 900 1.
-
-value_names[11]=zeros
-values[11]=real 900 0.
-
 # auxiliary
-value_names[12]=ior
-values[12]=real 900 0.
+value_names[10]=ior
+values[10]=real 900 0.
 
 # DELTA related
-value_names[13]=delta_achieved
+value_names[11]=delta_achieved
+values[11]=real 100 0.
+
+value_names[12]=chunk_init_state
+values[12]=real 100 0.
+
+value_names[13]=aux_result
 values[13]=real 100 0.
 
-value_names[14]=chunk_init_state
+value_names[14]=delta_desired
 values[14]=real 100 0.
-
-value_names[15]=aux_result
-values[15]=real 100 0.
-
-value_names[16]=delta_desired
-values[16]=real 100 0.

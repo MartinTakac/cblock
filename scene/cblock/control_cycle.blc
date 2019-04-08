@@ -1,6 +1,7 @@
 BL_container_connector
 
 # PREAMBLE
+
 #####################
 # turn off outputs ready if reset
 BL_identity_connector
@@ -23,6 +24,8 @@ core/control/after_first_cycle=core/param_save/after_first_cycle_retrieve.value
 BL_linear_transformation_connector
 control_cycle/perform_calculate=seq_som/asom/perform_time_step
 
+seq_som/asomConsts/default_mask=seq_som/asomConsts/qmlUseTrPrior>0? seq_som/asom/training_record : seq_som/asomConsts/som_size_ones
+
 # connect asom's outputs
 #outputs/...=output_gates/...*asom/output_values[...:...]
 seq_som/outputs/current=seq_som/output_gates/current*seq_som/asom/output_values[0:99]
@@ -38,6 +41,8 @@ seq_som/outputs/activation_map=seq_som/output_gates/activation*seq_som/asom/acti
 # update plan_som's outputs, if perform_time_step
 BL_linear_transformation_connector
 control_cycle/perform_calculate=plan_som/asom/perform_time_step
+
+plan_som/asomConsts/default_mask=plan_som/asomConsts/qmlUseTrPrior>0? plan_som/asom/training_record : plan_som/asomConsts/som_size_ones
 
 # connect asom's outputs
 #outputs/...=output_gates/...*asom/output_values[...:...]
@@ -100,11 +105,20 @@ core/control/stage=core/control/restart_seq>0 ? core/control/reset_stage : core/
 
 ############
 # stage 9: [prediction normalized]: move back to stage 0
+
+# this one is just conversion from unsigned to real
+BL_identity_connector
+control_cycle/perform_calculate=core/control/stage[9]
+# used internally in the next cycle to evaluate winner match based surprise
+core/control/prediction_winner=core/prediction_wta/winner_index
+
+# and now proper stage 9
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[9]
 
 core/normalize_prediction/perform_time_step=0
 planning/dist_from_goal/perform_time_step=0
+core/prediction_wta/perform_time_step=0
 
 core/prediction_certainty/predicted_distribution=core/normalize_prediction/activation_map
 core/prediction_certainty/entropy=core/normalize_prediction/activation_entropy
@@ -114,7 +128,8 @@ core/prediction_certainty/certain_enough=core/control/after_first_cycle>0 ? core
 # outputs can be set from all soms, but external user will know whether to read xy or bitmap
 cblockOutputs/predicted_x=IO/xy_output_som/output_values[0]
 cblockOutputs/predicted_y=IO/xy_output_som/output_values[1]
-cblockOutputs/predicted_bitmap=IO/indiv_type/none>0? seq_som/outputs/crisp_next : IO/bitmap_output_som/output_values
+# type none DEPRECATED. cblockOutputs/predicted_bitmap=IO/indiv_type/none>0? seq_som/outputs/crisp_next : IO/bitmap_output_som/output_values
+cblockOutputs/predicted_bitmap=IO/bitmap_output_som/output_values
 IO/xy_output_som/perform_time_step=0
 IO/bitmap_output_som/perform_time_step=0
 
@@ -155,6 +170,8 @@ IO/bitmap_output_som/perform_time_step=IO/indiv_type/bitmap
 core/normalize_prediction/top_down_activation=IO/xy_output_som/top_down_activation+cblockParams/smoothing
 core/normalize_prediction/perform_time_step=1
 core/control/kick_start=0
+core/prediction_wta/input_values=seq_som/outputs/next
+core/prediction_wta/perform_time_step=1
 
 # chunk_init_state==cblockInputs/state at this moment, so delta_achieved=0. This has to be compared to delta_desired (dif bw goal state and current state set above) to see if the goal is not trivially satisfied
 planning/control/delta_achieved=cblockInputs/state-planning/control/chunk_init_state
@@ -175,7 +192,7 @@ BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[7]
 
 plan_som/asom/perform_time_step=0
-plan_som/asom/activation_mask=planning/control/ones
+plan_som/asom/activation_mask=plan_som/asomConsts/default_mask
  
 # set inputs for seq_SOM
 seq_som/inputs/tonic=plan_som/outputs/plan
@@ -183,7 +200,7 @@ seq_som/inputs/context=core/control/context
 seq_som/inputs/current=core/control/current
 
 # alphas for next and eos are zero. Others can be different depending on whether goal_driven
-seq_som/alpha_gains/gains_vector=seq_som/alpha_gains/prediction_gains_goal_driven
+seq_som/alpha_gains/gains_vector=core/control/surprise_since_last_eos*cblockParams/surprise_alphas_till_eos_gd>0 ? seq_som/alpha_gains/surprise_prediction_gains : seq_som/alpha_gains/prediction_gains_goal_driven
 
 seq_som/asom/perform_time_step=1
 
@@ -234,11 +251,13 @@ planning/dist_from_goal/alphas[100]=planning/goal/alpha_reward
 
 # inhibit previous winner and its surrounding
 planning/control/ior=planning/control/ior+planning/control/ior_surrounding*planning/xy_to_loc_som/activation_map+planning/plan_wta/output_values
-planning/control/ior=planning/control/ior>planning/control/ones ? planning/control/ones : planning/control/ior
+planning/control/ior=planning/control/ior>plan_som/asomConsts/som_size_ones ? plan_som/asomConsts/som_size_ones : planning/control/ior
 planning/control/ior=planning/control/ior_decay*planning/control/ior
 
 # no ior in plan inspection mode
-plan_som/asom/activation_mask=cblockInputs/goal_plan_inspection>0 ? plan_som/asom/activation_mask :planning/control/ones-planning/control/ior
+plan_som/asom/activation_mask=cblockInputs/goal_plan_inspection>0 ? plan_som/asomConsts/default_mask : plan_som/asomConsts/default_mask-planning/control/ior
+plan_som/asom/activation_mask=plan_som/asomConsts/som_size_zeros>plan_som/asom/activation_mask ? plan_som/asomConsts/som_size_zeros : plan_som/asom/activation_mask
+
 #plan_som/asom/activation_mask=plan_som/asom/training_record>cblockParams/plan_tr_rec_thr ? plan_som/asom/activation_mask : core/control/plan_zeros
 
 plan_som/inputs/result=planning/goal_buffered/state
@@ -258,12 +277,16 @@ control_cycle/perform_calculate=core/control/stage[5]
 planning/plan_timeout_LIF/trigger=0
 plan_som/asom/perform_time_step=0
 plan_som/asomConsts/plasticity=0
+plan_som/asom/activation_mask=plan_som/asomConsts/default_mask
 seq_som/asom/perform_time_step=0
 seq_som/asomConsts/plasticity=0
+seq_som/asom/activation_mask=seq_som/asomConsts/default_mask
+
 cblockOutputs/ready=1
 # cblockOutputs/good_enough=0 so that playback is not triggered (because no prediction)
 cblockOutputs/good_enough=0
 cblockOutputs/contains_prediction=0
+cblockOutputs/eos_predicted=0
 core/control/stage[0]=1
 core/control/stage[5]=0
 
@@ -280,6 +303,9 @@ seq_som/inputs/eos=core/control/one
 # also train plan_SOM
 plan_som/asom/perform_time_step=1
 plan_som/asomConsts/plasticity=1
+# mask is always all ones for training
+plan_som/asom/activation_mask=plan_som/asomConsts/som_size_ones
+
 # plan_SOM inputs were set at init_finalize
 
 # do restart_seq (reset the buffer, tonic, context and current), this will set state to S5 or S6 depending on goal-driven
@@ -300,7 +326,9 @@ seq_som/inputs/context=core/control/context
 seq_som/inputs/current=core/control/current
 
 # alphas for next and eos are zero. Others can be different depending on whether goal_driven
+core/control/surprise_alphas_till_eos=planning/control/goal_driven>0 ? cblockParams/surprise_alphas_till_eos_gd : cblockParams/surprise_alphas_till_eos_ngd
 seq_som/alpha_gains/gains_vector=planning/control/goal_driven>0 ? seq_som/alpha_gains/prediction_gains_goal_driven : seq_som/alpha_gains/prediction_gains_non_goal_driven
+seq_som/alpha_gains/gains_vector=core/control/surprise_since_last_eos*core/control/surprise_alphas_till_eos>0 ? seq_som/alpha_gains/surprise_prediction_gains : seq_som/alpha_gains/gains_vector
 
 # for kick start in S8, if any
 core/tonic_wta/input_values=seq_som/inputs/tonic
@@ -326,6 +354,13 @@ core/control/stage[3]=1
 
 ###########
 # stage 1: next elem branch - prepare seq-SOM inputs for prediction and go to S8
+
+# this subconnector is just for unsigned ot real conversion
+BL_identity_connector
+control_cycle/perform_calculate=core/control/stage[1]
+core/control/actual_winner=core/actual_next_wta/winner_index
+
+# and now proper stage 1
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[1]
 
@@ -337,9 +372,16 @@ plan_som/asom/perform_time_step=0
 core/control/prediction_error=core/prediction_error/functions[0].output_value
 # if there was no prediction, there should be no surprise
 core/control/surprise=core/control/prediction_error>cblockParams/surprise_avg_mult*core/control/error_avg ? cblockOutputs/contains_prediction : 0
-# TODO if raw bitmap, use core/ED_error/norm to determine surprise
+
+core/actual_next_wta/perform_time_step=0
+
+core/control/winner_mismatch=0
+core/control/winner_mismatch=core/control/actual_winner>core/control/prediction_winner ? 1 : core/control/winner_mismatch
+core/control/winner_mismatch=core/control/prediction_winner>core/control/actual_winner ? 1 : core/control/winner_mismatch
+core/control/surprise=cblockParams/winner_match_surprise>0 ? core/control/winner_mismatch : core/control/surprise
 
 core/control/surprise=cblockOutputs/eos_predicted>0 ? cblockOutputs/contains_prediction : core/control/surprise
+core/control/surprise_since_last_eos=core/control/surprise>0 ? 1 : core/control/surprise_since_last_eos
 
 # update error moving avg, but first truncate prediction_error so that avg doesn't go crazy
 core/control/prediction_error=core/control/prediction_error>cblockParams/surp_trunc_value ? cblockParams/surp_trunc_value : core/control/prediction_error
@@ -352,9 +394,11 @@ seq_som/inputs/tonic=core/control/plan_top_down_on_seq*plan_som/outputs/plan+cor
 seq_som/inputs/context=core/control/context
 seq_som/inputs/current=core/control/current
 # alphas for next and eos are zero. Others can be different depending on whether goal_driven
+
+core/control/surprise_alphas_till_eos=planning/control/goal_driven>0 ? cblockParams/surprise_alphas_till_eos_gd : cblockParams/surprise_alphas_till_eos_ngd
 seq_som/alpha_gains/gains_vector=planning/control/goal_driven>0 ? seq_som/alpha_gains/prediction_gains_goal_driven : seq_som/alpha_gains/prediction_gains_non_goal_driven
-# If surprise, set tonic alpha to 0 or some small alpha_tonic_surprise, even in goal-driven
-seq_som/alpha_gains/gains_vector=core/control/surprise>0 ? seq_som/alpha_gains/surprise_prediction_gains : seq_som/alpha_gains/gains_vector 
+# If surprise or surp till eos, set tonic alpha to 0 or some small alpha_tonic_surprise, even in goal-driven
+seq_som/alpha_gains/gains_vector=core/control/surprise+core/control/surprise_since_last_eos*core/control/surprise_alphas_till_eos>0 ? seq_som/alpha_gains/surprise_prediction_gains : seq_som/alpha_gains/gains_vector 
 
 seq_som/asom/perform_time_step=1
 
@@ -384,6 +428,8 @@ control_cycle/perform_calculate=core/control/init_next_elem
 
 core/control/next=IO/input/seq_element
 
+core/actual_next_wta/input_values=core/control/next
+core/actual_next_wta/perform_time_step=core/control/one
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][0:99]=core/control/context
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][100:199]=core/control/current
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][200:299]=core/control/next
@@ -451,6 +497,7 @@ core/control/training_index=0
 core/control/training_step=cblockOutputs/buffered_seq_length>core/control/training_index ? 1 : 0
 seq_som/asom/perform_time_step=core/control/training_step
 seq_som/asomConsts/plasticity=core/control/training_step
+seq_som/asom/activation_mask=seq_som/asomConsts/plasticity>0 ? seq_som/asomConsts/som_size_ones : seq_som/asom/activation_mask
 seq_som/inputs/tonic=core/control/tonic_input
 # seq_som tonic stays fixed to the complete plan for the whole training
 # set alphas for training
@@ -477,6 +524,7 @@ planning/plan_timeout_LIF/trigger=1
 # reset buffer
 cblockOutputs/buffered_seq_length=0
 core/control/buffer_occupancy=core/control/zeros
+core/control/surprise_since_last_eos=0
 
 # reset tonic, context and current
 core/control/tonic_input=core/control/zeros
@@ -588,6 +636,8 @@ plan_som/asom/alphas[101]=core/control/plan_som_from_plan_only>0 ? plan_som/inpu
 # other som params
 plan_som/asom/top_down_influence=plan_som/asomConsts/plasticity>0 ? 0 : plan_som/input_gates/TD_activation
 plan_som/asom/use_soft_output=planning/control/goal_driven-core/control/surprise>0 ? 0 : plan_som/asomConsts/qmlSoftOutput
+plan_som/asom/use_soft_output=cblockInputs/goal_plan_inspection>0 ? plan_som/asomConsts/qmlSoftOutput : plan_som/asom/use_soft_output
+
 plan_som/asom/normalize_activation=plan_som/asom/use_soft_output
 plan_som/asom/activation_sensitivity = planning/goal_buffered/alpha_goal_state_bulk>0 ? plan_som/asomConsts/qmlSensitivityResult : plan_som/asomConsts/qmlSensitivityJustReward
 plan_som/asom/activation_sensitivity = core/control/plan_som_from_plan_only>0 ? plan_som/asomConsts/qmlSensitivityJustPlan : plan_som/asom/activation_sensitivity
