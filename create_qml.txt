@@ -24,10 +24,13 @@ section,Parameters,200,300,80
 slider,control/playback_speed,playback speed,0,200,0.01
 slider,cblock/cblockParams/entropy_thr,playback entropy thr,0,1,0.01
 slider,cblock/cblockParams/smoothing,prediction smoothing,0,1,0.0000000000000001
+slider,cblock/cblockParams/kick_start_gain,kick start gain,0,1,0.01
+
+section,Surprise,200,300,80
+slider,cblock/cblockParams/winner_match_surprise,winner surprise,0,1,1
 slider,cblock/cblockParams/surprise_avg_mult,avg mult thr,0,5,0.001
 slider,cblock/cblockParams/prev_avg_err_mix,prev avg mix,0,1,0.001
 slider,cblock/cblockParams/surp_trunc_value,trunc surp at,5,500,1
-slider,cblock/cblockParams/kick_start_gain,kick start gain,0,1,0.01
 
 tab,Goal
 
@@ -166,6 +169,7 @@ slider,cblock/cblockParams/seq_learn_non_goal_driven,learn in non goal-driven,0,
 slider,cblock/cblockParams/seq_learn_goal_driven,learn in goal-driven,0,1,1
 slider,cblock/seq_som/asomConsts/qmlSensitivityTrain,Sensitivity train,0,40,0.1
 slider,cblock/seq_som/asomConsts/qmlSensitivityPredict,Sensitivity predict,0,40,0.1
+slider,cblock/seq_som/asomConsts/qmlUseTrPrior,use TR prior,0,1,1
 slider,cblock/seq_som/asomConsts/qmlSoftOutput,Soft output,0,1,1
 slider,cblock/seq_som/asomConsts/qmlLfc,LFC,0,1500,100
 slider,cblock/seq_som/asomConsts/qmlSigma,Sigma,0,2,0.1
@@ -197,6 +201,8 @@ section,alphas surprise predict,200,300,100
 slider,cblock/seq_som/alpha_gains/tonic_surprise,tonic,0,1,0.01
 slider,cblock/seq_som/alpha_gains/context_surprise,context,0,1,0.01
 slider,cblock/seq_som/alpha_gains/current_surprise,current,0,1,0.01
+slider,cblock/cblockParams/surprise_alphas_till_eos_gd,keep till eos gd,0,1,1
+slider,cblock/cblockParams/surprise_alphas_till_eos_ngd,keep till eos ngd,0,1,1
 
 section,plan-SOM,200,300,80
 slider,cblock/plan_som/TD_inspection/control/inspect,inspect SOM,0,1,1
@@ -206,6 +212,7 @@ slider,cblock/cblockParams/plan_learn_goal_driven,learn in goal-driven,0,1,1
 slider,cblock/plan_som/asomConsts/qmlSensitivityJustPlan,Sens from plan,0,40,0.1
 slider,cblock/plan_som/asomConsts/qmlSensitivityJustReward,Sens from rew,0,150,0.1
 slider,cblock/plan_som/asomConsts/qmlSensitivityResult,Sens from res,0,100,0.1
+slider,cblock/plan_som/asomConsts/qmlUseTrPrior,use TR prior,0,1,1
 slider,cblock/plan_som/asomConsts/qmlSoftOutput,Soft output,0,1,1
 slider,cblock/plan_som/asomConsts/qmlLfc,LFC,0,1500,100
 slider,cblock/plan_som/asomConsts/qmlSigma,Sigma,0,2,0.1

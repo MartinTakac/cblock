@@ -17,6 +17,7 @@ asom/training_record_decay=asomConsts/qmlTrainingRecordDecay
 asom/activation_sensitivity = asomConsts/plasticity > 0.? asomConsts/qmlSensitivityTrain : asomConsts/qmlSensitivityPredict
 asom/bias_when_equal_activity = randomNoise/values
 randomNoise/trigger = 1
+# asom/activation_mask is set in control cycle
 
 # Reset ASOM
 asom/reset_map = asomConsts/reset

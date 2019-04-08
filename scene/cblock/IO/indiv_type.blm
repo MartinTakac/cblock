@@ -1,9 +1,10 @@
 BL_constant_module
-number_of_values=3
+number_of_values=2
 
-value_names[0]=none
+# DEPRECATED
+#value_names[-1]=none
+#values[-1]=real 1 0.
+value_names[0]=xy
 values[0]=real 1 0.
-value_names[1]=xy
+value_names[1]=bitmap
 values[1]=real 1 0.
-value_names[2]=bitmap
-values[2]=real 1 0.
