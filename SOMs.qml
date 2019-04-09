@@ -78,6 +78,16 @@ ScrollView
 					
 			ListElement
 			{
+				name: "use TR prior"
+				path: "cblock/seq_som/asomConsts/qmlUseTrPrior"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "Soft output"
 				path: "cblock/seq_som/asomConsts/qmlSoftOutput"
 				startValue: 0.5
@@ -346,6 +356,26 @@ ScrollView
 				stepSize: 0.01
 			}
 					
+			ListElement
+			{
+				name: "keep till eos gd"
+				path: "cblock/cblockParams/surprise_alphas_till_eos_gd"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "keep till eos ngd"
+				path: "cblock/cblockParams/surprise_alphas_till_eos_ngd"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
 		}
 		ListModel
 		{
@@ -424,6 +454,16 @@ ScrollView
 				minValue: 0.0
 				maxValue: 100.0
 				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "use TR prior"
+				path: "cblock/plan_som/asomConsts/qmlUseTrPrior"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
 			}
 					
 			ListElement

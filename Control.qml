@@ -201,6 +201,36 @@ ScrollView
 					
 			ListElement
 			{
+				name: "kick start gain"
+				path: "cblock/cblockParams/kick_start_gain"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.01
+			}
+					
+		}
+		ListModel
+		{
+			id: button_model_0_3
+				
+		}
+		ListModel
+		{
+			id: slider_model_0_4
+					
+			ListElement
+			{
+				name: "winner surprise"
+				path: "cblock/cblockParams/winner_match_surprise"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "avg mult thr"
 				path: "cblock/cblockParams/surprise_avg_mult"
 				startValue: 2.5
@@ -229,20 +259,10 @@ ScrollView
 				stepSize: 1.0
 			}
 					
-			ListElement
-			{
-				name: "kick start gain"
-				path: "cblock/cblockParams/kick_start_gain"
-				startValue: 0.5
-				minValue: 0.0
-				maxValue: 1.0
-				stepSize: 0.01
-			}
-					
 		}
 		ListModel
 		{
-			id: button_model_0_3
+			id: button_model_0_4
 				
 		}
 		Rectangle
@@ -353,6 +373,7 @@ ScrollView
 				dgv_0_1.resetAllSliders()
 				dgv_0_2.resetAllSliders()
 				dgv_0_3.resetAllSliders()
+				dgv_0_4.resetAllSliders()
 			}
 		}
 		DoubleGridView
@@ -398,6 +419,18 @@ ScrollView
 			sliderModel: slider_model_0_3
 			buttonModel: button_model_0_3
 			headerText: "Parameters"
+			sliderWidth: 200
+			nameWidth: 300
+			valueWidth: 80
+			textScale: rootItem.textScale
+		}
+		DoubleGridView
+		{
+			id: dgv_0_4
+			width: rootItem.width
+			sliderModel: slider_model_0_4
+			buttonModel: button_model_0_4
+			headerText: "Surprise"
 			sliderWidth: 200
 			nameWidth: 300
 			valueWidth: 80

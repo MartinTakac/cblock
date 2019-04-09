@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=32
+number_of_values=37
 
 # constants
 value_names[0]=zero
@@ -81,3 +81,17 @@ values[30]=real 1 0.
 value_names[31]=valid_buf_display_index
 values[31]=real 1 0.
 
+value_names[32]=prediction_winner
+values[32]=real 1 0.
+
+value_names[33]=actual_winner
+values[33]=real 1 0.
+
+value_names[34]=winner_mismatch
+values[34]=real 1 0.
+
+value_names[35]=surprise_since_last_eos
+values[35]=real 1 0.
+
+value_names[36]=surprise_alphas_till_eos
+values[36]=real 1 0.

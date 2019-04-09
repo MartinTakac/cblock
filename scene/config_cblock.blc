@@ -10,9 +10,7 @@ cblock/core/control/at_start=0
 #####################
 # the rest are initial param values specific to your application of cblock
 
-# the following two lines are crucial for sucessful input connection, never forget to set these two.
-# whether to run input via individuation SOM
-cblock/cblockParams/do_indiv=1
+# the following line is crucial for sucessful input connection, never forget to set indiv type properly.
 # whether the input is 10x10 bitmap or x,y position
 cblock/cblockParams/indiv_xy=0
 

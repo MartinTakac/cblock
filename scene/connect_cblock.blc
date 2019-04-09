@@ -47,7 +47,7 @@ playback_LIF/input_frequency_constants[0]=playback_LIF/membrane_frequency_consta
 playback_LIF/trigger=0
 playback_LIF/input_voltages[0]=control/allow_playback*control/prediction>0 ? 1 : 0
 control/baby_event=playback_LIF/voltage>0.9 ? 1 : 0
-cblock/core/measures_scrollDisplay/input_values[4]=playback_LIF/voltage
+#cblock/core/measures_scrollDisplay/input_values[4]=playback_LIF/voltage
 
 # determine whether the user just turned on autotraining with a slider
 training_control/trigger_autotrain_leading_edge=training_control/trigger_automatic_training_qml>training_control/trigger_autotrain_prev ? 1 : 0

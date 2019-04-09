@@ -1,6 +1,6 @@
 BL_container_connector
 
-# depending on cblockInputs/inputType (nextElem, discardSeq, completeSeq) and cblockParams/do_indiv, cblockParams/indiv_xy:
+# depending on cblockInputs/inputType (nextElem, discardSeq, completeSeq) and cblockParams/indiv_xy:
 #
 # S0 -> init_dispatch_controls -> S4 -> S0
 #   \
@@ -8,7 +8,7 @@ BL_container_connector
 #                         \
 #                          -> init_bitmap -> S1_bitmap -> S2_bitmap -> S3 -> S0
 #                         \
-#                          -> init_none -> S3 -> S0
+#                          DEPRECATED! -> init_none -> S3 -> S0
 
 #####################
 # turn off ready if reset
@@ -138,7 +138,7 @@ IO/input_control/init_dispatch_elem=IO/input_control/off
 IO/input_control/S0=IO/input_control/off
 
 #dispatch new element for different routes of input conversion
-IO/input_control/init_none=IO/indiv_type/none
+# DEPRECATED! IO/input_control/init_none=IO/indiv_type/none
 IO/input_control/init_xy=IO/indiv_type/xy
 IO/input_control/init_bitmap=IO/indiv_type/bitmap
 
@@ -170,15 +170,15 @@ cblockInputs/reset=IO/input_control/on
 IO/input_control/S1_bitmap=IO/input_control/on
 
 #######################
-# no-indiv branch: send bitmap directly to wta and go to S3
-BL_identity_connector
-connect_Inputs/perform_calculate=IO/input_control/init_none
+# no-indiv branch DEPRECATED! send bitmap directly to wta and go to S3
+#BL_identity_connector
+#connect_Inputs/perform_calculate=IO/input_control/init_none
 
-IO/input_wta/input_values=cblockInputs/input_bitmap
-cblockInputs/reset=IO/input_control/on
+#IO/input_wta/input_values=cblockInputs/input_bitmap
+#cblockInputs/reset=IO/input_control/on
 
-IO/input_control/init_none=IO/input_control/off
-IO/input_control/S3=IO/input_control/on
+#IO/input_control/init_none=IO/input_control/off
+#IO/input_control/S3=IO/input_control/on
 
 #############
 # do always - postprocessing
