@@ -12,11 +12,7 @@ values[3]=real 1 0.
 value_names[4]=total_autotrain_steps
 values[4]=real 1 0.
 value_names[5]=do_autotrain_steps
-<<<<<<< HEAD
-values[5]=real 1 0.
-=======
 values[5]=real 1 300.
->>>>>>> master
 value_names[6]=steps_so_far_in_this_batch
 values[6]=real 1 0.
 value_names[7]=output_ready_just_turned_off
