@@ -1,5 +1,5 @@
 BL_vector_function_module
 number_of_functions=1
 functions[0]=scalar_output
-functions[0].number_of_values=100
+functions[0].number_of_values=#INDIV_SOM_SIZE#
 functions[0].function_type=KL_ENTROPY_FUNCTION

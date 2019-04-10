@@ -22,7 +22,7 @@ cblock/cblockInputs/inputType_nextElem=cblock/core/control/zero
 cblock/cblockInputs/inputType_finalizeSeq=cblock/core/control/zero
 cblock/cblockInputs/inputType_resetSeq=cblock/core/control/zero
 cblock/cblockInputs/reward=cblock/core/control/zero
-cblock/cblockInputs/state=cblock/core/control/zeros
+cblock/cblockInputs/state=cblock/core/control/zeros_state
 
 ###########
 # read cblock's output when ready, turn on prediction when good - this will return back on input as aby event when playback_LIF fires

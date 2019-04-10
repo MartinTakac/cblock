@@ -59,7 +59,7 @@ value_names[18]=surp_trunc_value
 values[18]=real 1 5
 # smoothing added to each element of predicted distribution to avoid infinite KL divergence at zeros.
 value_names[19]=smoothing
-values[19]=real 100 0.0000000000001
+values[19]=real #INDIV_SOM_SIZE# 0.0000000000001
 # if entropy<entropy_thr, prediction is good enough
 value_names[20]=entropy_thr
 values[20]=real 1 0.35

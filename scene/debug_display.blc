@@ -106,9 +106,9 @@ debug_displays/buffer/next/texture.next.data=cblock/core/control/zeros
 BL_identity_connector
 debug_display/perform_calculate=cblock/core/control/valid_buf_display_index
 
-debug_displays/buffer/context/texture.context.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][0:99]
-debug_displays/buffer/recent/texture.recent.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][100:199]
-debug_displays/buffer/next/texture.next.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][200:299]
+debug_displays/buffer/recent/texture.recent.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][0:#SEQ_SOM_CURRENT_LAST_INDEX#]
+debug_displays/buffer/next/texture.next.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]
+debug_displays/buffer/context/texture.context.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]
 
 
 #############

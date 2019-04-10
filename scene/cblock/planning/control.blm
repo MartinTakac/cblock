@@ -35,17 +35,17 @@ values[9]=real 1 0.
 
 # auxiliary
 value_names[10]=ior
-values[10]=real 900 0.
+values[10]=real #PLAN_SOM_SIZE# 0.
 
 # DELTA related
 value_names[11]=delta_achieved
-values[11]=real 100 0.
+values[11]=real #STATE_SIZE# 0.
 
 value_names[12]=chunk_init_state
-values[12]=real 100 0.
+values[12]=real #STATE_SIZE# 0.
 
 value_names[13]=aux_result
-values[13]=real 100 0.
+values[13]=real #STATE_SIZE# 0.
 
 value_names[14]=delta_desired
-values[14]=real 100 0.
+values[14]=real #STATE_SIZE# 0.

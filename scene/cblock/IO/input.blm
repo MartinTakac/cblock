@@ -15,10 +15,10 @@ values[3]=real 1 0.
 
 # the sequential element for chunking if ready_nextElem=1 (set in connect_inputs after conversion)
 value_names[4]=seq_element
-values[4]=real 100 0.
+values[4]=real #INDIV_SOM_SIZE# 0.
 
 # state and reward are buffered when finalizeSeq to preserve them till cycle gets to training plan_SOM. For other purposes, the current state and reward are used
 value_names[5]=state_buffered
-values[5]=real 100 0.
+values[5]=real #STATE_SIZE# 0.
 value_names[6]=reward_buffered
 values[6]=real 1 0.

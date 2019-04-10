@@ -28,12 +28,12 @@ seq_som/asomConsts/default_mask=seq_som/asomConsts/qmlUseTrPrior>0? seq_som/asom
 
 # connect asom's outputs
 #outputs/...=output_gates/...*asom/output_values[...:...]
-seq_som/outputs/current=seq_som/output_gates/current*seq_som/asom/output_values[0:99]
-seq_som/outputs/next=seq_som/output_gates/next*seq_som/asom/output_values[100:199]
-seq_som/outputs/crisp_next=seq_som/output_gates/next*seq_som/asom/crisp_output_values[100:199]
-seq_som/outputs/context=seq_som/output_gates/context*seq_som/asom/output_values[200:299]
-seq_som/outputs/tonic=seq_som/output_gates/tonic*seq_som/asom/output_values[300:399]
-seq_som/outputs/eos=seq_som/output_gates/eos*seq_som/asom/crisp_output_values[400]
+seq_som/outputs/current=seq_som/output_gates/current*seq_som/asom/output_values[0:#SEQ_SOM_CURRENT_LAST_INDEX#]
+seq_som/outputs/next=seq_som/output_gates/next*seq_som/asom/output_values[#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]
+seq_som/outputs/crisp_next=seq_som/output_gates/next*seq_som/asom/crisp_output_values[#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]
+seq_som/outputs/context=seq_som/output_gates/context*seq_som/asom/output_values[#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]
+seq_som/outputs/tonic=seq_som/output_gates/tonic*seq_som/asom/output_values[#SEQ_SOM_TONIC_FIRST_INDEX#:#SEQ_SOM_TONIC_LAST_INDEX#]
+seq_som/outputs/eos=seq_som/output_gates/eos*seq_som/asom/crisp_output_values[#SEQ_SOM_EOS_INDEX#]
 
 seq_som/outputs/activation_map=seq_som/output_gates/activation*seq_som/asom/activation_map
 
@@ -46,9 +46,9 @@ plan_som/asomConsts/default_mask=plan_som/asomConsts/qmlUseTrPrior>0? plan_som/a
 
 # connect asom's outputs
 #outputs/...=output_gates/...*asom/output_values[...:...]
-plan_som/outputs/plan=plan_som/output_gates/plan*plan_som/asom/output_values[0:99]
-plan_som/outputs/result=plan_som/output_gates/result*plan_som/asom/output_values[100:199]
-plan_som/outputs/reward=plan_som/output_gates/reward*plan_som/asom/output_values[200]
+plan_som/outputs/plan=plan_som/output_gates/plan*plan_som/asom/output_values[0:#PLAN_SOM_PLAN_LAST_INDEX#]
+plan_som/outputs/result=plan_som/output_gates/result*plan_som/asom/output_values[#PLAN_SOM_RESULT_FIRST_INDEX#:#PLAN_SOM_RESULT_LAST_INDEX#]
+plan_som/outputs/reward=plan_som/output_gates/reward*plan_som/asom/output_values[#PLAN_SOM_REWARD_INDEX#]
 
 plan_som/outputs/activation_map=plan_som/output_gates/activation*plan_som/asom/activation_map
 
@@ -140,7 +140,7 @@ cblockOutputs/goal_reached_degree=planning/dist_from_goal/winner_activity_raw*pl
 planning/control/goal_reached=planning/dist_from_goal/winner_activity_raw>cblockParams/goal_reached_thr ? planning/control/goal_driven : 0
 cblockOutputs/goal_reached=planning/control/goal_reached
 cblockOutputs/eos_predicted=seq_som/outputs/eos>0.8 ? 1 : 0
-cblockOutputs/predicted_bitmap=cblockOutputs/eos_predicted>0 ? core/control/zeros : cblockOutputs/predicted_bitmap
+cblockOutputs/predicted_bitmap=cblockOutputs/eos_predicted>0 ? core/control/zeros_bitmap : cblockOutputs/predicted_bitmap
 cblockOutputs/good_enough=core/prediction_certainty/certain_enough+cblockOutputs/goal_reached+cblockOutputs/eos_predicted>0 ? 1 : 0
 cblockOutputs/surprise=core/control/surprise
 cblockOutputs/contains_prediction=1
@@ -176,8 +176,8 @@ core/prediction_wta/perform_time_step=1
 # chunk_init_state==cblockInputs/state at this moment, so delta_achieved=0. This has to be compared to delta_desired (dif bw goal state and current state set above) to see if the goal is not trivially satisfied
 planning/control/delta_achieved=cblockInputs/state-planning/control/chunk_init_state
 planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : cblockInputs/state
-planning/dist_from_goal/input_values[0:99]=planning/control/aux_result
-planning/dist_from_goal/input_values[100]=cblockInputs/reward
+planning/dist_from_goal/input_values[0:#STATE_LAST_INDEX#]=planning/control/aux_result
+planning/dist_from_goal/input_values[#STATE_SIZE#]=cblockInputs/reward
 planning/dist_from_goal/activation_sensitivity = planning/goal_buffered/alpha_goal_state_bulk>0 ? plan_som/asomConsts/qmlSensitivityResult : plan_som/asomConsts/qmlSensitivityJustReward
 planning/dist_from_goal/perform_time_step=planning/control/goal_driven
 
@@ -242,12 +242,12 @@ planning/goal_buffered/alpha_goal_state_components_combined=core/control/aux_res
 planning/goal_buffered/alpha_goal_state_bulk=planning/goal/alpha_goal_state_bulk
 planning/goal_buffered/alpha_reward=planning/goal/alpha_reward
 
-planning/dist_from_goal/associative_self_organizing_map[0][0][0][0:99]=planning/goal_buffered/state
-planning/dist_from_goal/associative_self_organizing_map[0][0][0][100]=planning/goal_buffered/reward
-planning/dist_from_goal/associative_self_organizing_map[0][0][1][0:99]=planning/goal_buffered/state
-planning/dist_from_goal/associative_self_organizing_map[0][0][1][100]=planning/goal_buffered/reward
-planning/dist_from_goal/alphas[0:99]=core/control/aux_result_alphas_combined
-planning/dist_from_goal/alphas[100]=planning/goal/alpha_reward
+planning/dist_from_goal/associative_self_organizing_map[0][0][0][0:#STATE_LAST_INDEX#]=planning/goal_buffered/state
+planning/dist_from_goal/associative_self_organizing_map[0][0][0][#STATE_SIZE#]=planning/goal_buffered/reward
+planning/dist_from_goal/associative_self_organizing_map[0][0][1][0:#STATE_LAST_INDEX#]=planning/goal_buffered/state
+planning/dist_from_goal/associative_self_organizing_map[0][0][1][#STATE_SIZE#]=planning/goal_buffered/reward
+planning/dist_from_goal/alphas[0:#STATE_LAST_INDEX#]=core/control/aux_result_alphas_combined
+planning/dist_from_goal/alphas[#STATE_SIZE#]=planning/goal/alpha_reward
 
 # inhibit previous winner and its surrounding
 planning/control/ior=planning/control/ior+planning/control/ior_surrounding*planning/xy_to_loc_som/activation_map+planning/plan_wta/output_values
@@ -430,9 +430,9 @@ core/control/next=IO/input/seq_element
 
 core/actual_next_wta/input_values=core/control/next
 core/actual_next_wta/perform_time_step=core/control/one
-core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][0:99]=core/control/context
-core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][100:199]=core/control/current
-core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][200:299]=core/control/next
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][0:#SEQ_SOM_CURRENT_LAST_INDEX#]=core/control/current
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]=core/control/next
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]=core/control/context
 core/control/buffer_occupancy[cblockOutputs/buffered_seq_length]=core/control/one
 
 # incrementing buffered_seq_length is done below in linear_transformation connector
@@ -466,10 +466,6 @@ plan_som/asom/perform_time_step=planning/control/goal_driven>0? 0 : 1
 # KL div prediction error (predicted_distribution and predicted_bitmap are from previous cycle)
 core/prediction_error/functions[0].input_1_values=core/control/next
 core/prediction_error/functions[0].input_2_values=core/prediction_certainty/predicted_distribution
-
-# TODO: ED prediction error for raw bitmap inputs
-#core/ED_error/values=core/control/next-cblockOutputs/predicted_bitmap
-#core/ED_error/new_input=1
 
 # cleanup
 core/control/init_next_elem=0
@@ -523,7 +519,7 @@ planning/plan_timeout_LIF/trigger=1
 
 # reset buffer
 cblockOutputs/buffered_seq_length=0
-core/control/buffer_occupancy=core/control/zeros
+core/control/buffer_occupancy=core/control/buffer_capacity_zeros
 core/control/surprise_since_last_eos=0
 
 # reset tonic, context and current
@@ -552,9 +548,9 @@ core/control/stage[6]=planning/control/goal_driven
 BL_identity_connector
 control_cycle/perform_calculate=core/control/training_step
 
-seq_som/inputs/context=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][0:99]
-seq_som/inputs/current=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][100:199]
-seq_som/inputs/next=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][200:299]
+seq_som/inputs/current=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][0:#SEQ_SOM_CURRENT_LAST_INDEX#]
+seq_som/inputs/next=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]
+seq_som/inputs/context=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]
 seq_som/inputs/eos=core/control/zero
 
 BL_linear_transformation_connector
@@ -586,11 +582,11 @@ control_cycle/perform_calculate=seq_som/asom/perform_time_step
 
 # connect asom's inputs
 # asom/input_values[...:...]=inputs/...
-seq_som/asom/input_values[0:99]=seq_som/inputs/current
-seq_som/asom/input_values[100:199]=seq_som/inputs/next
-seq_som/asom/input_values[200:299]=seq_som/inputs/context
-seq_som/asom/input_values[300:399]=seq_som/inputs/tonic
-seq_som/asom/input_values[400]=seq_som/inputs/eos
+seq_som/asom/input_values[0:#SEQ_SOM_CURRENT_LAST_INDEX#]=seq_som/inputs/current
+seq_som/asom/input_values[#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]=seq_som/inputs/next
+seq_som/asom/input_values[#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]=seq_som/inputs/context
+seq_som/asom/input_values[#SEQ_SOM_TONIC_FIRST_INDEX#:#SEQ_SOM_TONIC_LAST_INDEX#]=seq_som/inputs/tonic
+seq_som/asom/input_values[#SEQ_SOM_EOS_INDEX#]=seq_som/inputs/eos
 seq_som/asom/top_down_activation=seq_som/inputs/TD_activation_map
 
 # connect asom's alphas
@@ -619,19 +615,19 @@ plan_som/inputs/TD_activation_map=plan_som/TD_inspection/control/inspect>0 ? pla
 
 # connect asom's inputs
 # asom/input_values[...:...]=inputs/...
-plan_som/asom/input_values[0:99]=plan_som/inputs/plan
-plan_som/asom/input_values[100:199]=plan_som/inputs/result
-plan_som/asom/input_values[200]=plan_som/inputs/reward
+plan_som/asom/input_values[0:#PLAN_SOM_PLAN_LAST_INDEX#]=plan_som/inputs/plan
+plan_som/asom/input_values[#PLAN_SOM_RESULT_FIRST_INDEX#:#PLAN_SOM_RESULT_LAST_INDEX#]=plan_som/inputs/result
+plan_som/asom/input_values[#PLAN_SOM_REWARD_INDEX#]=plan_som/inputs/reward
 plan_som/asom/top_down_activation=plan_som/inputs/TD_activation_map
 
 core/control/plan_som_from_plan_only=plan_som/asomConsts/plasticity+planning/control/not_goal_driven+core/control/surprise
 # connect asom's alphas
 #plan_som/asom/alphas[...]=plan_som/input_gates/...*plan_som/alpha_gains/...
 plan_som/asom/alphas[0]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/plan*plan_som/alpha_gains/plan : plan_som/input_gates/plan*plan_som/alpha_gains/plan_goal_driven
-plan_som/asom/alphas[1:100]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/result*plan_som/alpha_gains/result : plan_som/input_gates/result*planning/goal_buffered/alpha_goal_state_components_combined
+plan_som/asom/alphas[1:#STATE_SIZE#]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/result*plan_som/alpha_gains/result : plan_som/input_gates/result*planning/goal_buffered/alpha_goal_state_components_combined
 #allow non-zero result alpha for training
-plan_som/asom/alphas[1:100]=plan_som/asomConsts/plasticity>0 ? plan_som/input_gates/result*plan_som/alpha_gains/result_train : plan_som/asom/alphas[1:100]
-plan_som/asom/alphas[101]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/reward*plan_som/alpha_gains/reward : plan_som/input_gates/reward*planning/goal_buffered/alpha_reward
+plan_som/asom/alphas[1:#STATE_SIZE#]=plan_som/asomConsts/plasticity>0 ? plan_som/input_gates/result*plan_som/alpha_gains/result_train : plan_som/asom/alphas[1:#STATE_SIZE#]
+plan_som/asom/alphas[#STATE_REWARD#]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/reward*plan_som/alpha_gains/reward : plan_som/input_gates/reward*planning/goal_buffered/alpha_reward
 
 # other som params
 plan_som/asom/top_down_influence=plan_som/asomConsts/plasticity>0 ? 0 : plan_som/input_gates/TD_activation

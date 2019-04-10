@@ -1,9 +1,9 @@
 BL_associative_self_organizing_map_module
-map_size_x=50
-map_size_y=50
-number_of_inputs=401
+map_size_x=#SEQ_SOM_DIM_X#
+map_size_y=#SEQ_SOM_DIM_Y#
+number_of_inputs=#SEQ_SOM_INPUT_SIZE#
 number_of_layers=5
-input_sizes=100 100 100 100 1 
+input_sizes=#INDIV_SOM_SIZE# #INDIV_SOM_SIZE# #INDIV_SOM_SIZE# #INDIV_SOM_SIZE# 1 
 # current, next, context, tonic, eos
 input_values=0.
 alphas=1 1 1 1 0

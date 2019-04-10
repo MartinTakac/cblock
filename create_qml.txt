@@ -2,7 +2,7 @@ tab,Control
 
 section,Train from file,200,300,90
 button,training_control/trigger_automatic_training_qml,trigger train
-slider,training_control/do_autotrain_steps,train steps,0,125,1
+slider,training_control/do_autotrain_steps,train steps,0,500,1
 slider,output_ready_off_delayed/number_of_time_steps_delay,step delay,1,5000,1
 
 section,Control,200,300,90

@@ -20,9 +20,9 @@ ScrollView
 			{
 				name: "train steps"
 				path: "training_control/do_autotrain_steps"
-				startValue: 62.5
+				startValue: 250.0
 				minValue: 0.0
-				maxValue: 125.0
+				maxValue: 500.0
 				stepSize: 1.0
 			}
 					
