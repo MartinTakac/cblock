@@ -9,7 +9,55 @@ control_cycle/perform_calculate=cblockOutputs/reset
 
 cblockOutputs/ready=core/control/zero
 
-#######
+###################
+# load all SOMs and params (each in separate connector, because event-driven
+# load seq_som
+BL_identity_connector
+control_cycle/perform_calculate=seq_som/asom_save/retrieved
+
+seq_som/asom/associative_self_organizing_map=seq_som/asom_save/map_retrieve.value
+seq_som/asom/training_record=seq_som/asom_save/training_record_retrieve.value
+core/control/seq_som_loaded=core/control/one
+
+# load plan_som
+BL_identity_connector
+control_cycle/perform_calculate=plan_som/asom_save/retrieved
+
+plan_som/asom/associative_self_organizing_map=plan_som/asom_save/map_retrieve.value
+plan_som/asom/training_record=plan_som/asom_save/training_record_retrieve.value
+core/control/plan_som_loaded=core/control/one
+
+# load indiv SOMs
+BL_identity_connector
+control_cycle/perform_calculate=IO/asom_save/retrieved
+
+IO/xy_input_som/associative_self_organizing_map=IO/asom_save/xy_map_retrieve.value
+IO/xy_input_som/training_record=IO/asom_save/xy_training_record_retrieve.value
+IO/bitmap_input_som/associative_self_organizing_map=IO/asom_save/bitmap_map_retrieve.value
+IO/bitmap_input_som/training_record=IO/asom_save/bitmap_training_record_retrieve.value
+core/control/IO_soms_loaded=core/control/one
+
+# do always - check if all maps loaded
+BL_linear_transformation_connector
+core/control/all_soms_loaded=core/control/seq_som_loaded+core/control/plan_som_loaded+core/control/IO_soms_loaded>2 ? 1 : 0
+
+######
+# after all loaded, reset stage and resetSeq and turn off load signalling variables
+BL_identity_connector
+control_cycle/perform_calculate=core/control/all_soms_loaded
+
+core/control/all_soms_loaded=core/control/zero
+core/control/seq_som_loaded=core/control/zero
+core/control/plan_som_loaded=core/control/zero
+core/control/IO_soms_loaded=core/control/zero
+
+seq_som/asom/perform_time_step=core/control/one
+plan_som/asom/perform_time_step=core/control/one
+core/control/stage=core/control/reset_stage
+core/control/restart_seq=core/control/one
+# restart will clear buffer, tonic, ctx and current and go to S5 or S6
+
+
 # load params - must be here, because their values are set in this connector
 BL_identity_connector
 control_cycle/perform_calculate=core/param_save/retrieved
