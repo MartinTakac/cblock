@@ -136,6 +136,19 @@ core/control/restart_seq=cblockInputs/goal_plan_inspection>0 ? 0 : core/control/
 core/control/stage=cblockInputs/refresh_goal_plan>0 ? core/control/goal_inspection_stage : core/control/stage
 core/control/stage=core/control/restart_seq>0 ? core/control/reset_stage : core/control/stage
 
+
+###########
+# IO SOMs inspection
+BL_linear_transformation_connector
+control_cycle/perform_calculate=IO/TD_inspection/control/inspect
+
+# at the moment, we only allow bitmap indiv SOm inspection
+#IO/xy_output_som/top_down_activation=IO/TD_inspection/control/result
+#IO/xy_output_som/perform_time_step=IO/indiv_type/xy
+IO/bitmap_output_som/top_down_activation=IO/TD_inspection/control/result
+IO/bitmap_output_som/perform_time_step=IO/indiv_type/bitmap
+
+
 ##########
 # STATE MACHINE
 # depending on the input event type (IO/input/ready_nextElem,ready_resetSeq,ready_finalizeSeq):

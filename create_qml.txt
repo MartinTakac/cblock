@@ -229,6 +229,7 @@ slider,cblock/IO/xy_som_consts/qmlBestMatchThreshold,Best match threshold,0,1,0.
 slider,cblock/IO/xy_som_consts/qmlBestMatchLfcMult,Best match LR multiplier,0,1,0.001
 
 section,bitmap input SOM,200,300,80
+slider,cblock/IO/TD_inspection/control/inspect,inspect SOM,0,1,1
 slider,cblock/IO/bitmap_som_consts/display_real_time,display realtime,0,1,1
 slider,cblock/IO/bitmap_som_consts/qmlSensitivity,Sensitivity,0,100,0.1
 slider,cblock/IO/bitmap_som_consts/qmlCompareNoise,Compare noise,0,1,0.05
