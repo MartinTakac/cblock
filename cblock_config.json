@@ -1,0 +1,242 @@
+{
+  "variables": [
+    {
+        "name": "input_bitmap_dim_x",
+        "tag": "#INPUT_BITMAP_DIM_X#",
+        "value": 10
+    },
+    {
+        "name": "input_bitmap_dim_y",
+        "tag": "#INPUT_BITMAP_DIM_Y#",
+        "value": 10
+    },
+    {
+        "name": "state_dim_x",
+        "tag": "#STATE_DIM_X#",
+        "value": 10
+    },
+    {
+        "name": "state_dim_y",
+        "tag": "#STATE_DIM_Y#",
+        "value": 10
+    },
+    {
+        "name": "indiv_som_dim_x",
+        "tag": "#INDIV_SOM_DIM_X#",
+        "value": 10
+    },
+    {
+        "name": "indiv_som_dim_y",
+        "tag": "#INDIV_SOM_DIM_Y#",
+        "value": 10
+    },
+    {
+        "name": "buffer_capacity_dim_x",
+        "tag": "#BUF_DIM_X#",
+        "value": 10
+    },
+    {
+        "name": "buffer_capacity_dim_y",
+        "tag": "#BUF_DIM_Y#",
+        "value": 10
+    },
+    {
+        "name": "seq_som_dim_x",
+        "tag": "#SEQ_SOM_DIM_X#",
+        "value": 50
+    },    
+    {
+        "name": "seq_som_dim_y",
+        "tag": "#SEQ_SOM_DIM_Y#",
+        "value": 50
+    },
+    {
+        "name": "plan_som_dim_x",
+        "tag": "#PLAN_SOM_DIM_X#",
+        "value": 30
+    },    
+    {
+        "name": "plan_som_dim_y",
+        "tag": "#PLAN_SOM_DIM_Y#",
+        "value": 30
+    }    
+],
+
+"dependent_variables": [
+    {
+      "name":"buffer_capacity",
+      "tag": "#BUFFER_CAPACITY#",
+      "operation": ".",
+      "depends_on": ["buffer_capacity_dim_x", "buffer_capacity_dim_y"]
+    },
+    {
+      "name":"input_bitmap_size",
+      "tag": "#INPUT_BITMAP_SIZE#",
+      "operation": ".",
+      "depends_on": ["input_bitmap_dim_x", "input_bitmap_dim_y"]
+    },
+    {
+      "name":"indiv_som_size",
+      "tag": "#INDIV_SOM_SIZE#",
+      "operation": ".",
+      "depends_on": ["indiv_som_dim_x", "indiv_som_dim_y"]
+    },
+    {
+      "name":"bitmap_som_weights",
+      "tag": "#BITMAP_SOM_WEIGHTS#",
+      "operation": ".",
+      "depends_on": ["indiv_som_dim_x", "indiv_som_dim_y", "input_bitmap_dim_x", "input_bitmap_dim_y"]
+    },
+    {
+      "name":"xy_som_weights",
+      "tag": "#XY_SOM_WEIGHTS#",
+      "operation": ".",
+      "depends_on": ["indiv_som_dim_x", "indiv_som_dim_y", 2]
+    },
+    {
+      "name":"state_size",
+      "tag": "#STATE_SIZE#",
+      "operation": ".",
+      "depends_on": ["state_dim_x", "state_dim_y"]
+    },
+    {
+      "name":"state_last_index",
+      "tag": "#STATE_LAST_INDEX#",
+      "operation": "-",
+      "depends_on": ["state_size", 1]
+    },
+    {
+      "name":"buffer_element_size",
+      "tag": "#BUFFER_ELEMENT_SIZE#",
+      "operation": "+",
+      "depends_on": ["indiv_som_size", "indiv_som_size","indiv_som_size"]
+    },
+    {
+      "name":"seq_som_size",
+      "tag": "#SEQ_SOM_SIZE#",
+      "operation": ".",
+      "depends_on": ["seq_som_dim_x", "seq_som_dim_y"]
+    },
+    {
+      "name":"seq_som_input_size",
+      "tag": "#SEQ_SOM_INPUT_SIZE#",
+      "operation": "+",
+      "depends_on": ["indiv_som_size","indiv_som_size","indiv_som_size","indiv_som_size",1]
+    },
+    {
+      "name":"seq_som_weights",
+      "tag": "#SEQ_SOM_WEIGHTS#",
+      "operation": ".",
+      "depends_on": ["seq_som_size", "seq_som_input_size"]
+    },
+    {
+      "name":"seq_som_current_last_index",
+      "tag": "#SEQ_SOM_CURRENT_LAST_INDEX#",
+      "operation": "-",
+      "depends_on": ["indiv_som_size", 1]
+    },
+    {
+      "name":"seq_som_next_first_index",
+      "tag": "#SEQ_SOM_NEXT_FIRST_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_current_last_index", 1]
+    },
+    {
+      "name":"seq_som_next_last_index",
+      "tag": "#SEQ_SOM_NEXT_LAST_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_current_last_index","indiv_som_size"]
+    },
+    {
+      "name":"seq_som_ctx_first_index",
+      "tag": "#SEQ_SOM_CTX_FIRST_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_next_last_index", 1]
+    },
+    {
+      "name":"seq_som_ctx_last_index",
+      "tag": "#SEQ_SOM_CTX_LAST_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_next_last_index","indiv_som_size"]
+    },
+    {
+      "name":"seq_som_tonic_first_index",
+      "tag": "#SEQ_SOM_TONIC_FIRST_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_ctx_last_index", 1]
+    },
+    {
+      "name":"seq_som_tonic_last_index",
+      "tag": "#SEQ_SOM_TONIC_LAST_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_ctx_last_index","indiv_som_size"]
+    },
+    {
+      "name":"seq_som_eos_index",
+      "tag": "#SEQ_SOM_EOS_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_tonic_last_index", 1]
+    },
+    {
+      "name":"plan_som_size",
+      "tag": "#PLAN_SOM_SIZE#",
+      "operation": ".",
+      "depends_on": ["plan_som_dim_x", "plan_som_dim_y"]
+    },
+    {
+      "name":"plan_som_input_size",
+      "tag": "#PLAN_SOM_INPUT_SIZE#",
+      "operation": "+",
+      "depends_on": ["indiv_som_size", 1, "state_size"]
+    },
+    {
+      "name":"plan_som_input_layers",
+      "tag": "#PLAN_SOM_INPUT_LAYERS#",
+      "operation": "+",
+      "depends_on": [2, "state_size"]
+    },
+    {
+      "name":"plan_som_input_layers_last_index",
+      "tag": "#PLAN_SOM_INPUT_LAYERS_LAST_INDEX#",
+      "operation": "-",
+      "depends_on": ["plan_som_input_layers",1]
+    },
+    {
+      "name":"plan_som_weights",
+      "tag": "#PLAN_SOM_WEIGHTS#",
+      "operation": ".",
+      "depends_on": ["plan_som_size", "plan_som_input_size"]
+    },
+    {
+      "name":"plan_som_plan_last_index",
+      "tag": "#PLAN_SOM_PLAN_LAST_INDEX#",
+      "operation": "-",
+      "depends_on": ["indiv_som_size", 1]
+    },
+    {
+      "name":"plan_som_result_first_index",
+      "tag": "#PLAN_SOM_RESULT_FIRST_INDEX#",
+      "operation": "+",
+      "depends_on": ["plan_som_plan_last_index", 1]
+    },
+    {
+      "name":"plan_som_result_last_index",
+      "tag": "#PLAN_SOM_RESULT_LAST_INDEX#",
+      "operation": "+",
+      "depends_on": ["plan_som_plan_last_index","state_size"]
+    },
+    {
+      "name":"plan_som_reward_index",
+      "tag": "#PLAN_SOM_REWARD_INDEX#",
+      "operation": "+",
+      "depends_on": ["plan_som_result_last_index",1]
+    },
+    {
+      "name":"state_reward",
+      "tag": "#STATE_REWARD#",
+      "operation": "+",
+      "depends_on": ["state_size", 1]
+    }
+  ],
+  "scripts" : ["scripts//xy_to_loc_som.py"]
+}
