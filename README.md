@@ -3,12 +3,12 @@
 A git project to keep upto date with Martin cblock. Cblock is a current Soul Machine's solution for sequencing and planning. Because of that, there will probably be multiple copies of cblock of different sizes in the avatar code, or in different runtimes. In order to minimise the risk of incosistencies, there will be one ultimate repo where the up-to-date cblock template will maintained - and it is here. All the development will be carried out on the template (with symbolic names), from which actual runtimes will be generated as needed by the runtime_generator.py resize python script.
 
 ## Folder structure
-The cblock proper is embedded in cblock letters example (letters_template), which serves as its testbed and also for inspiration how to connect/use the cblock. Outside the letters example, you will need just the folder cblock. If you also want viewers, it comes with two sets of display shaders, one in the folder debug_displays, the other in displays. You can use both of them at the same time, or just one of them. 
+The cblock proper is embedded in cblock letters example (letters_template), which serves as its testbed and also for inspiration how to connect/use the cblock. For usage outside the letters example, you will need just the folder cblock. If you also want viewers, it comes with two sets of display shaders, one in the folder debug_displays, the other in displays. You can use both of them at the same time, or just one of them. 
 
 - to use (blue-brown) fancy displays, copy (along with cblock) the folder displays and the connector display_cblock.blc. Default visibility of all these displays is controlled by the constant displayConstants/is_visible.
 - to use (white-yellow-grey) debug displays, copy (along with cblock) the folder debug_displays and the connector debug_display.blc (debug displays are a bit more detailed, show the buffer and oscillator window for cooperation related timers).
 
-##How to resize cblock: 
+## How to resize cblock
 
 1. Change values of independent variables (see below) in cblock_config.json
 2.  Run **python runtime_generator.py** with following arguments:
