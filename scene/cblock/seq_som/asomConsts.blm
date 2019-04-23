@@ -43,16 +43,10 @@ value_names[17]=loadWeightsLead
 values[17]=real 1 0.
 
 value_names[18]=default_mask
-values[18]=real 2500 1.
+values[18]=real #SEQ_SOM_SIZE# 1.
 
 value_names[19]=som_size_ones
-values[19]=real 2500 1.
+values[19]=real #SEQ_SOM_SIZE# 1.
 
 value_names[20]=som_size_zeros
-values[20]=real 2500 0.
-
-# offsets and weight memories - TODO when needed
-#value_names[20]=offsetVisual
-#values[20]=unsigned 1 0
-#value_names[20]=weightsVisual
-#values[20]=real 10000 0.
+values[20]=real #SEQ_SOM_SIZE# 0.

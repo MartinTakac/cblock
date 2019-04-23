@@ -22,7 +22,7 @@ cblock/cblockInputs/inputType_nextElem=cblock/core/control/zero
 cblock/cblockInputs/inputType_finalizeSeq=cblock/core/control/zero
 cblock/cblockInputs/inputType_resetSeq=cblock/core/control/zero
 cblock/cblockInputs/reward=cblock/core/control/zero
-cblock/cblockInputs/state=cblock/core/control/zeros
+cblock/cblockInputs/state=cblock/core/control/zeros_state
 
 ###########
 # read cblock's output when ready, turn on prediction when good - this will return back on input as aby event when playback_LIF fires
@@ -42,7 +42,7 @@ control/buffered_out_eos=cblock/cblockOutputs/eos_predicted+cblock/cblockOutputs
 BL_linear_transformation_connector
 
 # set LIF speed and check voltage, set trigger back to zero. 
-playback_LIF/membrane_frequency_constant=control/playback_speed
+playback_LIF/membrane_frequency_constant=cblock/cblockParams/master_LIF_speed*control/playback_speed
 playback_LIF/input_frequency_constants[0]=playback_LIF/membrane_frequency_constant
 playback_LIF/trigger=0
 playback_LIF/input_voltages[0]=control/allow_playback*control/prediction>0 ? 1 : 0
@@ -52,8 +52,8 @@ control/baby_event=playback_LIF/voltage>0.9 ? 1 : 0
 # determine whether the user just turned on autotraining with a slider
 training_control/trigger_autotrain_leading_edge=training_control/trigger_automatic_training_qml>training_control/trigger_autotrain_prev ? 1 : 0
 training_control/trigger_autotrain_prev=training_control/trigger_automatic_training_qml
-training_control/steps_so_far_in_this_batch=training_control/trigger_autotrain_leading_edge>0 ? 0 : training_control/steps_so_far_in_this_batch
-training_control/automatic_training=training_control/do_autotrain_steps>training_control/steps_so_far_in_this_batch ? 1 : 0
+training_control/steps_to_make_in_this_batch=training_control/trigger_autotrain_leading_edge>0 ? training_control/do_autotrain_steps : training_control/steps_to_make_in_this_batch
+training_control/automatic_training=training_control/steps_to_make_in_this_batch>0 ? 1 : 0
 
 # also monitor when the output ready was turned off due to reset - then the cycle is finished and feed a new element
 training_control/output_ready_just_turned_off=training_control/output_ready_prev>cblock/cblockOutputs/ready ? 1 : 0
@@ -73,7 +73,7 @@ connect_cblock/perform_calculate=training_control/new_input
 
 training_control/iterator=training_control/iterator+1
 training_control/total_autotrain_steps=training_control/total_autotrain_steps+1
-training_control/steps_so_far_in_this_batch=training_control/steps_so_far_in_this_batch+1
+training_control/steps_to_make_in_this_batch=training_control/steps_to_make_in_this_batch-1
 #training_control/new_input=training_set/size>training_control/iterator ? training_control/new_input : 0
 training_control/iterator=training_set/size>training_control/iterator ? training_control/iterator : 0
 
@@ -84,7 +84,7 @@ connect_cblock/perform_calculate=cblock/cblockParams/reset_all_weights
 
 training_control/total_autotrain_steps=0
 training_control/iterator=0
-#training_control/steps_so_far_in_this_batch=0
+#training_control/steps_to_make_in_this_batch=training_control/do_autotrain_steps
 # enough if user resets steps so far by pressing autotrain
 
 #####################

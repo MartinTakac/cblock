@@ -2,7 +2,7 @@ tab,Control
 
 section,Train from file,200,300,90
 button,training_control/trigger_automatic_training_qml,trigger train
-slider,training_control/do_autotrain_steps,train steps,0,125,1
+slider,training_control/do_autotrain_steps,train steps,0,500,1
 slider,output_ready_off_delayed/number_of_time_steps_delay,step delay,1,5000,1
 
 section,Control,200,300,90
@@ -229,6 +229,7 @@ slider,cblock/IO/xy_som_consts/qmlBestMatchThreshold,Best match threshold,0,1,0.
 slider,cblock/IO/xy_som_consts/qmlBestMatchLfcMult,Best match LR multiplier,0,1,0.001
 
 section,bitmap input SOM,200,300,80
+slider,cblock/IO/TD_inspection/control/inspect,inspect SOM,0,1,1
 slider,cblock/IO/bitmap_som_consts/display_real_time,display realtime,0,1,1
 slider,cblock/IO/bitmap_som_consts/qmlSensitivity,Sensitivity,0,100,0.1
 slider,cblock/IO/bitmap_som_consts/qmlCompareNoise,Compare noise,0,1,0.05

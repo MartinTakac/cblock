@@ -5,10 +5,10 @@ value_names[0]=plan
 values[0]=real 1 1.
 
 value_names[1]=result
-values[1]=real 100 0.
+values[1]=real #STATE_SIZE# 0.
 
 value_names[2]=result_train
-values[2]=real 100 0.01
+values[2]=real #STATE_SIZE# 0.01
 
 value_names[3]=reward
 values[3]=real 1 0.

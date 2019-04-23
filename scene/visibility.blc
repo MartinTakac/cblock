@@ -4,6 +4,7 @@ BL_linear_transformation_connector
 # auxiliary computations for cursors 
 displayConstants/visibleSeqSomInspect=displayConstants/is_visible*cblock/seq_som/cursor/is_visible
 displayConstants/visiblePlanSomInspect=displayConstants/is_visible*cblock/plan_som/cursor/is_visible
+# not supported yet: displayConstants/visibleIndivSomInspect=displayConstants/is_visible*cblock/IO/cursor/is_visible
 
 BL_identity_connector
 

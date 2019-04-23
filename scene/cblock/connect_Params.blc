@@ -1,5 +1,8 @@
 BL_linear_transformation_connector
 
+# LIF speed
+planning/control/master_LIF_speed=cblockParams/master_LIF_speed
+
 # weight control
 seq_som/asomConsts/reset=cblockParams/reset_all_weights
 seq_som/asomConsts/qmlSaveWeights=cblockParams/save_all_weights
@@ -24,6 +27,10 @@ plan_som/TD_inspection/control/manual_y=plan_som/TD_inspection/control/inspect>0
 seq_som/TD_inspection/control/manual_x=seq_som/TD_inspection/control/inspect>0 ? cblockParams/inspect_SOM_x : seq_som/TD_inspection/control/manual_x
 
 seq_som/TD_inspection/control/manual_y=seq_som/TD_inspection/control/inspect>0 ? cblockParams/inspect_SOM_y : seq_som/TD_inspection/control/manual_y
+
+IO/TD_inspection/control/manual_x=IO/TD_inspection/control/inspect>0 ? cblockParams/inspect_SOM_x : IO/TD_inspection/control/manual_x
+
+IO/TD_inspection/control/manual_y=IO/TD_inspection/control/inspect>0 ? cblockParams/inspect_SOM_y : IO/TD_inspection/control/manual_y
 
 # goal-driven mode related settings
 planning/control/goal_driven=cblockInputs/goal_driven+cblockInputs/goal_plan_inspection

@@ -1,10 +1,10 @@
 BL_associative_self_organizing_map_module
 # dummy asom just for normalization
-map_size_x=100
+map_size_x=#INDIV_SOM_SIZE#
 map_size_y=1
-number_of_inputs=100
+number_of_inputs=1
 number_of_layers=1
-input_sizes=100
+input_sizes=1
 input_values=0.
 plastic=0.
 alphas=1.

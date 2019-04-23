@@ -24,7 +24,7 @@ debug_displays/seq_som/input/context/texture.context.data=cblock/seq_som/TD_insp
 debug_displays/seq_som/input/tonic/texture.tonic.data=cblock/seq_som/TD_inspection/control/inspect>0 ? cblock/seq_som/outputs/tonic : cblock/seq_som/inputs/tonic
 
 # prediction
-debug_displays/seq_som/prediction/decoded/texture.decoded.data=cblock/cblockOutputs/predicted_bitmap
+debug_displays/seq_som/prediction/decoded/texture.decoded.data=cblock/IO/TD_inspection/control/inspect>0 ? cblock/IO/bitmap_output_som/output_values : cblock/cblockOutputs/predicted_bitmap
 debug_displays/seq_som/prediction/eos/texture.eos.data=cblock/cblockOutputs/eos_predicted
 debug_displays/seq_som/prediction/next_winner/texture.next_winner.data=cblock/seq_som/outputs/crisp_next
 
@@ -65,6 +65,8 @@ BL_identity_connector
 debug_displays/plan_som/training_record/cursor/visible=cblock/plan_som/cursor/is_visible
 # red cursor controlled TD
 debug_displays/seq_som/training_record/cursor/visible=cblock/seq_som/cursor/is_visible
+# red cursor controlled TD
+debug_displays/monitors/ind_SOM_training_record/cursor/visible=cblock/IO/cursor/is_visible
 
 #############
 # inputs
@@ -106,9 +108,9 @@ debug_displays/buffer/next/texture.next.data=cblock/core/control/zeros
 BL_identity_connector
 debug_display/perform_calculate=cblock/core/control/valid_buf_display_index
 
-debug_displays/buffer/context/texture.context.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][0:99]
-debug_displays/buffer/recent/texture.recent.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][100:199]
-debug_displays/buffer/next/texture.next.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][200:299]
+debug_displays/buffer/recent/texture.recent.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][0:#SEQ_SOM_CURRENT_LAST_INDEX#]
+debug_displays/buffer/next/texture.next.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]
+debug_displays/buffer/context/texture.context.data=cblock/core/seq_buffer/associative_self_organizing_map[0][0][cblock/core/control/buf_display_index][#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]
 
 
 #############
@@ -119,7 +121,9 @@ debug_displays/monitors/surprise/texture.surprise.data=cblock/core/control/surpr
 debug_displays/monitors/stage/texture.stage.data=cblock/core/control/stage
 
 debug_displays/monitors/ind_SOM_training_record/texture.ind_SOM_training_record.data=cblock/cblockParams/indiv_xy>0 ? cblock/IO/xy_input_som/training_record : cblock/IO/bitmap_input_som/training_record
-
+# use coeff. 0.97 for weight shaders of size 1 and 0.77 for size 0.8 and 0.37 for size 0.4
+debug_displays/monitors/ind_SOM_training_record/cursor/transformation.translate_x=0.37*cblock/IO/cursor/x+0.015
+debug_displays/monitors/ind_SOM_training_record/cursor/transformation.translate_y=0.37*cblock/IO/cursor/y+0.015
 debug_displays/monitors/plan_good/texture.plan_good.data=cblock/cblockOutputs/plan_good_enough
 debug_displays/monitors/goal_reached/texture.goal_reached.data=cblock/cblockOutputs/goal_reached
 

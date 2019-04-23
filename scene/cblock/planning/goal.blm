@@ -3,7 +3,7 @@ number_of_values=5
 
 # desirable goal state
 value_names[0]=state
-values[0]=real 100 0.
+values[0]=real #STATE_SIZE# 0.
 
 # desirable reward
 value_names[1]=reward
@@ -15,7 +15,7 @@ values[2]=real 1 1.
 
 # importance of individual components/dimensions of goal_state
 value_names[3]=alpha_goal_state_components
-values[3]=real 100 1.
+values[3]=real #STATE_SIZE# 1.
 
 # importance weight on reward
 value_names[4]=alpha_reward

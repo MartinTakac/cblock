@@ -1,13 +1,10 @@
 BL_associative_self_organizing_map_module
 # this is a static dummy SOM that never gets its perform_time_step high, we just need it as a more dynamic-size multidimensional array to which we will write/read buffered values (each of which is an array).  
-map_size_x=100
-#SYM sym_cblock_seq_buffer_size
+map_size_x=#BUFFER_CAPACITY#
 map_size_y=1
-number_of_inputs=300
-#SYM sym_cblock_seq_som_ctx_cur_next
+number_of_inputs=#BUFFER_ELEMENT_SIZE#
 number_of_layers=1
-input_sizes=300
-#SYM sym_cblock_seq_som_ctx_cur_next
+input_sizes=#BUFFER_ELEMENT_SIZE#
 
 # all values below should be irrelevant
 input_values=0.

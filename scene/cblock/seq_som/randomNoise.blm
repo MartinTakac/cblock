@@ -1,5 +1,5 @@
 BL_vector_random_module
-number_of_values=2500
+number_of_values=#SEQ_SOM_SIZE#
 type=UNIFORM_RANDOM
 minimum=0.
 maximum=1.

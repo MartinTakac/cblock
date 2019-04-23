@@ -10,6 +10,16 @@ BL_container_connector
 #                         \
 #                          DEPRECATED! -> init_none -> S3 -> S0
 
+###
+# load indiv output SOMs - must be in this connector, because here are weights of input indiv SOMs copied to output indiv SOMs
+BL_identity_connector
+connect_Inputs/perform_calculate=IO/asom_save/retrieved
+
+IO/xy_output_som/associative_self_organizing_map=IO/asom_save/xy_map_retrieve.value
+IO/xy_output_som/training_record=IO/asom_save/xy_training_record_retrieve.value
+IO/bitmap_output_som/associative_self_organizing_map=IO/asom_save/bitmap_map_retrieve.value
+IO/bitmap_output_som/training_record=IO/asom_save/bitmap_training_record_retrieve.value
+
 #####################
 # turn off ready if reset
 BL_identity_connector

@@ -5,7 +5,7 @@ value_names[0]=c0
 values[0]=real 1 0.
 
 value_names[1]=result
-values[1]=real 100 0.
+values[1]=real #STATE_SIZE# 0.
 
 value_names[2]=reward
 values[2]=real 1 0.

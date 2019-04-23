@@ -1,11 +1,11 @@
 BL_associative_self_organizing_map_module
-map_size_x=30
-map_size_y=30
-number_of_inputs=201
-number_of_layers=102
+map_size_x=#PLAN_SOM_DIM_X#
+map_size_y=#PLAN_SOM_DIM_Y#
+number_of_inputs=#PLAN_SOM_INPUT_SIZE#
+number_of_layers=#PLAN_SOM_INPUT_LAYERS#
 # all the remaining layers are of input size 1
-input_sizes=100 1
-# plan effect[100] reward
+input_sizes=#INDIV_SOM_SIZE# 1
+# plan effect(#STATE_SIZE# layers) reward
 input_values=0.
 alphas=0.6 0.2 
 # NOTE! the actual values are read dynamically from alpha_gains

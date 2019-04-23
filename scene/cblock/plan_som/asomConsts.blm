@@ -49,14 +49,14 @@ values[18]=real 1 0.
 
 # constant array for multiplying lfc
 value_names[19]=ones
-values[19]=real 102 1.
+values[19]=real #PLAN_SOM_INPUT_LAYERS# 1.
 
 value_names[20]=default_mask
-values[20]=real 900 1.
+values[20]=real #PLAN_SOM_SIZE# 1.
 
 value_names[21]=som_size_ones
-values[21]=real 900 1.
+values[21]=real #PLAN_SOM_SIZE# 1.
 
 value_names[22]=som_size_zeros
-values[22]=real 900 0.
+values[22]=real #PLAN_SOM_SIZE# 0.
 
