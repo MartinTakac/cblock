@@ -42,7 +42,7 @@ control/buffered_out_eos=cblock/cblockOutputs/eos_predicted+cblock/cblockOutputs
 BL_linear_transformation_connector
 
 # set LIF speed and check voltage, set trigger back to zero. 
-playback_LIF/membrane_frequency_constant=control/playback_speed
+playback_LIF/membrane_frequency_constant=cblock/cblockParams/master_LIF_speed*control/playback_speed
 playback_LIF/input_frequency_constants[0]=playback_LIF/membrane_frequency_constant
 playback_LIF/trigger=0
 playback_LIF/input_voltages[0]=control/allow_playback*control/prediction>0 ? 1 : 0

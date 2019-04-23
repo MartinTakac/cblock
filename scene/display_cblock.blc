@@ -79,11 +79,20 @@ displays/cblock/container/4/displayPanel/texture.displayPanel.data=cblock/cblock
 displays/cblock/container/5/displayPanel/texture.displayPanel.data=cblock/core/control/stage
 displays/cblock/container/6/displayPanel/texture.displayPanel.data=cblock/core/control/surprise
 
-# application-specific:
+##############################################################
+# application-specific: uncomment the alternative you need
+# for letters or bitmap/array input in general:
 # input letter bitmap
 displays/cblock/container/7/displayPanel/texture.displayPanel.data=cblock/cblockInputs/input_bitmap
 # predicted letter bitmap 
 displays/cblock/container/8/displayPanel/texture.displayPanel.data=cblock/cblockOutputs/predicted_bitmap
+
+# for drawing (set *.tex files for containers 7 (10x10) and 8 (5x1) accordingly) 
+# drawing board
+#displays/cblock/container/7/displayPanel/texture.displayPanel.data=drawing/board/chunk_board
+# rewards (manual,DA,smile,woooh,reward_value) 
+#displays/cblock/container/8/displayPanel/texture.displayPanel.data=reward_control/reward_state
+
 
 # measures
 BL_identity_connector
