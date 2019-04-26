@@ -62,13 +62,7 @@
     }    
 ],
 
-"dependent_variables": [
-	{
-      "name":"buffer_capacity",
-      "tag": "#BUFFER_CAPACITY#",
-      "operation": ".",
-      "depends_on": ["buffer_capacity_dim_x", "buffer_capacity_dim_y"]
-    },
+"dependent_variables": [	
     {
       "name":"input_bitmap_size",
       "tag": "#INPUT_BITMAP_SIZE#",
@@ -80,6 +74,24 @@
       "tag": "#INDIV_SOM_SIZE#",
       "operation": ".",
       "depends_on": ["indiv_som_dim_x", "indiv_som_dim_y"]
+    },
+	{
+      "name":"buffer_capacity",
+      "tag": "#BUFFER_CAPACITY#",
+      "operation": ".",
+      "depends_on": ["buffer_capacity_dim_x", "buffer_capacity_dim_y"]
+    },
+	{
+      "name":"buffer_element_size",
+      "tag": "#BUFFER_ELEMENT_SIZE#",
+      "operation": "+",
+      "depends_on": ["indiv_som_size", "indiv_som_size","indiv_som_size"]
+    },
+	{
+      "name":"buffer_total_size",
+      "tag": "#BUFFER_TOTAL_SIZE#",
+      "operation": "*",
+      "depends_on": ["buffer_capacity", "buffer_element_size"]
     },
 	{
       "name":"bitmap_som_weights",
@@ -104,13 +116,7 @@
       "tag": "#STATE_LAST_INDEX#",
       "operation": "-",
       "depends_on": ["state_size", 1]
-    },
-	{
-      "name":"buffer_element_size",
-      "tag": "#BUFFER_ELEMENT_SIZE#",
-      "operation": "+",
-      "depends_on": ["indiv_som_size", "indiv_som_size","indiv_som_size"]
-    },
+    },	
 	{
       "name":"seq_som_size",
       "tag": "#SEQ_SOM_SIZE#",

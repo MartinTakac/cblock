@@ -9,6 +9,15 @@ control_cycle/perform_calculate=cblockOutputs/reset
 
 cblockOutputs/ready=core/control/zero
 
+#####################
+# turn off load_dump output ready if reset
+BL_identity_connector
+control_cycle/perform_calculate=load_dump_output/reset
+
+load_dump_output/ready=core/control/zero
+load_dump_output/type_load=core/control/zero
+load_dump_output/type_dump=core/control/zero
+
 ###################
 # load all SOMs and params (each in separate connector, because event-driven
 # load seq_som
@@ -476,6 +485,9 @@ control_cycle/perform_calculate=core/control/stage[0]
 plan_som/asom/perform_time_step=cblockParams/display_plan_som_real_time+plan_som/TD_inspection/control/inspect
 seq_som/asom/perform_time_step=cblockParams/display_seq_som_real_time+seq_som/TD_inspection/control/inspect
 
+core/control/dump=load_dump_input/ready*load_dump_input/type_dump
+core/control/load=load_dump_input/ready*load_dump_input/type_load
+
 core/control/init_next_elem=IO/input/ready_nextElem
 core/control/restart_seq=IO/input/ready_resetSeq
 core/control/init_finalize=IO/input/ready_finalizeSeq
@@ -483,6 +495,65 @@ core/control/init_finalize=IO/input/ready_finalizeSeq
 core/control/stage[0]=core/control/init_next_elem+core/control/restart_seq+core/control/init_finalize>0 ? 0 : 1
 # the stage to go to is set in each branch
 
+#############
+# dump
+BL_identity_connector
+control_cycle/perform_calculate=core/control/dump
+
+core/control/dump=core/control/zero
+load_dump_input/reset=core/control/one
+
+load_dump_output/tonic_input=core/control/tonic_input
+load_dump_output/tonic_input_weight=core/control/input_weight
+load_dump_output/current=core/control/current
+load_dump_output/context=core/control/context
+load_dump_output/surprise_since_last_eos=core/control/surprise_since_last_eos
+load_dump_output/predicted_distribution=core/prediction_certainty/predicted_distribution
+load_dump_output/predicted_winner=core/control/prediction_winner
+load_dump_output/eos_predicted=cblockOutputs/eos_predicted
+load_dump_output/buffered_seq_length=cblockOutputs/buffered_seq_length
+load_dump_output/buffer_content=core/seq_buffer/associative_self_organizing_map
+load_dump_output/chunk_init_state=planning/control/chunk_init_state
+load_dump_output/buffered_goal_effect=planning/goal_buffered/state
+load_dump_output/buffered_goal_reward=planning/goal_buffered/reward
+load_dump_output/alpha_goal_state_components_combined=planning/goal_buffered/alpha_goal_state_components_combined
+load_dump_output/alpha_goal_state_bulk=planning/goal_buffered/alpha_goal_state_bulk
+load_dump_output/alpha_reward=planning/goal_buffered/alpha_reward
+
+load_dump_output/ready=core/control/one
+load_dump_output/type_dump=core/control/one
+# done at reset: load_dump_output/type_load=core/control/zero
+
+###############
+# load
+BL_identity_connector
+control_cycle/perform_calculate=core/control/load
+
+core/control/load=core/control/zero
+load_dump_input/reset=core/control/one
+
+core/control/tonic_input=load_dump_input/tonic_input
+core/control/input_weight=load_dump_input/tonic_input_weight
+core/control/current=load_dump_input/current
+core/control/context=load_dump_input/context
+core/control/surprise_since_last_eos=load_dump_input/surprise_since_last_eos
+core/prediction_certainty/predicted_distribution=load_dump_input/predicted_distribution
+core/control/prediction_winner=load_dump_input/predicted_winner
+cblockOutputs/eos_predicted=load_dump_input/eos_predicted
+cblockOutputs/buffered_seq_length=load_dump_input/buffered_seq_length
+core/seq_buffer/associative_self_organizing_map=load_dump_input/buffer_content
+planning/control/chunk_init_state=load_dump_input/chunk_init_state
+planning/goal_buffered/state=load_dump_input/buffered_goal_effect
+planning/goal_buffered/reward=load_dump_input/buffered_goal_reward
+planning/goal_buffered/alpha_goal_state_components_combined=load_dump_input/alpha_goal_state_components_combined
+planning/goal_buffered/alpha_goal_state_bulk=load_dump_input/alpha_goal_state_bulk
+planning/goal_buffered/alpha_reward=load_dump_input/alpha_reward
+
+load_dump_output/ready=core/control/one
+load_dump_output/type_load=core/control/one
+# done when reset: load_dump_output/type_dump=core/control/zero
+
+############
 # init next elem branch - store the element in the buffer - this has to be in identity connector because of a variable index
 BL_identity_connector
 control_cycle/perform_calculate=core/control/init_next_elem
