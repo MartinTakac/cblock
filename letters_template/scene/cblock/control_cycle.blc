@@ -128,6 +128,9 @@ core/control/restart_seq=core/control/one
 # general stuff to do always
 BL_linear_transformation_connector
 
+# to make sure it was caught
+load_dump_input/reset=load_dump_input/ready>0 ? load_dump_input/reset : 0
+
 #core/control/plan_top_down_on_seq=planning/control/goal_driven>0 ? cblockParams/plan_top_down_on_seq_gain_goal_driven : cblockParams/plan_top_down_on_seq_gain_non_goal_driven
 core/control/plan_top_down_on_seq=planning/control/goal_driven>0 ? cblockParams/plan_top_down_on_seq_gain_goal_driven : -1.*plan_som/asom/activation_entropy+1.
 
@@ -512,8 +515,10 @@ load_dump_output/predicted_distribution=core/prediction_certainty/predicted_dist
 load_dump_output/predicted_winner=core/control/prediction_winner
 load_dump_output/eos_predicted=cblockOutputs/eos_predicted
 load_dump_output/buffered_seq_length=cblockOutputs/buffered_seq_length
+load_dump_output/buffer_occupancy=core/control/buffer_occupancy
 load_dump_output/buffer_content=core/seq_buffer/associative_self_organizing_map
 load_dump_output/chunk_init_state=planning/control/chunk_init_state
+load_dump_output/ior_mask_plan_som=planning/control/ior
 load_dump_output/buffered_goal_effect=planning/goal_buffered/state
 load_dump_output/buffered_goal_reward=planning/goal_buffered/reward
 load_dump_output/alpha_goal_state_components_combined=planning/goal_buffered/alpha_goal_state_components_combined
@@ -541,8 +546,10 @@ core/prediction_certainty/predicted_distribution=load_dump_input/predicted_distr
 core/control/prediction_winner=load_dump_input/predicted_winner
 cblockOutputs/eos_predicted=load_dump_input/eos_predicted
 cblockOutputs/buffered_seq_length=load_dump_input/buffered_seq_length
+core/control/buffer_occupancy=load_dump_input/buffer_occupancy
 core/seq_buffer/associative_self_organizing_map=load_dump_input/buffer_content
 planning/control/chunk_init_state=load_dump_input/chunk_init_state
+planning/control/ior=load_dump_input/ior_mask_plan_som
 planning/goal_buffered/state=load_dump_input/buffered_goal_effect
 planning/goal_buffered/reward=load_dump_input/buffered_goal_reward
 planning/goal_buffered/alpha_goal_state_components_combined=load_dump_input/alpha_goal_state_components_combined

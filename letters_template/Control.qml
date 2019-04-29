@@ -134,6 +134,24 @@ ScrollView
 				isCheckable: false
 			}
 					
+			ListElement
+			{
+				name: "test dump"
+				path: "cblock/faked_stack/dump_qml"
+				onValue: 1.0
+				offValue: 0.0
+				isCheckable: false
+			}
+					
+			ListElement
+			{
+				name: "test load"
+				path: "cblock/faked_stack/load_qml"
+				onValue: 1.0
+				offValue: 0.0
+				isCheckable: false
+			}
+					
 		}
 		ListModel
 		{

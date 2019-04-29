@@ -13,6 +13,8 @@ button,cblock/cblockParams/reset_all_weights,reset weights
 button,cblock/cblockParams/resetSeq_qml,reset seq
 button,cblock/cblockParams/finalizeSeq_qml,finalize seq
 button,cblock/cblockInputs/refresh_goal_plan,refresh goal
+button,cblock/faked_stack/dump_qml,test dump
+button,cblock/faked_stack/load_qml,test load
 slider,control/allow_playback,allow playback,0,1,1
 slider,cblock/cblockParams/inspect_buf_index,inspect buf index,-1,99,1
 

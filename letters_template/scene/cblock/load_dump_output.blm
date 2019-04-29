@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=20
+number_of_values=22
 
 # sync/control signals:
 # a new-output signal (set by cblock and reset by cblock when it receives reset=1)
@@ -50,28 +50,34 @@ values[11]=real 1 0.
 value_names[12]=buffered_seq_length
 values[12]=real 1 0.
 
-value_names[13]=buffer_content
-values[13]=real #BUFFER_TOTAL_SIZE# 0.
+value_names[13]=buffer_occupancy
+values[13]=real #BUFFER_CAPACITY# 0.
+
+value_names[14]=buffer_content
+values[14]=real #BUFFER_TOTAL_SIZE# 0.
 
 # state related
-value_names[14]=chunk_init_state
-values[14]=real #STATE_SIZE# 0.
+value_names[15]=chunk_init_state
+values[15]=real #STATE_SIZE# 0.
 
 # only buffered goal is installed this way, the mode (goal-driven or not), current system state and current goal go in via standard connection, so that they are up to date (right?)
 # that means that when loaded, the system will pursue the buffered goal until eos (goal-reached, eos-predicted, time out, reset or finalize), then the system updates the goal from planning/goal.
-value_names[15]=buffered_goal_effect
-values[15]=real #STATE_SIZE# 0.
+value_names[16]=buffered_goal_effect
+values[16]=real #STATE_SIZE# 0.
 
-value_names[16]=buffered_goal_reward
-values[16]=real 1 0.
+value_names[17]=buffered_goal_reward
+values[17]=real 1 0.
 
-value_names[17]=alpha_goal_state_components_combined
-values[17]=real #STATE_SIZE# 0.
+value_names[18]=alpha_goal_state_components_combined
+values[18]=real #STATE_SIZE# 0.
 
-value_names[18]=alpha_goal_state_bulk
-values[18]=real 1 0.
-
-value_names[19]=alpha_reward
+value_names[19]=alpha_goal_state_bulk
 values[19]=real 1 0.
+
+value_names[20]=alpha_reward
+values[20]=real 1 0.
+
+value_names[21]=ior_mask_plan_som
+values[21]=real #PLAN_SOM_SIZE# 0.
 
 # alternatively, store planning/goal/state and reward too? What about the current system state?
