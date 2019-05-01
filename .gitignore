@@ -1,2 +1,10 @@
 **/bl.deb
 **/run_BL.bat
+
+build_windows/
+gtest-xml
+build_mac/
+build_linux/
+*.bin
+
+build_windows_vs2017_*.bat

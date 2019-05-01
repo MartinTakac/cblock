@@ -1,0 +1,9 @@
+BL_linear_transformation_connector
+save_params_blc/perform_calculate=paramConsts/saveWeightsLead
+
+###SAVE PARAMS
+# Saving 
+param_save/save=paramConsts/saveWeightsLead
+param_save/error_avg_save.value=control/error_avg
+param_save/after_first_cycle_save.value=control/after_first_cycle
+

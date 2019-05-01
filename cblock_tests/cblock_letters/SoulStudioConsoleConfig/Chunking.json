@@ -1,0 +1,2566 @@
+{
+	"components": [
+		{
+			"components": [
+				{
+					"label": "Control",
+					"key": "Control",
+					"type": "tabs",
+					"enableReset": "true",
+					"enableSaveLoad": "true",
+					"components": [
+						{
+							"legend": "Control",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "reset debugs",
+													"blVariable": "cblock/deb_control_cycle/reset_all_debugs",
+													"onValue": 1.0,
+													"offValue": 0.0,
+													"type": "button"
+												}
+											],
+											"width": 1
+										},
+										{
+											"components": [
+												{
+													"label": "save weights",
+													"blVariable": "cblock/cblockParams/save_all_weights",
+													"onValue": 1.0,
+													"offValue": 0.0,
+													"type": "button"
+												}
+											],
+											"width": 1
+										},
+										{
+											"components": [
+												{
+													"label": "load weights",
+													"blVariable": "cblock/cblockParams/load_all_weights",
+													"onValue": 1.0,
+													"offValue": 0.0,
+													"type": "button"
+												}
+											],
+											"width": 1
+										},
+										{
+											"components": [
+												{
+													"label": "reset weights",
+													"blVariable": "cblock/cblockParams/reset_all_weights",
+													"onValue": 1.0,
+													"offValue": 0.0,
+													"type": "button"
+												}
+											],
+											"width": 1
+										},
+										{
+											"components": [
+												{
+													"label": "reset seq",
+													"blVariable": "cblock/cblockParams/resetSeq_qml",
+													"onValue": 1.0,
+													"offValue": 0.0,
+													"type": "button"
+												}
+											],
+											"width": 1
+										},
+										{
+											"components": [
+												{
+													"label": "finalize seq",
+													"blVariable": "cblock/cblockParams/finalizeSeq_qml",
+													"onValue": 1.0,
+													"offValue": 0.0,
+													"type": "button"
+												}
+											],
+											"width": 1
+										},
+										{
+											"components": [
+												{
+													"label": "autotrain",
+													"blVariable": "training_control/automatic_training",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "allow playback",
+													"blVariable": "control/allow_playback",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "inspect buf index",
+													"blVariable": "cblock/cblockParams/inspect_buf_index",
+													"min": -1.0,
+													"max": 99.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "Manual input",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "result index",
+													"blVariable": "control/manual_result_index",
+													"min": 0.0,
+													"max": 20.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "reward",
+													"blVariable": "control/manual_reward",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "Parameters",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "playback speed",
+													"blVariable": "control/playback_speed",
+													"min": 0.0,
+													"max": 200.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "playback entropy thr",
+													"blVariable": "cblock/cblockParams/entropy_thr",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "prediction smoothing",
+													"blVariable": "cblock/cblockParams/smoothing",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1e-16,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "avg mult thr",
+													"blVariable": "cblock/cblockParams/surprise_avg_mult",
+													"min": 0.0,
+													"max": 5.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "prev avg mix",
+													"blVariable": "cblock/cblockParams/prev_avg_err_mix",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "trunc surp at",
+													"blVariable": "cblock/cblockParams/surp_trunc_value",
+													"min": 5.0,
+													"max": 500.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "kick start gain",
+													"blVariable": "cblock/cblockParams/kick_start_gain",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Goal",
+					"key": "Goal",
+					"type": "tabs",
+					"enableReset": "true",
+					"enableSaveLoad": "true",
+					"components": [
+						{
+							"legend": "Control",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "goal-driven",
+													"blVariable": "cblock/cblockInputs/goal_driven",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "plan inspection",
+													"blVariable": "cblock/cblockInputs/goal_plan_inspection",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "Manual goal",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "result index",
+													"blVariable": "control/manual_goal_index",
+													"min": 0.0,
+													"max": 20.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "reward",
+													"blVariable": "cblock/planning/goal/reward",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "alpha result",
+													"blVariable": "cblock/planning/goal/alpha_goal_state_bulk",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "alpha reward",
+													"blVariable": "cblock/planning/goal/alpha_reward",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "Parameters",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "delta plans",
+													"blVariable": "cblock/cblockParams/use_delta_based_plans",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "plan noise",
+													"blVariable": "cblock/planning/control/noise_level",
+													"min": 0.0,
+													"max": 0.01,
+													"step": 0.0001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "plan ior decay",
+													"blVariable": "cblock/planning/control/ior_decay",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.0001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "ior surround",
+													"blVariable": "cblock/planning/control/ior_surrounding",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "inv sur size",
+													"blVariable": "cblock/planning/xy_to_loc_som/activation_sensitivity",
+													"min": 0.0,
+													"max": 800.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "goal timeout speed",
+													"blVariable": "cblock/planning/control/plan_timeout_speed",
+													"min": 0.0,
+													"max": 2.0,
+													"step": 0.0001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "TD plan gain in goal",
+													"blVariable": "cblock/cblockParams/plan_top_down_on_seq_gain",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "dist2goal sensitivity",
+													"blVariable": "cblock/planning/dist_from_goal/activation_sensitivity",
+													"min": 0.0,
+													"max": 100.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "goal reached thr",
+													"blVariable": "cblock/cblockParams/goal_reached_thr",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "plan goodness thr",
+													"blVariable": "cblock/cblockParams/plan_goodness_thr",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "Result component gains",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "upper half",
+													"blVariable": "goal_state_comp_gains_qml/bulk_upper_half",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "bottom half",
+													"blVariable": "goal_state_comp_gains_qml/bulk_bottom_half",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c0",
+													"blVariable": "goal_state_comp_gains_qml/c0",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c1",
+													"blVariable": "goal_state_comp_gains_qml/c1",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c2",
+													"blVariable": "goal_state_comp_gains_qml/c2",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c3",
+													"blVariable": "goal_state_comp_gains_qml/c3",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c4",
+													"blVariable": "goal_state_comp_gains_qml/c4",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c5",
+													"blVariable": "goal_state_comp_gains_qml/c5",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c6",
+													"blVariable": "goal_state_comp_gains_qml/c6",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c7",
+													"blVariable": "goal_state_comp_gains_qml/c7",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c8",
+													"blVariable": "goal_state_comp_gains_qml/c8",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c9",
+													"blVariable": "goal_state_comp_gains_qml/c9",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c10",
+													"blVariable": "goal_state_comp_gains_qml/c10",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c11",
+													"blVariable": "goal_state_comp_gains_qml/c11",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c12",
+													"blVariable": "goal_state_comp_gains_qml/c12",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c13",
+													"blVariable": "goal_state_comp_gains_qml/c13",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c14",
+													"blVariable": "goal_state_comp_gains_qml/c14",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c15",
+													"blVariable": "goal_state_comp_gains_qml/c15",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c16",
+													"blVariable": "goal_state_comp_gains_qml/c16",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c17",
+													"blVariable": "goal_state_comp_gains_qml/c17",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c18",
+													"blVariable": "goal_state_comp_gains_qml/c18",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c19",
+													"blVariable": "goal_state_comp_gains_qml/c19",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c20",
+													"blVariable": "goal_state_comp_gains_qml/c20",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c21",
+													"blVariable": "goal_state_comp_gains_qml/c21",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c22",
+													"blVariable": "goal_state_comp_gains_qml/c22",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c23",
+													"blVariable": "goal_state_comp_gains_qml/c23",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c24",
+													"blVariable": "goal_state_comp_gains_qml/c24",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c25",
+													"blVariable": "goal_state_comp_gains_qml/c25",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c26",
+													"blVariable": "goal_state_comp_gains_qml/c26",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c27",
+													"blVariable": "goal_state_comp_gains_qml/c27",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c28",
+													"blVariable": "goal_state_comp_gains_qml/c28",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c29",
+													"blVariable": "goal_state_comp_gains_qml/c29",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c30",
+													"blVariable": "goal_state_comp_gains_qml/c30",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c31",
+													"blVariable": "goal_state_comp_gains_qml/c31",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c32",
+													"blVariable": "goal_state_comp_gains_qml/c32",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c33",
+													"blVariable": "goal_state_comp_gains_qml/c33",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c34",
+													"blVariable": "goal_state_comp_gains_qml/c34",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c35",
+													"blVariable": "goal_state_comp_gains_qml/c35",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c36",
+													"blVariable": "goal_state_comp_gains_qml/c36",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c37",
+													"blVariable": "goal_state_comp_gains_qml/c37",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c38",
+													"blVariable": "goal_state_comp_gains_qml/c38",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c39",
+													"blVariable": "goal_state_comp_gains_qml/c39",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c40",
+													"blVariable": "goal_state_comp_gains_qml/c40",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c41",
+													"blVariable": "goal_state_comp_gains_qml/c41",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c42",
+													"blVariable": "goal_state_comp_gains_qml/c42",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c43",
+													"blVariable": "goal_state_comp_gains_qml/c43",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c44",
+													"blVariable": "goal_state_comp_gains_qml/c44",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c45",
+													"blVariable": "goal_state_comp_gains_qml/c45",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c46",
+													"blVariable": "goal_state_comp_gains_qml/c46",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c47",
+													"blVariable": "goal_state_comp_gains_qml/c47",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c48",
+													"blVariable": "goal_state_comp_gains_qml/c48",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c49",
+													"blVariable": "goal_state_comp_gains_qml/c49",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c50",
+													"blVariable": "goal_state_comp_gains_qml/c50",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c51",
+													"blVariable": "goal_state_comp_gains_qml/c51",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c52",
+													"blVariable": "goal_state_comp_gains_qml/c52",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c53",
+													"blVariable": "goal_state_comp_gains_qml/c53",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c54",
+													"blVariable": "goal_state_comp_gains_qml/c54",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c55",
+													"blVariable": "goal_state_comp_gains_qml/c55",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c56",
+													"blVariable": "goal_state_comp_gains_qml/c56",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c57",
+													"blVariable": "goal_state_comp_gains_qml/c57",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c58",
+													"blVariable": "goal_state_comp_gains_qml/c58",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c59",
+													"blVariable": "goal_state_comp_gains_qml/c59",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c60",
+													"blVariable": "goal_state_comp_gains_qml/c60",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c61",
+													"blVariable": "goal_state_comp_gains_qml/c61",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c62",
+													"blVariable": "goal_state_comp_gains_qml/c62",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c63",
+													"blVariable": "goal_state_comp_gains_qml/c63",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c64",
+													"blVariable": "goal_state_comp_gains_qml/c64",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c65",
+													"blVariable": "goal_state_comp_gains_qml/c65",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c66",
+													"blVariable": "goal_state_comp_gains_qml/c66",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c67",
+													"blVariable": "goal_state_comp_gains_qml/c67",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c68",
+													"blVariable": "goal_state_comp_gains_qml/c68",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c69",
+													"blVariable": "goal_state_comp_gains_qml/c69",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c70",
+													"blVariable": "goal_state_comp_gains_qml/c70",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c71",
+													"blVariable": "goal_state_comp_gains_qml/c71",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c72",
+													"blVariable": "goal_state_comp_gains_qml/c72",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c73",
+													"blVariable": "goal_state_comp_gains_qml/c73",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c74",
+													"blVariable": "goal_state_comp_gains_qml/c74",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c75",
+													"blVariable": "goal_state_comp_gains_qml/c75",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c76",
+													"blVariable": "goal_state_comp_gains_qml/c76",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c77",
+													"blVariable": "goal_state_comp_gains_qml/c77",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c78",
+													"blVariable": "goal_state_comp_gains_qml/c78",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c79",
+													"blVariable": "goal_state_comp_gains_qml/c79",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c80",
+													"blVariable": "goal_state_comp_gains_qml/c80",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c81",
+													"blVariable": "goal_state_comp_gains_qml/c81",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c82",
+													"blVariable": "goal_state_comp_gains_qml/c82",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c83",
+													"blVariable": "goal_state_comp_gains_qml/c83",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c84",
+													"blVariable": "goal_state_comp_gains_qml/c84",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c85",
+													"blVariable": "goal_state_comp_gains_qml/c85",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c86",
+													"blVariable": "goal_state_comp_gains_qml/c86",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c87",
+													"blVariable": "goal_state_comp_gains_qml/c87",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c88",
+													"blVariable": "goal_state_comp_gains_qml/c88",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c89",
+													"blVariable": "goal_state_comp_gains_qml/c89",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c90",
+													"blVariable": "goal_state_comp_gains_qml/c90",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c91",
+													"blVariable": "goal_state_comp_gains_qml/c91",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c92",
+													"blVariable": "goal_state_comp_gains_qml/c92",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c93",
+													"blVariable": "goal_state_comp_gains_qml/c93",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c94",
+													"blVariable": "goal_state_comp_gains_qml/c94",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c95",
+													"blVariable": "goal_state_comp_gains_qml/c95",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c96",
+													"blVariable": "goal_state_comp_gains_qml/c96",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c97",
+													"blVariable": "goal_state_comp_gains_qml/c97",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c98",
+													"blVariable": "goal_state_comp_gains_qml/c98",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "c99",
+													"blVariable": "goal_state_comp_gains_qml/c99",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "SOMs",
+					"key": "SOMs",
+					"type": "tabs",
+					"components": [
+						{
+							"legend": "seq SOM",
+							"type": "fieldset",
+							"enableReset": "true",
+							"enableSaveLoad": "true",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "inspect SOM",
+													"blVariable": "cblock/seq_som/TD_inspection/control/inspect",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "display realtime",
+													"blVariable": "cblock/cblockParams/display_seq_som_real_time",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "learn in non goal-driven",
+													"blVariable": "cblock/cblockParams/seq_learn_non_goal_driven",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "learn in goal-driven",
+													"blVariable": "cblock/cblockParams/seq_learn_goal_driven",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sensitivity train",
+													"blVariable": "cblock/seq_som/asomConsts/qmlSensitivityTrain",
+													"min": 0.0,
+													"max": 40.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sensitivity predict",
+													"blVariable": "cblock/seq_som/asomConsts/qmlSensitivityPredict",
+													"min": 0.0,
+													"max": 40.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Soft output",
+													"blVariable": "cblock/seq_som/asomConsts/qmlSoftOutput",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "LFC",
+													"blVariable": "cblock/seq_som/asomConsts/qmlLfc",
+													"min": 0.0,
+													"max": 1500.0,
+													"step": 100.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sigma",
+													"blVariable": "cblock/seq_som/asomConsts/qmlSigma",
+													"min": 0.0,
+													"max": 2.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Compare noise",
+													"blVariable": "cblock/seq_som/asomConsts/qmlCompareNoise",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.05,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match threshold",
+													"blVariable": "cblock/seq_som/asomConsts/qmlBestMatchThreshold",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match LR multiplier",
+													"blVariable": "cblock/seq_som/asomConsts/qmlBestMatchLfcMult",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Training record decay",
+													"blVariable": "cblock/seq_som/asomConsts/qmlTrainingRecordDecay",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "context decay",
+													"blVariable": "cblock/cblockParams/prev_context_mix",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "tonic decay",
+													"blVariable": "cblock/cblockParams/tonic_decay",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "alphas train",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "tonic",
+													"blVariable": "cblock/seq_som/alpha_gains/tonic_train",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "context",
+													"blVariable": "cblock/seq_som/alpha_gains/context_train",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "current",
+													"blVariable": "cblock/seq_som/alpha_gains/current_train",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "next",
+													"blVariable": "cblock/seq_som/alpha_gains/next_train",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "eos",
+													"blVariable": "cblock/seq_som/alpha_gains/eos_train",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "alphas predict",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "tonic",
+													"blVariable": "cblock/seq_som/alpha_gains/tonic",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "context",
+													"blVariable": "cblock/seq_som/alpha_gains/context",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "current",
+													"blVariable": "cblock/seq_som/alpha_gains/current",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "alphas goal-driven predict",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "tonic",
+													"blVariable": "cblock/seq_som/alpha_gains/tonic_gd",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "context",
+													"blVariable": "cblock/seq_som/alpha_gains/context_gd",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "current",
+													"blVariable": "cblock/seq_som/alpha_gains/current_gd",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "alphas surprise predict",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "tonic",
+													"blVariable": "cblock/seq_som/alpha_gains/tonic_surprise",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "context",
+													"blVariable": "cblock/seq_som/alpha_gains/context_surprise",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "current",
+													"blVariable": "cblock/seq_som/alpha_gains/current_surprise",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "plan-SOM",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "inspect SOM",
+													"blVariable": "cblock/plan_som/TD_inspection/control/inspect",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "display realtime",
+													"blVariable": "cblock/cblockParams/display_plan_som_real_time",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "learn in non goal-driven",
+													"blVariable": "cblock/cblockParams/plan_learn_non_goal_driven",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "learn in goal-driven",
+													"blVariable": "cblock/cblockParams/plan_learn_goal_driven",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sens from plan",
+													"blVariable": "cblock/plan_som/asomConsts/qmlSensitivityJustPlan",
+													"min": 0.0,
+													"max": 40.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sens from rew",
+													"blVariable": "cblock/plan_som/asomConsts/qmlSensitivityJustReward",
+													"min": 0.0,
+													"max": 150.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sens from res",
+													"blVariable": "cblock/plan_som/asomConsts/qmlSensitivityResult",
+													"min": 0.0,
+													"max": 100.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "LFC",
+													"blVariable": "cblock/plan_som/asomConsts/qmlLfc",
+													"min": 0.0,
+													"max": 1500.0,
+													"step": 100.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sigma",
+													"blVariable": "cblock/plan_som/asomConsts/qmlSigma",
+													"min": 0.0,
+													"max": 2.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Compare noise",
+													"blVariable": "cblock/plan_som/asomConsts/qmlCompareNoise",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.05,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match threshold",
+													"blVariable": "cblock/plan_som/asomConsts/qmlBestMatchThreshold",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match LR multiplier",
+													"blVariable": "cblock/plan_som/asomConsts/qmlBestMatchLfcMult",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Training record decay",
+													"blVariable": "cblock/plan_som/asomConsts/qmlTrainingRecordDecay",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "xy input SOM",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "display realtime",
+													"blVariable": "cblock/IO/xy_som_consts/display_real_time",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sensitivity",
+													"blVariable": "cblock/IO/xy_som_consts/qmlSensitivity",
+													"min": 0.0,
+													"max": 1000.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Compare noise",
+													"blVariable": "cblock/IO/xy_som_consts/qmlCompareNoise",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.05,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match threshold",
+													"blVariable": "cblock/IO/xy_som_consts/qmlBestMatchThreshold",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match LR multiplier",
+													"blVariable": "cblock/IO/xy_som_consts/qmlBestMatchLfcMult",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"legend": "bitmap input SOM",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "display realtime",
+													"blVariable": "cblock/IO/bitmap_som_consts/display_real_time",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 1.0,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Sensitivity",
+													"blVariable": "cblock/IO/bitmap_som_consts/qmlSensitivity",
+													"min": 0.0,
+													"max": 100.0,
+													"step": 0.1,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Compare noise",
+													"blVariable": "cblock/IO/bitmap_som_consts/qmlCompareNoise",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.05,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match threshold",
+													"blVariable": "cblock/IO/bitmap_som_consts/qmlBestMatchThreshold",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "Best match LR multiplier",
+													"blVariable": "cblock/IO/bitmap_som_consts/qmlBestMatchLfcMult",
+													"min": 0.0,
+													"max": 1.0,
+													"step": 0.001,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "SOM inspect",
+					"key": "SOM inspect",
+					"type": "tabs",
+					"enableReset": "true",
+					"enableSaveLoad": "true",
+					"components": [
+						{
+							"label": "SOM Inspect",
+							"xMin": 0,
+							"xMax": 1,
+							"yMin": 0,
+							"yMax": 1,
+							"dots": [
+								{
+									"BLVariableX": "cblock/cblockParams/inspect_SOM_x",
+									"BLVariableY": "cblock/cblockParams/inspect_SOM_y",
+									"onChangedX": "x",
+									"onChangedY": "1.0-y"
+								}
+							],
+							"type": "picker"
+						}
+					]
+				},
+				{
+					"label": "Display",
+					"key": "Display",
+					"type": "tabs",
+					"enableReset": "true",
+					"enableSaveLoad": "true",
+					"components": [
+						{
+							"label": "",
+							"xMin": -10,
+							"xMax": 10,
+							"yMin": -10,
+							"yMax": 10,
+							"dots": [
+								{
+									"BLVariableX": "displays/transformation.translate_x",
+									"BLVariableY": "displays/transformation.translate_y",
+									"onChangedX": "x",
+									"onChangedY": "-y"
+								}
+							],
+							"type": "picker"
+						},
+						{
+							"legend": "value controls",
+							"type": "fieldset",
+							"components": [
+								{
+									"type": "columns",
+									"columns": [
+										{
+											"components": [
+												{
+													"label": "Visible",
+													"blVariable": "displayConstants/is_visible",
+													"checkedValue": 1.0,
+													"uncheckedValue": 0.0,
+													"type": "toggleButton"
+												}
+											],
+											"width": 1
+										},
+										{
+											"components": [
+												{
+													"label": "TRANSLATE X",
+													"blVariable": "displays/transformation.translate_x",
+													"min": -10.0,
+													"max": 10.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "TRANSLATE Y",
+													"blVariable": "displays/transformation.translate_y",
+													"min": -10.0,
+													"max": 10.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										},
+										{
+											"components": [
+												{
+													"label": "SCALE",
+													"blVariable": "displays/transformation.scale",
+													"min": 0.0,
+													"max": 10.0,
+													"step": 0.01,
+													"type": "slider"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": "tabs"
+		}
+	]
+}

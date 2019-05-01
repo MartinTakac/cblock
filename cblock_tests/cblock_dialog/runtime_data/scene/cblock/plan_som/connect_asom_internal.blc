@@ -1,0 +1,33 @@
+BL_linear_transformation_connector
+
+# Parameters ########
+
+asom/learning_frequency_constants[0:101] = asomConsts/qmlLfc*asomConsts/ones
+
+asom/sigma = asomConsts/qmlSigma
+asom/compare_noise = asomConsts/qmlCompareNoise
+asom/best_match_threshold = asomConsts/qmlBestMatchThreshold
+asom/best_match_learning_multiplier = asomConsts/qmlBestMatchLfcMult
+asom/training_record_decay=asomConsts/qmlTrainingRecordDecay
+#asom/use_soft_output = asomConsts/qmlSoftOutput - moved to control cycle, because depends on mode
+#asom/activation_sensitivity moved to control cycle because it depends on alphas from planning
+# alphas[1]=result,alphas[2]=reward
+
+asom/bias_when_equal_activity = randomNoise/values
+randomNoise/trigger = 1
+# asom/activation_mask is set on cblock/control_cycle
+
+# Reset ASOM
+asom/reset_map = asomConsts/reset
+
+# weights saving
+asomConsts/saveWeightsLead=asomConsts/qmlSaveWeights>asomConsts/saveWeightsPrev ? 1 : 0
+asomConsts/saveWeightsPrev=asomConsts/qmlSaveWeights
+
+asomConsts/loadWeightsLead=asomConsts/qmlLoadWeights>asomConsts/loadWeightsPrev ? 1 : 0
+asomConsts/loadWeightsPrev=asomConsts/qmlLoadWeights
+
+asom_save/time_index=asom_save/number_of_times-1
+
+asom_save/retrieve=asomConsts/loadWeightsLead>0.?1.:0.
+

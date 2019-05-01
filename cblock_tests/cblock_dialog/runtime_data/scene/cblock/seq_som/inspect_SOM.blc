@@ -1,0 +1,9 @@
+BL_identity_connector
+
+input_gates/TD_activation=TD_inspection/control/inspect
+inputs/TD_activation_map=TD_inspection/control/result
+
+# cursor in the SOM training_record map
+cursor/is_visible=TD_inspection/control/inspect
+cursor/x=TD_inspection/control/manual_x
+cursor/y=TD_inspection/control/manual_y

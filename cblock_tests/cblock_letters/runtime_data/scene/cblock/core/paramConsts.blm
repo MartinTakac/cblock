@@ -1,0 +1,17 @@
+BL_constant_module
+
+number_of_values=6
+
+value_names[0]=qmlSaveWeights
+values[0]=real 1 0.
+value_names[1]=saveWeightsPrev
+values[1]=real 1 0.
+value_names[2]=saveWeightsLead
+values[2]=real 1 0.
+value_names[3]=qmlLoadWeights
+values[3]=real 1 0.
+value_names[4]=loadWeightsPrev
+values[4]=real 1 0.
+value_names[5]=loadWeightsLead
+values[5]=real 1 0.
+
