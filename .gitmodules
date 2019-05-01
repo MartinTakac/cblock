@@ -1,0 +1,3 @@
+[submodule "runtime_data_generator"]
+	path = runtime_data_generator
+	url = https://gitlab.soulmachines.com/cogarch/script-populat-variables-in-runtimes.git
