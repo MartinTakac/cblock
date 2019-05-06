@@ -14,6 +14,7 @@ includes
 #include "gmock/gmock.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest-param-test.h"
+#include "boost/filesystem.hpp"
 #include "bl.h"
 #include "bl_message.h"
 #include "bl_io.h"
@@ -21,12 +22,16 @@ includes
 #include "BL_test_utilities/test_expect_variable_value.h"
 #include "BL_test_utilities/dialog_helper_functions.h"
 #include "BL_test_utilities/run_in_BL.hpp"
+#include "BL_test_utilities/runtime_data_generation.hpp"
 
 using testing::Eq;
+namespace bfs = boost::filesystem;
 
 /// Message system
 static struct BL_message_system *test_message_system=
 	(struct BL_message_system *)NULL;
+
+static bfs::path current_dir = bfs::path(CMAKE_CURRENT_SOURCE_DIR);
 
 static int bl_debug_message(enum BL_message_type type,
 	const char *locale,const char *output_string)
@@ -261,6 +266,8 @@ public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
         set_BL_message_system(test_message_system);
+		delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data", current_dir);
     }
 
     virtual void SetUp() {
@@ -359,6 +366,8 @@ public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
         set_BL_message_system(test_message_system);
+		delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data", current_dir);
     }
 
     virtual void SetUp() {
@@ -444,6 +453,8 @@ public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
         set_BL_message_system(test_message_system);
+		delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data", current_dir);
     }
 
     virtual void SetUp() {

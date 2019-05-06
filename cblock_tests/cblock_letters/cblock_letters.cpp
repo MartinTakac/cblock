@@ -19,8 +19,9 @@ includes
 #include "bl_io.h"
 
 #include "BL_test_utilities/test_expect_variable_value.h"
-
+#include "BL_test_utilities/dialog_helper_functions.h"
 #include "BL_test_utilities/run_in_BL.hpp"
+#include "BL_test_utilities/runtime_data_generation.hpp"
 
 #include "boost/filesystem.hpp"
 
@@ -30,6 +31,8 @@ using namespace std;
 
 /// Message system
 static struct BL_message_system *test_message_system = nullptr;
+
+static bfs::path current_dir = bfs::path(CMAKE_CURRENT_SOURCE_DIR);
 
 static int bl_debug_message(enum BL_message_type type,
 	const char *locale,const char *output_string)
@@ -45,35 +48,6 @@ static int bl_debug_message(enum BL_message_type type,
 
 	return (return_code);
 } /* bl_debug_message */
-
-/* Deletes all items in the given path. */
-static void delete_runtime_data(bfs::path path)
-{
-	try
-	{
-		for (bfs::directory_entry &x : bfs::directory_iterator(path))
-		{
-			// remove_all is recursive, but we don't just call it on path because we want to keep the parent directory
-			bfs::remove_all(x.path());
-		}
-	}
-	catch (const bfs::filesystem_error &ex)
-	{
-		cerr << "Unable to delete runtime data file, message: " << endl << "\t" << ex.what() << endl;
-		exit(1);
-	}
-}
-
-static void generate_runtime_data(bfs::path config_file_path, bfs::path output_path)
-{
-	auto script_path = bfs::path(CMAKE_CURRENT_SOURCE_DIR) / ".." / "runtime_data_generator" / "runtime_generator.py";
-	auto template_path = bfs::path(CMAKE_CURRENT_SOURCE_DIR) / ".." / "cblock_template";
-
-	stringstream command_string;
-	command_string << "python " << script_path.string() << " -r " << template_path.string() << " -c " << config_file_path.string() << " -o " << output_path.string();
-	system(command_string.str().c_str());
-}
-
 
 class CBlock_Autotrain_TestData {
 public:
@@ -91,7 +65,8 @@ public:
 	static void SetUpTestCase() {
 		test_message_system=create_BL_message_system(bl_debug_message);
 		set_BL_message_system(test_message_system);
-		// TODO: Add delete and generate stuff for this test
+		delete_runtime_data(current_dir / "cblock_letters" / "runtime_data");
+		generate_runtime_data(current_dir / "cblock_letters" / "cblock_letters_config.json", current_dir / "cblock_letters" / "runtime_data", current_dir);
 	}
 
 	virtual void SetUp() {
@@ -217,9 +192,8 @@ public:
 	static void SetUpTestCase() {
 		test_message_system = create_BL_message_system(bl_debug_message);
 		set_BL_message_system(test_message_system);
-
-		// TODO Generate this test case's runtime data
-
+		delete_runtime_data(current_dir / "cblock_letters" / "runtime_data");
+		generate_runtime_data(current_dir / "cblock_letters" / "cblock_letters_config.json", current_dir / "cblock_letters" / "runtime_data", current_dir);
 	}
 
 	virtual void SetUp() {

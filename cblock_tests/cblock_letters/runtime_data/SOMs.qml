@@ -608,6 +608,16 @@ ScrollView
 					
 			ListElement
 			{
+				name: "inspect SOM"
+				path: "cblock/IO/TD_inspection/control/inspect"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "display realtime"
 				path: "cblock/IO/bitmap_som_consts/display_real_time"
 				startValue: 0.5

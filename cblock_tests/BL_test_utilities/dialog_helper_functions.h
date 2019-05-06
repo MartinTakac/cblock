@@ -1,3 +1,6 @@
+/*******************************************************************************
+Copyright 2017-2019 Soul Machines Ltd. All Rights Reserved.
+==============================================================================*/
 #if !defined (DIALOG_HELPER_FUNCTIONS_H)
 #define DIALOG_HELPER_FUNCTIONS_H
 

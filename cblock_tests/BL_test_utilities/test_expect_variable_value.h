@@ -1,3 +1,6 @@
+/*******************************************************************************
+Copyright 2017-2019 Soul Machines Ltd. All Rights Reserved.
+==============================================================================*/
 #if !defined (TEST_EXPECT_VARIABLE_VALUE_H)
 #define TEST_EXPECT_VARIABLE_VALUE_H
 

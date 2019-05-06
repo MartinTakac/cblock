@@ -1,4 +1,10 @@
+/*******************************************************************************
+Copyright 2017-2019 Soul Machines Ltd. All Rights Reserved.
+==============================================================================*/
+
 #include <iostream>
+#include <sstream>
+
 #include "BL_test_utilities/dialog_helper_functions.h"
 
 void TagToVector(std::string tag, std::vector<BL_real> &data) {
