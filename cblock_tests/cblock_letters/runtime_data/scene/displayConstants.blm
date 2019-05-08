@@ -1,9 +1,0 @@
-BL_constant_module
-number_of_values=3
-# 
-value_names[0]=is_visible
-values[0]=real 1 1.
-value_names[1]=visibleSeqSomInspect
-values[1]=real 1 0.
-value_names[2]=visiblePlanSomInspect
-values[2]=real 1 0.

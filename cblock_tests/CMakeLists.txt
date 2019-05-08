@@ -72,6 +72,7 @@ target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL_interface/in
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/gtest/googletest-release-1.8.0/builds/${OS_STATIC_LIB_DIR}/include)
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/boost/${USE_BOOST_VERSION}/builds/${OS_STATIC_LIB_DIR})
 target_include_directories(${TARGET_NAME} PRIVATE .)
+# TODO: Update paths
 target_include_directories(${TARGET_NAME} PRIVATE C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/include)
 
 target_link_libraries (${TARGET_NAME}
@@ -97,6 +98,7 @@ target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL_interface/in
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/gtest/googletest-release-1.8.0/builds/${OS_STATIC_LIB_DIR}/include)
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/boost/${USE_BOOST_VERSION}/builds/${OS_STATIC_LIB_DIR})
 target_include_directories(${TARGET_NAME} PRIVATE .)
+# TODO: Update paths
 target_include_directories(${TARGET_NAME} PRIVATE C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/include)
 
 target_link_libraries (${TARGET_NAME}
@@ -119,8 +121,11 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
         -E copy_if_different ${SM_HOME}/${BL_BUILD_DIR}/SDK/BL_OpenGL_render/$<CONFIG>/BL_render.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)
 	add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND}
         -E copy_if_different ${THIRD_PARTY}/glew/builds/windows.vs2015/bin/Release/x64/glew32.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)
+    # TODO: Update paths
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
         -E copy_if_different C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/python37.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)
+    add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
+        -E copy_if_different C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/python37.pdb $<TARGET_FILE_DIR:${TARGET_NAME}>)        
 
 ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND NOT DEFINED IOS_PLATFORM)
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 

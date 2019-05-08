@@ -25,10 +25,11 @@ includes
 
 #include "boost/filesystem.hpp"
 
-using testing::Eq;
-namespace bfs = boost::filesystem;
-using namespace std;
-
+namespace {
+	using testing::Eq;
+	namespace bfs = boost::filesystem;
+	using namespace std;
+}
 /// Message system
 static struct BL_message_system *test_message_system = nullptr;
 
@@ -65,8 +66,9 @@ public:
 	static void SetUpTestCase() {
 		test_message_system=create_BL_message_system(bl_debug_message);
 		set_BL_message_system(test_message_system);
-		delete_runtime_data(current_dir / "cblock_letters" / "runtime_data");
-		generate_runtime_data(current_dir / "cblock_letters" / "cblock_letters_config.json", current_dir / "cblock_letters" / "runtime_data", current_dir);
+		change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
+		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_letters" / "runtime_data");
+		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_letters" / "cblock_letters_config.json", current_dir / "cblock_letters" / "runtime_data");
 	}
 
 	virtual void SetUp() {
@@ -88,9 +90,9 @@ TEST_P(cblock_letters, AutoTrain) {
 	runner.setMessageSystem(test_message_system);
 	if (HasFatalFailure()) return;
 
-	runner.Run([testParameters](BL_model *model) {
+runner.Run([testParameters](BL_model *model) {
     
-        TestVariableWrapper one_two_five(125.0f);
+    TestVariableWrapper one_two_five(125.0f);
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -192,8 +194,8 @@ public:
 	static void SetUpTestCase() {
 		test_message_system = create_BL_message_system(bl_debug_message);
 		set_BL_message_system(test_message_system);
-		delete_runtime_data(current_dir / "cblock_letters" / "runtime_data");
-		generate_runtime_data(current_dir / "cblock_letters" / "cblock_letters_config.json", current_dir / "cblock_letters" / "runtime_data", current_dir);
+		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_letters" / "runtime_data");
+		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_letters" / "cblock_letters_config.json", current_dir / "cblock_letters" / "runtime_data");
 	}
 
 	virtual void SetUp() {

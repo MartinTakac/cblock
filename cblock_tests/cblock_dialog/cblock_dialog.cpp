@@ -24,8 +24,11 @@ includes
 #include "BL_test_utilities/run_in_BL.hpp"
 #include "BL_test_utilities/runtime_data_generation.hpp"
 
-using testing::Eq;
-namespace bfs = boost::filesystem;
+namespace{
+	using testing::Eq;
+	namespace bfs = boost::filesystem;
+}
+
 
 /// Message system
 static struct BL_message_system *test_message_system=
@@ -137,6 +140,10 @@ public:
 	static void SetUpTestCase() {
 		test_message_system=create_BL_message_system(bl_debug_message);
 		set_BL_message_system(test_message_system);
+		// Make sure we aren't in the runtime data directory 
+		change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
+		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
 	}
 
 	virtual void SetUp() {
@@ -266,8 +273,10 @@ public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
         set_BL_message_system(test_message_system);
-		delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
-		generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data", current_dir);
+		// Make sure we aren't in the runtime data directory 
+		change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
+		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
     }
 
     virtual void SetUp() {
@@ -366,8 +375,8 @@ public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
         set_BL_message_system(test_message_system);
-		delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
-		generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data", current_dir);
+		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
     }
 
     virtual void SetUp() {
@@ -453,8 +462,8 @@ public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
         set_BL_message_system(test_message_system);
-		delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
-		generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data", current_dir);
+		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
     }
 
     virtual void SetUp() {
