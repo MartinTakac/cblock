@@ -1,0 +1,4 @@
+BL_identity_connector
+line/shaderSettings/endVertex[0]=container/transformation.translate_x
+line/shaderSettings/endVertex[1]=container/transformation.translate_y
+line/shaderSettings/endVertex[2]=container/transformation.translate_z

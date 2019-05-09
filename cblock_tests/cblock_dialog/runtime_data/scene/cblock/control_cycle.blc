@@ -1,0 +1,703 @@
+BL_container_connector
+
+# PREAMBLE
+
+#####################
+# turn off outputs ready if reset
+BL_identity_connector
+control_cycle/perform_calculate=cblockOutputs/reset
+
+cblockOutputs/ready=core/control/zero
+
+###################
+# load all SOMs and params (each in separate connector, because event-driven
+# load seq_som
+BL_identity_connector
+control_cycle/perform_calculate=seq_som/asom_save/retrieved
+
+seq_som/asom/associative_self_organizing_map=seq_som/asom_save/map_retrieve.value
+seq_som/asom/training_record=seq_som/asom_save/training_record_retrieve.value
+core/control/seq_som_loaded=core/control/one
+
+# load plan_som
+BL_identity_connector
+control_cycle/perform_calculate=plan_som/asom_save/retrieved
+
+plan_som/asom/associative_self_organizing_map=plan_som/asom_save/map_retrieve.value
+plan_som/asom/training_record=plan_som/asom_save/training_record_retrieve.value
+core/control/plan_som_loaded=core/control/one
+
+# load indiv SOMs
+BL_identity_connector
+control_cycle/perform_calculate=IO/asom_save/retrieved
+
+IO/xy_input_som/associative_self_organizing_map=IO/asom_save/xy_map_retrieve.value
+IO/xy_input_som/training_record=IO/asom_save/xy_training_record_retrieve.value
+IO/bitmap_input_som/associative_self_organizing_map=IO/asom_save/bitmap_map_retrieve.value
+IO/bitmap_input_som/training_record=IO/asom_save/bitmap_training_record_retrieve.value
+core/control/IO_soms_loaded=core/control/one
+
+# do always - check if all maps loaded
+BL_linear_transformation_connector
+core/control/all_soms_loaded=core/control/seq_som_loaded+core/control/plan_som_loaded+core/control/IO_soms_loaded>2 ? 1 : 0
+
+######
+# after all loaded, reset stage and resetSeq and turn off load signalling variables
+BL_identity_connector
+control_cycle/perform_calculate=core/control/all_soms_loaded
+
+core/control/all_soms_loaded=core/control/zero
+core/control/seq_som_loaded=core/control/zero
+core/control/plan_som_loaded=core/control/zero
+core/control/IO_soms_loaded=core/control/zero
+
+seq_som/asom/perform_time_step=core/control/one
+plan_som/asom/perform_time_step=core/control/one
+core/control/stage=core/control/reset_stage
+core/control/restart_seq=core/control/one
+# restart will clear buffer, tonic, ctx and current and go to S5 or S6
+
+
+# load params - must be here, because their values are set in this connector
+BL_identity_connector
+control_cycle/perform_calculate=core/param_save/retrieved
+
+# Retrieving the saved params
+core/control/error_avg=core/param_save/error_avg_retrieve.value
+#core/control/error_var=core/param_save/error_var_retrieve.value
+core/control/after_first_cycle=core/param_save/after_first_cycle_retrieve.value
+
+###########
+# update seq_som's outputs, if perform_time_step
+BL_linear_transformation_connector
+control_cycle/perform_calculate=seq_som/asom/perform_time_step
+
+seq_som/asomConsts/default_mask=seq_som/asomConsts/qmlUseTrPrior>0? seq_som/asom/training_record : seq_som/asomConsts/som_size_ones
+
+# connect asom's outputs
+#outputs/...=output_gates/...*asom/output_values[...:...]
+seq_som/outputs/current=seq_som/output_gates/current*seq_som/asom/output_values[0:99]
+seq_som/outputs/next=seq_som/output_gates/next*seq_som/asom/output_values[100:199]
+seq_som/outputs/crisp_next=seq_som/output_gates/next*seq_som/asom/crisp_output_values[100:199]
+seq_som/outputs/context=seq_som/output_gates/context*seq_som/asom/output_values[200:299]
+seq_som/outputs/tonic=seq_som/output_gates/tonic*seq_som/asom/output_values[300:399]
+seq_som/outputs/eos=seq_som/output_gates/eos*seq_som/asom/crisp_output_values[400]
+
+seq_som/outputs/activation_map=seq_som/output_gates/activation*seq_som/asom/activation_map
+
+###########
+# update plan_som's outputs, if perform_time_step
+BL_linear_transformation_connector
+control_cycle/perform_calculate=plan_som/asom/perform_time_step
+
+plan_som/asomConsts/default_mask=plan_som/asomConsts/qmlUseTrPrior>0? plan_som/asom/training_record : plan_som/asomConsts/som_size_ones
+
+# connect asom's outputs
+#outputs/...=output_gates/...*asom/output_values[...:...]
+plan_som/outputs/plan=plan_som/output_gates/plan*plan_som/asom/output_values[0:99]
+plan_som/outputs/result=plan_som/output_gates/result*plan_som/asom/output_values[100:199]
+plan_som/outputs/reward=plan_som/output_gates/reward*plan_som/asom/output_values[200]
+
+plan_som/outputs/activation_map=plan_som/output_gates/activation*plan_som/asom/activation_map
+
+
+######
+BL_identity_connector
+control_cycle/perform_calculate=cblockParams/reset_all_weights
+
+core/control/after_first_cycle=core/control/zero
+# so that reset (set in connectParams and connect_asom_internal) is actually performed. The soms are turned off in S5 or S6-7
+seq_som/asom/perform_time_step=core/control/one
+plan_som/asom/perform_time_step=core/control/one
+
+core/control/error_avg=core/control/error_avg_reset_value
+core/control/stage=core/control/reset_stage
+core/control/restart_seq=core/control/one
+# restart will clear buffer, tonic, ctx and current and go to S5 or S6
+
+###################
+# general stuff to do always
+BL_linear_transformation_connector
+
+#core/control/plan_top_down_on_seq=planning/control/goal_driven>0 ? cblockParams/plan_top_down_on_seq_gain_goal_driven : cblockParams/plan_top_down_on_seq_gain_non_goal_driven
+core/control/plan_top_down_on_seq=planning/control/goal_driven>0 ? cblockParams/plan_top_down_on_seq_gain_goal_driven : -1.*plan_som/asom/activation_entropy+1.
+
+# combine goal alphas
+core/control/aux_result_alphas_combined=planning/goal/alpha_goal_state_bulk*planning/goal/alpha_goal_state_components
+
+# handle plan timeout
+planning/plan_timeout_LIF/input_voltages[0]=planning/control/goal_driven
+planning/control/goal_driven_leading_edge=planning/control/goal_driven>planning/control/goal_driven_prev ? 1 : 0
+planning/control/goal_driven_prev=planning/control/goal_driven
+# reset seq if the current goal timed out (because it only happens in goal-driven, it will continue in S6 to select a new goal) 
+core/control/stage=cblockInputs/goal_plan_inspection>0 ? core/control/goal_inspection_stage : core/control/stage
+core/control/restart_seq=planning/plan_timeout_LIF/voltage*planning/control/goal_driven>0.9 ? 1 : core/control/restart_seq+planning/control/goal_driven_leading_edge
+core/control/restart_seq=cblockInputs/goal_plan_inspection>0 ? 0 : core/control/restart_seq
+core/control/stage=cblockInputs/refresh_goal_plan>0 ? core/control/goal_inspection_stage : core/control/stage
+core/control/stage=core/control/restart_seq>0 ? core/control/reset_stage : core/control/stage
+
+
+###########
+# IO SOMs inspection
+BL_linear_transformation_connector
+control_cycle/perform_calculate=IO/TD_inspection/control/inspect
+
+# at the moment, we only allow bitmap indiv SOm inspection
+#IO/xy_output_som/top_down_activation=IO/TD_inspection/control/result
+#IO/xy_output_som/perform_time_step=IO/indiv_type/xy
+IO/bitmap_output_som/top_down_activation=IO/TD_inspection/control/result
+IO/bitmap_output_som/perform_time_step=IO/indiv_type/bitmap
+
+
+##########
+# STATE MACHINE
+# depending on the input event type (IO/input/ready_nextElem,ready_resetSeq,ready_finalizeSeq):
+#
+# S0 -> init_next_elem -> S1 -> (if surprise, S2 -> S3 ->) S8 -> S9 -> S0
+#   \
+#     -> restart_seq -> (if not goal-driven)S5 -> S0
+#                   \
+#                    -> (if goal-driven)S6 -> S7 -> S8 -> S9 -> S0
+#   \
+#     -> init_finalize -> (if non-empty buf, [: training_step :] -> S4) -> restart_seq -> (if not goal-driven)S5 -> S0
+#                   																 \
+#																	                  -> (if goal-driven)S6 -> S7 -> S8 -> S9 -> S0
+
+
+############
+# stage 9: [prediction normalized]: move back to stage 0
+
+# this one is just conversion from unsigned to real
+BL_identity_connector
+control_cycle/perform_calculate=core/control/stage[9]
+# used internally in the next cycle to evaluate winner match based surprise
+core/control/prediction_winner=core/prediction_wta/winner_index
+
+# and now proper stage 9
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[9]
+
+core/normalize_prediction/perform_time_step=0
+planning/dist_from_goal/perform_time_step=0
+core/prediction_wta/perform_time_step=0
+
+core/prediction_certainty/predicted_distribution=core/normalize_prediction/activation_map
+core/prediction_certainty/entropy=core/normalize_prediction/activation_entropy
+core/prediction_certainty/certain_enough=cblockParams/entropy_thr>core/prediction_certainty/entropy ? 1 : 0
+core/prediction_certainty/certain_enough=core/control/after_first_cycle>0 ? core/prediction_certainty/certain_enough : 0
+
+# outputs can be set from all soms, but external user will know whether to read xy or bitmap
+cblockOutputs/predicted_x=IO/xy_output_som/output_values[0]
+cblockOutputs/predicted_y=IO/xy_output_som/output_values[1]
+# type none DEPRECATED. cblockOutputs/predicted_bitmap=IO/indiv_type/none>0? seq_som/outputs/crisp_next : IO/bitmap_output_som/output_values
+cblockOutputs/predicted_bitmap=IO/bitmap_output_som/output_values
+IO/xy_output_som/perform_time_step=0
+IO/bitmap_output_som/perform_time_step=0
+
+cblockOutputs/ready=1
+cblockOutputs/plan_good_enough=cblockParams/plan_goodness_thr*planning/control/goal_driven>plan_som/asom/winner_activity_raw ? 0 : 1
+
+cblockOutputs/goal_reached_degree=planning/dist_from_goal/winner_activity_raw*planning/control/goal_driven
+planning/control/goal_reached=planning/dist_from_goal/winner_activity_raw>cblockParams/goal_reached_thr ? planning/control/goal_driven : 0
+cblockOutputs/goal_reached=planning/control/goal_reached
+cblockOutputs/eos_predicted=seq_som/outputs/eos>0.8 ? 1 : 0
+cblockOutputs/predicted_bitmap=cblockOutputs/eos_predicted>0 ? core/control/zeros_bitmap : cblockOutputs/predicted_bitmap
+cblockOutputs/good_enough=core/prediction_certainty/certain_enough+cblockOutputs/goal_reached+cblockOutputs/eos_predicted>0 ? 1 : 0
+cblockOutputs/surprise=core/control/surprise
+cblockOutputs/contains_prediction=1
+# inferred effect and reward are valid for all pathways (init goal, next_elem and surprise) that contain prediction
+cblockOutputs/inferred_plan_effect=plan_som/outputs/result
+cblockOutputs/inferred_plan_reward=plan_som/outputs/reward
+
+# go back to S0
+core/control/stage[9]=0
+core/control/stage[0]=1
+
+###########
+# stage 8: next elem branch - [prediction finished] - 1 more step needed while the predicted soft next propagates via next/asom to yield normed activation map that is used in stage 0 as prob. distribution to evaluate predictions. At the same time, the prediction is dispatched via IO indiv SOMs
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[8]
+
+seq_som/asom/perform_time_step=0
+planning/xy_to_loc_som/perform_time_step=0
+planning/plan_wta/perform_time_step=0
+
+# TD activation can be set to all indiv soms, but perform_time_step will be turned on only for one of them
+# IO SOM's have soft_output=0, so only the winner will be chosen
+IO/xy_output_som/top_down_activation=core/control/kick_start*core/tonic_wta/output_values+seq_som/outputs/next
+IO/bitmap_output_som/top_down_activation=IO/xy_output_som/top_down_activation
+IO/xy_output_som/perform_time_step=IO/indiv_type/xy
+IO/bitmap_output_som/perform_time_step=IO/indiv_type/bitmap
+core/normalize_prediction/top_down_activation=IO/xy_output_som/top_down_activation+cblockParams/smoothing
+core/normalize_prediction/perform_time_step=1
+core/control/kick_start=0
+core/prediction_wta/input_values=seq_som/outputs/next
+core/prediction_wta/perform_time_step=1
+
+# chunk_init_state==cblockInputs/state at this moment, so delta_achieved=0. This has to be compared to delta_desired (dif bw goal state and current state set above) to see if the goal is not trivially satisfied
+planning/control/delta_achieved=cblockInputs/state-planning/control/chunk_init_state
+planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : cblockInputs/state
+planning/dist_from_goal/input_values[0:99]=planning/control/aux_result
+planning/dist_from_goal/input_values[100]=cblockInputs/reward
+planning/dist_from_goal/activation_sensitivity = planning/goal_buffered/alpha_goal_state_bulk>0 ? plan_som/asomConsts/qmlSensitivityResult : plan_som/asomConsts/qmlSensitivityJustReward
+planning/dist_from_goal/perform_time_step=planning/control/goal_driven
+
+
+# go to S9
+core/control/stage[8]=0
+core/control/stage[9]=1
+
+###########
+# stage 7: prepare seq-SOM inputs for prediction from plan_som-retrieved goal-based tonic and go to S8
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[7]
+
+plan_som/asom/perform_time_step=0
+plan_som/asom/activation_mask=plan_som/asomConsts/default_mask
+ 
+# set inputs for seq_SOM
+seq_som/inputs/tonic=plan_som/outputs/plan
+seq_som/inputs/context=core/control/context
+seq_som/inputs/current=core/control/current
+
+# alphas for next and eos are zero. Others can be different depending on whether goal_driven
+seq_som/alpha_gains/gains_vector=core/control/surprise_since_last_eos*cblockParams/surprise_alphas_till_eos_gd>0 ? seq_som/alpha_gains/surprise_prediction_gains : seq_som/alpha_gains/prediction_gains_goal_driven
+
+seq_som/asom/perform_time_step=1
+
+# for kick start in S8
+core/tonic_wta/input_values=seq_som/inputs/tonic
+core/control/kick_start=cblockParams/kick_start_gain
+
+# the results of below will be used for plan IOR next time the system goes into S6  
+planning/xy_to_loc_som/input_values[0]=plan_som/asom/output_x
+planning/xy_to_loc_som/input_values[1]=plan_som/asom/output_y
+planning/plan_wta/input_values=plan_som/asom/activation_map
+planning/xy_to_loc_som/perform_time_step=planning/control/goal_driven
+planning/plan_wta/perform_time_step=planning/control/goal_driven
+
+# go to S8 to predict next+eos 
+core/control/stage[7]=0
+core/control/stage[8]=1
+
+############
+# stage 6: new goal selection in goal-driven - read goal into goal buffer, set plan_asom inputs (and mask for ior of previous goal)
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[6]
+
+planning/plan_timeout_LIF/trigger=0
+seq_som/asomConsts/plasticity=0
+plan_som/asomConsts/plasticity=0
+seq_som/asom/perform_time_step=0
+plan_som/asom/perform_time_step=1
+
+# read goal into goal buffer
+# DELTA
+# init state = current state - now the plan execution begins (in goal-driven mode)
+planning/control/chunk_init_state=cblockInputs/state
+#  desired delta = goal state - init state
+planning/control/delta_desired=planning/goal/state-planning/control/chunk_init_state
+planning/goal_buffered/state=cblockParams/use_delta_based_plans>0 ? planning/control/delta_desired : planning/goal/state
+planning/goal_buffered/reward=planning/goal/reward
+planning/goal_buffered/alpha_goal_state_components_combined=core/control/aux_result_alphas_combined
+planning/goal_buffered/alpha_goal_state_bulk=planning/goal/alpha_goal_state_bulk
+planning/goal_buffered/alpha_reward=planning/goal/alpha_reward
+
+planning/dist_from_goal/associative_self_organizing_map[0][0][0][0:99]=planning/goal_buffered/state
+planning/dist_from_goal/associative_self_organizing_map[0][0][0][100]=planning/goal_buffered/reward
+planning/dist_from_goal/associative_self_organizing_map[0][0][1][0:99]=planning/goal_buffered/state
+planning/dist_from_goal/associative_self_organizing_map[0][0][1][100]=planning/goal_buffered/reward
+planning/dist_from_goal/alphas[0:99]=core/control/aux_result_alphas_combined
+planning/dist_from_goal/alphas[100]=planning/goal/alpha_reward
+
+# inhibit previous winner and its surrounding
+planning/control/ior=planning/control/ior+planning/control/ior_surrounding*planning/xy_to_loc_som/activation_map+planning/plan_wta/output_values
+planning/control/ior=planning/control/ior>plan_som/asomConsts/som_size_ones ? plan_som/asomConsts/som_size_ones : planning/control/ior
+planning/control/ior=planning/control/ior_decay*planning/control/ior
+
+# no ior in plan inspection mode
+plan_som/asom/activation_mask=cblockInputs/goal_plan_inspection>0 ? plan_som/asomConsts/default_mask : plan_som/asomConsts/default_mask-planning/control/ior
+plan_som/asom/activation_mask=plan_som/asomConsts/som_size_zeros>plan_som/asom/activation_mask ? plan_som/asomConsts/som_size_zeros : plan_som/asom/activation_mask
+
+#plan_som/asom/activation_mask=plan_som/asom/training_record>cblockParams/plan_tr_rec_thr ? plan_som/asom/activation_mask : core/control/plan_zeros
+
+plan_som/inputs/result=planning/goal_buffered/state
+plan_som/inputs/reward=planning/goal_buffered/reward
+
+planning/random_generator/trigger=1
+
+# go to S7
+core/control/stage[6]=0
+core/control/stage[7]=1
+
+############
+# stage 5: cleanup after training, go back to S0
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[5]
+
+planning/plan_timeout_LIF/trigger=0
+plan_som/asom/perform_time_step=0
+plan_som/asomConsts/plasticity=0
+plan_som/asom/activation_mask=plan_som/asomConsts/default_mask
+seq_som/asom/perform_time_step=0
+seq_som/asomConsts/plasticity=0
+seq_som/asom/activation_mask=seq_som/asomConsts/default_mask
+
+cblockOutputs/ready=1
+# cblockOutputs/good_enough=0 so that playback is not triggered (because no prediction)
+cblockOutputs/good_enough=0
+cblockOutputs/contains_prediction=0
+cblockOutputs/eos_predicted=0
+core/control/stage[0]=1
+core/control/stage[5]=0
+
+############
+# stage 4: training on buffer contents finished, add one more step to train to predict eos
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[4]
+
+seq_som/inputs/context=core/control/context
+seq_som/inputs/current=core/control/current
+seq_som/inputs/next=core/control/zeros
+seq_som/inputs/eos=core/control/one
+
+# also train plan_SOM
+plan_som/asom/perform_time_step=1
+plan_som/asomConsts/plasticity=1
+# mask is always all ones for training
+plan_som/asom/activation_mask=plan_som/asomConsts/som_size_ones
+
+# plan_SOM inputs were set at init_finalize
+
+# do restart_seq (reset the buffer, tonic, context and current), this will set state to S5 or S6 depending on goal-driven
+core/control/restart_seq=1
+core/control/stage[4]=0
+
+###########
+# stage 3: plan_som computed the plan, now set it back on the seq_som tonic input. Also connect the predicted state and reward to cblockOutputs
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[3]
+
+plan_som/asom/perform_time_step=0
+seq_som/asom/perform_time_step=1
+ 
+# set inputs for seq_SOM
+seq_som/inputs/tonic=core/control/plan_top_down_on_seq*plan_som/outputs/plan+core/control/tonic_input-core/control/plan_top_down_on_seq*core/control/tonic_input
+seq_som/inputs/context=core/control/context
+seq_som/inputs/current=core/control/current
+
+# alphas for next and eos are zero. Others can be different depending on whether goal_driven
+core/control/surprise_alphas_till_eos=planning/control/goal_driven>0 ? cblockParams/surprise_alphas_till_eos_gd : cblockParams/surprise_alphas_till_eos_ngd
+seq_som/alpha_gains/gains_vector=planning/control/goal_driven>0 ? seq_som/alpha_gains/prediction_gains_goal_driven : seq_som/alpha_gains/prediction_gains_non_goal_driven
+seq_som/alpha_gains/gains_vector=core/control/surprise_since_last_eos*core/control/surprise_alphas_till_eos>0 ? seq_som/alpha_gains/surprise_prediction_gains : seq_som/alpha_gains/gains_vector
+
+# for kick start in S8, if any
+core/tonic_wta/input_values=seq_som/inputs/tonic
+
+# go to S8
+core/control/stage[3]=0
+core/control/stage[8]=1
+
+###########
+# stage 2: seq_som prediction finished, run the predicted (soft) tonic through plan_som to obtain the (soft) distribution of likely plans
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[2]
+
+seq_som/asom/perform_time_step=0
+plan_som/asom/perform_time_step=1
+plan_som/inputs/plan=seq_som/outputs/tonic
+# (alphas are set in Epilog to 0 for everything but plan, and use_soft_output to 0, because surprise)
+
+# go to S3
+core/control/stage[2]=0
+core/control/stage[3]=1
+
+
+###########
+# stage 1: next elem branch - prepare seq-SOM inputs for prediction and go to S8
+
+# this subconnector is just for unsigned ot real conversion
+BL_identity_connector
+control_cycle/perform_calculate=core/control/stage[1]
+core/control/actual_winner=core/actual_next_wta/winner_index
+
+# and now proper stage 1
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[1]
+
+#deb_control_cycle/status[3]=deb_control_cycle/status[3]+1
+
+plan_som/asom/perform_time_step=0
+
+# evaluate, whether the actual element was a surprise
+core/control/prediction_error=core/prediction_error/functions[0].output_value
+# if there was no prediction, there should be no surprise
+core/control/surprise=core/control/prediction_error>cblockParams/surprise_avg_mult*core/control/error_avg ? cblockOutputs/contains_prediction : 0
+
+core/actual_next_wta/perform_time_step=0
+
+core/control/winner_mismatch=0
+core/control/winner_mismatch=core/control/actual_winner>core/control/prediction_winner ? 1 : core/control/winner_mismatch
+core/control/winner_mismatch=core/control/prediction_winner>core/control/actual_winner ? 1 : core/control/winner_mismatch
+core/control/surprise=cblockParams/winner_match_surprise>0 ? core/control/winner_mismatch : core/control/surprise
+
+core/control/surprise=cblockOutputs/eos_predicted>0 ? cblockOutputs/contains_prediction : core/control/surprise
+core/control/surprise_since_last_eos=core/control/surprise>0 ? 1 : core/control/surprise_since_last_eos
+
+# update error moving avg, but first truncate prediction_error so that avg doesn't go crazy
+core/control/prediction_error=core/control/prediction_error>cblockParams/surp_trunc_value ? cblockParams/surp_trunc_value : core/control/prediction_error
+core/control/error_avg=planning/control/goal_driven>0 ? core/control/error_avg : cblockParams/prev_avg_err_mix*core/control/error_avg+core/control/prediction_error-cblockParams/prev_avg_err_mix*core/control/prediction_error
+core/control/after_first_cycle=1
+
+# set inputs for seq_SOM
+# mix the actual tonic with soft-output plan retrieved from plan_SOM 
+seq_som/inputs/tonic=core/control/plan_top_down_on_seq*plan_som/outputs/plan+core/control/tonic_input-core/control/plan_top_down_on_seq*core/control/tonic_input
+seq_som/inputs/context=core/control/context
+seq_som/inputs/current=core/control/current
+# alphas for next and eos are zero. Others can be different depending on whether goal_driven
+
+core/control/surprise_alphas_till_eos=planning/control/goal_driven>0 ? cblockParams/surprise_alphas_till_eos_gd : cblockParams/surprise_alphas_till_eos_ngd
+seq_som/alpha_gains/gains_vector=planning/control/goal_driven>0 ? seq_som/alpha_gains/prediction_gains_goal_driven : seq_som/alpha_gains/prediction_gains_non_goal_driven
+# If surprise or surp till eos, set tonic alpha to 0 or some small alpha_tonic_surprise, even in goal-driven
+seq_som/alpha_gains/gains_vector=core/control/surprise+core/control/surprise_since_last_eos*core/control/surprise_alphas_till_eos>0 ? seq_som/alpha_gains/surprise_prediction_gains : seq_som/alpha_gains/gains_vector 
+
+seq_som/asom/perform_time_step=1
+
+# if surprise, go to S2 to predict tonic, else to S8 to predict next+eos 
+core/control/stage[1]=0
+core/control/stage[2]=core/control/surprise
+core/control/stage[8]=core/control/surprise>0 ? 0 : 1
+
+###########
+# stage 0: doing top-down prediction, waiting for external input signal, then trigger initialization according to input type
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/stage[0]
+
+plan_som/asom/perform_time_step=cblockParams/display_plan_som_real_time+plan_som/TD_inspection/control/inspect
+seq_som/asom/perform_time_step=cblockParams/display_seq_som_real_time+seq_som/TD_inspection/control/inspect
+
+core/control/init_next_elem=IO/input/ready_nextElem
+core/control/restart_seq=IO/input/ready_resetSeq
+core/control/init_finalize=IO/input/ready_finalizeSeq
+
+core/control/stage[0]=core/control/init_next_elem+core/control/restart_seq+core/control/init_finalize>0 ? 0 : 1
+# the stage to go to is set in each branch
+
+# init next elem branch - store the element in the buffer - this has to be in identity connector because of a variable index
+BL_identity_connector
+control_cycle/perform_calculate=core/control/init_next_elem
+
+core/control/next=IO/input/seq_element
+
+core/actual_next_wta/input_values=core/control/next
+core/actual_next_wta/perform_time_step=core/control/one
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][0:99]=core/control/current
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][100:199]=core/control/next
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][200:299]=core/control/context
+core/control/buffer_occupancy[cblockOutputs/buffered_seq_length]=core/control/one
+
+# incrementing buffered_seq_length is done below in linear_transformation connector
+ 
+############
+# init next elem branch - do the rest in lin transf. and move to next state
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/init_next_elem
+
+#deb_control_cycle/status[0]=deb_control_cycle/status[0]+1
+
+# increment the index to seq_buffer
+cblockOutputs/buffered_seq_length=cblockOutputs/buffered_seq_length+1
+# if cblockOutputs/buffered_seq_length>=seq_buffer/map_size, alert is raised on output (it is user's responsibility to call resetSeq or finalizeSeq)
+
+# update tonic
+core/control/tonic_input=core/control/tonic_input+core/control/input_weight*core/control/next
+core/control/input_weight=cblockParams/tonic_decay*core/control/input_weight
+# update context
+core/control/context=core/control/current-cblockParams/prev_context_mix*core/control/current+cblockParams/prev_context_mix*core/control/context
+# shift next input to current 
+core/control/current=core/control/next
+
+# query plan_som for a plan matching the fragment in tonic
+plan_som/inputs/plan=core/control/tonic_input
+# plan_som input_gates are all 1 by default, alpha_gains are manipulated below depending on whether in goal_driven mode
+# in goal-driven, the plan outputs stay the same as set in bw S6-S7
+plan_som/asom/perform_time_step=planning/control/goal_driven>0? 0 : 1
+
+# set inputs for prediction error
+# KL div prediction error (predicted_distribution and predicted_bitmap are from previous cycle)
+core/prediction_error/functions[0].input_1_values=core/control/next
+core/prediction_error/functions[0].input_2_values=core/prediction_certainty/predicted_distribution
+
+# cleanup
+core/control/init_next_elem=0
+cblockOutputs/ready=0
+IO/input/reset=1
+
+# go to S1
+core/control/stage[1]=1
+
+##########
+# init complete branch - initialize training cycle for seq_SOM 
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/init_finalize
+
+#deb_control_cycle/status[2]=deb_control_cycle/status[2]+1
+
+planning/control/delta_achieved=IO/input/state_buffered-planning/control/chunk_init_state
+planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : IO/input/state_buffered
+plan_som/inputs/plan=core/control/tonic_input
+plan_som/inputs/result=planning/control/aux_result
+plan_som/inputs/reward=IO/input/reward_buffered
+
+# retain control/tonic, context and current, as they contain completed sequence. When finished seq_SOM training on buffer, add extra training step on tonic, ctx, current -> eos
+core/control/training_index=0
+core/control/training_step=cblockOutputs/buffered_seq_length>core/control/training_index ? 1 : 0
+seq_som/asom/perform_time_step=core/control/training_step
+seq_som/asomConsts/plasticity=core/control/training_step
+seq_som/asom/activation_mask=seq_som/asomConsts/plasticity>0 ? seq_som/asomConsts/som_size_ones : seq_som/asom/activation_mask
+seq_som/inputs/tonic=core/control/tonic_input
+# seq_som tonic stays fixed to the complete plan for the whole training
+# set alphas for training
+seq_som/alpha_gains/gains_vector=core/control/training_step>0 ? seq_som/alpha_gains/training_gains : seq_som/alpha_gains/gains_vector
+
+# cleanup
+core/control/init_finalize=0
+cblockOutputs/ready=0
+IO/input/reset=1
+
+# S0 is turned off, now the system will be only in training_step until going to S4 to do the last step of training (->eos)
+core/control/restart_seq=-1*core/control/training_step+1
+# if there is no training at all, just restart_seq and continue from there
+
+##########
+# restart_seq branch - just reset the buffer, tonic, context and current
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/restart_seq
+
+#deb_control_cycle/status[1]=deb_control_cycle/status[1]+1
+
+planning/plan_timeout_LIF/trigger=1
+
+# reset buffer
+cblockOutputs/buffered_seq_length=0
+core/control/buffer_occupancy=core/control/buffer_capacity_zeros
+core/control/surprise_since_last_eos=0
+
+# reset tonic, context and current
+core/control/tonic_input=core/control/zeros
+core/control/current=core/control/zeros
+core/control/context=core/control/initial_ctx
+
+# record the state - the init state of the next chunk
+planning/control/chunk_init_state=IO/input/state_buffered
+core/control/input_weight=1
+# prediction of seq_SOM is not updated, because nothing changed
+
+core/control/kick_start=0
+core/control/surprise=0
+# cleanup
+core/control/restart_seq=0
+cblockOutputs/ready=0
+IO/input/reset=1
+
+core/control/stage[5]=planning/control/goal_driven>0 ? 0 : 1
+core/control/stage[6]=planning/control/goal_driven
+
+
+################
+# assignment of buffer contents to seq_SOM inputs, test whether there'll be another training_step
+BL_identity_connector
+control_cycle/perform_calculate=core/control/training_step
+
+seq_som/inputs/current=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][0:99]
+seq_som/inputs/next=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][100:199]
+seq_som/inputs/context=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][200:299]
+seq_som/inputs/eos=core/control/zero
+
+BL_linear_transformation_connector
+control_cycle/perform_calculate=core/control/training_step
+
+#deb_control_cycle/status[4]=deb_control_cycle/status[4]+1
+
+core/control/training_index=core/control/training_index+1
+# whether there'll be another training_step in the next pass through the connector
+core/control/training_step=cblockOutputs/buffered_seq_length>core/control/training_index ? 1 : 0
+core/control/stage[4]=-1*core/control/training_step+1
+
+# EPILOG
+###########
+
+######
+# do always - postprocessing
+
+# just for conversion
+BL_identity_connector
+core/control/max_seq_length=core/seq_buffer/map_size_x
+
+BL_linear_transformation_connector
+cblockOutputs/alert_max_buffered_seq_length_reached=core/control/max_seq_length>cblockOutputs/buffered_seq_length ? 0 : 1
+
+# update seq_som's inputs, if perform_time_step
+BL_linear_transformation_connector
+control_cycle/perform_calculate=seq_som/asom/perform_time_step
+
+# connect asom's inputs
+# asom/input_values[...:...]=inputs/...
+seq_som/asom/input_values[0:99]=seq_som/inputs/current
+seq_som/asom/input_values[100:199]=seq_som/inputs/next
+seq_som/asom/input_values[200:299]=seq_som/inputs/context
+seq_som/asom/input_values[300:399]=seq_som/inputs/tonic
+seq_som/asom/input_values[400]=seq_som/inputs/eos
+seq_som/asom/top_down_activation=seq_som/inputs/TD_activation_map
+
+# connect asom's alphas
+#seq_som/asom/alphas[...]=seq_som/input_gates/...*alpha_gains/...
+seq_som/asom/alphas[0]=seq_som/input_gates/current*seq_som/alpha_gains/gains_vector[0]
+seq_som/asom/alphas[1]=seq_som/input_gates/next*seq_som/alpha_gains/gains_vector[1]
+seq_som/asom/alphas[2]=seq_som/input_gates/context*seq_som/alpha_gains/gains_vector[2]
+seq_som/asom/alphas[3]=seq_som/input_gates/tonic*seq_som/alpha_gains/gains_vector[3]
+seq_som/asom/alphas[4]=seq_som/input_gates/eos*seq_som/alpha_gains/gains_vector[4]
+seq_som/asom/top_down_influence=seq_som/input_gates/TD_activation
+
+# Plasticity
+seq_som/asom/plastic=planning/control/goal_driven>0 ? seq_som/asomConsts/plasticity*cblockParams/seq_learn_goal_driven : seq_som/asomConsts/plasticity*cblockParams/seq_learn_non_goal_driven
+
+###########
+# update plan_som's inputs, if perform_time_step
+BL_linear_transformation_connector
+control_cycle/perform_calculate=plan_som/asom/perform_time_step
+
+# add noise if goal-driven, but inspect mode has precedence
+plan_som/input_gates/TD_activation=planning/control/goal_driven>0 ? planning/control/noise_level : 0
+plan_som/input_gates/TD_activation=plan_som/TD_inspection/control/inspect>0 ? 1 : plan_som/input_gates/TD_activation
+
+plan_som/inputs/TD_activation_map=planning/control/goal_driven>0 ? planning/random_generator/values : plan_som/inputs/TD_activation_map
+plan_som/inputs/TD_activation_map=plan_som/TD_inspection/control/inspect>0 ? plan_som/TD_inspection/control/result : plan_som/inputs/TD_activation_map
+
+# connect asom's inputs
+# asom/input_values[...:...]=inputs/...
+plan_som/asom/input_values[0:99]=plan_som/inputs/plan
+plan_som/asom/input_values[100:199]=plan_som/inputs/result
+plan_som/asom/input_values[200]=plan_som/inputs/reward
+plan_som/asom/top_down_activation=plan_som/inputs/TD_activation_map
+
+core/control/plan_som_from_plan_only=plan_som/asomConsts/plasticity+planning/control/not_goal_driven+core/control/surprise
+# connect asom's alphas
+#plan_som/asom/alphas[...]=plan_som/input_gates/...*plan_som/alpha_gains/...
+plan_som/asom/alphas[0]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/plan*plan_som/alpha_gains/plan : plan_som/input_gates/plan*plan_som/alpha_gains/plan_goal_driven
+plan_som/asom/alphas[1:100]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/result*plan_som/alpha_gains/result : plan_som/input_gates/result*planning/goal_buffered/alpha_goal_state_components_combined
+#allow non-zero result alpha for training
+plan_som/asom/alphas[1:100]=plan_som/asomConsts/plasticity>0 ? plan_som/input_gates/result*plan_som/alpha_gains/result_train : plan_som/asom/alphas[1:100]
+plan_som/asom/alphas[101]=core/control/plan_som_from_plan_only>0 ? plan_som/input_gates/reward*plan_som/alpha_gains/reward : plan_som/input_gates/reward*planning/goal_buffered/alpha_reward
+
+# other som params
+plan_som/asom/top_down_influence=plan_som/asomConsts/plasticity>0 ? 0 : plan_som/input_gates/TD_activation
+plan_som/asom/use_soft_output=planning/control/goal_driven-core/control/surprise>0 ? 0 : plan_som/asomConsts/qmlSoftOutput
+plan_som/asom/use_soft_output=cblockInputs/goal_plan_inspection>0 ? plan_som/asomConsts/qmlSoftOutput : plan_som/asom/use_soft_output
+
+plan_som/asom/normalize_activation=plan_som/asom/use_soft_output
+plan_som/asom/activation_sensitivity = planning/goal_buffered/alpha_goal_state_bulk>0 ? plan_som/asomConsts/qmlSensitivityResult : plan_som/asomConsts/qmlSensitivityJustReward
+plan_som/asom/activation_sensitivity = core/control/plan_som_from_plan_only>0 ? plan_som/asomConsts/qmlSensitivityJustPlan : plan_som/asom/activation_sensitivity
+
+# Plasticity
+plan_som/asom/plastic=planning/control/goal_driven>0 ? plan_som/asomConsts/plasticity*cblockParams/plan_learn_goal_driven : plan_som/asomConsts/plasticity*cblockParams/plan_learn_non_goal_driven

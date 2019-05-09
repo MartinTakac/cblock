@@ -1,0 +1,9 @@
+BL_constant_module
+number_of_values=3
+
+value_names[0]=status
+values[0]=real 10 0.
+value_names[1]=zeros
+values[1]=real 10 0.
+value_names[2]=reset_all_debugs
+values[2]=real 1 0.

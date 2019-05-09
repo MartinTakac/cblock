@@ -1,0 +1,13 @@
+BL_container_connector
+
+BL_identity_connector
+control/manual_result=control/zero_result
+cblock/planning/goal/state=control/zero_result
+
+BL_identity_connector
+manual/perform_calculate=control/manual_goal_index
+cblock/planning/goal/state[control/manual_goal_index]=control/one
+
+BL_identity_connector
+manual/perform_calculate=control/manual_result_index
+control/manual_result[control/manual_result_index]=control/one

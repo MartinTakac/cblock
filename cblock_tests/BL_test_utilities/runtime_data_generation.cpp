@@ -34,6 +34,10 @@ PyObject* RuntimeDataGenerator::pGeneratorModule;
 Function definitions
 --------------------
 */
+
+/*
+Getter and setter for the runtime_generator module pointer
+*/
 void RuntimeDataGenerator::setGeneratorModule(PyObject *_pGeneratorModule)
 {	
 	Py_XDECREF(getGeneratorModule());
@@ -46,6 +50,7 @@ PyObject* RuntimeDataGenerator::getGeneratorModule()
 	return RuntimeDataGenerator::pGeneratorModule;
 }
 
+/* Deletes everything in the runtime data directory (or really any directory that you give it) */
 void RuntimeDataGenerator::delete_runtime_data(const bfs::path& path)
 {
 	change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
@@ -64,10 +69,16 @@ void RuntimeDataGenerator::delete_runtime_data(const bfs::path& path)
 	}
 }
 
+/* Generates the runtime data based on the given config file and output path.
+ * This function creates a RuntimeGenerator object from the runtime_generator Python module,
+ * and calls its generate_runtime() function with the given variables.
+ * This is essentially a C++ version of the 'generate_script.py' script.
+ */
 void RuntimeDataGenerator::generate_runtime_data(bfs::path config_file_path, bfs::path output_path)
 {
 	// Make sure we aren't in the runtime data directory. Otherwise we won't be able to delete or generate anything in the Python script
 	change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
+
 	bfs::path current_dir(CMAKE_CURRENT_SOURCE_DIR);
 	auto template_path = current_dir / ".." / "cblock_template";
 	// Convert to canonical/absolute/fully-qualified paths and make directory separators agree
@@ -91,7 +102,7 @@ void RuntimeDataGenerator::generate_runtime_data(bfs::path config_file_path, bfs
 	}
 	Py_DECREF(pPathlibModule);
 
-	// Create the Path objects
+	/* Create the Path objects */
 	PyObject *pTemplatePath = PyObject_CallObject(pPathClass, Py_BuildValue("(s)", template_path.string().c_str()));
 	if (pTemplatePath == nullptr)
 	{
@@ -112,7 +123,7 @@ void RuntimeDataGenerator::generate_runtime_data(bfs::path config_file_path, bfs
 	}
 	Py_DECREF(pPathClass);
 
-	// Create the RuntimeGenerator object
+	// Create the RuntimeGenerator object 
 	PyObject *pRuntimeGeneratorClass = PyObject_GetAttrString(RuntimeDataGenerator::getGeneratorModule(), "RuntimeGenerator");
 	if (pRuntimeGeneratorClass == nullptr || !PyCallable_Check(pRuntimeGeneratorClass))
 	{

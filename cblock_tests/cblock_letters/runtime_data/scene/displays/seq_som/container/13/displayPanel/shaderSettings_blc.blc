@@ -1,0 +1,4 @@
+BL_identity_connector
+
+# Opacity
+shader_data[2]=shaderSettings/opacity

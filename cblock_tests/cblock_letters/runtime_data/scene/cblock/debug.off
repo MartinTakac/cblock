@@ -1,0 +1,8 @@
+BL_identity_connector
+
+IO/input_control/cInput_rdrs[0]=cblockInputs/ready
+IO/input_control/cInput_rdrs[1]=cblockInputs/reset
+IO/input_control/cOutput_rdrs[0]=cblockOutputs/ready
+IO/input_control/cOutput_rdrs[1]=cblockOutputs/reset
+IO/input_control/IO_Input_rdrs[0]=IO/input/ready
+IO/input_control/IO_Input_rdrs[1]=IO/input/reset

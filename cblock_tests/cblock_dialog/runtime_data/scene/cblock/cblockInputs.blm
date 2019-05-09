@@ -1,0 +1,53 @@
+BL_constant_module
+number_of_values=13
+
+# sync/control signals:
+# a new-input signal (set from outside cblock)
+value_names[0]=ready
+values[0]=real 1 0.
+# reset signal - set from cblock when it reads the new input to turn ready off. Whoever sets the ready flag, should also listen for reset and set ready to 0 when reset>0.
+value_names[1]=reset
+values[1]=real 1 0.
+
+# a control signal saying the new element arrived (to be read from input_bitmap or input_x,y and stored in the buffer)
+value_names[2]=inputType_nextElem
+values[2]=real 1 0.
+
+# a control signal saying that the buffer content should be discarded (without training seq-SOM)
+value_names[3]=inputType_resetSeq
+values[3]=real 1 0.
+
+# a control signal saying the sequence in the buffer was successful and should be stored in seq-SOM (and its plan, effect and reward in plan-SOM)
+value_names[4]=inputType_finalizeSeq
+values[4]=real 1 0.
+
+# (all inputs set from outside cblock)
+# in case the sequential input is an array, set it to input_bitmap
+value_names[5]=input_bitmap
+values[5]=real 100 0.
+# in case the sequential input is x,y position, set it to input_x, input_y
+value_names[6]=input_x
+values[6]=real 1 0.
+value_names[7]=input_y
+values[7]=real 1 0.
+
+# current state of the system
+value_names[8]=state
+values[8]=real 100 0.
+# current reward (read when inputType_finalizeSeq>0)
+value_names[9]=reward
+values[9]=real 1 0.
+
+##########
+# mode related:
+# the system is in goal_driven mode
+value_names[10]=goal_driven
+values[10]=real 1 0.
+
+# a special mode for manual inspection of plans (in plan-SOM) driven by goals
+value_names[11]=goal_plan_inspection
+values[11]=real 1 0.
+
+# to be able to update goal to inferred after surprise
+value_names[12]=refresh_goal_plan
+values[12]=real 1 0.

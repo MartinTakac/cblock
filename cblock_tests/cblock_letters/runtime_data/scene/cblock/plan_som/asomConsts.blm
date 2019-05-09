@@ -1,0 +1,62 @@
+BL_constant_module
+
+number_of_values=23
+
+value_names[0]=plasticity
+values[0]=real 1 0.
+
+value_names[1]=reset
+values[1]=real 1 0.
+
+# when only plan alpha is non-zero, like in recognition or training
+value_names[2]=qmlSensitivityJustPlan
+values[2]=real 1 15.
+# when non-zero alphas include resulting state
+value_names[3]=qmlSensitivityResult
+values[3]=real 1 2.5
+# when only reward alpha is non-zero, like in prediction from reward only
+value_names[4]=qmlSensitivityJustReward
+values[4]=real 1 25
+value_names[5]=qmlSoftOutput
+values[5]=real 1 1.
+value_names[6]=qmlUseTrPrior
+values[6]=real 1 1.
+value_names[7]=qmlLfc
+values[7]=real 1 900.
+value_names[8]=qmlSigma
+values[8]=real 1 0.6
+value_names[9]=qmlCompareNoise
+values[9]=real 1 0.4
+value_names[10]=qmlBestMatchThreshold
+values[10]=real 1 0.5
+value_names[11]=qmlBestMatchLfcMult
+values[11]=real 1 0.
+value_names[12]=qmlTrainingRecordDecay
+values[12]=real 1 1.
+
+value_names[13]=qmlSaveWeights
+values[13]=real 1 0.
+value_names[14]=saveWeightsPrev
+values[14]=real 1 0.
+value_names[15]=saveWeightsLead
+values[15]=real 1 0.
+value_names[16]=qmlLoadWeights
+values[16]=real 1 0.
+value_names[17]=loadWeightsPrev
+values[17]=real 1 0.
+value_names[18]=loadWeightsLead
+values[18]=real 1 0.
+
+# constant array for multiplying lfc
+value_names[19]=ones
+values[19]=real 102 1.
+
+value_names[20]=default_mask
+values[20]=real 900 1.
+
+value_names[21]=som_size_ones
+values[21]=real 900 1.
+
+value_names[22]=som_size_zeros
+values[22]=real 900 0.
+

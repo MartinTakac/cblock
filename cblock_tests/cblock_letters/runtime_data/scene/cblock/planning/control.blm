@@ -1,0 +1,54 @@
+BL_constant_module
+number_of_values=16
+
+# parameters
+value_names[0]=internal_goal_reached_reward
+values[0]=real 1 0.
+
+value_names[1]=ior_decay
+values[1]=real 1 0.4
+
+value_names[2]=noise_level
+values[2]=real 1 0.
+
+value_names[3]=plan_timeout_speed
+values[3]=real 1 1.2
+
+value_names[4]=master_LIF_speed
+values[4]=real 1 1.
+
+value_names[5]=ior_surrounding
+values[5]=real 1 0.
+
+# state variables
+value_names[6]=goal_driven
+values[6]=real 1 0.
+
+value_names[7]=goal_driven_prev
+values[7]=real 1 0.
+
+value_names[8]=goal_driven_leading_edge
+values[8]=real 1 0.
+
+value_names[9]=not_goal_driven
+values[9]=real 1 1.
+
+value_names[10]=goal_reached
+values[10]=real 1 0.
+
+# auxiliary
+value_names[11]=ior
+values[11]=real 900 0.
+
+# DELTA related
+value_names[12]=delta_achieved
+values[12]=real 100 0.
+
+value_names[13]=chunk_init_state
+values[13]=real 100 0.
+
+value_names[14]=aux_result
+values[14]=real 100 0.
+
+value_names[15]=delta_desired
+values[15]=real 100 0.
