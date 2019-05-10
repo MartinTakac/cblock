@@ -40,6 +40,7 @@ int main(int argc, char* argv[])
 	// TODO: Update when finalized
 	string env_path = "C:\\Users\\chris.gorman\\AppData\\Local\\Continuum\\anaconda3\\envs\\cblock_tests";
 	string pyexe_path = env_path + "\\python.exe";
+
 	// This tells the python runtime where the executable that is using it is
 	// e.g. this would be /usr/bin/python if the python binary was calling it
 	// PyDecodelocal converts a char string into a w_char string

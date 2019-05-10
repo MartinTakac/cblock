@@ -1,6 +1,10 @@
 # Copyright 2017 Soul Machines Ltd. All Rights Reserved.
 # Root cmake file for the SM solution.
 
+# TODO:
+#   Make conda environment
+#   Install numpy (USE PIP OTHERWISE IT DOES MKL)
+
 cmake_minimum_required(VERSION 3.9)
 
 # Some things need to be set before the project statement to affect the generator.
@@ -85,6 +89,11 @@ else()
     import_tinyxml2()
     import_minizip()
 endif()
+
+# Create conda environment for tests
+include(create_conda_env.cmake)
+#message("CMake bin dir root: ${CMAKE_CURRENT_BINARY_DIR}")
+create_conda_env("cblock_tests_env" ${CMAKE_CURRENT_BINARY_DIR} "requirements.txt")
 
 # CG: We're building against trunk_deployment so the thread pooling isn't there
 # add_definitions(-DBEFORE_THREAD_POOLING)
