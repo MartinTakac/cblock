@@ -2,11 +2,11 @@ BL_associative_self_organizing_map_module
 map_size_x=#SEQ_SOM_DIM_X#
 map_size_y=#SEQ_SOM_DIM_Y#
 number_of_inputs=#SEQ_SOM_INPUT_SIZE#
-number_of_layers=5
-input_sizes=#INDIV_SOM_SIZE# #INDIV_SOM_SIZE# #INDIV_SOM_SIZE# #INDIV_SOM_SIZE# 1 
-# current, next, context, tonic, eos
+number_of_layers=6
+input_sizes=#INDIV_SOM_SIZE# #INDIV_SOM_SIZE# #INDIV_SOM_SIZE# #INDIV_SOM_SIZE# 1 1
+# current, next, context, tonic, eos, interval
 input_values=0.
-alphas=1 1 1 1 0
+alphas=1 1 1 1 0 0
 # NOTE! the actual values are read dynamically from alpha_gains
 learning_frequency_constants=1000.
 plastic=0.

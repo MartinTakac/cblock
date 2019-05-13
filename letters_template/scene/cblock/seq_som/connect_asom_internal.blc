@@ -7,6 +7,7 @@ asom/learning_frequency_constants[1] = asomConsts/qmlLfc
 asom/learning_frequency_constants[2] = asomConsts/qmlLfc
 asom/learning_frequency_constants[3] = asomConsts/qmlLfc
 asom/learning_frequency_constants[4] = asomConsts/qmlLfc
+asom/learning_frequency_constants[5] = asomConsts/qmlLfc
 
 asom/sigma = asomConsts/qmlSigma
 asom/compare_noise = asomConsts/qmlCompareNoise

@@ -38,14 +38,14 @@ input_blue[2]=0.
 input_minimums[2]=-0.04
 input_maximums[2]=1.01
 
-# Line colour: blue: wait_speed
+# Line colour: blue: buffered_out_interval
 input_red[3]=0.
 input_green[3]=0.
 input_blue[3]=1.
 input_minimums[3]=-0.02
-input_maximums[3]=5.05
+input_maximums[3]=1.05
 
-# Line colour: red: reserved
+# Line colour: red: interval_LIF
 input_red[4]=1.
 input_green[4]=0.
 input_blue[4]=0.

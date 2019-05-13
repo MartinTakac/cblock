@@ -90,7 +90,8 @@ seq_som/outputs/next=seq_som/output_gates/next*seq_som/asom/output_values[#SEQ_S
 seq_som/outputs/crisp_next=seq_som/output_gates/next*seq_som/asom/crisp_output_values[#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]
 seq_som/outputs/context=seq_som/output_gates/context*seq_som/asom/output_values[#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]
 seq_som/outputs/tonic=seq_som/output_gates/tonic*seq_som/asom/output_values[#SEQ_SOM_TONIC_FIRST_INDEX#:#SEQ_SOM_TONIC_LAST_INDEX#]
-seq_som/outputs/eos=seq_som/output_gates/eos*seq_som/asom/crisp_output_values[#SEQ_SOM_EOS_INDEX#]
+seq_som/outputs/eos=seq_som/output_gates/eos*seq_som/asom/output_values[#SEQ_SOM_EOS_INDEX#]
+seq_som/outputs/interval=seq_som/output_gates/interval*seq_som/asom/output_values[#SEQ_SOM_INTERVAL_INDEX#]
 
 seq_som/outputs/activation_map=seq_som/output_gates/activation*seq_som/asom/activation_map
 
@@ -214,6 +215,7 @@ planning/control/goal_reached=planning/dist_from_goal/winner_activity_raw>cblock
 cblockOutputs/goal_reached=planning/control/goal_reached
 cblockOutputs/eos_predicted=seq_som/outputs/eos>0.8 ? 1 : 0
 cblockOutputs/predicted_bitmap=cblockOutputs/eos_predicted>0 ? core/control/zeros_bitmap : cblockOutputs/predicted_bitmap
+cblockOutputs/interval=seq_som/outputs/interval
 cblockOutputs/good_enough=core/prediction_certainty/certain_enough+cblockOutputs/goal_reached+cblockOutputs/eos_predicted>0 ? 1 : 0
 cblockOutputs/surprise=core/control/surprise
 cblockOutputs/contains_prediction=1
@@ -297,6 +299,7 @@ core/control/stage[8]=1
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[6]
 
+core/interval_LIF/trigger=0
 planning/plan_timeout_LIF/trigger=0
 seq_som/asomConsts/plasticity=0
 plan_som/asomConsts/plasticity=0
@@ -347,6 +350,7 @@ core/control/stage[7]=1
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[5]
 
+core/interval_LIF/trigger=0
 planning/plan_timeout_LIF/trigger=0
 plan_som/asom/perform_time_step=0
 plan_som/asomConsts/plasticity=0
@@ -372,6 +376,8 @@ seq_som/inputs/context=core/control/context
 seq_som/inputs/current=core/control/current
 seq_som/inputs/next=core/control/zeros
 seq_som/inputs/eos=core/control/one
+# interval from last elem proper to eos
+seq_som/inputs/interval=core/control/interval
 
 # also train plan_SOM
 plan_som/asom/perform_time_step=1
@@ -438,6 +444,11 @@ BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[1]
 
 #deb_control_cycle/status[3]=deb_control_cycle/status[3]+1
+
+# trigger was set high in init_nextElem, set back low here
+core/interval_LIF/trigger=0
+#buffer is non-empty, so start time measurement
+core/interval_LIF/input_voltages[0]=1
 
 plan_som/asom/perform_time_step=0
 
@@ -567,11 +578,19 @@ control_cycle/perform_calculate=core/control/init_next_elem
 
 core/control/next=IO/input/seq_element
 
+# LIF_based time measured since last element
+core/control/interval=core/interval_LIF/voltage
+# reset LIF for new time measurement
+core/interval_LIF/trigger=core/control/one
+
 core/actual_next_wta/input_values=core/control/next
 core/actual_next_wta/perform_time_step=core/control/one
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][0:#SEQ_SOM_CURRENT_LAST_INDEX#]=core/control/current
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]=core/control/next
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]=core/control/context
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]=core/control/context
+core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][#BUFFER_INTERVAL_INDEX#]=core/control/interval
+
 core/control/buffer_occupancy[cblockOutputs/buffered_seq_length]=core/control/one
 
 # incrementing buffered_seq_length is done below in linear_transformation connector
@@ -621,6 +640,9 @@ control_cycle/perform_calculate=core/control/init_finalize
 
 #deb_control_cycle/status[2]=deb_control_cycle/status[2]+1
 
+# LIF_based time measured since last element till eos (will be used in the last training step in S4)
+core/control/interval=core/interval_LIF/voltage
+
 planning/control/delta_achieved=IO/input/state_buffered-planning/control/chunk_init_state
 planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : IO/input/state_buffered
 plan_som/inputs/plan=core/control/tonic_input
@@ -661,10 +683,15 @@ cblockOutputs/buffered_seq_length=0
 core/control/buffer_occupancy=core/control/buffer_capacity_zeros
 core/control/surprise_since_last_eos=0
 
+# as the buffer is empty and the first elem of the next plan hasn't arrived yet, do not measure time
+core/interval_LIF/input_voltages[0]=0
+core/interval_LIF/trigger=1
+ 
 # reset tonic, context and current
 core/control/tonic_input=core/control/zeros
 core/control/current=core/control/zeros
 core/control/context=core/control/initial_ctx
+core/control/interval=0
 
 # record the state - the init state of the next chunk
 planning/control/chunk_init_state=IO/input/state_buffered
@@ -691,6 +718,7 @@ seq_som/inputs/current=core/seq_buffer/associative_self_organizing_map[0][0][cor
 seq_som/inputs/next=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]
 seq_som/inputs/context=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]
 seq_som/inputs/eos=core/control/zero
+seq_som/inputs/interval=core/seq_buffer/associative_self_organizing_map[0][0][core/control/training_index][#BUFFER_INTERVAL_INDEX#]
 
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/training_step
@@ -726,6 +754,7 @@ seq_som/asom/input_values[#SEQ_SOM_NEXT_FIRST_INDEX#:#SEQ_SOM_NEXT_LAST_INDEX#]=
 seq_som/asom/input_values[#SEQ_SOM_CTX_FIRST_INDEX#:#SEQ_SOM_CTX_LAST_INDEX#]=seq_som/inputs/context
 seq_som/asom/input_values[#SEQ_SOM_TONIC_FIRST_INDEX#:#SEQ_SOM_TONIC_LAST_INDEX#]=seq_som/inputs/tonic
 seq_som/asom/input_values[#SEQ_SOM_EOS_INDEX#]=seq_som/inputs/eos
+seq_som/asom/input_values[#SEQ_SOM_INTERVAL_INDEX#]=seq_som/inputs/interval
 seq_som/asom/top_down_activation=seq_som/inputs/TD_activation_map
 
 # connect asom's alphas

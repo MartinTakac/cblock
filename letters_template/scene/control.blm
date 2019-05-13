@@ -1,11 +1,12 @@
 BL_constant_module
-number_of_values=21
+number_of_values=23
 
 # parameters
 value_names[0]=allow_playback
 values[0]=real 1 0.
-value_names[1]=playback_speed
-values[1]=real 1 20.
+# correction 1 = same playback speed as measured speed. 2 means twice as fast, 0.5 means half speed
+value_names[1]=playback_speed_correction
+values[1]=real 1 1.
 
 # constants
 value_names[2]=one
@@ -48,3 +49,8 @@ value_names[19]=inputType_resetSeq
 values[19]=real 1 0.
 value_names[20]=inputType_finalizeSeq
 values[20]=real 1 0.
+value_names[21]=buffered_out_interval
+values[21]=real 1 0.
+# computed internally
+value_names[22]=playback_speed
+values[22]=real 1 0.

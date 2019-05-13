@@ -189,12 +189,12 @@ ScrollView
 					
 			ListElement
 			{
-				name: "playback speed"
-				path: "control/playback_speed"
-				startValue: 100.0
+				name: "playback speed correction"
+				path: "control/playback_speed_correction"
+				startValue: 1.5
 				minValue: 0.0
-				maxValue: 200.0
-				stepSize: 0.01
+				maxValue: 3.0
+				stepSize: 0.001
 			}
 					
 			ListElement
@@ -225,6 +225,16 @@ ScrollView
 				minValue: 0.0
 				maxValue: 1.0
 				stepSize: 0.01
+			}
+					
+			ListElement
+			{
+				name: "interval speed"
+				path: "cblock/cblockParams/interval_LIF_speed"
+				startValue: 100.0
+				minValue: 0.0
+				maxValue: 200.0
+				stepSize: 0.001
 			}
 					
 		}

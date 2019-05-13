@@ -4,6 +4,6 @@ BL_identity_connector
 measures2_scrollDisplay/input_values[0]=playback_LIF/voltage
 #measures2_scrollDisplay/input_values[1]=reset_LIF/voltage
 #measures2_scrollDisplay/input_values[2]=wait_LIF/voltage
-#measures2_scrollDisplay/input_values[3]=drawing_params/wait_speed
-#measures2_scrollDisplay/input_values[4]=...
+measures2_scrollDisplay/input_values[3]=control/buffered_out_interval
+measures2_scrollDisplay/input_values[4]=cblock/core/interval_LIF/voltage
 
