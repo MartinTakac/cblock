@@ -23,6 +23,7 @@ slider,control/manual_result_index,result index,0,20,1
 slider,control/manual_reward,reward,0,1,0.01
 
 section,Parameters,200,300,80
+slider,control/playback_at_intervals,play at intervals,0,1,1
 slider,control/playback_speed_correction,playback speed correction,0,3,0.001
 slider,cblock/cblockParams/entropy_thr,playback entropy thr,0,1,0.01
 slider,cblock/cblockParams/smoothing,prediction smoothing,0,1,0.0000000000000001

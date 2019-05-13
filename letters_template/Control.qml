@@ -189,6 +189,16 @@ ScrollView
 					
 			ListElement
 			{
+				name: "play at intervals"
+				path: "control/playback_at_intervals"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "playback speed correction"
 				path: "control/playback_speed_correction"
 				startValue: 1.5

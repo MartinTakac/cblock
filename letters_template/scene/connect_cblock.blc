@@ -51,9 +51,8 @@ playback_LIF/input_frequency_constants[0]=playback_LIF/membrane_frequency_consta
 playback_LIF/trigger=0
 playback_LIF/input_voltages[0]=control/allow_playback*control/prediction>0 ? 1 : 0
 # the line below uses the measured interval: voltage reaching the interval causes baby_event 
-control/baby_event=control/buffered_out_interval>playback_LIF/voltage ? 0 : 1
-# but must be non-zero
-control/baby_event=playback_LIF/voltage>0 ? control/baby_event : 0
+control/playback_event_thr=control/playback_at_intervals>0 ? control/buffered_out_interval : 0.9 
+control/baby_event=playback_LIF/voltage>control/playback_event_thr ? 1 : 0
 
 #cblock/core/measures_scrollDisplay/input_values[4]=playback_LIF/voltage
 

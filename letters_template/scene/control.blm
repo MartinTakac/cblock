@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=23
+number_of_values=25
 
 # parameters
 value_names[0]=allow_playback
@@ -50,7 +50,11 @@ values[19]=real 1 0.
 value_names[20]=inputType_finalizeSeq
 values[20]=real 1 0.
 value_names[21]=buffered_out_interval
-values[21]=real 1 0.
+values[21]=real 1 0.1
 # computed internally
 value_names[22]=playback_speed
 values[22]=real 1 0.
+value_names[23]=playback_at_intervals
+values[23]=real 1 0.
+value_names[24]=playback_event_thr
+values[24]=real 1 0.
