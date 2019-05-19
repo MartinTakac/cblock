@@ -298,6 +298,6 @@ build_linux/
 
 build_windows_vs2017_*.bat
 
-cblock_dialog/runtime_data/**
+cblock_tests/cblock_dialog/runtime_data/**
 
-cblock_letters/runtime_data/**
+cblock_tests/cblock_letters/runtime_data/**
