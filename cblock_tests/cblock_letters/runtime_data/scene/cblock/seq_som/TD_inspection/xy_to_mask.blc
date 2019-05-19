@@ -1,7 +1,0 @@
-BL_linear_transformation_connector
-
-control/result=loc_mask/mask[0]
-
-loc_mask/location_x=control/manual_x
-loc_mask/location_y=-1*control/manual_y+1.
-

@@ -32,7 +32,7 @@ ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL)
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL_std)    
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL_interface/)
-link_directories(C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/libs)
+link_directories(${CONDA_ENV_PATH}/libs)
 
 set(CBLOCK_TESTS_SOURCES 
     main.cpp
@@ -53,6 +53,7 @@ set(TARGET_NAME cblock_tests)
 add_executable(${TARGET_NAME} ${CBLOCK_TESTS_SOURCES})
 
 target_compile_definitions(${TARGET_NAME} PRIVATE CMAKE_CURRENT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+target_compile_definitions(${TARGET_NAME} PRIVATE CONDA_ENV_PATH="${CONDA_ENV_PATH}")
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # Mac OS X
     target_compile_definitions(${TARGET_NAME} PRIVATE BL_OSX)
@@ -72,8 +73,7 @@ target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL_interface/in
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/gtest/googletest-release-1.8.0/builds/${OS_STATIC_LIB_DIR}/include)
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/boost/${USE_BOOST_VERSION}/builds/${OS_STATIC_LIB_DIR})
 target_include_directories(${TARGET_NAME} PRIVATE .)
-# TODO: Update paths
-target_include_directories(${TARGET_NAME} PRIVATE C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/include)
+target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include)
 
 target_link_libraries (${TARGET_NAME}
     PRIVATE debug gtestd optimized gtest
@@ -91,6 +91,7 @@ add_executable(${TARGET_NAME} ${CBLOCK_TESTS_SOURCES})
 
 target_compile_definitions(${TARGET_NAME} PRIVATE CMAKE_CURRENT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 target_compile_definitions(${TARGET_NAME} PRIVATE USE_BL_INTERFACE=true)
+target_compile_definitions(${TARGET_NAME} PRIVATE CONDA_ENV_PATH="${CONDA_ENV_PATH}")
 
 target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL_std/include)
 target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL/include)
@@ -98,8 +99,7 @@ target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL_interface/in
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/gtest/googletest-release-1.8.0/builds/${OS_STATIC_LIB_DIR}/include)
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/boost/${USE_BOOST_VERSION}/builds/${OS_STATIC_LIB_DIR})
 target_include_directories(${TARGET_NAME} PRIVATE .)
-# TODO: Update paths
-target_include_directories(${TARGET_NAME} PRIVATE C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/include)
+target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include)
 
 target_link_libraries (${TARGET_NAME}
     PRIVATE debug gtestd optimized gtest
@@ -120,14 +120,17 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
         -E copy_if_different ${SM_HOME}/${BL_BUILD_DIR}/SDK/BL_OpenGL_render/$<CONFIG>/BL_render.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)
 	add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND}
-        -E copy_if_different ${THIRD_PARTY}/glew/builds/windows.vs2015/bin/Release/x64/glew32.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)
-    # TODO: Update paths
+        -E copy_if_different ${THIRD_PARTY}/glew/builds/windows.vs2015/bin/Release/x64/glew32.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)    
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
-        -E copy_if_different C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/python37.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)
+        -E copy_if_different ${CONDA_ENV_PATH}/python37.dll $<TARGET_FILE_DIR:${TARGET_NAME}>)
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
-        -E copy_if_different C:/Users/chris.gorman/AppData/Local/Continuum/anaconda3/envs/cblock_tests/python37.pdb $<TARGET_FILE_DIR:${TARGET_NAME}>)        
+        -E copy_if_different ${CONDA_ENV_PATH}/python37.pdb $<TARGET_FILE_DIR:${TARGET_NAME}>)        
 
 ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND NOT DEFINED IOS_PLATFORM)
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
         -E copy_if_different ${SM_HOME}/${BL_BUILD_DIR}/SDK/BL/$<CONFIG>/libBL.dylib $<TARGET_FILE_DIR:${TARGET_NAME}>)
+    add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
+        -E copy_if_different ${CONDA_ENV_PATH}/python37.dylib $<TARGET_FILE_DIR:${TARGET_NAME}>)
+    add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
+        -E copy_if_different ${CONDA_ENV_PATH}/python37.pdb $<TARGET_FILE_DIR:${TARGET_NAME}>)
 ENDIF()

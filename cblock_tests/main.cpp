@@ -37,9 +37,7 @@ int main(int argc, char* argv[])
 	module_path.make_preferred();
 
 	/* Set-up Python runtime */
-	// TODO: Update when finalized
-	string env_path = "C:\\Users\\chris.gorman\\AppData\\Local\\Continuum\\anaconda3\\envs\\cblock_tests";
-	string pyexe_path = env_path + "\\python.exe";
+	string pyexe_path = CONDA_ENV_PATH"\\python.exe";
 
 	// This tells the python runtime where the executable that is using it is
 	// e.g. this would be /usr/bin/python if the python binary was calling it
@@ -53,7 +51,7 @@ int main(int argc, char* argv[])
 	}
 	Py_SetProgramName(program.get());
 
-	unique_ptr<wchar_t> home(Py_DecodeLocale(env_path.c_str(), nullptr));
+	unique_ptr<wchar_t> home(Py_DecodeLocale(CONDA_ENV_PATH, nullptr));
 	if (!home)
 	{
 		cerr << "Unable to decode PYTHONHOME" << endl;
@@ -76,7 +74,7 @@ int main(int argc, char* argv[])
 		and sys.exec_prefix to be empty. It is up to the caller to modify these if required after calling Py_Initialize()."
 	I think it's easier to modify sys.path after initialization rather than those, so that's what I do here.
 	We need to add the module to sys.path for it to be able to import it.
-	Since it's really simple and I don't need access to the PyObjects, we just run the high level interpreter on the command string.
+	I tried to just use the high level string interpreter but it didn't work and I can't remmeber why.
 	*/
 	PyObject *pSysModuleName = PyUnicode_DecodeFSDefault("sys");
 	if (pSysModuleName == nullptr)
@@ -119,6 +117,7 @@ int main(int argc, char* argv[])
 		exit(1);
 	}
 
+	// Call the insert method of sys.path
 	PyObject *pInsertCallResult = PyObject_CallObject(pSysPathInsertFunction, pInsertArgs);
 	Py_DECREF(pInsertArgs);
 	if (pInsertCallResult == nullptr)
@@ -128,12 +127,6 @@ int main(int argc, char* argv[])
 		exit(1);
 	}
 	Py_DECREF(pSysPathInsertFunction);
-
-	//stringstream command_string;
-	//// Set the first path item to be the location of the runtime generator module so it can be imported
-	//command_string << "import sys;sys.path.insert(0,'" << module_path.parent_path().string() << "')";
-	//cout << command_string.str() << endl;
-	//PyRun_SimpleString(command_string.str().c_str());
 
 	/* Load runtime generator module */
 	PyObject *pModuleName, *pModule;
@@ -166,14 +159,13 @@ int main(int argc, char* argv[])
 	// Update the static storage with the module object 
 	RuntimeDataGenerator::setGeneratorModule(pModule);
 	// We're done with this object here so decref it
+	// (The setter above calls incref)
 	Py_DECREF(pModule);
 
 	// Initialize and run googletest
 	::testing::InitGoogleTest(&argc, argv);
 	int res = RUN_ALL_TESTS();
 
-	// Reference counting for Python variables
-	Py_DECREF(pModule);
 	if (Py_FinalizeEx() < 0)
 	{
 		cerr << "Error finalizing Python runtime" << endl;

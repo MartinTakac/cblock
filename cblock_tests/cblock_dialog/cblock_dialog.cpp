@@ -139,10 +139,7 @@ class cblock_bootstrap : public ::testing::Test {
 public:
 	static void SetUpTestCase() {
 		test_message_system=create_BL_message_system(bl_debug_message);
-		set_BL_message_system(test_message_system);
-		// Make sure we aren't in the runtime data directory 
-		change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
-		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		set_BL_message_system(test_message_system);						
 		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
 	}
 
@@ -274,8 +271,7 @@ public:
         test_message_system = create_BL_message_system(bl_debug_message);
         set_BL_message_system(test_message_system);
 		// Make sure we aren't in the runtime data directory 
-		change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
-		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+		change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);		
 		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
     }
 
@@ -374,8 +370,7 @@ class cblock_playback_ngd_digression : public ::testing::TestWithParam<CBlock_Pl
 public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
-        set_BL_message_system(test_message_system);
-		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+        set_BL_message_system(test_message_system);		
 		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
     }
 
@@ -461,8 +456,7 @@ class cblock_playback_gd : public ::testing::TestWithParam<CBlock_Playback_TestD
 public:
     static void SetUpTestCase() {
         test_message_system = create_BL_message_system(bl_debug_message);
-        set_BL_message_system(test_message_system);
-		RuntimeDataGenerator::delete_runtime_data(current_dir / "cblock_dialog" / "runtime_data");
+        set_BL_message_system(test_message_system);		
 		RuntimeDataGenerator::generate_runtime_data(current_dir / "cblock_dialog" / "cblock_dialog_config.json", current_dir / "cblock_dialog" / "runtime_data");
     }
 

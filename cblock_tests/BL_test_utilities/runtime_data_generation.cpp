@@ -50,25 +50,6 @@ PyObject* RuntimeDataGenerator::getGeneratorModule()
 	return RuntimeDataGenerator::pGeneratorModule;
 }
 
-/* Deletes everything in the runtime data directory (or really any directory that you give it) */
-void RuntimeDataGenerator::delete_runtime_data(const bfs::path& path)
-{
-	change_BL_directory(CMAKE_CURRENT_SOURCE_DIR);
-	try
-	{
-		for (bfs::directory_entry &x : bfs::directory_iterator(path))
-		{
-			// remove_all is recursive, but we don't just call it on path because we want to keep the parent directory
-			bfs::remove_all(x.path());
-		}
-	}
-	catch (const bfs::filesystem_error &ex)
-	{
-		cerr << "Unable to delete runtime data file, message: " << endl << "\t" << ex.what() << endl;
-		exit(1);
-	}
-}
-
 /* Generates the runtime data based on the given config file and output path.
  * This function creates a RuntimeGenerator object from the runtime_generator Python module,
  * and calls its generate_runtime() function with the given variables.

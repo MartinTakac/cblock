@@ -93,12 +93,12 @@ endif()
 # Create conda environment for tests
 include(create_conda_env.cmake)
 #message("CMake bin dir root: ${CMAKE_CURRENT_BINARY_DIR}")
-create_conda_env("cblock_tests_env" ${CMAKE_CURRENT_BINARY_DIR} "requirements.txt")
+create_conda_env(CONDA_ENV_PATH "cblock_tests_env" ${CMAKE_CURRENT_BINARY_DIR} "requirements.txt")
 
 # CG: We're building against trunk_deployment so the thread pooling isn't there
 # add_definitions(-DBEFORE_THREAD_POOLING)
 # add_definitions(-DBEFORE_RENDER_THREAD_POOLING)
 add_definitions(-DBEFORE_MODEL_TIME_TO_REAL_TIME_RATIO)
 
-
+set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 add_subdirectory(cblock_tests)

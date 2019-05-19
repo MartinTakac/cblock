@@ -17,8 +17,6 @@ Mainly chose to do a class so I can manage the reference counting for the module
 class RuntimeDataGenerator
 {
 public:
-	// Deletes the files from the given path
-	static void delete_runtime_data(const bfs::path& path);
 	// Generates the runtime data at the given output path
 	static void generate_runtime_data(bfs::path config_file_path, bfs::path output_path);
 
