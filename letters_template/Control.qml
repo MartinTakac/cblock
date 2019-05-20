@@ -201,9 +201,9 @@ ScrollView
 			{
 				name: "playback speed correction"
 				path: "control/playback_speed_correction"
-				startValue: 1.5
+				startValue: 10.
 				minValue: 0.0
-				maxValue: 3.0
+				maxValue: 20.0
 				stepSize: 0.001
 			}
 					
@@ -245,6 +245,16 @@ ScrollView
 				minValue: 0.0
 				maxValue: 200.0
 				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "reset at interval timeout"
+				path: "cblock/cblockParams/reset_at_interval_timeout"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
 			}
 					
 		}

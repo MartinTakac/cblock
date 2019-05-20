@@ -60,13 +60,14 @@ debug_displays/plan_som/output/reward/texture.reward.data=cblock/plan_som/output
 debug_displays/plan_som/plastic/texture.plastic.data=cblock/plan_som/asom/plastic*cblock/plan_som/asom/perform_time_step
 
 #####
-BL_identity_connector
+# is now done below in combination with the whole debug display visibility
+#BL_identity_connector
 # red cursor controlled TD
-debug_displays/plan_som/training_record/cursor/visible=cblock/plan_som/cursor/is_visible
+#debug_displays/plan_som/training_record/cursor/visible=cblock/plan_som/cursor/is_visible
 # red cursor controlled TD
-debug_displays/seq_som/training_record/cursor/visible=cblock/seq_som/cursor/is_visible
+#debug_displays/seq_som/training_record/cursor/visible=cblock/seq_som/cursor/is_visible
 # red cursor controlled TD
-debug_displays/monitors/ind_SOM_training_record/cursor/visible=cblock/IO/cursor/is_visible
+#debug_displays/monitors/ind_SOM_training_record/cursor/visible=cblock/IO/cursor/is_visible
 
 #############
 # inputs
@@ -160,6 +161,78 @@ debug_displays/monitors/measures2/texture.measures2.data=measures2_scrollDisplay
 #debug_displays/seq_som/inspect/d1/texture.d1.data=cblock/seq_som/TD_inspection/control/result
 #debug_displays/seq_som/inspect/d2/texture.d2.data=cblock/seq_som/inputs/TD_activation_map
 #debug_displays/seq_som/inspect/d3/texture.d3.data=cblock/seq_som/asom/top_down_activation
+
+
+
+##############
+# visibility
+
+BL_linear_transformation_connector
+# auxiliary computations for cursors 
+displayConstants/debug_visibleSeqSomInspect=displayConstants/debug_is_visible*cblock/seq_som/cursor/is_visible
+displayConstants/debug_visiblePlanSomInspect=displayConstants/debug_is_visible*cblock/plan_som/cursor/is_visible
+displayConstants/debug_visibleIndivSomInspect=displayConstants/debug_is_visible*cblock/IO/cursor/is_visible
+
+BL_identity_connector
+debug_displays/background/visible=displayConstants/debug_is_visible
+debug_displays/buffer/visible=displayConstants/debug_is_visible
+debug_displays/buffer/context/visible=displayConstants/debug_is_visible
+debug_displays/buffer/init_state/visible=displayConstants/debug_is_visible
+debug_displays/buffer/next/visible=displayConstants/debug_is_visible
+debug_displays/buffer/occupancy/visible=displayConstants/debug_is_visible
+debug_displays/buffer/recent/visible=displayConstants/debug_is_visible
+debug_displays/buffer/tonic/visible=displayConstants/debug_is_visible
+debug_displays/goals/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal/reward/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal/reward/alpha/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal/state/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal/state/alpha/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal_buffered/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal_buffered/reward/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal_buffered/reward/alpha/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal_buffered/state/visible=displayConstants/debug_is_visible
+debug_displays/goals/goal_buffered/state/alpha/visible=displayConstants/debug_is_visible
+debug_displays/inputs/visible=displayConstants/debug_is_visible
+debug_displays/inputs/element/visible=displayConstants/debug_is_visible
+debug_displays/inputs/ext_eos/visible=displayConstants/debug_is_visible
+debug_displays/inputs/reward/visible=displayConstants/debug_is_visible
+debug_displays/inputs/state/visible=displayConstants/debug_is_visible
+debug_displays/monitors/visible=displayConstants/debug_is_visible
+debug_displays/monitors/goal_reached/visible=displayConstants/debug_is_visible
+debug_displays/monitors/ind_SOM_training_record/visible=displayConstants/debug_is_visible
+debug_displays/monitors/ind_SOM_training_record/cursor/visible=displayConstants/debug_visibleIndivSomInspect
+debug_displays/monitors/measures/visible=displayConstants/debug_is_visible
+debug_displays/monitors/measures2/visible=displayConstants/debug_is_visible
+debug_displays/monitors/plan_good/visible=displayConstants/debug_is_visible
+debug_displays/monitors/stage/visible=displayConstants/debug_is_visible
+debug_displays/monitors/surprise/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/activation_mask/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/activity_map/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/input/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/input/result/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/input/reward/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/output/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/output/result/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/output/reward/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/plastic/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/training_record/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/training_record/cursor/visible=displayConstants/debug_visiblePlanSomInspect
+debug_displays/seq_som/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/activity_map/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/input/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/input/context/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/input/next/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/input/recent/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/input/tonic/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/plastic/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/prediction/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/prediction/decoded/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/prediction/eos/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/prediction/next_winner/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/training_record/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/training_record/cursor/visible=displayConstants/debug_visibleSeqSomInspect
 
 
 

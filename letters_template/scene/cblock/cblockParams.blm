@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=34
+number_of_values=35
 
 # manual control signals
 value_names[0]=resetSeq_qml
@@ -111,4 +111,7 @@ values[32]=real 1 1.
 
 # should be set from outside to the same as playback LIF's speed (non multipled by master_LIF_speed, as this is done internally in cblock)
 value_names[33]=interval_LIF_speed
-values[33]=real 1 10.
+values[33]=real 1 5.
+
+value_names[34]=reset_at_interval_timeout
+values[34]=real 1 0.

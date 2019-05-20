@@ -145,6 +145,7 @@ planning/control/goal_driven_prev=planning/control/goal_driven
 # reset seq if the current goal timed out (because it only happens in goal-driven, it will continue in S6 to select a new goal) 
 core/control/stage=cblockInputs/goal_plan_inspection>0 ? core/control/goal_inspection_stage : core/control/stage
 core/control/restart_seq=planning/plan_timeout_LIF/voltage*planning/control/goal_driven>0.9 ? 1 : core/control/restart_seq+planning/control/goal_driven_leading_edge
+core/control/restart_seq=core/interval_LIF/voltage*cblockParams/reset_at_interval_timeout>0.999 ? 1 : core/control/restart_seq
 core/control/restart_seq=cblockInputs/goal_plan_inspection>0 ? 0 : core/control/restart_seq
 core/control/stage=cblockInputs/refresh_goal_plan>0 ? core/control/goal_inspection_stage : core/control/stage
 core/control/stage=core/control/restart_seq>0 ? core/control/reset_stage : core/control/stage
@@ -218,6 +219,7 @@ cblockOutputs/predicted_bitmap=cblockOutputs/eos_predicted>0 ? core/control/zero
 cblockOutputs/interval=seq_som/outputs/interval
 cblockOutputs/good_enough=core/prediction_certainty/certain_enough+cblockOutputs/goal_reached+cblockOutputs/eos_predicted>0 ? 1 : 0
 cblockOutputs/surprise=core/control/surprise
+cblockOutputs/prediction_error=core/control/prediction_error
 cblockOutputs/contains_prediction=1
 # inferred effect and reward are valid for all pathways (init goal, next_elem and surprise) that contain prediction
 cblockOutputs/inferred_plan_effect=plan_som/outputs/result
@@ -289,6 +291,10 @@ planning/xy_to_loc_som/input_values[1]=plan_som/asom/output_y
 planning/plan_wta/input_values=plan_som/asom/activation_map
 planning/xy_to_loc_som/perform_time_step=planning/control/goal_driven
 planning/plan_wta/perform_time_step=planning/control/goal_driven
+
+# these will be assigned to cblockOutputs in S9 - they need to be set to 0 here, because new goal generation is never surprise (because it doesn't relate to a previous prediction)
+core/control/surprise=0
+core/control/prediction_error=0
 
 # go to S8 to predict next+eos 
 core/control/stage[7]=0
@@ -363,6 +369,7 @@ cblockOutputs/ready=1
 # cblockOutputs/good_enough=0 so that playback is not triggered (because no prediction)
 cblockOutputs/good_enough=0
 cblockOutputs/contains_prediction=0
+cblockOutputs/surprise=0
 cblockOutputs/eos_predicted=0
 core/control/stage[0]=1
 core/control/stage[5]=0

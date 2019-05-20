@@ -6,7 +6,7 @@ value_names[0]=allow_playback
 values[0]=real 1 0.
 # correction 1 = same playback speed as measured speed. 2 means twice as fast, 0.5 means half speed
 value_names[1]=playback_speed_correction
-values[1]=real 1 1.
+values[1]=real 1 5.
 
 # constants
 value_names[2]=one

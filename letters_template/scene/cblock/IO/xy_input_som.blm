@@ -3,8 +3,8 @@ map_size_x=#INDIV_SOM_DIM_X#
 map_size_y=#INDIV_SOM_DIM_Y#
 number_of_inputs=2
 # x,y
-number_of_layers=1
-input_sizes=2
+number_of_layers=2
+input_sizes=1
 input_values=0.
 alphas=1
 plastic=0.
@@ -29,6 +29,7 @@ exploration_method_type=NOISE_ON_ACTIVATION_INTERNAL_EXPLORATION_METHOD
 top_down_influence=0.
 effective_zero=0.01
 #training_record_decay=0.9
+normalise_alphas=0
 
 
 

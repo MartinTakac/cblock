@@ -117,6 +117,24 @@ ScrollView
                 isCheckable: true
                 isChecked: true
             }
+			ListElement
+            {
+                name: "Debug Visible"
+                path: "displayConstants/debug_is_visible"
+                onValue: 1.0
+                offValue: 0.0
+                isCheckable: true
+                isChecked: true
+            }
+			ListElement
+            {
+                name: "Secondary monitor"
+                path: "displayConstants/display_secondary_monitor"
+                onValue: 1.0
+                offValue: 0.0
+                isCheckable: true
+                isChecked: false
+            }
     }
         DoubleGridView
         {
