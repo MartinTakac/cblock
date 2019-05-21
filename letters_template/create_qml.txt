@@ -2,7 +2,7 @@ tab,Control
 
 section,Train from file,200,300,90
 button,training_control/trigger_automatic_training_qml,trigger train
-slider,training_control/do_autotrain_steps,train steps,0,500,1
+slider,training_control/do_autotrain_steps,train steps,0,5000,1
 slider,output_ready_off_delayed/number_of_time_steps_delay,step delay,1,5000,1
 
 section,Control,200,300,90
@@ -30,6 +30,7 @@ slider,cblock/cblockParams/smoothing,prediction smoothing,0,1,0.0000000000000001
 slider,cblock/cblockParams/kick_start_gain,kick start gain,0,1,0.01
 slider,cblock/cblockParams/interval_LIF_speed,interval speed,0,200,0.001
 slider,cblock/cblockParams/reset_at_interval_timeout,reset at interval timeout,0,1,1
+slider,cblock/cblockParams/reset_if_no_first_timeout,reset if no first,0,1,1
 
 section,Surprise,200,300,80
 slider,cblock/cblockParams/winner_match_surprise,winner surprise,0,1,1

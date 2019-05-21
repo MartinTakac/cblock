@@ -1,3 +1,693 @@
-Mon Apr  8 17:20:04 2019
+Tue May 21 15:07:19 2019
 
+BL_ERROR : BL plugin module path plugin_modules is not a valid directory
 BL_ERROR : Could not create module: splash_module
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\control.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\control.blm : Could not create module: control
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\loc_mask.blm : Line starting with: number_of_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\loc_mask.blm : Could not create module: loc_mask
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: control/result.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: loc_mask/location_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: loc_mask/location_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\TD_inspection\xy_to_mask.blc : Could not create connector: xy_to_mask
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\asom_save.blm : Line starting with: xy_map.value
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\asom_save.blm : Could not create module: asom_save
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\bitmap_input_som.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\bitmap_input_som.blm : Could not create module: bitmap_input_som
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\bitmap_output_som.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\bitmap_output_som.blm : Could not create module: bitmap_output_som
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\bitmap_som_consts.blm : Line starting with: values[5]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\bitmap_som_consts.blm : Could not create module: bitmap_som_consts
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\input.blm : Line starting with: values[4]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\input.blm : Could not create module: input
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\input_wta.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\input_wta.blm : Could not create module: input_wta
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\xy_input_som.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\xy_input_som.blm : Could not create module: xy_input_som
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\xy_output_som.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\xy_output_som.blm : Could not create module: xy_output_som
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Unknown output variable: TD_inspection/control/inspect
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Invalid linear transformation: TD_inspection/control/inspect
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Connector: inspect_SOM.  Input variable: cursor/is_visible.  Invalid value: TD_inspection/control/inspect.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Unknown output variable: TD_inspection/control/manual_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Invalid linear transformation: TD_inspection/control/manual_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Connector: inspect_SOM.  Input variable: cursor/x.  Invalid value: TD_inspection/control/manual_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Unknown output variable: TD_inspection/control/manual_y
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Invalid linear transformation: TD_inspection/control/manual_y
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Connector: inspect_SOM.  Input variable: cursor/y.  Invalid value: TD_inspection/control/manual_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\inspect_SOM.blc : Could not create connector: inspect_SOM
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\save_maps_blc.blc : Connector: save_maps_blc.  Unknown input variable: asom_save/save.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\save_maps_blc.blc : Connector: save_maps_blc.  Unknown input variable: asom_save/xy_map_save.value.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\save_maps_blc.blc : Connector: save_maps_blc.  Unknown input variable: asom_save/xy_training_record_save.value.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\save_maps_blc.blc : Connector: save_maps_blc.  Unknown input variable: asom_save/bitmap_map_save.value.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\save_maps_blc.blc : Connector: save_maps_blc.  Unknown input variable: asom_save/bitmap_training_record_save.value.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\save_maps_blc.blc : Could not create connector: save_maps_blc
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: xy_input_som/learning_frequency_constants.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: xy_input_som/compare_noise.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: xy_input_som/best_match_threshold.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: xy_input_som/best_match_learning_multiplier.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: xy_input_som/activation_sensitivity.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: xy_input_som/alphas.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: bitmap_input_som/learning_frequency_constants.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: bitmap_input_som/compare_noise.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: bitmap_input_som/best_match_threshold.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: bitmap_input_som/best_match_learning_multiplier.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: bitmap_input_som/activation_sensitivity.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: bitmap_input_som/alphas.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: asom_save/time_index.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\IO\set_som_consts.blc : Connector: set_som_consts.  Unknown input variable: asom_save/retrieve.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\cblockInputs.blm : Line starting with: values[5]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\cblockInputs.blm : Could not create module: cblockInputs
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\cblockOutputs.blm : Line starting with: values[2]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\cblockOutputs.blm : Could not create module: cblockOutputs
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\cblockParams.blm : Line starting with: values[20]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\cblockParams.blm : Could not create module: cblockParams
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\actual_next_wta.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\actual_next_wta.blm : Could not create module: actual_next_wta
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\control.blm : Line starting with: values[2]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\control.blm : Could not create module: control
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\normalize_prediction.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\normalize_prediction.blm : Could not create module: normalize_prediction
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\prediction_certainty.blm : Line starting with: values[1]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\prediction_certainty.blm : Could not create module: prediction_certainty
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\prediction_error.blm : Line starting with: functions[0].number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\prediction_error.blm : Could not create module: prediction_error
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\prediction_wta.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\prediction_wta.blm : Could not create module: prediction_wta
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\seq_buffer.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\seq_buffer.blm : Could not create module: seq_buffer
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\tonic_wta.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\tonic_wta.blm : Could not create module: tonic_wta
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\save_params_blc.blc : Unknown output variable: control/error_avg
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\save_params_blc.blc : Invalid linear transformation: control/error_avg
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\save_params_blc.blc : Connector: save_params_blc.  Input variable: param_save/error_avg_save.value.  Invalid value: control/error_avg.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\save_params_blc.blc : Unknown output variable: control/after_first_cycle
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\save_params_blc.blc : Invalid linear transformation: control/after_first_cycle
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\core\save_params_blc.blc : Connector: save_params_blc.  Input variable: param_save/after_first_cycle_save.value.  Invalid value: control/after_first_cycle.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\faked_stack.blm : Line starting with: values[8]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\faked_stack.blm : Could not create module: faked_stack
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\load_dump_input.blm : Line starting with: values[4]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\load_dump_input.blm : Could not create module: load_dump_input
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\load_dump_output.blm : Line starting with: values[4]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\load_dump_output.blm : Could not create module: load_dump_output
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\control.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\control.blm : Could not create module: control
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\loc_mask.blm : Line starting with: number_of_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\loc_mask.blm : Could not create module: loc_mask
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: control/result.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: loc_mask/location_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: loc_mask/location_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\TD_inspection\xy_to_mask.blc : Could not create connector: xy_to_mask
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\alpha_gains.blm : Line starting with: values[1]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\alpha_gains.blm : Could not create module: alpha_gains
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\asom.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\asom.blm : Could not create module: asom
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\asomConsts.blm : Line starting with: values[19]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\asomConsts.blm : Could not create module: asomConsts
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\asom_save.blm : Line starting with: map.value
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\asom_save.blm : Could not create module: asom_save
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inputs.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inputs.blm : Could not create module: inputs
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\outputs.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\outputs.blm : Could not create module: outputs
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\randomNoise.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\randomNoise.blm : Could not create module: randomNoise
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\result_component_gains.blm : Line starting with: values[1]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\result_component_gains.blm : Could not create module: result_component_gains
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\save_maps_blc.blc : save_maps_blc.  Invalid perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/learning_frequency_constants[0:#PLAN_SOM_INPUT_LAYERS_LAST_INDEX#].  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/sigma.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/compare_noise.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/best_match_threshold.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/best_match_learning_multiplier.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/training_record_decay.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/bias_when_equal_activity.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: randomNoise/trigger.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/reset_map.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/saveWeightsLead.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/saveWeightsPrev.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/loadWeightsLead.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/loadWeightsPrev.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom_save/time_index.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom_save/retrieve.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\connect_asom_internal.blc : Could not create connector: connect_asom_internal
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Unknown output variable: TD_inspection/control/inspect
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Invalid linear transformation: TD_inspection/control/inspect
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Connector: inspect_SOM.  Input variable: cursor/is_visible.  Invalid value: TD_inspection/control/inspect.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Unknown output variable: TD_inspection/control/manual_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Invalid linear transformation: TD_inspection/control/manual_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Connector: inspect_SOM.  Input variable: cursor/x.  Invalid value: TD_inspection/control/manual_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Unknown output variable: TD_inspection/control/manual_y
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Invalid linear transformation: TD_inspection/control/manual_y
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Connector: inspect_SOM.  Input variable: cursor/y.  Invalid value: TD_inspection/control/manual_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\inspect_SOM.blc : Could not create connector: inspect_SOM
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\plan_som\save_maps_blc.blc : save_maps_blc.  Invalid perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\control.blm : Line starting with: values[11]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\control.blm : Could not create module: control
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\dist_from_goal.blm : Line starting with: number_of_inputs
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\dist_from_goal.blm : Could not create module: dist_from_goal
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\goal.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\goal.blm : Could not create module: goal
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\goal_buffered.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\goal_buffered.blm : Could not create module: goal_buffered
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\plan_wta.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\plan_wta.blm : Could not create module: plan_wta
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\random_generator.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\random_generator.blm : Could not create module: random_generator
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\xy_to_loc_som.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\xy_to_loc_som.blm : Could not create module: xy_to_loc_som
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\set_LIF_speed.blc : Unknown output variable: control/master_LIF_speed*control/plan_timeout_speed
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\set_LIF_speed.blc : Invalid linear transformation: control/master_LIF_speed*control/plan_timeout_speed
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\planning\set_LIF_speed.blc : Connector: set_LIF_speed.  Input variable: plan_timeout_LIF/membrane_frequency_constant.  Invalid value: control/master_LIF_speed*control/plan_timeout_speed.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\control.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\control.blm : Could not create module: control
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\loc_mask.blm : Line starting with: number_of_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\loc_mask.blm : Could not create module: loc_mask
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: control/result.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: loc_mask/location_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\xy_to_mask.blc : Connector: xy_to_mask.  Unknown input variable: loc_mask/location_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\TD_inspection\xy_to_mask.blc : Could not create connector: xy_to_mask
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\asom.blm : Line starting with: map_size_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\asom.blm : Could not create module: asom
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\asomConsts.blm : Line starting with: values[18]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\asomConsts.blm : Could not create module: asomConsts
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\asom_save.blm : Line starting with: map.value
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\asom_save.blm : Could not create module: asom_save
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inputs.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inputs.blm : Could not create module: inputs
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\outputs.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\outputs.blm : Could not create module: outputs
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\randomNoise.blm : Line starting with: number_of_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\randomNoise.blm : Could not create module: randomNoise
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\save_maps_blc.blc : save_maps_blc.  Invalid perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/learning_frequency_constants[0].  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/learning_frequency_constants[1].  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/learning_frequency_constants[2].  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/learning_frequency_constants[3].  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/learning_frequency_constants[4].  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/learning_frequency_constants[5].  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/sigma.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/compare_noise.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/best_match_threshold.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/best_match_learning_multiplier.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/use_soft_output.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/training_record_decay.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/activation_sensitivity.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/bias_when_equal_activity.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: randomNoise/trigger.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom/reset_map.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/saveWeightsLead.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/saveWeightsPrev.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/loadWeightsLead.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asomConsts/loadWeightsPrev.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom_save/time_index.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Connector: connect_asom_internal.  Unknown input variable: asom_save/retrieve.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\connect_asom_internal.blc : Could not create connector: connect_asom_internal
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inspect_SOM.blc : Connector: inspect_SOM.  Unknown source variable: TD_inspection/control/inspect
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inspect_SOM.blc : Connector: inspect_SOM.  Unknown destination variable: inputs/TD_activation_map
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inspect_SOM.blc : Connector: inspect_SOM.  Unknown source variable: TD_inspection/control/inspect
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inspect_SOM.blc : Connector: inspect_SOM.  Unknown source variable: TD_inspection/control/manual_x
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inspect_SOM.blc : Connector: inspect_SOM.  Unknown source variable: TD_inspection/control/manual_y
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\inspect_SOM.blc : Could not create connector: inspect_SOM
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\seq_som\save_maps_blc.blc : save_maps_blc.  Invalid perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Inputs.blc : connect_Inputs.  Invalid sub-connector perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: planning/control/master_LIF_speed.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/master_LIF_speed*cblockParams/interval_LIF_speed
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: cblockParams/master_LIF_speed*cblockParams/interval_LIF_speed
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: core/interval_LIF/membrane_frequency_constant.  Invalid value: cblockParams/master_LIF_speed*cblockParams/interval_LIF_speed.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: seq_som/asomConsts/reset.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: seq_som/asomConsts/qmlSaveWeights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: seq_som/asomConsts/qmlLoadWeights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: plan_som/asomConsts/reset.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: plan_som/asomConsts/qmlSaveWeights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: plan_som/asomConsts/qmlLoadWeights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/reset_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: cblockParams/reset_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: IO/input_control/reset_maps.  Invalid value: cblockParams/reset_all_weights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/save_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: cblockParams/save_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: IO/asomConsts/qmlSaveWeights.  Invalid value: cblockParams/save_all_weights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/load_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: cblockParams/load_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: IO/asomConsts/qmlLoadWeights.  Invalid value: cblockParams/load_all_weights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/save_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: cblockParams/save_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: core/paramConsts/qmlSaveWeights.  Invalid value: cblockParams/save_all_weights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/load_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: cblockParams/load_all_weights
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: core/paramConsts/qmlLoadWeights.  Invalid value: cblockParams/load_all_weights.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: plan_som/TD_inspection/control/manual_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: plan_som/TD_inspection/control/manual_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: seq_som/TD_inspection/control/manual_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: seq_som/TD_inspection/control/manual_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: IO/TD_inspection/control/manual_x.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: IO/TD_inspection/control/manual_y.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: planning/control/goal_driven.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Unknown input variable: planning/control/not_goal_driven.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/indiv_xy
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: cblockParams/indiv_xy
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: IO/indiv_type/xy.  Invalid value: cblockParams/indiv_xy.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Unknown output variable: cblockParams/indiv_xy+1.
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Invalid linear transformation: -1.*cblockParams/indiv_xy+1.
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\connect_Params.blc : Connector: connect_Params.  Input variable: IO/indiv_type/bitmap.  Invalid value: -1.*cblockParams/indiv_xy+1..  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\control_cycle.blc : control_cycle.  Invalid sub-connector perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\measures_blc.blc : Connector: measures_blc.  Unknown source variable: core/prediction_certainty/entropy
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\measures_blc.blc : Connector: measures_blc.  Unknown source variable: core/prediction_error/functions[0].output_value
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\measures_blc.blc : Connector: measures_blc.  Unknown source variable: planning/dist_from_goal/winner_activity_raw
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\measures_blc.blc : Connector: measures_blc.  Unknown source variable: plan_som/asom/activation_entropy
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\cblock\test_load_dump.blc : test_load_dump.  Invalid sub-connector perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\control.blm : Line starting with: values[3]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\control.blm : Could not create module: control
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#BUF_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INPUT_BITMAP_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#PLAN_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#PLAN_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#PLAN_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#SEQ_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INPUT_BITMAP_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#SEQ_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INPUT_BITMAP_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INPUT_BITMAP_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#PLAN_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#PLAN_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#PLAN_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#SEQ_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#SEQ_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#INDIV_SOM_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line.  start_token=width.  next_token=#STATE_DIM_X#
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene.blm : Invalid line: width
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\letter_spec_values.blm : Line starting with: values[3]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\letter_spec_values.blm : Could not create module: letter_spec_values
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\letters.blm : Line starting with: values[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\letters.blm : Could not create module: letters
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\training_control.blm : Line starting with: values[13]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\training_control.blm : Could not create module: training_control
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\config_cblock.blc : config_cblock.  Invalid perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\config_cblock.blc : config_cblock.  Invalid perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\connect_cblock.blc : connect_cblock.  Invalid sub-connector perform_calculate
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/activity_map/texture.activity_map.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/training_record/texture.training_record.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/input/recent/texture.recent.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/input/next/texture.next.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/input/next/texture.next.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/input/context/texture.context.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/input/tonic/texture.tonic.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/prediction/decoded/texture.decoded.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/cblockOutputs/eos_predicted
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/cblockOutputs/eos_predicted
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/seq_som/prediction/eos/texture.eos.data.  Invalid value: cblock/cblockOutputs/eos_predicted.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/seq_som/prediction/next_winner/texture.next_winner.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/seq_som/asom/plastic*cblock/seq_som/asom/perform_time_step
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/seq_som/asom/plastic*cblock/seq_som/asom/perform_time_step
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/seq_som/plastic/texture.plastic.data.  Invalid value: cblock/seq_som/asom/plastic*cblock/seq_som/asom/perform_time_step.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/plan_som/activity_map/texture.activity_map.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/plan_som/activation_mask/texture.activation_mask.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/plan_som/training_record/texture.training_record.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/plan_som/input/texture.input.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/plan_som/output/texture.output.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/plan_som/input/result/texture.result.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/plan_som/inputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/plan_som/inputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/plan_som/input/reward/texture.reward.data.  Invalid value: cblock/plan_som/inputs/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/plan_som/output/result/texture.result.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/plan_som/outputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/plan_som/outputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/plan_som/output/reward/texture.reward.data.  Invalid value: cblock/plan_som/outputs/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/plan_som/asom/plastic*cblock/plan_som/asom/perform_time_step
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/plan_som/asom/plastic*cblock/plan_som/asom/perform_time_step
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/plan_som/plastic/texture.plastic.data.  Invalid value: cblock/plan_som/asom/plastic*cblock/plan_som/asom/perform_time_step.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/inputs/element/texture.element.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/cblockInputs/inputType_finalizeSeq
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/cblockInputs/inputType_finalizeSeq
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/inputs/ext_eos/texture.ext_eos.data.  Invalid value: cblock/cblockInputs/inputType_finalizeSeq.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/inputs/state/texture.state.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/cblockInputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/cblockInputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/inputs/reward/texture.reward.data.  Invalid value: cblock/cblockInputs/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/goals/goal/state/texture.state.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/planning/goal/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/planning/goal/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/goals/goal/reward/texture.reward.data.  Invalid value: cblock/planning/goal/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/goals/goal/state/alpha/texture.alpha.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/planning/goal/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/planning/goal/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/goals/goal/reward/alpha/texture.alpha.data.  Invalid value: cblock/planning/goal/alpha_reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/goals/goal_buffered/state/texture.state.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/planning/goal_buffered/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/planning/goal_buffered/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/goals/goal_buffered/reward/texture.reward.data.  Invalid value: cblock/planning/goal_buffered/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/goals/goal_buffered/state/alpha/texture.alpha.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Unknown output variable: cblock/planning/goal_buffered/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Invalid linear transformation: cblock/planning/goal_buffered/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Input variable: debug_displays/goals/goal_buffered/reward/alpha/texture.alpha.data.  Invalid value: cblock/planning/goal_buffered/alpha_reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/buffer/tonic/texture.tonic.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/buffer/init_state/texture.init_state.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/buffer/occupancy/texture.occupancy.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: cblock/core/control/buf_display_index.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: cblock/core/control/valid_buf_display_index.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: cblock/core/control/valid_buf_display_index.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/buffer/context/texture.context.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/buffer/recent/texture.recent.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Connector: debug_display.  Unknown input variable: debug_displays/buffer/next/texture.next.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\debug_display.blc : Could not create connector: debug_display
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/1/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/2/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/3/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/4/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/4/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/seq_som/outputs/eos
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/seq_som/outputs/eos
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/seq_som/container/5/displayPanel/texture.displayPanel.data.  Invalid value: cblock/seq_som/outputs/eos.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/6/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/cblockInputs/inputType_finalizeSeq
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/cblockInputs/inputType_finalizeSeq
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/seq_som/container/7/displayPanel/texture.displayPanel.data.  Invalid value: cblock/cblockInputs/inputType_finalizeSeq.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/cblockInputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/cblockInputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/seq_som/container/8/displayPanel/texture.displayPanel.data.  Invalid value: cblock/cblockInputs/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/9/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/10/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/seq_som/asom/plastic
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/seq_som/asom/plastic
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/seq_som/container/11/displayPanel/texture.displayPanel.data.  Invalid value: cblock/seq_som/asom/plastic.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/seq_som/container/12/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/1/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/2/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/3/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/4/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/plan_som/inputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/plan_som/inputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/plan_som/container/5/displayPanel/texture.displayPanel.data.  Invalid value: cblock/plan_som/inputs/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/6/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/7/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/plan_som/outputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/plan_som/outputs/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/plan_som/container/8/displayPanel/texture.displayPanel.data.  Invalid value: cblock/plan_som/outputs/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/plan_som/asom/plastic
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/plan_som/asom/plastic
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/plan_som/container/9/displayPanel/texture.displayPanel.data.  Invalid value: cblock/plan_som/asom/plastic.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/10/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/planning/goal/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/planning/goal/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/plan_som/container/12/displayPanel/texture.displayPanel.data.  Invalid value: cblock/planning/goal/alpha_reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/planning/goal/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/planning/goal/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/plan_som/container/13/displayPanel/texture.displayPanel.data.  Invalid value: cblock/planning/goal/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/14/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/15/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/planning/goal_buffered/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/planning/goal_buffered/alpha_reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/plan_som/container/16/displayPanel/texture.displayPanel.data.  Invalid value: cblock/planning/goal_buffered/alpha_reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/planning/goal_buffered/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/planning/goal_buffered/reward
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/plan_som/container/17/displayPanel/texture.displayPanel.data.  Invalid value: cblock/planning/goal_buffered/reward.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/18/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/plan_som/container/19/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/cblockOutputs/goal_reached
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/cblockOutputs/goal_reached
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/cblock/container/1/displayPanel/texture.displayPanel.data.  Invalid value: cblock/cblockOutputs/goal_reached.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/cblock/container/2/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/cblockOutputs/plan_good_enough
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/cblockOutputs/plan_good_enough
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/cblock/container/4/displayPanel/texture.displayPanel.data.  Invalid value: cblock/cblockOutputs/plan_good_enough.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/core/control/stage
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/core/control/stage
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/cblock/container/5/displayPanel/texture.displayPanel.data.  Invalid value: cblock/core/control/stage.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Unknown output variable: cblock/core/control/surprise
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Invalid linear transformation: cblock/core/control/surprise
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Input variable: displays/cblock/container/6/displayPanel/texture.displayPanel.data.  Invalid value: cblock/core/control/surprise.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/cblock/container/7/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\display_cblock.blc : Connector: display_cblock.  Unknown input variable: displays/cblock/container/8/displayPanel/texture.displayPanel.data.  Line ignored
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[0]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[1]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[2]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[3]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[4]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[5]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[6]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[7]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[8]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[9]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[10]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[11]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[12]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[13]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[14]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[15]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[16]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[17]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[18]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[19]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[20]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[21]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[22]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[23]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[24]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[25]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[26]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[27]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[28]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[29]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[30]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[31]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[32]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[33]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[34]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[35]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[36]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[37]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[38]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[39]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[40]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[41]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[42]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[43]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[44]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[45]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[46]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[47]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[48]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[49]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[50]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[51]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[52]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[53]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[54]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[55]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[56]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[57]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[58]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[59]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[60]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[61]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[62]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[63]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[64]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[65]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[66]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[67]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[68]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[69]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[70]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[71]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[72]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[73]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[74]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[75]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[76]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[77]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[78]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[79]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[80]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[81]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[82]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[83]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[84]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[85]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[86]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[87]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[88]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[89]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[90]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[91]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[92]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[93]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[94]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[95]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[96]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[97]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[98]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Connector: goal_state_comp_gains.  Unknown destination variable: cblock/planning/goal/alpha_goal_state_components[99]
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\goal_state_comp_gains.blc : Could not create connector: goal_state_comp_gains
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\manual.blc : Connector: manual.  Unknown destination variable: control/manual_result
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\manual.blc : Connector: manual.  Unknown destination variable: cblock/planning/goal/state
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\manual.blc : Could not create connector: manual
+BL_ERROR : \SM\BrainChild\moje\cblock_template\cblock\letters_template\scene\measures2_blc.blc : Connector: measures2_blc.  Unknown source variable: control/buffered_out_interval
+BL_ERROR : scene/debug_displays/buffer/context : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/buffer/init_state : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/buffer/next : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/buffer/occupancy : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/buffer/recent : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/buffer/tonic : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/goals/goal/state : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/goals/goal/state/alpha : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/goals/goal_buffered/state : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/goals/goal_buffered/state/alpha : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/inputs/element : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/inputs/state : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/monitors/ind_SOM_training_record : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/plan_som/activation_mask : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/plan_som/activity_map : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/plan_som/input : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/plan_som/input/result : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/plan_som/output : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/plan_som/output/result : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/plan_som/training_record : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/activity_map : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/input/context : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/input/next : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/input/recent : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/input/tonic : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/prediction/decoded : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/prediction/next_winner : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/debug_displays/seq_som/training_record : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/cblock/container/2/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/cblock/container/2/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/cblock/container/2/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/cblock/container/7/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/cblock/container/8/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/cblock/container/8/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/cblock/container/8/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/1/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/10/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/10/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/10/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/14/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/14/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/14/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/15/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/15/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/15/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/18/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/18/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/18/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/19/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/19/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/19/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/2/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/3/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/3/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/3/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/4/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/6/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/6/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/6/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/7/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/7/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/plan_som/container/7/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/1/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/1/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/1/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/10/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/10/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/10/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/12/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/12/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/12/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/2/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/2/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/2/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/3/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/3/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/3/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/4/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/4/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/4/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/6/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/6/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/6/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/9/displayPanel : validate_Shader.  Variable shader_texture_0 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/9/displayPanel : validate_Shader.  Variable shader_texture_1 referenced in shader is not available
+BL_ERROR : scene/displays/seq_som/container/9/displayPanel : validate_Shader.  Variable shader_texture_2 referenced in shader is not available

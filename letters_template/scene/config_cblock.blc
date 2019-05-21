@@ -32,3 +32,10 @@ cblock/cblockParams/surprise_avg_mult=1.
 cblock/core/control/error_avg_reset_value=2.5
 ####
 
+cblock/seq_som/asomConsts/qmlSensitivityTrain=30
+cblock/seq_som/asomConsts/qmlSensitivityPredict=30
+cblock/seq_som/asomConsts/qmlCompareNoise=0.95
+cblock/seq_som/asomConsts/qmlBestMatchThreshold=0.95
+cblock/seq_som/alpha_gains/context_train=0.7
+cblock/seq_som/alpha_gains/context=0.7
+cblock/seq_som/alpha_gains/context_gd=0.7

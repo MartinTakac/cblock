@@ -46,9 +46,13 @@ IO/bitmap_input_som/associative_self_organizing_map=IO/asom_save/bitmap_map_retr
 IO/bitmap_input_som/training_record=IO/asom_save/bitmap_training_record_retrieve.value
 core/control/IO_soms_loaded=core/control/one
 
-# do always - check if all maps loaded
+##########
+# do always 
 BL_linear_transformation_connector
+#  check if all maps loaded
 core/control/all_soms_loaded=core/control/seq_som_loaded+core/control/plan_som_loaded+core/control/IO_soms_loaded>2 ? 1 : 0
+# cleanup from previous step
+core/control/restart_seq=0
 
 ######
 # after all loaded, reset stage and resetSeq and turn off load signalling variables
@@ -585,8 +589,6 @@ control_cycle/perform_calculate=core/control/init_next_elem
 
 core/control/next=IO/input/seq_element
 
-# LIF_based time measured since last element
-core/control/interval=core/interval_LIF/voltage
 # reset LIF for new time measurement
 core/interval_LIF/trigger=core/control/one
 
@@ -608,6 +610,9 @@ BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/init_next_elem
 
 #deb_control_cycle/status[0]=deb_control_cycle/status[0]+1
+
+# LIF_based time measured since last element (or minimum, if the first element)
+core/control/interval=cblockOutputs/buffered_seq_length>0 ? core/interval_LIF/voltage : core/interval_LIF/tonic_voltage
 
 # increment the index to seq_buffer
 cblockOutputs/buffered_seq_length=cblockOutputs/buffered_seq_length+1
@@ -690,8 +695,8 @@ cblockOutputs/buffered_seq_length=0
 core/control/buffer_occupancy=core/control/buffer_capacity_zeros
 core/control/surprise_since_last_eos=0
 
-# as the buffer is empty and the first elem of the next plan hasn't arrived yet, do not measure time
-core/interval_LIF/input_voltages[0]=0
+# as the buffer is empty and the first elem of the next plan hasn't arrived yet, do not measure time unless wanted
+core/interval_LIF/input_voltages[0]=cblockParams/reset_if_no_first_timeout
 core/interval_LIF/trigger=1
  
 # reset tonic, context and current
@@ -708,7 +713,7 @@ core/control/input_weight=1
 core/control/kick_start=0
 core/control/surprise=0
 # cleanup
-core/control/restart_seq=0
+# this is moved to the start of the file, so that restart_seq can be captured outside cblock in the meantime. 
 cblockOutputs/ready=0
 IO/input/reset=1
 

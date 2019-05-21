@@ -20,9 +20,9 @@ ScrollView
 			{
 				name: "train steps"
 				path: "training_control/do_autotrain_steps"
-				startValue: 250.0
+				startValue: 2500.0
 				minValue: 0.0
-				maxValue: 500.0
+				maxValue: 5000.0
 				stepSize: 1.0
 			}
 					
@@ -201,7 +201,7 @@ ScrollView
 			{
 				name: "playback speed correction"
 				path: "control/playback_speed_correction"
-				startValue: 10.
+				startValue: 10.0
 				minValue: 0.0
 				maxValue: 20.0
 				stepSize: 0.001
@@ -251,6 +251,16 @@ ScrollView
 			{
 				name: "reset at interval timeout"
 				path: "cblock/cblockParams/reset_at_interval_timeout"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "reset if no first"
+				path: "cblock/cblockParams/reset_if_no_first_timeout"
 				startValue: 0.5
 				minValue: 0.0
 				maxValue: 1.0
