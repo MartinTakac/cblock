@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=19
+number_of_values=20
 
 # sync/control signals:
 # a new-input signal (set by cblock to 1 when new prediction ready, and to 0 when reset signal received)
@@ -68,3 +68,6 @@ values[17]=real #STATE_SIZE# 0.
 # a value between 0 and cblockParams/surp_trunc_value. Only makes sense if cblockOutputs/surprise=1
 value_names[18]=prediction_error
 values[18]=real 1 0.
+
+value_names[19]=plan_SOM_trained_activity_map
+values[19]=real #PLAN_SOM_SIZE# 0.

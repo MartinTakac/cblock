@@ -111,7 +111,7 @@ values[32]=real 1 1.
 
 # should be set from outside to the same as playback LIF's speed (non multipled by master_LIF_speed, as this is done internally in cblock)
 value_names[33]=interval_LIF_speed
-values[33]=real 1 5.
+values[33]=real 1 2.
 
 # cblock will resetSeq if max interval reached while waiting for next elem
 value_names[34]=reset_at_interval_timeout
