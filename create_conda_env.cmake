@@ -52,7 +52,7 @@ function(create_conda_env retvar env_name output_path requirements_file)
     if(TARGET_WINDOWS)
         set(ENV{PATH} "${CONDA_ENV_PATH};${CONDA_ENV_PATH}/Scripts;${CONDA_ENV_PATH}/Library/bin;$ENV{PATH}")
     else()
-        set(ENV{PATH} "${CONDA_ENV_PATH}:${CONDA_ENV_PATH}/Scripts:${CONDA_ENV_PATH}/Library/bin:$ENV{PATH}")
+        set(ENV{PATH} "${CONDA_ENV_PATH}:${CONDA_ENV_PATH}/bin:${CONDA_ENV_PATH}/lib:$ENV{PATH}")
     endif()
 
     get_filename_component(REQUIREMENTS_TXT "${requirements_file}" ABSOLUTE)
