@@ -17,7 +17,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # Mac OS X
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
     link_directories(${BOOST_DIR}/lib)
-    link_directories(${CONDA_ENV_PATH}/lib)
+    link_directories(${CONDA_ENV_PATH}/lib/python37)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     # Windows
@@ -29,7 +29,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # Linux
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
     link_directories(${BOOST_DIR}/lib)
-    link_directories(${CONDA_ENV_PATH}/lib)
+    link_directories(${CONDA_ENV_PATH}/lib/python37)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL)
