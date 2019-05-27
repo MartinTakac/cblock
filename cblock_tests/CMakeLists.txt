@@ -75,7 +75,12 @@ target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL_interface/in
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/gtest/googletest-release-1.8.0/builds/${OS_STATIC_LIB_DIR}/include)
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/boost/${USE_BOOST_VERSION}/builds/${OS_STATIC_LIB_DIR})
 target_include_directories(${TARGET_NAME} PRIVATE .)
-target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include)
+else()
+    target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include/python3.7m)
+endif()
 
 target_link_libraries (${TARGET_NAME}
     PRIVATE debug gtestd optimized gtest
@@ -101,7 +106,12 @@ target_include_directories(${TARGET_NAME} PRIVATE ${SM_HOME}/SDK/BL_interface/in
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/gtest/googletest-release-1.8.0/builds/${OS_STATIC_LIB_DIR}/include)
 target_include_directories(${TARGET_NAME} PRIVATE ${THIRD_PARTY}/boost/${USE_BOOST_VERSION}/builds/${OS_STATIC_LIB_DIR})
 target_include_directories(${TARGET_NAME} PRIVATE .)
-target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include)
+else()
+    target_include_directories(${TARGET_NAME} PRIVATE ${CONDA_ENV_PATH}/include/python3.7m)
+endif()
 
 target_link_libraries (${TARGET_NAME}
     PRIVATE debug gtestd optimized gtest
