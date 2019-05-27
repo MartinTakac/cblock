@@ -14,7 +14,7 @@ pipeline {
       gitLabConnection('jenkins-gitlab-integration-test')
     }
     environment {
-        PATH = "$PATH:/opt/miniconda/bin"
+        PATH = "${env.PATH}:/opt/miniconda/bin"
     }
     stages {
         stage ("Build and Test") {
