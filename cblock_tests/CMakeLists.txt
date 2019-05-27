@@ -17,7 +17,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # Mac OS X
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
     link_directories(${BOOST_DIR}/lib)
-    link_directories(${CONDA_ENV_PATH}/lib/python37)
+    link_directories(${CONDA_ENV_PATH}/lib)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     # Windows
@@ -29,7 +29,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # Linux
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
     link_directories(${BOOST_DIR}/lib)
-    link_directories(${CONDA_ENV_PATH}/lib/python37)
+    link_directories(${CONDA_ENV_PATH}/lib)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL)
@@ -90,7 +90,13 @@ target_link_libraries (${TARGET_NAME}
 target_link_libraries(${TARGET_NAME} PRIVATE BL)
 target_link_libraries(${TARGET_NAME} PRIVATE BL_std)
 target_link_libraries(${TARGET_NAME} PRIVATE ${BOOST_LIBS})
-target_link_libraries(${TARGET_NAME} PRIVATE python37)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_link_libraries(${TARGET_NAME} PRIVATE python37)
+else()
+    target_link_libraries(${TARGET_NAME} PRIVATE python37m)
+endif()
+
 
 set(TARGET_NAME cblock_tests_with_interface)
 
@@ -122,7 +128,12 @@ target_link_libraries(${TARGET_NAME} PRIVATE BL)
 target_link_libraries(${TARGET_NAME} PRIVATE BL_std)
 target_link_libraries(${TARGET_NAME} PRIVATE BL_interface)
 target_link_libraries(${TARGET_NAME} PRIVATE ${BOOST_LIBS})
-target_link_libraries(${TARGET_NAME} PRIVATE python37)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_link_libraries(${TARGET_NAME} PRIVATE python37)
+else()
+    target_link_libraries(${TARGET_NAME} PRIVATE python37m)
+endif()
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
