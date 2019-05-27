@@ -29,9 +29,8 @@ pipeline {
                             // Defaults to last stable build                            
                             copyArtifacts(projectName: 'SM_Trunk_Deployment', filter: 'BL_MODEL_TESTS/**',
                                 selector: lastSuccessful());  
-                            sh "export PATH=$PATH:/opt/miniconda/bin"
                             sh "chmod +x ./build_linux.sh"
-                            sh "./build_linux.sh -D SM_HOME:STRING=${env.WORKSPACE}/BL_MODEL_TESTS"                            
+                            sh "PATH=$PATH:/opt/miniconda/bin ./build_linux.sh -D SM_HOME:STRING=${env.WORKSPACE}/BL_MODEL_TESTS"                            
                             sh "python ${env.WORKSPACE}/BL_MODEL_TESTS/run_tests.py"
                             // Note that this directory gets made in the root, not in the script dir
                             junit 'gtest-xml/*.xml'
