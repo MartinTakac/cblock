@@ -17,22 +17,24 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     # Mac OS X
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
     link_directories(${BOOST_DIR}/lib)
+    link_directories(${CONDA_ENV_PATH}/lib)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     # Windows
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
     link_directories(${BOOST_DIR}/libs)
+    link_directories(${CONDA_ENV_PATH}/libs)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # Linux
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
     link_directories(${BOOST_DIR}/lib)
+    link_directories(${CONDA_ENV_PATH}/lib)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL)
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL_std)    
 link_directories(${SM_HOME}/${BL_BUILD_DIR}/SDK/BL_interface/)
-link_directories(${CONDA_ENV_PATH}/libs)
 
 set(CBLOCK_TESTS_SOURCES 
     main.cpp
@@ -129,6 +131,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND NOT DEFINED IOS_PLATFORM)
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
         -E copy_if_different ${SM_HOME}/${BL_BUILD_DIR}/SDK/BL/$<CONFIG>/libBL.dylib $<TARGET_FILE_DIR:${TARGET_NAME}>)
+    # TODO: Update with actual location of mac libs
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 
         -E copy_if_different ${CONDA_ENV_PATH}/python37.dylib $<TARGET_FILE_DIR:${TARGET_NAME}>)
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} 

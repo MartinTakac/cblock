@@ -13,35 +13,18 @@ pipeline {
     options {
       gitLabConnection('jenkins-gitlab-integration-test')
     }
+    environment {
+        PATH= "$PATH:/opt/miniconda/bin"
+    }
     stages {
         stage ("Parallel Build and Test") {
             steps {
-                parallel (
-                    "MacBuild": {
-                        node ('mac') {                            
-                            echo 'Building and testing model on Mac'                            
-                            checkout([$class: 'GitSCM',
-                                branches: [[name: "development"]],
-                                extensions: [[$class: 'WipeWorkspace']],
-                                userRemoteConfigs: [[url: 'git@gitlab.soulmachines.com:cogarch/cblock.git',
-                                credentialsId: '1f7b3cce-7810-4686-9e97-430faa47b984']]
-                            ])
-                            // Defaults to last stable or unstable build (i.e. it's ok if a test or two failed on it.)                            
-                            copyArtifacts(projectName: 'SM_Trunk_Deployment', filter: 'BL_MODEL_TESTS/**',
-                                selector: lastSuccessful());
-                            // Linking for different OSes is done within the cmakelists files
-                            sh 'chmod +x build_mac.sh'
-                            sh "./build_mac.sh -D SM_HOME:STRING=${env.WORKSPACE}/BL_MODEL_TESTS"                            
-                            sh "python ${env.WORKSPACE}/BL_MODEL_TESTS/run_tests.py"
-                            // Note that this directory gets made in the root, not in the script dir
-                            junit 'gtest-xml/*.xml'
-                        }
-                    },                    
+                parallel (                 
                     "LinuxBuild": {
-                        node ('linux') {                            
+                        node ('miniconda') {                            
                             echo 'Building and testing model on Linux'
                             checkout([$class: 'GitSCM',
-                                branches: [[name: "development"]],
+                                branches: [[name: "tests-chris.gorman"]],
                                 extensions: [[$class: 'WipeWorkspace']],
                                 userRemoteConfigs: [[url: 'git@gitlab.soulmachines.com:cogarch/cblock.git',
                                 credentialsId: '1f7b3cce-7810-4686-9e97-430faa47b984']]
@@ -52,24 +35,6 @@ pipeline {
                             sh 'chmod +x build_linux.sh'
                             sh "./build_linux.sh -D SM_HOME:STRING=${env.WORKSPACE}/BL_MODEL_TESTS"                            
                             sh "python ${env.WORKSPACE}/BL_MODEL_TESTS/run_tests.py"
-                            // Note that this directory gets made in the root, not in the script dir
-                            junit 'gtest-xml/*.xml'
-                        }
-                    },
-                    "WindowsBuild": {
-                        node ('windows') {                            
-                            echo 'Building and testing model on Windows'
-                            checkout([$class: 'GitSCM',
-                                branches: [[name: "development"]],
-                                extensions: [[$class: 'WipeWorkspace']],
-                                userRemoteConfigs: [[url: 'git@gitlab.soulmachines.com:cogarch/cblock.git',
-                                credentialsId: '1f7b3cce-7810-4686-9e97-430faa47b984']]
-                            ])
-                            // Defaults to last stable build                            
-                            copyArtifacts(projectName: 'SM_Trunk_Deployment', filter: 'BL_MODEL_TESTS/**',
-                                selector: lastSuccessful());                            
-                            bat "build_windows_vs2017.bat -D SM_HOME:STRING=${env.WORKSPACE}/BL_MODEL_TESTS"
-                            bat "python ${env.WORKSPACE}/BL_MODEL_TESTS/run_tests.py"
                             // Note that this directory gets made in the root, not in the script dir
                             junit 'gtest-xml/*.xml'
                         }
