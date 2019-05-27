@@ -45,7 +45,11 @@ function(create_conda_env retvar env_name output_path requirements_file)
         message(FATAL_ERROR "Error creating Conda environment")
     endif()
     
-    set(PYTHON_EXE "${CONDA_ENV_PATH}/python")
+    if(TARGET_WINDOWS)
+        set(PYTHON_EXE "${CONDA_ENV_PATH}/python")
+    else()
+        set(PYTHON_EXE "${CONDA_ENV_PATH}/bin/python")
+    endif()
     # Set environment variables so Python can find the modules it needs
     set(ENV{PYTHONHOME} ${CONDA_ENV_PATH})
     
