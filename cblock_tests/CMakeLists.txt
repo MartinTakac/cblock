@@ -94,7 +94,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE ${BOOST_LIBS})
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(${TARGET_NAME} PRIVATE python37)
 else()
-    target_link_libraries(${TARGET_NAME} PRIVATE python37m)
+    target_link_libraries(${TARGET_NAME} PRIVATE python3.7m)
 endif()
 
 
@@ -132,7 +132,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE ${BOOST_LIBS})
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(${TARGET_NAME} PRIVATE python37)
 else()
-    target_link_libraries(${TARGET_NAME} PRIVATE python37m)
+    target_link_libraries(${TARGET_NAME} PRIVATE python3.7m)
 endif()
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
