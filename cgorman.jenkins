@@ -22,13 +22,14 @@ pipeline {
                             echo 'Building and testing model on Linux'
                             checkout([$class: 'GitSCM',
                                 branches: [[name: "tests-chris.gorman"]],
+                                doGenerateSubmoduleConfigurations: false,
                                 extensions: [[$class: 'WipeWorkspace'],
                                             [$class: 'SubmoduleOption',
                                             disableSubmodules: false,
                                             parentCredentials: true,
                                             recursiveSubmodules: true,
-                                            reference: '',
                                             trackingSubmodules: false]],
+                                submoduleCfg: [],                                             
                                 userRemoteConfigs: [[url: 'git@gitlab.soulmachines.com:cogarch/cblock.git',
                                 credentialsId: '1f7b3cce-7810-4686-9e97-430faa47b984']]
                             ])
