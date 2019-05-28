@@ -35,6 +35,7 @@ debug_displays/seq_som/plastic/texture.plastic.data=cblock/seq_som/asom/plastic*
 # plan_som
 # activity
 debug_displays/plan_som/activity_map/texture.activity_map.data=cblock/plan_som/asom/activation_map
+debug_displays/plan_som/buf_activity_map/texture.buf_activity_map.data=cblock/cblockOutputs/plan_SOM_trained_activity_map
 debug_displays/plan_som/activation_mask/texture.activation_mask.data=cblock/plan_som/asom/activation_mask
 
 # tr
@@ -210,6 +211,7 @@ debug_displays/monitors/surprise/visible=displayConstants/debug_is_visible
 debug_displays/plan_som/visible=displayConstants/debug_is_visible
 debug_displays/plan_som/activation_mask/visible=displayConstants/debug_is_visible
 debug_displays/plan_som/activity_map/visible=displayConstants/debug_is_visible
+debug_displays/plan_som/buf_activity_map/visible=displayConstants/debug_is_visible
 debug_displays/plan_som/input/visible=displayConstants/debug_is_visible
 debug_displays/plan_som/input/result/visible=displayConstants/debug_is_visible
 debug_displays/plan_som/input/reward/visible=displayConstants/debug_is_visible

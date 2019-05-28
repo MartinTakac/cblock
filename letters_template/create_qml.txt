@@ -212,6 +212,7 @@ slider,cblock/cblockParams/surprise_alphas_till_eos_ngd,keep till eos ngd,0,1,1
 
 section,plan-SOM,200,300,80
 slider,cblock/plan_som/TD_inspection/control/inspect,inspect SOM,0,1,1
+slider,cblock/cblockInputs/plan_TD_influence,TD influence,0,1,0.001
 slider,cblock/cblockParams/display_plan_som_real_time,display realtime,0,1,1
 slider,cblock/cblockParams/plan_learn_non_goal_driven,learn in non goal-driven,0,1,1
 slider,cblock/cblockParams/plan_learn_goal_driven,learn in goal-driven,0,1,1

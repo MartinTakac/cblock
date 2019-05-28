@@ -209,6 +209,11 @@ cblock/cblockInputs/inputType_resetSeq=control/inputType_resetSeq
 cblock/cblockInputs/ready=1
 
 #################
+# temporary test of TD influence
+#BL_linear_transformation_connector
+#cblock/cblockInputs/plan_TD_activation_map=cblock/cblockInputs/plan_TD_influence>0 ? cblock/plan_som/TD_inspection/control/result : cblock/cblockInputs/plan_TD_activation_map
+ 
+#################
 BL_identity_connector
 # debug
 continuous_2=cblock/core/control/prediction_error

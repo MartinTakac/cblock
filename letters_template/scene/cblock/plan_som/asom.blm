@@ -29,3 +29,4 @@ normalize_activation=1.
 #exploration_method_type=NO_EXPLORATION_METHOD
 exploration_method_type=NOISE_ON_ACTIVATION_INTERNAL_EXPLORATION_METHOD
 normalise_alphas=0.
+recompute_activation_after_training=1.

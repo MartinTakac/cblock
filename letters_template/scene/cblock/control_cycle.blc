@@ -312,8 +312,8 @@ control_cycle/perform_calculate=core/control/stage[6]
 core/interval_LIF/trigger=0
 planning/plan_timeout_LIF/trigger=0
 seq_som/asomConsts/plasticity=0
+cblockOutputs/plan_SOM_trained_activity_map=plan_som/asomConsts/plasticity>0 ? plan_som/asom/activation_map : cblockOutputs/plan_SOM_trained_activity_map
 plan_som/asomConsts/plasticity=0
-cblockOutputs/plan_SOM_trained_activity_map=plan_som/asom/activation_map
 seq_som/asom/perform_time_step=0
 plan_som/asom/perform_time_step=1
 
@@ -364,7 +364,7 @@ control_cycle/perform_calculate=core/control/stage[5]
 core/interval_LIF/trigger=0
 planning/plan_timeout_LIF/trigger=0
 plan_som/asom/perform_time_step=0
-cblockOutputs/plan_SOM_trained_activity_map=plan_som/asom/activation_map
+cblockOutputs/plan_SOM_trained_activity_map=plan_som/asomConsts/plasticity>0 ? plan_som/asom/activation_map : cblockOutputs/plan_SOM_trained_activity_map
 plan_som/asomConsts/plasticity=0
 plan_som/asom/activation_mask=plan_som/asomConsts/default_mask
 seq_som/asom/perform_time_step=0
@@ -800,11 +800,15 @@ seq_som/asom/plastic=planning/control/goal_driven>0 ? seq_som/asomConsts/plastic
 BL_linear_transformation_connector
 control_cycle/perform_calculate=plan_som/asom/perform_time_step
 
-# add noise if goal-driven, but inspect mode has precedence
+# add noise if goal-driven
 plan_som/input_gates/TD_activation=planning/control/goal_driven>0 ? planning/control/noise_level : 0
+# but TD influence has precedence
+plan_som/input_gates/TD_activation=cblockInputs/plan_TD_influence>0 ? cblockInputs/plan_TD_influence : plan_som/input_gates/TD_activation
+# but inspect mode has precedence
 plan_som/input_gates/TD_activation=plan_som/TD_inspection/control/inspect>0 ? 1 : plan_som/input_gates/TD_activation
 
 plan_som/inputs/TD_activation_map=planning/control/goal_driven>0 ? planning/random_generator/values : plan_som/inputs/TD_activation_map
+plan_som/inputs/TD_activation_map=cblockInputs/plan_TD_influence>0 ? cblockInputs/plan_TD_activation_map : plan_som/inputs/TD_activation_map
 plan_som/inputs/TD_activation_map=plan_som/TD_inspection/control/inspect>0 ? plan_som/TD_inspection/control/result : plan_som/inputs/TD_activation_map
 
 # connect asom's inputs
@@ -834,3 +838,4 @@ plan_som/asom/activation_sensitivity = core/control/plan_som_from_plan_only>0 ? 
 
 # Plasticity
 plan_som/asom/plastic=planning/control/goal_driven>0 ? plan_som/asomConsts/plasticity*cblockParams/plan_learn_goal_driven : plan_som/asomConsts/plasticity*cblockParams/plan_learn_non_goal_driven
+
