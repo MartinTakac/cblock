@@ -66,6 +66,15 @@ void RuntimeDataGenerator::generate_runtime_data(bfs::path config_file_path, bfs
 	// Note that these functions require the paths to exist, so we don't need to manually check that ourselves
 	template_path = bfs::canonical(template_path).make_preferred();
 	config_file_path = bfs::canonical(config_file_path).make_preferred();
+
+	if (!bfs::exists(output_path))
+	{
+		if(!bfs::create_directory(output_path))
+		{
+			cerr << "Unable to create directory: " << output_path.string() << endl;
+			exit(1);
+		}
+	}
 	output_path = bfs::canonical(output_path).make_preferred();
 
 	// Convert these paths to Python pathlib objects so we can pass them to the runtime generator function
