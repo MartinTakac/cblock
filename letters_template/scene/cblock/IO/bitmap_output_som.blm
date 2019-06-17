@@ -3,8 +3,8 @@ map_size_x=#INDIV_SOM_DIM_X#
 map_size_y=#INDIV_SOM_DIM_Y#
 number_of_inputs=#INPUT_BITMAP_SIZE#
 # bitmap
-number_of_layers=1
-input_sizes=#INPUT_BITMAP_SIZE#
+number_of_layers=#INPUT_BITMAP_SIZE#
+input_sizes=1
 input_values=0.
 alphas=1
 plastic=0.
@@ -27,6 +27,5 @@ exploration_method_type=NO_EXPLORATION_METHOD
 top_down_influence=1.
 effective_zero=0.01
 #training_record_decay=0.9
-
 
 

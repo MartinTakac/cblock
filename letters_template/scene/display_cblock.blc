@@ -74,7 +74,9 @@ displays/plan_som/container/19/displayPanel/texture.displayPanel.data=cblock/pla
 # cblock
 displays/cblock/container/1/displayPanel/texture.displayPanel.data=cblock/cblockOutputs/goal_reached
 displays/cblock/container/2/displayPanel/texture.displayPanel.data=cblock/cblockParams/indiv_xy>0 ? cblock/IO/xy_input_som/training_record : cblock/IO/bitmap_input_som/training_record
-# 3 - measures are below to update only when needed (effectivity reasons?)
+
+displays/cblock/container/3/displayPanel/texture.displayPanel.data=displayConstants/display_secondary_monitor>0? measures2_scrollDisplay/texture_data : cblock/core/measures_scrollDisplay/texture_data
+
 displays/cblock/container/4/displayPanel/texture.displayPanel.data=cblock/cblockOutputs/plan_good_enough
 displays/cblock/container/5/displayPanel/texture.displayPanel.data=cblock/core/control/stage
 displays/cblock/container/6/displayPanel/texture.displayPanel.data=cblock/core/control/surprise
@@ -87,15 +89,10 @@ displays/cblock/container/7/displayPanel/texture.displayPanel.data=cblock/cblock
 # predicted letter bitmap 
 displays/cblock/container/8/displayPanel/texture.displayPanel.data=cblock/cblockOutputs/predicted_bitmap
 
-# for drawing (set *.tex files for containers 7 (10x10) and 8 (5x1) accordingly) 
-# drawing board
-#displays/cblock/container/7/displayPanel/texture.displayPanel.data=drawing/board/chunk_board
-# rewards (manual,DA,smile,woooh,reward_value) 
-#displays/cblock/container/8/displayPanel/texture.displayPanel.data=reward_control/reward_state
+# # for drawing (set *.tex files for containers 7 (10x10) and 8 (5x1) accordingly) 
+# # drawing board
+# displays/cblock/container/7/displayPanel/texture.displayPanel.data=drawing/board/chunk_board
+# # rewards (manual,DA,smile,woooh,reward_value) 
+# displays/cblock/container/8/displayPanel/texture.displayPanel.data=reward_control/reward_state
 
 
-# measures
-BL_identity_connector
-# Only update when needed
-display_cblock/perform_calculate=cblock/core/measures_scrollDisplay/updated
-displays/cblock/container/3/displayPanel/texture.displayPanel.data=cblock/core/measures_scrollDisplay/texture_data

@@ -1,8 +1,5 @@
 BL_linear_transformation_connector
 
-# LIF speed
-planning/control/master_LIF_speed=cblockParams/master_LIF_speed
-
 # weight control
 seq_som/asomConsts/reset=cblockParams/reset_all_weights
 seq_som/asomConsts/qmlSaveWeights=cblockParams/save_all_weights

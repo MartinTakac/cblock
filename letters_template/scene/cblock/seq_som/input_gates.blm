@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=6
+number_of_values=7
 
 value_names[0]=current
 values[0]=real 1 1.
@@ -16,7 +16,10 @@ values[3]=real 1 1.
 value_names[4]=eos
 values[4]=real 1 1. 
 
+value_names[5]=interval
+values[5]=real 1 1. 
+
 #TD
-value_names[5]=TD_activation
-values[5]=real 1 0.
+value_names[6]=TD_activation
+values[6]=real 1 0.
 

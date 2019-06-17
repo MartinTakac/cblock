@@ -1,0 +1,83 @@
+BL_constant_module
+number_of_values=22
+
+# sync/control signals:
+# a new-input signal (set from outside cblock)
+value_names[0]=ready
+values[0]=real 1 0.
+# reset signal - set from cblock when it reads the new input to turn ready off. Whoever sets the ready flag, should also listen for reset and set ready to 0 when reset>0.
+value_names[1]=reset
+values[1]=real 1 0.
+
+# a control signal saying to load the contents of load_dump_input and install it as cblock's state
+value_names[2]=type_load
+values[2]=real 1 0.
+
+# a control signal saying to dump the current cblock state to load_dump_output (the contents of load_dump_input are ignored)
+value_names[3]=type_dump
+values[3]=real 1 0.
+
+####################
+# contents
+
+# current configuration
+value_names[4]=tonic_input
+values[4]=real #INDIV_SOM_SIZE# 0.
+
+value_names[5]=tonic_input_weight
+values[5]=real 1 0.
+
+value_names[6]=current
+values[6]=real #INDIV_SOM_SIZE# 0.
+
+value_names[7]=context
+values[7]=real #INDIV_SOM_SIZE# 0.
+
+value_names[8]=surprise_since_last_eos
+values[8]=real 1 0.
+
+# prediction from last step - for surprise computation
+value_names[9]=predicted_distribution
+values[9]=real #INDIV_SOM_SIZE# 0.
+
+value_names[10]=predicted_winner
+values[10]=real 1 0.
+
+value_names[11]=eos_predicted
+values[11]=real 1 0.
+
+# buffer related
+value_names[12]=buffered_seq_length
+values[12]=real 1 0.
+
+value_names[13]=buffer_occupancy
+values[13]=real #BUFFER_CAPACITY# 0.
+
+value_names[14]=buffer_content
+values[14]=real #BUFFER_TOTAL_SIZE# 0.
+
+# state related
+value_names[15]=chunk_init_state
+values[15]=real #STATE_SIZE# 0.
+
+# only buffered goal is installed this way, the mode (goal-driven or not), current system state and current goal go in via standard connection, so that they are up to date (right?)
+# that means that when loaded, the system will pursue the buffered goal until eos (goal-reached, eos-predicted, time out, reset or finalize), then the system updates the goal from planning/goal.
+value_names[16]=buffered_goal_effect
+values[16]=real #STATE_SIZE# 0.
+
+value_names[17]=buffered_goal_reward
+values[17]=real 1 0.
+
+value_names[18]=alpha_goal_state_components_combined
+values[18]=real #STATE_SIZE# 0.
+
+value_names[19]=alpha_goal_state_bulk
+values[19]=real 1 0.
+
+value_names[20]=alpha_reward
+values[20]=real 1 0.
+
+value_names[21]=ior_mask_plan_som
+values[21]=real #PLAN_SOM_SIZE# 0.
+
+# alternatively, store planning/goal/state and reward too? What about the current system state?

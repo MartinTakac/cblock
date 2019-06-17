@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=6
+number_of_values=7
 
 value_names[0]=current
 values[0]=real #INDIV_SOM_SIZE# 0.
@@ -16,5 +16,8 @@ values[3]=real #INDIV_SOM_SIZE# 0.
 value_names[4]=eos
 values[4]=real 1 0. 
 
-value_names[5]=TD_activation_map
-values[5]=real #SEQ_SOM_SIZE# 0.
+value_names[5]=interval
+values[5]=real 1 0. 
+
+value_names[6]=TD_activation_map
+values[6]=real #SEQ_SOM_SIZE# 0.

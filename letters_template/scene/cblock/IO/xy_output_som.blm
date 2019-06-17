@@ -3,8 +3,8 @@ map_size_x=#INDIV_SOM_DIM_X#
 map_size_y=#INDIV_SOM_DIM_Y#
 number_of_inputs=2
 # x,y
-number_of_layers=1
-input_sizes=2
+number_of_layers=2
+input_sizes=1
 input_values=0.
 alphas=1
 plastic=0.

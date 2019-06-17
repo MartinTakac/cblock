@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=13
+number_of_values=15
 
 # sync/control signals:
 # a new-input signal (set from outside cblock)
@@ -51,3 +51,13 @@ values[11]=real 1 0.
 # to be able to update goal to inferred after surprise
 value_names[12]=refresh_goal_plan
 values[12]=real 1 0.
+
+##########
+# TD bias related
+# to be able to update goal to inferred after surprise
+value_names[13]=plan_TD_activation_map
+values[13]=real #PLAN_SOM_SIZE# 0.
+
+# to be able to update goal to inferred after surprise
+value_names[14]=plan_TD_influence
+values[14]=real 1 0.

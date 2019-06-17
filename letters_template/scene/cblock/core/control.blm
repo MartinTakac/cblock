@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=44
+number_of_values=47
 
 # constants
 value_names[0]=zero
@@ -115,3 +115,11 @@ values[42]=real 1 0.
 value_names[43]=IO_soms_loaded
 values[43]=real 1 0.
 
+value_names[44]=load
+values[44]=real 1 0.
+
+value_names[45]=dump
+values[45]=real 1 0.
+
+value_names[46]=interval
+values[46]=real 1 0.

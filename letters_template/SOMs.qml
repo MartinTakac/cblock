@@ -398,6 +398,16 @@ ScrollView
 					
 			ListElement
 			{
+				name: "TD influence"
+				path: "cblock/cblockInputs/plan_TD_influence"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
+			ListElement
+			{
 				name: "display realtime"
 				path: "cblock/cblockParams/display_plan_som_real_time"
 				startValue: 0.5

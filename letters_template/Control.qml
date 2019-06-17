@@ -20,9 +20,9 @@ ScrollView
 			{
 				name: "train steps"
 				path: "training_control/do_autotrain_steps"
-				startValue: 250.0
+				startValue: 2500.0
 				minValue: 0.0
-				maxValue: 500.0
+				maxValue: 5000.0
 				stepSize: 1.0
 			}
 					
@@ -134,6 +134,24 @@ ScrollView
 				isCheckable: false
 			}
 					
+			ListElement
+			{
+				name: "test dump"
+				path: "cblock/faked_stack/dump_qml"
+				onValue: 1.0
+				offValue: 0.0
+				isCheckable: false
+			}
+					
+			ListElement
+			{
+				name: "test load"
+				path: "cblock/faked_stack/load_qml"
+				onValue: 1.0
+				offValue: 0.0
+				isCheckable: false
+			}
+					
 		}
 		ListModel
 		{
@@ -171,12 +189,22 @@ ScrollView
 					
 			ListElement
 			{
-				name: "playback speed"
-				path: "control/playback_speed"
-				startValue: 100.0
+				name: "play at intervals"
+				path: "control/playback_at_intervals"
+				startValue: 0.5
 				minValue: 0.0
-				maxValue: 200.0
-				stepSize: 0.01
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "playback speed correction"
+				path: "control/playback_speed_correction"
+				startValue: 10.0
+				minValue: 0.0
+				maxValue: 20.0
+				stepSize: 0.001
 			}
 					
 			ListElement
@@ -207,6 +235,36 @@ ScrollView
 				minValue: 0.0
 				maxValue: 1.0
 				stepSize: 0.01
+			}
+					
+			ListElement
+			{
+				name: "interval speed"
+				path: "cblock/cblockParams/interval_LIF_speed"
+				startValue: 100.0
+				minValue: 0.0
+				maxValue: 200.0
+				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "reset at interval timeout"
+				path: "cblock/cblockParams/reset_at_interval_timeout"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "reset if no first"
+				path: "cblock/cblockParams/reset_if_no_first_timeout"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
 			}
 					
 		}

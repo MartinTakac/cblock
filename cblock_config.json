@@ -62,13 +62,7 @@
     }    
 ],
 
-"dependent_variables": [
-	{
-      "name":"buffer_capacity",
-      "tag": "#BUFFER_CAPACITY#",
-      "operation": ".",
-      "depends_on": ["buffer_capacity_dim_x", "buffer_capacity_dim_y"]
-    },
+"dependent_variables": [	
     {
       "name":"input_bitmap_size",
       "tag": "#INPUT_BITMAP_SIZE#",
@@ -80,6 +74,24 @@
       "tag": "#INDIV_SOM_SIZE#",
       "operation": ".",
       "depends_on": ["indiv_som_dim_x", "indiv_som_dim_y"]
+    },
+	{
+      "name":"buffer_capacity",
+      "tag": "#BUFFER_CAPACITY#",
+      "operation": ".",
+      "depends_on": ["buffer_capacity_dim_x", "buffer_capacity_dim_y"]
+    },
+	{
+      "name":"buffer_element_size",
+      "tag": "#BUFFER_ELEMENT_SIZE#",
+      "operation": "+",
+      "depends_on": ["indiv_som_size", "indiv_som_size","indiv_som_size",1]
+    },
+	{
+      "name":"buffer_total_size",
+      "tag": "#BUFFER_TOTAL_SIZE#",
+      "operation": "*",
+      "depends_on": ["buffer_capacity", "buffer_element_size"]
     },
 	{
       "name":"bitmap_som_weights",
@@ -104,13 +116,7 @@
       "tag": "#STATE_LAST_INDEX#",
       "operation": "-",
       "depends_on": ["state_size", 1]
-    },
-	{
-      "name":"buffer_element_size",
-      "tag": "#BUFFER_ELEMENT_SIZE#",
-      "operation": "+",
-      "depends_on": ["indiv_som_size", "indiv_som_size","indiv_som_size"]
-    },
+    },	
 	{
       "name":"seq_som_size",
       "tag": "#SEQ_SOM_SIZE#",
@@ -121,7 +127,7 @@
       "name":"seq_som_input_size",
       "tag": "#SEQ_SOM_INPUT_SIZE#",
       "operation": "+",
-      "depends_on": ["indiv_som_size","indiv_som_size","indiv_som_size","indiv_som_size",1]
+      "depends_on": ["indiv_som_size","indiv_som_size","indiv_som_size","indiv_som_size",1,1]
     },
 	{
       "name":"seq_som_weights",
@@ -160,6 +166,12 @@
       "depends_on": ["seq_som_next_last_index","indiv_som_size"]
     },
 	{
+      "name":"buffer_interval_index",
+      "tag": "#BUFFER_INTERVAL_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_ctx_last_index", 1]
+    },
+	{
       "name":"seq_som_tonic_first_index",
       "tag": "#SEQ_SOM_TONIC_FIRST_INDEX#",
       "operation": "+",
@@ -176,6 +188,12 @@
       "tag": "#SEQ_SOM_EOS_INDEX#",
       "operation": "+",
       "depends_on": ["seq_som_tonic_last_index", 1]
+    },
+	{
+      "name":"seq_som_interval_index",
+      "tag": "#SEQ_SOM_INTERVAL_INDEX#",
+      "operation": "+",
+      "depends_on": ["seq_som_eos_index", 1]
     },
 	{
       "name":"plan_som_size",
@@ -244,5 +262,6 @@
       "depends_on": ["plan_som_dim_x", "plan_som_dim_y"]
     }
   ],
-  "custom_operations_lib" : "scripts/custom_operations_lib.py"
+  "custom_operations_lib" : "scripts/custom_operations_lib.py",
+  "excluded_folders_to_copy": [".test",".git",".svn"] 
 }

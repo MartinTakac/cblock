@@ -35,18 +35,25 @@ control/prediction=cblock/cblockOutputs/contains_prediction*cblock/cblockOutputs
 # control/prediction affects playback_LIF/input_voltages below
 control/buffered_out_elem=cblock/cblockOutputs/predicted_bitmap
 control/buffered_out_eos=cblock/cblockOutputs/eos_predicted+cblock/cblockOutputs/goal_reached>0 ? 1 : 0
-
+control/buffered_out_interval=cblock/cblockOutputs/interval
 
 #####################
 # do always 
 BL_linear_transformation_connector
 
 # set LIF speed and check voltage, set trigger back to zero. 
+# internal speed of interval_LIF is computed inside cblock as cblock/cblockParams/interval_LIF_speed*cblock/cblockParams/master_LIF_speed, playback can be faster or slower, depending on correction
+control/playback_speed=cblock/cblockParams/interval_LIF_speed*control/playback_speed_correction
 playback_LIF/membrane_frequency_constant=cblock/cblockParams/master_LIF_speed*control/playback_speed
 playback_LIF/input_frequency_constants[0]=playback_LIF/membrane_frequency_constant
+
+
 playback_LIF/trigger=0
 playback_LIF/input_voltages[0]=control/allow_playback*control/prediction>0 ? 1 : 0
-control/baby_event=playback_LIF/voltage>0.9 ? 1 : 0
+# the line below uses the measured interval: voltage reaching the interval causes baby_event 
+control/playback_event_thr=control/playback_at_intervals>0 ? control/buffered_out_interval : 0.9 
+control/baby_event=playback_LIF/voltage>control/playback_event_thr ? 1 : 0
+
 #cblock/core/measures_scrollDisplay/input_values[4]=playback_LIF/voltage
 
 # determine whether the user just turned on autotraining with a slider
@@ -201,6 +208,11 @@ cblock/cblockInputs/inputType_finalizeSeq=control/inputType_finalizeSeq
 cblock/cblockInputs/inputType_resetSeq=control/inputType_resetSeq
 cblock/cblockInputs/ready=1
 
+#################
+# temporary test of TD influence
+#BL_linear_transformation_connector
+#cblock/cblockInputs/plan_TD_activation_map=cblock/cblockInputs/plan_TD_influence>0 ? cblock/plan_som/TD_inspection/control/result : cblock/cblockInputs/plan_TD_activation_map
+ 
 #################
 BL_identity_connector
 # debug
