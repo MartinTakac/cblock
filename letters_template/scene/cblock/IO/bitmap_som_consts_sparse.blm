@@ -1,24 +1,18 @@
 BL_constant_module
 
-number_of_values=9
+number_of_values=7
 
-value_names[0]=display_real_time
+value_names[0]=sparse_coded_input
 values[0]=real 1 0.
 value_names[1]=qmlSensitivity
-values[1]=real 1 150.
+values[1]=real 1 1.
 value_names[2]=qmlCompareNoise
-values[2]=real 1 0.5
+values[2]=real 1 0.002
 value_names[3]=qmlBestMatchThreshold
-values[3]=real 1 0.9
+values[3]=real 1 0.1
 value_names[4]=qmlBestMatchLfcMult
-values[4]=real 1 0.
+values[4]=real 1 0.001
 value_names[5]=qmlSigma
-values[5]=real 1 0.01
+values[5]=real 1 1.
 value_names[6]=qmlTrainingRecordDecay
 values[6]=real 1 1.
-
-
-value_names[7]=ones_layers
-values[7]=real 2 1.
-value_names[8]=alphas
-values[8]=real 2 1.

@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=19
+number_of_values=20
 # 
 value_names[0]=automatic_training
 values[0]=real 1 0.
@@ -41,3 +41,5 @@ values[17]=real 1 0.
 value_names[18]=result
 values[18]=real #STATE_SIZE# 0.
 
+value_names[19]=myelination
+values[19]=real 1 0.

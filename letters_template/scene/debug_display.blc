@@ -25,6 +25,20 @@ debug_displays/seq_som/input/tonic/texture.tonic.data=cblock/seq_som/TD_inspecti
 
 # prediction
 debug_displays/seq_som/prediction/decoded/texture.decoded.data=cblock/IO/TD_inspection/control/inspect>0 ? cblock/IO/bitmap_output_som/output_values : cblock/cblockOutputs/predicted_bitmap
+
+#######
+# xy only
+BL_linear_transformation_connector
+debug_display/perform_calculate=cblock/cblockParams/indiv_xy
+# no bitmap if xy
+debug_displays/seq_som/prediction/decoded/texture.decoded.data=cblock/core/control/zeros_bitmap
+# if decoded.obj dimensions are k, use k-0.02 (position.obj size) as the factor in the equation below, e.g. 0.98 for k=1 or 0.58 fr k=0.6
+debug_displays/seq_som/prediction/decoded/position/transformation.translate_x=cblock/IO/TD_inspection/control/inspect>0 ? 0.58*cblock/IO/xy_output_som/output_values[0]+0.01 :  0.58*cblock/cblockOutputs/predicted_x+0.01 
+debug_displays/seq_som/prediction/decoded/position/transformation.translate_y=cblock/IO/TD_inspection/control/inspect>0 ? 0.58*cblock/IO/xy_output_som/output_values[1]+0.01 :  0.58*cblock/cblockOutputs/predicted_y+0.01
+
+########
+# continue with the rest (common for xy and bitmap)
+BL_linear_transformation_connector
 debug_displays/seq_som/prediction/eos/texture.eos.data=cblock/cblockOutputs/eos_predicted
 debug_displays/seq_som/prediction/next_winner/texture.next_winner.data=cblock/seq_som/outputs/crisp_next
 
@@ -173,6 +187,7 @@ BL_linear_transformation_connector
 displayConstants/debug_visibleSeqSomInspect=displayConstants/debug_is_visible*cblock/seq_som/cursor/is_visible
 displayConstants/debug_visiblePlanSomInspect=displayConstants/debug_is_visible*cblock/plan_som/cursor/is_visible
 displayConstants/debug_visibleIndivSomInspect=displayConstants/debug_is_visible*cblock/IO/cursor/is_visible
+displayConstants/debug_visibleDecodedXYPos=displayConstants/debug_is_visible*cblock/cblockParams/indiv_xy
 
 BL_identity_connector
 debug_displays/background/visible=displayConstants/debug_is_visible
@@ -231,6 +246,7 @@ debug_displays/seq_som/input/tonic/visible=displayConstants/debug_is_visible
 debug_displays/seq_som/plastic/visible=displayConstants/debug_is_visible
 debug_displays/seq_som/prediction/visible=displayConstants/debug_is_visible
 debug_displays/seq_som/prediction/decoded/visible=displayConstants/debug_is_visible
+debug_displays/seq_som/prediction/decoded/position/visible=displayConstants/debug_visibleDecodedXYPos
 debug_displays/seq_som/prediction/eos/visible=displayConstants/debug_is_visible
 debug_displays/seq_som/prediction/next_winner/visible=displayConstants/debug_is_visible
 debug_displays/seq_som/training_record/visible=displayConstants/debug_is_visible

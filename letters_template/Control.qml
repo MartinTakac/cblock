@@ -28,6 +28,16 @@ ScrollView
 					
 			ListElement
 			{
+				name: "myelinate only"
+				path: "training_control/myelination"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "step delay"
 				path: "output_ready_off_delayed/number_of_time_steps_delay"
 				startValue: 2500.5
@@ -261,6 +271,16 @@ ScrollView
 			{
 				name: "reset if no first"
 				path: "cblock/cblockParams/reset_if_no_first_timeout"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "sparse input coding"
+				path: "cblock/cblockParams/sparse_coded_input"
 				startValue: 0.5
 				minValue: 0.0
 				maxValue: 1.0

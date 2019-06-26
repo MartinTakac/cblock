@@ -1,0 +1,6 @@
+BL_linear_transformation_connector
+
+continuous_6=cblock/IO/bitmap_input_som/output_x
+continuous_7=cblock/IO/bitmap_input_som/output_y
+continuous_8=cblock/IO/bitmap_output_som/output_x
+continuous_9=cblock/IO/bitmap_output_som/output_y

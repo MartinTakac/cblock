@@ -39,3 +39,5 @@ cblock/seq_som/asomConsts/qmlBestMatchThreshold=0.95
 cblock/seq_som/alpha_gains/context_train=0.7
 cblock/seq_som/alpha_gains/context=0.7
 cblock/seq_som/alpha_gains/context_gd=0.7
+
+cblock/cblockParams/sparse_coded_input=1

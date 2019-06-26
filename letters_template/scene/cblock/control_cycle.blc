@@ -161,8 +161,8 @@ BL_linear_transformation_connector
 control_cycle/perform_calculate=IO/TD_inspection/control/inspect
 
 # at the moment, we only allow bitmap indiv SOm inspection
-#IO/xy_output_som/top_down_activation=IO/TD_inspection/control/result
-#IO/xy_output_som/perform_time_step=IO/indiv_type/xy
+IO/xy_output_som/top_down_activation=IO/TD_inspection/control/result
+IO/xy_output_som/perform_time_step=IO/indiv_type/xy
 IO/bitmap_output_som/top_down_activation=IO/TD_inspection/control/result
 IO/bitmap_output_som/perform_time_step=IO/indiv_type/bitmap
 

@@ -606,6 +606,26 @@ ScrollView
 				stepSize: 0.001
 			}
 					
+			ListElement
+			{
+				name: "Sigma"
+				path: "cblock/IO/xy_som_consts/qmlSigma"
+				startValue: 1.0
+				minValue: 0.0
+				maxValue: 2.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Training record decay"
+				path: "cblock/IO/xy_som_consts/qmlTrainingRecordDecay"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
 		}
 		ListModel
 		{
@@ -615,6 +635,96 @@ ScrollView
 		ListModel
 		{
 			id: slider_model_2_7
+					
+			ListElement
+			{
+				name: "display realtime"
+				path: "cblock/IO/xy_som_consts/display_real_time"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "sparse bump inv size"
+				path: "cblock/IO/winner_pos_to_sparse_som/activation_sensitivity"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Sensitivity"
+				path: "cblock/IO/xy_som_consts_sparse/qmlSensitivity"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Compare noise"
+				path: "cblock/IO/xy_som_consts_sparse/qmlCompareNoise"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.05
+			}
+					
+			ListElement
+			{
+				name: "Best match threshold"
+				path: "cblock/IO/xy_som_consts_sparse/qmlBestMatchThreshold"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "Best match LR multiplier"
+				path: "cblock/IO/xy_som_consts_sparse/qmlBestMatchLfcMult"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "Sigma"
+				path: "cblock/IO/xy_som_consts_sparse/qmlSigma"
+				startValue: 1.0
+				minValue: 0.0
+				maxValue: 2.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Training record decay"
+				path: "cblock/IO/xy_som_consts_sparse/qmlTrainingRecordDecay"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
+		}
+		ListModel
+		{
+			id: button_model_2_7
+				
+		}
+		ListModel
+		{
+			id: slider_model_2_8
 					
 			ListElement
 			{
@@ -676,10 +786,130 @@ ScrollView
 				stepSize: 0.001
 			}
 					
+			ListElement
+			{
+				name: "Sigma"
+				path: "cblock/IO/bitmap_som_consts/qmlSigma"
+				startValue: 1.0
+				minValue: 0.0
+				maxValue: 2.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Training record decay"
+				path: "cblock/IO/bitmap_som_consts/qmlTrainingRecordDecay"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
 		}
 		ListModel
 		{
-			id: button_model_2_7
+			id: button_model_2_8
+				
+		}
+		ListModel
+		{
+			id: slider_model_2_9
+					
+			ListElement
+			{
+				name: "inspect SOM"
+				path: "cblock/IO/TD_inspection/control/inspect"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "display realtime"
+				path: "cblock/IO/bitmap_som_consts/display_real_time"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "sparse bump inv size"
+				path: "cblock/IO/winner_pos_to_sparse_som/activation_sensitivity"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Sensitivity"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlSensitivity"
+				startValue: 50.0
+				minValue: 0.0
+				maxValue: 100.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Compare noise"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlCompareNoise"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.05
+			}
+					
+			ListElement
+			{
+				name: "Best match threshold"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlBestMatchThreshold"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "Best match LR multiplier"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlBestMatchLfcMult"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "Sigma"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlSigma"
+				startValue: 1.0
+				minValue: 0.0
+				maxValue: 2.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "Training record decay"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlTrainingRecordDecay"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 0.001
+			}
+					
+		}
+		ListModel
+		{
+			id: button_model_2_9
 				
 		}
 		Rectangle
@@ -794,6 +1024,8 @@ ScrollView
 				dgv_2_5.resetAllSliders()
 				dgv_2_6.resetAllSliders()
 				dgv_2_7.resetAllSliders()
+				dgv_2_8.resetAllSliders()
+				dgv_2_9.resetAllSliders()
 			}
 		}
 		DoubleGridView
@@ -886,7 +1118,31 @@ ScrollView
 			width: rootItem.width
 			sliderModel: slider_model_2_7
 			buttonModel: button_model_2_7
+			headerText: "xy input SOM sparse"
+			sliderWidth: 200
+			nameWidth: 300
+			valueWidth: 80
+			textScale: rootItem.textScale
+		}
+		DoubleGridView
+		{
+			id: dgv_2_8
+			width: rootItem.width
+			sliderModel: slider_model_2_8
+			buttonModel: button_model_2_8
 			headerText: "bitmap input SOM"
+			sliderWidth: 200
+			nameWidth: 300
+			valueWidth: 80
+			textScale: rootItem.textScale
+		}
+		DoubleGridView
+		{
+			id: dgv_2_9
+			width: rootItem.width
+			sliderModel: slider_model_2_9
+			buttonModel: button_model_2_9
+			headerText: "bitmap input SOM sparse"
 			sliderWidth: 200
 			nameWidth: 300
 			valueWidth: 80

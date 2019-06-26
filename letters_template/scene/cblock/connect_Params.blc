@@ -36,6 +36,10 @@ planning/control/not_goal_driven=-1*planning/control/goal_driven+1
 # set indiv type
 IO/indiv_type/xy=cblockParams/indiv_xy
 IO/indiv_type/bitmap=-1.*cblockParams/indiv_xy+1. 
+
+IO/xy_som_consts_sparse/sparse_coded_input=cblockParams/sparse_coded_input
+IO/bitmap_som_consts_sparse/sparse_coded_input=cblockParams/sparse_coded_input
+
 # indiv_type/none is now DEPRECATED
 #IO/indiv_type/none=cblockParams/do_indiv>0 ? 0 : 1
 #IO/indiv_type/xy=cblockParams/do_indiv*cblockParams/indiv_xy

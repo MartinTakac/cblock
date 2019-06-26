@@ -41,7 +41,7 @@ BL_constant_module
 # alt-z = zoom
 #
 
-number_of_values=64
+number_of_values=72
 
 value_names[0]=pulse_a
 values[0]=real 1 0.
@@ -202,3 +202,23 @@ value_names[62]=continuous_5
 values[62]=real 1 0.
 value_names[63]=name_5
 values[63]=character 12 autotr_steps
+
+value_names[64]=continuous_6
+values[64]=real 1 0.
+value_names[65]=name_6
+values[65]=character 5 out_x
+
+value_names[66]=continuous_7
+values[66]=real 1 0.
+value_names[67]=name_7
+values[67]=character 5 out_y
+
+value_names[68]=continuous_8
+values[68]=real 1 0.
+value_names[69]=name_8
+values[69]=character 4 td_x
+
+value_names[70]=continuous_9
+values[70]=real 1 0.
+value_names[71]=name_9
+values[71]=character 4 td_y

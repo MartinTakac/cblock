@@ -23,12 +23,12 @@
 	{
         "name": "indiv_som_dim_x",
         "tag": "#INDIV_SOM_DIM_X#",
-        "value": 10
+        "value": 20
     },
 	{
         "name": "indiv_som_dim_y",
         "tag": "#INDIV_SOM_DIM_Y#",
-        "value": 10
+        "value": 20
     },
 	{
         "name": "buffer_capacity_dim_x",

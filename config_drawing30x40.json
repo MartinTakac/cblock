@@ -13,42 +13,42 @@
 	{
         "name": "state_dim_x",
         "tag": "#STATE_DIM_X#",
-        "value": 10
+        "value": 40
     },
     {
         "name": "state_dim_y",
         "tag": "#STATE_DIM_Y#",
-        "value": 10
+        "value": 30
     },
 	{
         "name": "indiv_som_dim_x",
         "tag": "#INDIV_SOM_DIM_X#",
-        "value": 10
+        "value": 30
     },
 	{
         "name": "indiv_som_dim_y",
         "tag": "#INDIV_SOM_DIM_Y#",
-        "value": 10
+        "value": 30
     },
 	{
         "name": "buffer_capacity_dim_x",
         "tag": "#BUF_DIM_X#",
-        "value": 10
+        "value": 20
     },
 	{
         "name": "buffer_capacity_dim_y",
         "tag": "#BUF_DIM_Y#",
-        "value": 10
+        "value": 20
     },
 	{
         "name": "seq_som_dim_x",
         "tag": "#SEQ_SOM_DIM_X#",
-        "value": 50
+        "value": 60
     },	
     {
         "name": "seq_som_dim_y",
         "tag": "#SEQ_SOM_DIM_Y#",
-        "value": 50
+        "value": 60
     },
     {
         "name": "plan_som_dim_x",

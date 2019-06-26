@@ -46,13 +46,13 @@ IO/input_control/S0=IO/input/reset>0 ? 1 : 0
 
 ####################
 # S3 (common to all indiv elem branches): write the final result and return to S0
-BL_identity_connector
-#BL_linear_transformation_connector
+BL_linear_transformation_connector
 connect_Inputs/perform_calculate=IO/input_control/S3
 
 #deb_connect_Inputs/status[3]=deb_connect_Inputs/status[3]+1
 
-IO/input/seq_element=IO/input_wta/output_values
+IO/input/seq_element=cblockParams/sparse_coded_input>0 ? IO/winner_pos_to_sparse_som/activation_map : IO/input_wta/output_values
+IO/winner_pos_to_sparse_som/perform_time_step=IO/input_control/off
 IO/input/ready_nextElem=IO/input_control/on
 cblockInputs/reset=IO/input_control/off
 
@@ -61,24 +61,30 @@ IO/input_control/S0=IO/input_control/on
 
 #######################
 # S2 in xy branch: turn off asom, write the input conversion results, go back to S0
-BL_identity_connector
+BL_linear_transformation_connector
 connect_Inputs/perform_calculate=IO/input_control/S2_xy
 
 IO/input_control/S2_xy=IO/input_control/off
 
 IO/input_wta/input_values=IO/xy_input_som/activation_map
+IO/winner_pos_to_sparse_som/input_values[0]=IO/xy_input_som/output_x
+IO/winner_pos_to_sparse_som/input_values[1]=IO/xy_input_som/output_y
+IO/winner_pos_to_sparse_som/perform_time_step=IO/input_control/on
 IO/xy_input_som/perform_time_step=IO/input_control/off
 
 IO/input_control/S3=IO/input_control/on
 
 #######################
 # S2 in bitmap branch: turn off asom, write the input conversion results to wta, go to S3
-BL_identity_connector
+BL_linear_transformation_connector
 connect_Inputs/perform_calculate=IO/input_control/S2_bitmap
 
 IO/input_control/S2_bitmap=IO/input_control/off
 
 IO/input_wta/input_values=IO/bitmap_input_som/activation_map
+IO/winner_pos_to_sparse_som/input_values[0]=IO/bitmap_input_som/output_x
+IO/winner_pos_to_sparse_som/input_values[1]=IO/bitmap_input_som/output_y
+IO/winner_pos_to_sparse_som/perform_time_step=IO/input_control/on
 IO/bitmap_input_som/perform_time_step=IO/input_control/off
 
 IO/input_control/S3=IO/input_control/on

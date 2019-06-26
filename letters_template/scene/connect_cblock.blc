@@ -118,6 +118,7 @@ connect_cblock/perform_calculate=training_control/new_input
 
 training_control/eos=training_control/letter_index>0 ? 0 : 1
 training_control/discard=0>training_control/letter_index ? 1 : 0
+training_control/discard=training_control/eos*training_control/myelination>0 ? 1 : training_control/discard
 training_control/letter_index=training_control/letter_index>0 ? training_control/letter_index : 0
 
 #############
@@ -204,7 +205,7 @@ connect_cblock/perform_calculate=control/user_event
 
 cblock/cblockInputs/input_bitmap=control/user_input
 cblock/cblockInputs/inputType_nextElem=control/user_index>0 ? 1 : 0
-cblock/cblockInputs/inputType_finalizeSeq=control/inputType_finalizeSeq
+cblock/cblockInputs/inputType_finalizeSeq=control/inputType_finalizeSeq-control/inputType_resetSeq>0 ? 1 : 0
 cblock/cblockInputs/inputType_resetSeq=control/inputType_resetSeq
 cblock/cblockInputs/ready=1
 
