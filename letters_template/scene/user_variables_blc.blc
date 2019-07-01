@@ -1,6 +1,17 @@
 BL_linear_transformation_connector
 
-continuous_6=cblock/IO/bitmap_input_som/output_x
-continuous_7=cblock/IO/bitmap_input_som/output_y
-continuous_8=cblock/IO/bitmap_output_som/output_x
-continuous_9=cblock/IO/bitmap_output_som/output_y
+continuous_0=cblock/cblockParams/inspect_SOM_x
+continuous_1=cblock/cblockParams/inspect_SOM_y
+
+continuous_2=cblock/IO/bitmap_output_som/output_x
+continuous_3=cblock/IO/bitmap_output_som/output_y
+
+continuous_4=cblock/seq_som/asom/output_x
+continuous_5=cblock/seq_som/asom/output_y
+
+continuous_6=cblock/plan_som/asom/output_x
+continuous_7=cblock/plan_som/asom/output_y
+
+# only makes sense for xy som
+#continuous_8=cblock/IO/bitmap_output_som/output_values[0]
+#continuous_9=cblock/IO/bitmap_output_som/output_values[1]

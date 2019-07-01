@@ -269,3 +269,10 @@ slider,cblock/IO/bitmap_som_consts_sparse/qmlBestMatchThreshold,Best match thres
 slider,cblock/IO/bitmap_som_consts_sparse/qmlBestMatchLfcMult,Best match LR multiplier,0,1,0.001
 slider,cblock/IO/bitmap_som_consts_sparse/qmlSigma,Sigma,0,2,0.1
 slider,cblock/IO/bitmap_som_consts_sparse/qmlTrainingRecordDecay,Training record decay,0,1,0.001
+
+//tab,Inspect
+
+//section,Training record view,200,300,90
+//slider,displayConstants/inspect_tr_translate_x,translate x,-10,10,0.1
+//slider,displayConstants/inspect_tr_translate_y,translate y,-10,10,0.1
+//slider,displayConstants/inspect_tr_scale,scale,0,10,0.1

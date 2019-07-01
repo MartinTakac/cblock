@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=10
+number_of_values=13
 # 
 value_names[0]=is_visible
 values[0]=real 1 1.
@@ -21,3 +21,9 @@ value_names[8]=display_secondary_monitor
 values[8]=real 1 1.
 value_names[9]=debug_visibleDecodedXYPos
 values[9]=real 1 0.
+value_names[10]=inspect_tr_translate_x
+values[10]=real 1 0.
+value_names[11]=inspect_tr_translate_y
+values[11]=real 1 0.
+value_names[12]=inspect_tr_scale
+values[12]=real 1 1.

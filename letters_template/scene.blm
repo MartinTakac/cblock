@@ -173,45 +173,47 @@ values[50]=real 1 0.
 value_names[51]=name_z
 values[51]=character 5 key_z
 
-value_names[52]=pulse_0
+value_names[52]=continuous_0
 values[52]=real 1 0.
 value_names[53]=name_0
-values[53]=character 12 load_weights
+values[53]=character 5 ins_x
 
-value_names[54]=pulse_1
+value_names[54]=continuous_1
 values[54]=real 1 0.
 value_names[55]=name_1
-values[55]=character 12 save_weights
+values[55]=character 5 ins_y
 
 value_names[56]=continuous_2
 values[56]=real 1 0.
 value_names[57]=name_2
-values[57]=character 5 error
+#values[57]=character 5 error
+values[57]=character 5 ind_x
 
 value_names[58]=continuous_3
 values[58]=real 1 0.
 value_names[59]=name_3
-values[59]=character 9 avg_error
+#values[59]=character 9 avg_error
+values[59]=character 5 ind_y
 
 value_names[60]=continuous_4
 values[60]=real 1 0.
 value_names[61]=name_4
-values[61]=character 3 var
+values[61]=character 5 seq_x
 
 value_names[62]=continuous_5
 values[62]=real 1 0.
 value_names[63]=name_5
-values[63]=character 12 autotr_steps
+values[63]=character 5 seq_y
 
 value_names[64]=continuous_6
 values[64]=real 1 0.
 value_names[65]=name_6
-values[65]=character 5 out_x
+values[65]=character 4 pl_x
 
 value_names[66]=continuous_7
 values[66]=real 1 0.
 value_names[67]=name_7
-values[67]=character 5 out_y
+values[67]=character 4 pl_y
 
 value_names[68]=continuous_8
 values[68]=real 1 0.

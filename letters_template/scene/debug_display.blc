@@ -1,5 +1,50 @@
 BL_container_connector
 
+# TR display transformations for SOM inspections
+
+# default
+BL_linear_transformation_connector
+
+# seq_som
+debug_displays/seq_som/training_record/transformation.translate_x=debug_displays/seq_som/training_record/default_trans/translate_x
+debug_displays/seq_som/training_record/transformation.translate_y=debug_displays/seq_som/training_record/default_trans/translate_y
+debug_displays/seq_som/training_record/transformation.scale=debug_displays/seq_som/training_record/default_trans/scale
+# plan_som
+debug_displays/plan_som/training_record/transformation.translate_x=debug_displays/plan_som/training_record/default_trans/translate_x
+debug_displays/plan_som/training_record/transformation.translate_y=debug_displays/plan_som/training_record/default_trans/translate_y
+debug_displays/plan_som/training_record/transformation.scale=debug_displays/plan_som/training_record/default_trans/scale
+# indiv_som
+debug_displays/monitors/ind_SOM_training_record/transformation.translate_x=debug_displays/monitors/ind_SOM_training_record/default_trans/translate_x
+debug_displays/monitors/ind_SOM_training_record/transformation.translate_y=debug_displays/monitors/ind_SOM_training_record/default_trans/translate_y
+debug_displays/monitors/ind_SOM_training_record/transformation.scale=debug_displays/monitors/ind_SOM_training_record/default_trans/scale
+
+
+# seq_som
+BL_linear_transformation_connector
+debug_display/perform_calculate=cblock/seq_som/TD_inspection/control/inspect
+
+debug_displays/seq_som/training_record/transformation.translate_x=displayConstants/inspect_tr_translate_x+debug_displays/seq_som/training_record/default_trans/translate_x
+debug_displays/seq_som/training_record/transformation.translate_y=displayConstants/inspect_tr_translate_y+debug_displays/seq_som/training_record/default_trans/translate_y
+debug_displays/seq_som/training_record/transformation.scale=displayConstants/inspect_tr_scale*debug_displays/seq_som/training_record/default_trans/scale
+
+# plan_som
+BL_linear_transformation_connector
+debug_display/perform_calculate=cblock/plan_som/TD_inspection/control/inspect
+
+debug_displays/plan_som/training_record/transformation.translate_x=displayConstants/inspect_tr_translate_x+debug_displays/plan_som/training_record/default_trans/translate_x
+debug_displays/plan_som/training_record/transformation.translate_y=displayConstants/inspect_tr_translate_y+debug_displays/plan_som/training_record/default_trans/translate_y
+debug_displays/plan_som/training_record/transformation.scale=displayConstants/inspect_tr_scale*debug_displays/plan_som/training_record/default_trans/scale
+
+# indiv_som
+BL_linear_transformation_connector
+debug_display/perform_calculate=cblock/IO/TD_inspection/control/inspect
+
+debug_displays/monitors/ind_SOM_training_record/transformation.translate_x=displayConstants/inspect_tr_translate_x+debug_displays/monitors/ind_SOM_training_record/default_trans/translate_x
+debug_displays/monitors/ind_SOM_training_record/transformation.translate_y=displayConstants/inspect_tr_translate_y+debug_displays/monitors/ind_SOM_training_record/default_trans/translate_y
+debug_displays/monitors/ind_SOM_training_record/transformation.scale=displayConstants/inspect_tr_scale*debug_displays/monitors/ind_SOM_training_record/default_trans/scale
+
+
+
 BL_linear_transformation_connector
 
 #############
@@ -9,9 +54,11 @@ BL_linear_transformation_connector
 debug_displays/seq_som/activity_map/texture.activity_map.data=cblock/seq_som/asom/activation_map
 # tr
 debug_displays/seq_som/training_record/texture.training_record.data=cblock/seq_som/asom/training_record
-# use coeff. 0.97 for weight shaders of size 1 and 0.77 for size 0.8
-debug_displays/seq_som/training_record/cursor/transformation.translate_x=0.97*cblock/seq_som/cursor/x+0.015
-debug_displays/seq_som/training_record/cursor/transformation.translate_y=0.97*cblock/seq_som/cursor/y+0.015
+# OLD: use coeff. 0.97 for weight shaders of size 1 and 0.77 for size 0.8
+debug_displays/seq_som/training_record/cursor/transformation.translate_x=cblock/seq_som/cursor/x
+#0.97*cblock/seq_som/cursor/x+0.015
+debug_displays/seq_som/training_record/cursor/transformation.translate_y=cblock/seq_som/cursor/y
+#0.97*cblock/seq_som/cursor/y+0.015
 
 #alphas
 #debug_displays/seq_som/output/agent/alpha/texture.alpha.data=asom/alphas[0]>0 ? 1 : 0
@@ -32,9 +79,9 @@ BL_linear_transformation_connector
 debug_display/perform_calculate=cblock/cblockParams/indiv_xy
 # no bitmap if xy
 debug_displays/seq_som/prediction/decoded/texture.decoded.data=cblock/core/control/zeros_bitmap
-# if decoded.obj dimensions are k, use k-0.02 (position.obj size) as the factor in the equation below, e.g. 0.98 for k=1 or 0.58 fr k=0.6
-debug_displays/seq_som/prediction/decoded/position/transformation.translate_x=cblock/IO/TD_inspection/control/inspect>0 ? 0.58*cblock/IO/xy_output_som/output_values[0]+0.01 :  0.58*cblock/cblockOutputs/predicted_x+0.01 
-debug_displays/seq_som/prediction/decoded/position/transformation.translate_y=cblock/IO/TD_inspection/control/inspect>0 ? 0.58*cblock/IO/xy_output_som/output_values[1]+0.01 :  0.58*cblock/cblockOutputs/predicted_y+0.01
+# the factor in the equation below is position.obj size
+debug_displays/seq_som/prediction/decoded/position/transformation.translate_x=cblock/IO/TD_inspection/control/inspect>0 ? 0.6*cblock/IO/xy_output_som/output_values[0] :  0.6*cblock/cblockOutputs/predicted_x 
+debug_displays/seq_som/prediction/decoded/position/transformation.translate_y=cblock/IO/TD_inspection/control/inspect>0 ? 0.6*cblock/IO/xy_output_som/output_values[1] :  0.6*cblock/cblockOutputs/predicted_y
 
 ########
 # continue with the rest (common for xy and bitmap)
@@ -54,9 +101,11 @@ debug_displays/plan_som/activation_mask/texture.activation_mask.data=cblock/plan
 
 # tr
 debug_displays/plan_som/training_record/texture.training_record.data=cblock/plan_som/asom/training_record
-# use coeff. 0.97 for weight shaders of size 1 and 0.77 for size 0.8
-debug_displays/plan_som/training_record/cursor/transformation.translate_x=0.97*cblock/plan_som/cursor/x+0.015
-debug_displays/plan_som/training_record/cursor/transformation.translate_y=0.97*cblock/plan_som/cursor/y+0.015
+# OLD: use coeff. 0.97 for weight shaders of size 1 and 0.77 for size 0.8
+debug_displays/plan_som/training_record/cursor/transformation.translate_x=cblock/plan_som/cursor/x
+#0.97*cblock/plan_som/cursor/x+0.015
+debug_displays/plan_som/training_record/cursor/transformation.translate_y=cblock/plan_som/cursor/y
+#0.97*cblock/plan_som/cursor/y+0.015
 
 #plan
 debug_displays/plan_som/input/texture.input.data=cblock/plan_som/inputs/plan
@@ -137,9 +186,11 @@ debug_displays/monitors/surprise/texture.surprise.data=cblock/core/control/surpr
 debug_displays/monitors/stage/texture.stage.data=cblock/core/control/stage
 
 debug_displays/monitors/ind_SOM_training_record/texture.ind_SOM_training_record.data=cblock/cblockParams/indiv_xy>0 ? cblock/IO/xy_input_som/training_record : cblock/IO/bitmap_input_som/training_record
-# use coeff. 0.97 for weight shaders of size 1 and 0.77 for size 0.8 and 0.37 for size 0.4
-debug_displays/monitors/ind_SOM_training_record/cursor/transformation.translate_x=0.37*cblock/IO/cursor/x+0.015
-debug_displays/monitors/ind_SOM_training_record/cursor/transformation.translate_y=0.37*cblock/IO/cursor/y+0.015
+# OLD: use coeff. 0.97 for weight shaders of size 1 and 0.77 for size 0.8 and 0.37 for size 0.4
+debug_displays/monitors/ind_SOM_training_record/cursor/transformation.translate_x=0.4*cblock/IO/cursor/x
+#0.37*cblock/IO/cursor/x+0.015
+debug_displays/monitors/ind_SOM_training_record/cursor/transformation.translate_y=0.4*cblock/IO/cursor/y
+#0.37*cblock/IO/cursor/y+0.015
 debug_displays/monitors/plan_good/texture.plan_good.data=cblock/cblockOutputs/plan_good_enough
 debug_displays/monitors/goal_reached/texture.goal_reached.data=cblock/cblockOutputs/goal_reached
 

@@ -1,0 +1,9 @@
+BL_constant_module
+number_of_values=3
+# 
+value_names[0]=translate_x
+values[0]=real 1 2.7
+value_names[1]=translate_y
+values[1]=real 1 -0.42
+value_names[2]=scale
+values[2]=real 1 1.

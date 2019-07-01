@@ -16,7 +16,10 @@ void main (void)
 #else
 	Itex=texture(shader_texture_0,texture_coordinate);
 #endif
-Itex=vec4(0.,1.,0.,0.5);
+if (Itex[0]<0.1)
+	Itex.a=0.;
+if (Itex[0]>0.1)
+	Itex=vec4(0.,1.,0.,0.85);
 #if __VERSION__ < 130
 	gl_FragColor=Itex;
 #else

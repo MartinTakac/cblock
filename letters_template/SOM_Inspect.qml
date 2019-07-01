@@ -14,8 +14,8 @@ ScrollView
 				{
 					id: root_item
 					color: "black"
-					width: 300
-					height: 300
+					width: 800
+					height: 800
 
 					Slider_2D_xyza
 					{
@@ -69,5 +69,166 @@ ScrollView
 				}
 
 		
+		spacing: 15
+
+		ListModel
+		{
+			id: slider_model_3_0
+					
+			ListElement
+			{
+				name: "translate x"
+				path: "displayConstants/inspect_tr_translate_x"
+				startValue: 0.0
+				minValue: -10.0
+				maxValue: 10.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "translate y"
+				path: "displayConstants/inspect_tr_translate_y"
+				startValue: 0.0
+				minValue: -10.0
+				maxValue: 10.0
+				stepSize: 0.1
+			}
+					
+			ListElement
+			{
+				name: "scale"
+				path: "displayConstants/inspect_tr_scale"
+				startValue: 5.0
+				minValue: 0.0
+				maxValue: 10.0
+				stepSize: 0.1
+			}
+					
+		}
+		ListModel
+		{
+			id: button_model_3_0
+				
+		}
+		Rectangle
+		{
+			anchors.horizontalCenter: parent.horizontalCenter
+			width: 1
+			height: 10
+			color: "transparent"
+		}
+		Row
+		{
+			anchors.horizontalCenter: parent.horizontalCenter
+			spacing: 15
+			Button
+			{
+				width: 0.33*rootItem.width
+				text: "Larger Text"
+				style: ButtonStyle
+				{
+					background: Rectangle
+					{
+						implicitWidth: 100
+						implicitHeight: 25
+						border.width: control.pressed ? 2 : 1
+						border.color: control.pressed ? "#FFDDDDDD" : "#FF888888"
+						color: control.hovered ? "#22DDDDDD" : "transparent"
+						radius: 4
+					}
+					label: Label
+					{
+						text: control.text
+						color: "white"
+						horizontalAlignment: Text.AlignHCenter
+						verticalAlignment: Text.AlignVCenter
+						width: control.width
+						height: control.height
+						font.pointSize: rootItem.textScale*11
+					}
+				}
+				onClicked:
+				{
+					rootItem.textScale = rootItem.textScale*1.1;
+				}
+			}
+			Button
+			{
+				width: 0.33*rootItem.width
+				text: "Smaller Text"
+				style: ButtonStyle
+				{
+					background: Rectangle
+					{
+						implicitWidth: 100
+						implicitHeight: 25
+						border.width: control.pressed ? 2 : 1
+						border.color: control.pressed ? "#FFDDDDDD" : "#FF888888"
+						color: control.hovered ? "#22DDDDDD" : "transparent"
+						radius: 4
+					}
+					label: Label
+					{
+						text: control.text
+						color: "white"
+						horizontalAlignment: Text.AlignHCenter
+						verticalAlignment: Text.AlignVCenter
+						width: control.width
+						height: control.height
+						font.pointSize: rootItem.textScale*7
+					}
+				}
+				onClicked:
+				{
+					rootItem.textScale = rootItem.textScale/1.1;
+				}
+			}
+		}
+		Button
+		{
+			anchors.horizontalCenter: parent.horizontalCenter
+			width: 0.66*rootItem.width
+			text: "Reset Sliders"
+			style: ButtonStyle
+			{
+				background: Rectangle
+				{
+					implicitWidth: 100
+					implicitHeight: 25
+					border.width: control.pressed ? 2 : 1
+					border.color: control.pressed ? "#FFDDDDDD" : "#FF888888"
+					color: control.hovered ? "#22DDDDDD" : "transparent"
+					radius: 4
+				}
+				label: Label
+				{
+					text: control.text
+					color: "white"
+					horizontalAlignment: Text.AlignHCenter
+					verticalAlignment: Text.AlignVCenter
+					width: control.width
+					height: control.height
+					font.pointSize: rootItem.textScale*9
+				}
+			}
+			onClicked:
+			{
+			
+				dgv_3_0.resetAllSliders()
+			}
+		}
+		DoubleGridView
+		{
+			id: dgv_3_0
+			width: rootItem.width
+			sliderModel: slider_model_3_0
+			buttonModel: button_model_3_0
+			headerText: "Training record view"
+			sliderWidth: 200
+			nameWidth: 300
+			valueWidth: 90
+			textScale: rootItem.textScale
+		}
 	}
 }
