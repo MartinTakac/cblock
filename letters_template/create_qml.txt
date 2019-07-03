@@ -223,7 +223,7 @@ slider,cblock/plan_som/asomConsts/qmlSensitivityJustReward,Sens from rew,0,150,0
 slider,cblock/plan_som/asomConsts/qmlSensitivityResult,Sens from res,0,100,0.1
 slider,cblock/plan_som/asomConsts/qmlUseTrPrior,use TR prior,0,1,1
 slider,cblock/plan_som/asomConsts/qmlSoftOutput,Soft output,0,1,1
-slider,cblock/plan_som/asomConsts/qmlLfc,LFC,0,1500,100
+slider,cblock/plan_som/asomConsts/qmlLfc,LFC,0,1000,1
 slider,cblock/plan_som/asomConsts/qmlSigma,Sigma,0,2,0.1
 slider,cblock/plan_som/asomConsts/qmlCompareNoise,Compare noise,0,1,0.05
 slider,cblock/plan_som/asomConsts/qmlBestMatchThreshold,Best match threshold,0,1,0.001
@@ -236,6 +236,8 @@ slider,cblock/IO/xy_som_consts/qmlSensitivity,Sensitivity,0,1000,0.1
 slider,cblock/IO/xy_som_consts/qmlCompareNoise,Compare noise,0,1,0.05
 slider,cblock/IO/xy_som_consts/qmlBestMatchThreshold,Best match threshold,0,1,0.001
 slider,cblock/IO/xy_som_consts/qmlBestMatchLfcMult,Best match LR multiplier,0,1,0.001
+slider,cblock/IO/xy_som_consts/qmlLearningFrequency,Learning rate,0,1000,1
+slider,cblock/IO/xy_som_consts/qmlLearningFrequencyFullMap,Learning rate when full,0,1000,1
 slider,cblock/IO/xy_som_consts/qmlSigma,Sigma,0,2,0.1
 slider,cblock/IO/xy_som_consts/qmlTrainingRecordDecay,Training record decay,0,1,0.001
 
@@ -246,6 +248,8 @@ slider,cblock/IO/xy_som_consts_sparse/qmlSensitivity,Sensitivity,0,1000,0.1
 slider,cblock/IO/xy_som_consts_sparse/qmlCompareNoise,Compare noise,0,1,0.05
 slider,cblock/IO/xy_som_consts_sparse/qmlBestMatchThreshold,Best match threshold,0,1,0.001
 slider,cblock/IO/xy_som_consts_sparse/qmlBestMatchLfcMult,Best match LR multiplier,0,1,0.001
+slider,cblock/IO/xy_som_consts_sparse/qmlLearningFrequency,Learning rate,0,1000,1
+slider,cblock/IO/xy_som_consts_sparse/qmlLearningFrequencyFullMap,Learning rate when full,0,1000,1
 slider,cblock/IO/xy_som_consts_sparse/qmlSigma,Sigma,0,2,0.1
 slider,cblock/IO/xy_som_consts_sparse/qmlTrainingRecordDecay,Training record decay,0,1,0.001
 
@@ -256,6 +260,8 @@ slider,cblock/IO/bitmap_som_consts/qmlSensitivity,Sensitivity,0,100,0.1
 slider,cblock/IO/bitmap_som_consts/qmlCompareNoise,Compare noise,0,1,0.05
 slider,cblock/IO/bitmap_som_consts/qmlBestMatchThreshold,Best match threshold,0,1,0.001
 slider,cblock/IO/bitmap_som_consts/qmlBestMatchLfcMult,Best match LR multiplier,0,1,0.001
+slider,cblock/IO/bitmap_som_consts/qmlLearningFrequency,Learning rate,0,1000,1
+slider,cblock/IO/bitmap_som_consts/qmlLearningFrequencyFullMap,Learning rate when full,0,1000,1
 slider,cblock/IO/bitmap_som_consts/qmlSigma,Sigma,0,2,0.1
 slider,cblock/IO/bitmap_som_consts/qmlTrainingRecordDecay,Training record decay,0,1,0.001
 
@@ -267,6 +273,8 @@ slider,cblock/IO/bitmap_som_consts_sparse/qmlSensitivity,Sensitivity,0,100,0.1
 slider,cblock/IO/bitmap_som_consts_sparse/qmlCompareNoise,Compare noise,0,1,0.05
 slider,cblock/IO/bitmap_som_consts_sparse/qmlBestMatchThreshold,Best match threshold,0,1,0.001
 slider,cblock/IO/bitmap_som_consts_sparse/qmlBestMatchLfcMult,Best match LR multiplier,0,1,0.001
+slider,cblock/IO/bitmap_som_consts_sparse/qmlLearningFrequency,Learning rate,0,1000,1
+slider,cblock/IO/bitmap_som_consts_sparse/qmlLearningFrequencyFullMap,Learning rate when full,0,1000,1
 slider,cblock/IO/bitmap_som_consts_sparse/qmlSigma,Sigma,0,2,0.1
 slider,cblock/IO/bitmap_som_consts_sparse/qmlTrainingRecordDecay,Training record decay,0,1,0.001
 

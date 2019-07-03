@@ -490,10 +490,10 @@ ScrollView
 			{
 				name: "LFC"
 				path: "cblock/plan_som/asomConsts/qmlLfc"
-				startValue: 750.0
+				startValue: 500.0
 				minValue: 0.0
-				maxValue: 1500.0
-				stepSize: 100.0
+				maxValue: 1000.0
+				stepSize: 1.0
 			}
 					
 			ListElement
@@ -608,6 +608,26 @@ ScrollView
 					
 			ListElement
 			{
+				name: "Learning rate"
+				path: "cblock/IO/xy_som_consts/qmlLearningFrequency"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "Learning rate when full"
+				path: "cblock/IO/xy_som_consts/qmlLearningFrequencyFullMap"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "Sigma"
 				path: "cblock/IO/xy_som_consts/qmlSigma"
 				startValue: 1.0
@@ -698,6 +718,26 @@ ScrollView
 					
 			ListElement
 			{
+				name: "Learning rate"
+				path: "cblock/IO/xy_som_consts_sparse/qmlLearningFrequency"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "Learning rate when full"
+				path: "cblock/IO/xy_som_consts_sparse/qmlLearningFrequencyFullMap"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "Sigma"
 				path: "cblock/IO/xy_som_consts_sparse/qmlSigma"
 				startValue: 1.0
@@ -784,6 +824,26 @@ ScrollView
 				minValue: 0.0
 				maxValue: 1.0
 				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "Learning rate"
+				path: "cblock/IO/bitmap_som_consts/qmlLearningFrequency"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "Learning rate when full"
+				path: "cblock/IO/bitmap_som_consts/qmlLearningFrequencyFullMap"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
 			}
 					
 			ListElement
@@ -884,6 +944,26 @@ ScrollView
 				minValue: 0.0
 				maxValue: 1.0
 				stepSize: 0.001
+			}
+					
+			ListElement
+			{
+				name: "Learning rate"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlLearningFrequency"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "Learning rate when full"
+				path: "cblock/IO/bitmap_som_consts_sparse/qmlLearningFrequencyFullMap"
+				startValue: 500.0
+				minValue: 0.0
+				maxValue: 1000.0
+				stepSize: 1.0
 			}
 					
 			ListElement

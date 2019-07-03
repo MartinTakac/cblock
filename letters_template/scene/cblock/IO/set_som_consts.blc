@@ -13,7 +13,7 @@ asom_save/time_index=asom_save/number_of_times-1
 asom_save/retrieve=asomConsts/loadWeightsLead>0.?1.:0.
 
 # xy som params
-xy_input_som/learning_frequency_constants=xy_input_som/map_occupancy>0.95 ? 100*xy_som_consts/ones_layers : 1000*xy_som_consts/ones_layers
+xy_input_som/learning_frequency_constants=xy_input_som/map_occupancy>0.95 ? xy_som_consts/qmlLearningFrequencyFullMap*xy_som_consts/ones_layers : xy_som_consts/qmlLearningFrequency*xy_som_consts/ones_layers
 xy_input_som/compare_noise = xy_som_consts/qmlCompareNoise
 xy_input_som/best_match_threshold = xy_som_consts/qmlBestMatchThreshold
 xy_input_som/best_match_learning_multiplier = xy_som_consts/qmlBestMatchLfcMult
@@ -21,9 +21,10 @@ xy_input_som/activation_sensitivity = xy_som_consts/qmlSensitivity
 xy_input_som/alphas = xy_som_consts/alphas
 xy_input_som/sigma = xy_som_consts/qmlSigma
 xy_input_som/training_record_decay = xy_som_consts/qmlTrainingRecordDecay
+xy_input_som/bias_when_equal_activity=xy_som_consts/zeros_map
 
 # bitmap som params
-bitmap_input_som/learning_frequency_constants=bitmap_input_som/map_occupancy>0.95 ? 100*bitmap_som_consts/ones_layers : 1000*bitmap_som_consts/ones_layers
+bitmap_input_som/learning_frequency_constants=bitmap_input_som/map_occupancy>0.95 ? bitmap_som_consts/qmlLearningFrequencyFullMap*bitmap_som_consts/ones_layers : bitmap_som_consts/qmlLearningFrequency*bitmap_som_consts/ones_layers
 bitmap_input_som/compare_noise = bitmap_som_consts/qmlCompareNoise
 bitmap_input_som/best_match_threshold = bitmap_som_consts/qmlBestMatchThreshold
 bitmap_input_som/best_match_learning_multiplier = bitmap_som_consts/qmlBestMatchLfcMult
@@ -31,6 +32,7 @@ bitmap_input_som/activation_sensitivity = bitmap_som_consts/qmlSensitivity
 bitmap_input_som/alphas = bitmap_som_consts/alphas
 bitmap_input_som/sigma = bitmap_som_consts/qmlSigma
 bitmap_input_som/training_record_decay = bitmap_som_consts/qmlTrainingRecordDecay
+bitmap_input_som/bias_when_equal_activity=bitmap_som_consts/zeros_map
 
 # in case of sparse input some values are overwritten 
 BL_linear_transformation_connector
@@ -39,6 +41,7 @@ set_som_consts/perform_calculate=xy_som_consts_sparse/sparse_coded_input
 random_generator/trigger=1
 xy_input_som/bias_when_equal_activity=random_generator/values
 
+xy_input_som/learning_frequency_constants=xy_input_som/map_occupancy>0.95 ? xy_som_consts_sparse/qmlLearningFrequencyFullMap*xy_som_consts/ones_layers : xy_som_consts_sparse/qmlLearningFrequency*xy_som_consts/ones_layers
 xy_input_som/compare_noise = xy_som_consts_sparse/qmlCompareNoise
 xy_input_som/best_match_threshold = xy_som_consts_sparse/qmlBestMatchThreshold
 xy_input_som/best_match_learning_multiplier = xy_som_consts_sparse/qmlBestMatchLfcMult
@@ -53,6 +56,7 @@ set_som_consts/perform_calculate=bitmap_som_consts_sparse/sparse_coded_input
 random_generator/trigger=1
 bitmap_input_som/bias_when_equal_activity=random_generator/values
 
+bitmap_input_som/learning_frequency_constants=bitmap_input_som/map_occupancy>0.95 ? bitmap_som_consts_sparse/qmlLearningFrequencyFullMap*bitmap_som_consts/ones_layers : bitmap_som_consts_sparse/qmlLearningFrequency*bitmap_som_consts/ones_layers
 bitmap_input_som/compare_noise = bitmap_som_consts_sparse/qmlCompareNoise
 bitmap_input_som/best_match_threshold = bitmap_som_consts_sparse/qmlBestMatchThreshold
 bitmap_input_som/best_match_learning_multiplier = bitmap_som_consts_sparse/qmlBestMatchLfcMult

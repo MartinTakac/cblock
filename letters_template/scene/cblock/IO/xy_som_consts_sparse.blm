@@ -1,6 +1,6 @@
 BL_constant_module
 
-number_of_values=7
+number_of_values=9
 
 value_names[0]=sparse_coded_input
 values[0]=real 1 0.
@@ -16,4 +16,8 @@ value_names[5]=qmlSigma
 values[5]=real 1 1.
 value_names[6]=qmlTrainingRecordDecay
 values[6]=real 1 1.
+value_names[7]=qmlLearningFrequency
+values[7]=real 1 1000.
+value_names[8]=qmlLearningFrequencyFullMap
+values[8]=real 1 100.
 
