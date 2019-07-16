@@ -46,6 +46,14 @@ IO/bitmap_input_som/associative_self_organizing_map=IO/asom_save/bitmap_map_retr
 IO/bitmap_input_som/training_record=IO/asom_save/bitmap_training_record_retrieve.value
 core/control/IO_soms_loaded=core/control/one
 
+
+# xy_som resetting. Because, weights are set directly, it must be in control_cycle
+BL_identity_connector
+control_cycle/perform_calculate=IO/input_control/reset_maps
+
+IO/xy_input_som/associative_self_organizing_map=IO/input_control/xy_som_reset_weights
+IO/xy_input_som/training_record=core/control/zeros
+
 ##########
 # do always 
 BL_linear_transformation_connector

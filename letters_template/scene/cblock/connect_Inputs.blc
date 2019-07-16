@@ -119,7 +119,8 @@ connect_Inputs/perform_calculate=IO/input_control/S0
 
 IO/xy_input_som/perform_time_step=IO/indiv_type/xy*IO/xy_som_consts/display_real_time+IO/indiv_type/xy*IO/input_control/reset_maps
 IO/bitmap_input_som/perform_time_step=IO/indiv_type/bitmap*IO/bitmap_som_consts/display_real_time+IO/indiv_type/bitmap*IO/input_control/reset_maps
-IO/xy_input_som/reset_map=IO/input_control/reset_maps
+# resetting moved to control_cycle, because weights can only be copied in one place and there is loading from file there.
+#IO/xy_input_som/reset_map=IO/input_control/reset_maps
 IO/bitmap_input_som/reset_map=IO/input_control/reset_maps
 
 IO/input_control/init_dispatch_elem=cblockInputs/ready*cblockInputs/inputType_nextElem

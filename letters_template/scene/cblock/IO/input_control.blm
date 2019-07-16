@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=16
+number_of_values=17
 
 value_names[0]=on
 values[0]=real 1 1.
@@ -44,3 +44,7 @@ values[14]=real 6 0.
 #values[14]=real 2 0.
 value_names[15]=reset_maps
 values[15]=real 1 0.
+value_names[16]=xy_som_reset_weights
+values[16]=real #XY_SOM_WEIGHTS# #WINNER_POS_TO_SPARSE_SOM_WEIGHTS#
+
+
