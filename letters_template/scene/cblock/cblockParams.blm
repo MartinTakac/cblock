@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=37
+number_of_values=40
 
 # manual control signals
 value_names[0]=resetSeq_qml
@@ -18,108 +18,115 @@ value_names[4]=save_all_weights
 values[4]=real 1 0.
 value_names[5]=load_all_weights
 values[5]=real 1 0.
-
-# SOM inspection (qml widget coordinates)
-value_names[6]=inspect_SOM_x
+value_names[6]=save_indiv_som_weights
 values[6]=real 1 0.
-value_names[7]=inspect_SOM_y
+value_names[7]=load_indiv_som_weights
 values[7]=real 1 0.
 
-# training control
-value_names[8]=seq_learn_non_goal_driven
-values[8]=real 1 1.
-value_names[9]=seq_learn_goal_driven
+# SOM inspection (qml widget coordinates)
+value_names[8]=inspect_SOM_x
+values[8]=real 1 0.
+value_names[9]=inspect_SOM_y
 values[9]=real 1 0.
-value_names[10]=plan_learn_non_goal_driven
+
+# training control
+value_names[10]=seq_learn_non_goal_driven
 values[10]=real 1 1.
-value_names[11]=plan_learn_goal_driven
+value_names[11]=seq_learn_goal_driven
 values[11]=real 1 0.
+value_names[12]=plan_learn_non_goal_driven
+values[12]=real 1 1.
+value_names[13]=plan_learn_goal_driven
+values[13]=real 1 0.
+value_names[14]=allow_indiv_som_training
+values[14]=real 1 1.
 
 # sequencing related parameters
 # how much of a plan winner should be mixed with the predicted output at the start of a plan
-value_names[12]=kick_start_gain
-values[12]=real 1 1.
+value_names[15]=kick_start_gain
+values[15]=real 1 1.
 # influence from plan_som on seq_som's tonic 
-value_names[13]=plan_top_down_on_seq_gain_non_goal_driven
-values[13]=real 1 0.99
-value_names[14]=plan_top_down_on_seq_gain_goal_driven
-values[14]=real 1 1.
+value_names[16]=plan_top_down_on_seq_gain_non_goal_driven
+values[16]=real 1 0.99
+value_names[17]=plan_top_down_on_seq_gain_goal_driven
+values[17]=real 1 1.
 
 # multiplicative thr on avg (surp if error>thr*avg)
-value_names[15]=surprise_avg_mult
-values[15]=real 1 2.
+value_names[18]=surprise_avg_mult
+values[18]=real 1 2.
 
 # decay on tonic
-value_names[16]=tonic_decay
-values[16]=real 1 0.6
+value_names[19]=tonic_decay
+values[19]=real 1 0.6
 # decay on context
-value_names[17]=prev_context_mix
-values[17]=real 1 0.6
+value_names[20]=prev_context_mix
+values[20]=real 1 0.6
 # mixing coef for amnestic error avg
-value_names[18]=prev_avg_err_mix
-values[18]=real 1 0.9
+value_names[21]=prev_avg_err_mix
+values[21]=real 1 0.9
 # truncate surp value (to avoid contaminating avg with infinity)
-value_names[19]=surp_trunc_value
-values[19]=real 1 5
+value_names[22]=surp_trunc_value
+values[22]=real 1 5
 # smoothing added to each element of predicted distribution to avoid infinite KL divergence at zeros.
-value_names[20]=smoothing
-values[20]=real #INDIV_SOM_SIZE# 0.0000000000001
+value_names[23]=smoothing
+values[23]=real #INDIV_SOM_SIZE# 0.0000000000001
 # if entropy<entropy_thr, prediction is good enough
-value_names[21]=entropy_thr
-values[21]=real 1 0.35
+value_names[24]=entropy_thr
+values[24]=real 1 0.35
 
 # what type of input is cblock connected to (x,y or bitmap)
-value_names[22]=indiv_xy
-values[22]=real 1 0.
+value_names[25]=indiv_xy
+values[25]=real 1 0.
 # if true, surprise is based on mismatch in winner, otherwise KL and sliding avg based.
-value_names[23]=winner_match_surprise
-values[23]=real 1 0.
+value_names[26]=winner_match_surprise
+values[26]=real 1 0.
 
 # if high, cblock will internally compute and store differences (deltas) between the current state and goal state (or initial and final state of a chunk)
-value_names[24]=use_delta_based_plans
-values[24]=real 1 1.
+value_names[27]=use_delta_based_plans
+values[27]=real 1 1.
 
 # if dist_from_goal/winner_activity_raw>goal_reached_thr, the goal will be considered reached
-value_names[25]=goal_reached_thr
-values[25]=real 1 0.9
+value_names[28]=goal_reached_thr
+values[28]=real 1 0.9
 
 # plan-som/winner_activity_raw>plan_goodness_thr, plan is considered good
-value_names[26]=plan_goodness_thr
-values[26]=real 1 0.1
+value_names[29]=plan_goodness_thr
+values[29]=real 1 0.1
 
 # index of buffer contents to display (if -1, the last elem is displayed)
-value_names[27]=inspect_buf_index
-values[27]=real 1 -1.
+value_names[30]=inspect_buf_index
+values[30]=real 1 -1.
 
 # some som-related displays are only updated next time som's perform_time_step=1. Turn these on briefly if you want to make sure you see the actual state (e.g. when fiddling with qmls). Then turn back off, as soms take lots of fps
-value_names[28]=display_plan_som_real_time
-values[28]=real 1 0.
+value_names[31]=display_plan_som_real_time
+values[31]=real 1 0.
 
-value_names[29]=display_seq_som_real_time
-values[29]=real 1 0.
+value_names[32]=display_seq_som_real_time
+values[32]=real 1 0.
 
 # keep seq_som's surprise alphas till resetSeq or finalizeSeq in goal-driven and non-goal-driven 
-value_names[30]=surprise_alphas_till_eos_gd
-values[30]=real 1 0.
+value_names[33]=surprise_alphas_till_eos_gd
+values[33]=real 1 0.
 
-value_names[31]=surprise_alphas_till_eos_ngd
-values[31]=real 1 1.
+value_names[34]=surprise_alphas_till_eos_ngd
+values[34]=real 1 1.
 
 # multplies ifc and mfc of all LIFs
-value_names[32]=master_LIF_speed
-values[32]=real 1 1.
+value_names[35]=master_LIF_speed
+values[35]=real 1 1.
 
 # should be set from outside to the same as playback LIF's speed (non multipled by master_LIF_speed, as this is done internally in cblock)
-value_names[33]=interval_LIF_speed
-values[33]=real 1 2.
+value_names[36]=interval_LIF_speed
+values[36]=real 1 2.
 
 # cblock will resetSeq if max interval reached while waiting for next elem
-value_names[34]=reset_at_interval_timeout
-values[34]=real 1 0.
+value_names[37]=reset_at_interval_timeout
+values[37]=real 1 0.
 
 # cblock will resetSeq if max interval reached even while waiting for the first elem (feature required by Dialog crew)
-value_names[35]=reset_if_no_first_timeout
-values[35]=real 1 0.
+value_names[38]=reset_if_no_first_timeout
+values[38]=real 1 0.
 
-value_names[36]=sparse_coded_input
-values[36]=real 1 0.
+value_names[39]=sparse_coded_input
+values[39]=real 1 0.
+

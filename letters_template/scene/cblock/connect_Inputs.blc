@@ -168,7 +168,7 @@ IO/input_control/init_xy=IO/input_control/off
 IO/xy_input_som/input_values[0]=cblockInputs/input_x
 IO/xy_input_som/input_values[1]=cblockInputs/input_y
 IO/xy_input_som/perform_time_step=IO/input_control/on
-IO/xy_input_som/plastic=IO/input_control/on
+IO/xy_input_som/plastic=IO/input_control/allow_training
 cblockInputs/reset=IO/input_control/on
 
 IO/input_control/S1_xy=IO/input_control/on
@@ -181,7 +181,7 @@ connect_Inputs/perform_calculate=IO/input_control/init_bitmap
 IO/input_control/init_bitmap=IO/input_control/off
 IO/bitmap_input_som/input_values=cblockInputs/input_bitmap
 IO/bitmap_input_som/perform_time_step=IO/input_control/on
-IO/bitmap_input_som/plastic=IO/input_control/on
+IO/bitmap_input_som/plastic=IO/input_control/allow_training
 cblockInputs/reset=IO/input_control/on
 
 IO/input_control/S1_bitmap=IO/input_control/on

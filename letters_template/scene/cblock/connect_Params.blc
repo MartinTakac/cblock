@@ -10,8 +10,8 @@ plan_som/asomConsts/qmlSaveWeights=cblockParams/save_all_weights
 plan_som/asomConsts/qmlLoadWeights=cblockParams/load_all_weights
 
 IO/input_control/reset_maps=cblockParams/reset_all_weights
-IO/asomConsts/qmlSaveWeights=cblockParams/save_all_weights
-IO/asomConsts/qmlLoadWeights=cblockParams/load_all_weights
+IO/asomConsts/qmlSaveWeights=cblockParams/save_all_weights+cblockParams/save_indiv_som_weights
+IO/asomConsts/qmlLoadWeights=cblockParams/load_all_weights+cblockParams/load_indiv_som_weights
 
 core/paramConsts/qmlSaveWeights=cblockParams/save_all_weights
 core/paramConsts/qmlLoadWeights=cblockParams/load_all_weights
@@ -39,6 +39,9 @@ IO/indiv_type/bitmap=-1.*cblockParams/indiv_xy+1.
 
 IO/xy_som_consts_sparse/sparse_coded_input=cblockParams/sparse_coded_input
 IO/bitmap_som_consts_sparse/sparse_coded_input=cblockParams/sparse_coded_input
+
+# indiv SOM training control
+IO/input_control/allow_training=cblockParams/allow_indiv_som_training
 
 # indiv_type/none is now DEPRECATED
 #IO/indiv_type/none=cblockParams/do_indiv>0 ? 0 : 1
