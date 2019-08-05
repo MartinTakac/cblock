@@ -11,6 +11,9 @@ section,Control,200,300,90
 button,cblock/cblockParams/save_all_weights,save weights
 button,cblock/cblockParams/load_all_weights,load weights
 button,cblock/cblockParams/reset_all_weights,reset weights
+button,cblock/cblockParams/save_indiv_som_weights,save indiv
+button,cblock/cblockParams/load_indiv_som_weights,load indiv
+
 button,cblock/cblockParams/resetSeq_qml,reset seq
 button,cblock/cblockParams/finalizeSeq_qml,finalize seq
 button,cblock/cblockInputs/refresh_goal_plan,refresh goal
@@ -232,6 +235,7 @@ slider,cblock/plan_som/asomConsts/qmlTrainingRecordDecay,Training record decay,0
 
 section,xy input SOM,200,300,80
 slider,cblock/IO/xy_som_consts/display_real_time,display realtime,0,1,1
+slider,cblock/cblockParams/allow_indiv_som_training,allow training,0,1,1
 slider,cblock/IO/xy_som_consts/qmlSensitivity,Sensitivity,0,1000,0.1
 slider,cblock/IO/xy_som_consts/qmlCompareNoise,Compare noise,0,1,0.05
 slider,cblock/IO/xy_som_consts/qmlBestMatchThreshold,Best match threshold,0,1,0.001
@@ -243,6 +247,7 @@ slider,cblock/IO/xy_som_consts/qmlTrainingRecordDecay,Training record decay,0,1,
 
 section,xy input SOM sparse,200,300,80
 slider,cblock/IO/xy_som_consts/display_real_time,display realtime,0,1,1
+slider,cblock/cblockParams/allow_indiv_som_training,allow training,0,1,1
 slider,cblock/IO/winner_pos_to_sparse_som/activation_sensitivity,sparse bump inv size,0,1000,0.1
 slider,cblock/IO/xy_som_consts_sparse/qmlSensitivity,Sensitivity,0,1000,0.1
 slider,cblock/IO/xy_som_consts_sparse/qmlCompareNoise,Compare noise,0,1,0.05
@@ -256,6 +261,7 @@ slider,cblock/IO/xy_som_consts_sparse/qmlTrainingRecordDecay,Training record dec
 section,bitmap input SOM,200,300,80
 slider,cblock/IO/TD_inspection/control/inspect,inspect SOM,0,1,1
 slider,cblock/IO/bitmap_som_consts/display_real_time,display realtime,0,1,1
+slider,cblock/cblockParams/allow_indiv_som_training,allow training,0,1,1
 slider,cblock/IO/bitmap_som_consts/qmlSensitivity,Sensitivity,0,100,0.1
 slider,cblock/IO/bitmap_som_consts/qmlCompareNoise,Compare noise,0,1,0.05
 slider,cblock/IO/bitmap_som_consts/qmlBestMatchThreshold,Best match threshold,0,1,0.001
@@ -268,6 +274,7 @@ slider,cblock/IO/bitmap_som_consts/qmlTrainingRecordDecay,Training record decay,
 section,bitmap input SOM sparse,200,300,80
 slider,cblock/IO/TD_inspection/control/inspect,inspect SOM,0,1,1
 slider,cblock/IO/bitmap_som_consts/display_real_time,display realtime,0,1,1
+slider,cblock/cblockParams/allow_indiv_som_training,allow training,0,1,1
 slider,cblock/IO/winner_pos_to_sparse_som/activation_sensitivity,sparse bump inv size,0,1000,0.1
 slider,cblock/IO/bitmap_som_consts_sparse/qmlSensitivity,Sensitivity,0,100,0.1
 slider,cblock/IO/bitmap_som_consts_sparse/qmlCompareNoise,Compare noise,0,1,0.05

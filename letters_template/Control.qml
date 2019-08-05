@@ -119,6 +119,24 @@ ScrollView
 					
 			ListElement
 			{
+				name: "save indiv"
+				path: "cblock/cblockParams/save_indiv_som_weights"
+				onValue: 1.0
+				offValue: 0.0
+				isCheckable: false
+			}
+					
+			ListElement
+			{
+				name: "load indiv"
+				path: "cblock/cblockParams/load_indiv_som_weights"
+				onValue: 1.0
+				offValue: 0.0
+				isCheckable: false
+			}
+					
+			ListElement
+			{
 				name: "reset seq"
 				path: "cblock/cblockParams/resetSeq_qml"
 				onValue: 1.0

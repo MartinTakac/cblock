@@ -568,6 +568,16 @@ ScrollView
 					
 			ListElement
 			{
+				name: "allow training"
+				path: "cblock/cblockParams/allow_indiv_som_training"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "Sensitivity"
 				path: "cblock/IO/xy_som_consts/qmlSensitivity"
 				startValue: 500.0
@@ -660,6 +670,16 @@ ScrollView
 			{
 				name: "display realtime"
 				path: "cblock/IO/xy_som_consts/display_real_time"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "allow training"
+				path: "cblock/cblockParams/allow_indiv_som_training"
 				startValue: 0.5
 				minValue: 0.0
 				maxValue: 1.0
@@ -788,6 +808,16 @@ ScrollView
 					
 			ListElement
 			{
+				name: "allow training"
+				path: "cblock/cblockParams/allow_indiv_som_training"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
 				name: "Sensitivity"
 				path: "cblock/IO/bitmap_som_consts/qmlSensitivity"
 				startValue: 50.0
@@ -890,6 +920,16 @@ ScrollView
 			{
 				name: "display realtime"
 				path: "cblock/IO/bitmap_som_consts/display_real_time"
+				startValue: 0.5
+				minValue: 0.0
+				maxValue: 1.0
+				stepSize: 1.0
+			}
+					
+			ListElement
+			{
+				name: "allow training"
+				path: "cblock/cblockParams/allow_indiv_som_training"
 				startValue: 0.5
 				minValue: 0.0
 				maxValue: 1.0
