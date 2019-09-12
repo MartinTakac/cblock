@@ -1,23 +1,37 @@
-# cblock
+# CBlock
 
-A git project to keep upto date with Martin cblock. Cblock is a current Soul Machine's solution for sequencing and planning. Because of that, there will probably be multiple copies of cblock of different sizes in the avatar code, or in different runtimes. In order to minimise the risk of incosistencies, there will be one ultimate repo where the up-to-date cblock template will maintained - and it is here. All the development will be carried out on the template (with symbolic names), from which actual runtimes will be generated as needed by the runtime_generator.py resize python script.
+Cblock is the current solution for sequencing and planning at Soul Machines.
+The model is expected to exist in multiple locations in the avatar, so it makes use of the BL Runtime Generator Python package.
+This project also includes the C++ tests for the model and the corresponding BLRG configurations for those tests.
+Tests render the template every time they are run, so any changes to the template will be immediately reflected in the tests.
+For information on the Docker-based testing infrastructure, please [see here](https://soulmachines.atlassian.net/wiki/spaces/COGARCH/pages/310542359/BL+Model+Testing).
 
-## Folder structure
-The cblock proper is embedded in cblock letters example (letters_template), which serves as its testbed and also for inspiration how to connect/use the cblock. For usage outside the letters example, you will need just the folder cblock. If you also want viewers, it comes with two sets of display shaders, one in the folder debug_displays, the other in displays. You can use both of them at the same time, or just one of them. 
+The cblock model was developed before we solidified our templating system so there are a few concessions we had to make.
+The cblock model template itself is located in `source/model_template`.
+This template has been updated to use the [BL Runtime Generator package](https://soulmachines.atlassian.net/wiki/spaces/COGARCH/pages/365723734/BL+Runtime+Generator).
+It has also been updated to include model parameters in the configuration.
+Since BLRG supports nested config variables, it is able to neatly separate them into a hierarchy.
+You can see a sample config in `source/misc/cblock_sample_config.json`.
 
-- to use (blue-brown) fancy displays, copy (along with cblock) the folder displays and the connector display_cblock.blc. Default visibility of all these displays is controlled by the constant displayConstants/is_visible.
-- to use (white-yellow-grey) debug displays, copy (along with cblock) the folder debug_displays and the connector debug_display.blc (debug displays are a bit more detailed, show the buffer and oscillator window for cooperation related timers).
+Note that this no longer matches Martin's cblock documentation, which originally asked the user to write a connector external to the model to set the parameters.
+There's nothing wrong with that approach, but the goal of BLRG is to declaratively define an entire working model, so including the parameters in the configuration file fits a bit better.
 
-## How to resize cblock
+Another change we had to make in order to fit the newer templating approach is to only include the model itself in the template directory.
+With this approach, you can (hopefully) render the template directly into an existing BL model and only have to write the input connectors.
+Unfortunately this means the displays and debug displays are not actually part of the template and must be manually added and connected.
+I don't know if that is a big problem or not.
+If it is let me know and we can update the template to include the displays, but I'm under the impression that they aren't necessary in the mother avatar.
+Regardless, the displays and their connectors are in `source/misc/display_code`.
 
-1. Change values of independent variables (see below) in cblock_config.json
-2.  Run **python runtime_generator.py** with following arguments:
- **-r** [path\to\model_runtime_folder] **-c** [path\to\config_file.json]  **-o** [path\to\output_folder], e.g.
-**python runtime_generator.py -r letters_template -c cblock_config.json -o output**
+Any other useful bits of BL code that are required by cblock but are external to the model itself can be taken from the test folders directly.
+These folders, e.g. `source/cblock_tests/letters/runtime_data/scene`, contain the scaffolding required to feed cblock with test data.
+(They also include the displays in case the ones in `misc` are messed up).
+The tests themselves render the template into the `runtime_data/scene/cblock` folder (erasing it each time it's run), everything else remains static and, hopefully, are specific to the tests being run.
+Again, if my assumptions are wrong let me know and I can tweak the template to include the code that the cblock needs to operate.
 
-If the cblock takes input in the form of a vector/matrix/bitmap, set its dimensions in "#INPUT_BITMAP_DIM_X#","#INPUT_BITMAP_DIM_Y#". The bitmaps (or xy inputs) are internally individuated/converted to a sparse/localist representation by the individuation SOM of dimensions #INDIV_SOM_DIM_X#", #INDIV_SOM_DIM_Y#". Their product determines maximum number of elements that can be stored as tokens/individuals.
-System state/result/goal is a vector/matrix of dimensions #STATE_DIM_X#", #STATE_DIM_Y#". 
-The buffer can store maximum #BUF_DIM_X#" x #BUF_DIM_Y#" elements (represented as a matrix just for occupancy display) - this determines the maximum length of a chunk.
-Sequencing SOM has dimensions "#SEQ_SOM_DIM_X#","#SEQ_SOM_DIM_Y#". Their product determines the maximum number of contextual transitions (combinations of tonic - context - recent - next - eos) that can be individually stored in the SOM.
-Planning SOM has dimensions "#PLAN_SOM_DIM_X#","#PLAN_SOM_DIM_Y#". Their product determines the maximum number of plans that can be individually stored in the SOM.
+There are two sets of displays, `displays` and `debug_displays`.
+
+- To use any of these displays, you need to copy `displayConstants.blm` and `visibility.blc`. Default visibility of all these displays is controlled by the constant `displayConstants/is_visible`.
+- to use (blue-brown) fancy displays, copy the folder `displays` and the connector `display_cblock.blc`
+- to use (white-yellow-grey) debug displays, copy the folder `debug_displays` and the connector `debug_display.blc`. Debug displays are a bit more detailed, show the buffer and oscillator window for cooperation related timers.
 

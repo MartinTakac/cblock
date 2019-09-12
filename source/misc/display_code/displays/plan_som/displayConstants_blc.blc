@@ -1,0 +1,96 @@
+BL_linear_transformation_connector
+
+container/1/transformation.translate_x = displayConstants/transform_1[0]
+container/1/transformation.translate_y = displayConstants/transform_1[1]
+container/1/transformation.translate_z = displayConstants/transform_1[2]
+container/1/displayPanel/transformation.scale = displayConstants/transform_1[3]
+
+container/2/transformation.translate_x = displayConstants/transform_2[0]
+container/2/transformation.translate_y = displayConstants/transform_2[1]
+container/2/transformation.translate_z = displayConstants/transform_2[2]
+container/2/displayPanel/transformation.scale = displayConstants/transform_2[3]
+
+container/3/transformation.translate_x = displayConstants/transform_3[0]
+container/3/transformation.translate_y = displayConstants/transform_3[1]
+container/3/transformation.translate_z = displayConstants/transform_3[2]
+container/3/displayPanel/transformation.scale = displayConstants/transform_3[3]
+
+container/4/transformation.translate_x = displayConstants/transform_4[0]
+container/4/transformation.translate_y = displayConstants/transform_4[1]
+container/4/transformation.translate_z = displayConstants/transform_4[2]
+container/4/displayPanel/transformation.scale = displayConstants/transform_4[3]
+
+container/5/transformation.translate_x = displayConstants/transform_5[0]
+container/5/transformation.translate_y = displayConstants/transform_5[1]
+container/5/transformation.translate_z = displayConstants/transform_5[2]
+container/5/displayPanel/transformation.scale = displayConstants/transform_5[3]
+
+container/6/transformation.translate_x = displayConstants/transform_6[0]
+container/6/transformation.translate_y = displayConstants/transform_6[1]
+container/6/transformation.translate_z = displayConstants/transform_6[2]
+container/6/displayPanel/transformation.scale = displayConstants/transform_6[3]
+
+container/7/transformation.translate_x = displayConstants/transform_7[0]
+container/7/transformation.translate_y = displayConstants/transform_7[1]
+container/7/transformation.translate_z = displayConstants/transform_7[2]
+container/7/displayPanel/transformation.scale = displayConstants/transform_7[3]
+
+container/8/transformation.translate_x = displayConstants/transform_8[0]
+container/8/transformation.translate_y = displayConstants/transform_8[1]
+container/8/transformation.translate_z = displayConstants/transform_8[2]
+container/8/displayPanel/transformation.scale = displayConstants/transform_8[3]
+
+container/9/transformation.translate_x = displayConstants/transform_9[0]
+container/9/transformation.translate_y = displayConstants/transform_9[1]
+container/9/transformation.translate_z = displayConstants/transform_9[2]
+container/9/displayPanel/transformation.scale = displayConstants/transform_9[3]
+
+container/10/transformation.translate_x = displayConstants/transform_10[0]
+container/10/transformation.translate_y = displayConstants/transform_10[1]
+container/10/transformation.translate_z = displayConstants/transform_10[2]
+container/10/displayPanel/transformation.scale = displayConstants/transform_10[3]
+
+container/11/transformation.translate_x = displayConstants/transform_11[0]
+container/11/transformation.translate_y = displayConstants/transform_11[1]
+container/11/transformation.translate_z = displayConstants/transform_11[2]
+container/11/displayPanel/transformation.scale = displayConstants/transform_11[3]
+
+container/12/transformation.translate_x = displayConstants/transform_12[0]
+container/12/transformation.translate_y = displayConstants/transform_12[1]
+container/12/transformation.translate_z = displayConstants/transform_12[2]
+container/12/displayPanel/transformation.scale = displayConstants/transform_12[3]
+
+container/13/transformation.translate_x = displayConstants/transform_13[0]
+container/13/transformation.translate_y = displayConstants/transform_13[1]
+container/13/transformation.translate_z = displayConstants/transform_13[2]
+container/13/displayPanel/transformation.scale = displayConstants/transform_13[3]
+
+container/14/transformation.translate_x = displayConstants/transform_14[0]
+container/14/transformation.translate_y = displayConstants/transform_14[1]
+container/14/transformation.translate_z = displayConstants/transform_14[2]
+container/14/displayPanel/transformation.scale = displayConstants/transform_14[3]
+
+container/15/transformation.translate_x = displayConstants/transform_15[0]
+container/15/transformation.translate_y = displayConstants/transform_15[1]
+container/15/transformation.translate_z = displayConstants/transform_15[2]
+container/15/displayPanel/transformation.scale = displayConstants/transform_15[3]
+
+container/16/transformation.translate_x = displayConstants/transform_16[0]
+container/16/transformation.translate_y = displayConstants/transform_16[1]
+container/16/transformation.translate_z = displayConstants/transform_16[2]
+container/16/displayPanel/transformation.scale = displayConstants/transform_16[3]
+
+container/17/transformation.translate_x = displayConstants/transform_17[0]
+container/17/transformation.translate_y = displayConstants/transform_17[1]
+container/17/transformation.translate_z = displayConstants/transform_17[2]
+container/17/displayPanel/transformation.scale = displayConstants/transform_17[3]
+
+container/18/transformation.translate_x = displayConstants/transform_18[0]
+container/18/transformation.translate_y = displayConstants/transform_18[1]
+container/18/transformation.translate_z = displayConstants/transform_18[2]
+container/18/displayPanel/transformation.scale = displayConstants/transform_18[3]
+
+container/19/transformation.translate_x = displayConstants/transform_19[0]
+container/19/transformation.translate_y = displayConstants/transform_19[1]
+container/19/transformation.translate_z = displayConstants/transform_19[2]
+container/19/displayPanel/transformation.scale = displayConstants/transform_19[3]

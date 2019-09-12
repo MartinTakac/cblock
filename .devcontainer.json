@@ -1,0 +1,31 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	"name": "BL Tests",
+	"dockerFile": "local_dev.dockerfile",
+	"runArgs": [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined",
+		"--mount",
+		"source=bl_third_party,target=/usr/src/third_party"
+	],
+	// These are user settings that need to be overridden in the container.
+	"settings": {
+		// This setting cannot be changed in the workspace settings.json so we gotta do it here
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"python.pythonPath": "/workspaces/cblock/source/build_linux/cblock_env/bin/python"
+	},
+	// Uncomment the next line if you want to publish any ports.
+	// "appPort": [],
+	// Uncomment the next line if you want to add in default container specific settings.json values
+	// "settings":  { "workbench.colorTheme": "Quiet Light" },
+	// Uncomment the next line to run commands after the container is created.
+	// "postCreateCommand": "gcc -v",
+	"extensions": [
+		"ms-vscode.cpptools",
+		"twxs.cmake",
+		"vector-of-bool.cmake-tools",
+		"mutantdino.resourcemonitor",
+		"ms-python.python"
+	]
+}

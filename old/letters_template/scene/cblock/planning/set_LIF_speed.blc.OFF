@@ -1,0 +1,5 @@
+BL_linear_transformation_connector
+
+# moved to control_cycle
+plan_timeout_LIF/membrane_frequency_constant=control/master_LIF_speed*control/plan_timeout_speed
+plan_timeout_LIF/input_frequency_constants[0]=plan_timeout_LIF/membrane_frequency_constant

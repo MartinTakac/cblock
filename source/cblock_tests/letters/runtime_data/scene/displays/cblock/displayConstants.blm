@@ -1,0 +1,19 @@
+BL_constant_module
+number_of_values=9
+###CBLOCK
+value_names[0]=transform_1
+values[0]=real 4 -0.222 -0.939 0.0 0.059
+value_names[1]=transform_2
+values[1]=real 4 -0.166 -1.138 0.0 0.11
+value_names[2]=transform_3
+values[2]=real 4 -0.317 0.406 0.0 0.626
+value_names[3]=transform_4
+values[3]=real 4 -0.222 -0.617 0.0 0.061
+value_names[4]=transform_5
+values[4]=real 4 -0.735 -0.471 0.0 0.048
+value_names[5]=transform_6
+values[5]=real 4 -0.606 -0.356 0.0 0.048
+value_names[6]=transform_7
+values[6]=real 4 0.485 -0.813 0.0 0.476
+value_names[7]=transform_8
+values[7]=real 4 -0.65 -0.904 0.0 0.345

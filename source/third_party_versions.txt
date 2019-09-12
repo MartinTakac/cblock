@@ -1,0 +1,5 @@
+USE_BOOST_VERSION=boost-1.62.0
+USE_GTEST_VERSION=googletest-release-1.8.0
+USE_JSONCPP_VERSION=1.8.4
+USE_OPENCV_VERSION=opencv-2.4.13_static_external_libs_2.11.20017
+USE_ZLIB_VERSION=zlib-1.2.11

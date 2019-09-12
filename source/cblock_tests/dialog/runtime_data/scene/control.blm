@@ -1,0 +1,60 @@
+BL_constant_module
+number_of_values=25
+
+# parameters
+value_names[0]=allow_playback
+values[0]=real 1 0.
+# correction 1 = same playback speed as measured speed. 2 means twice as fast, 0.5 means half speed
+value_names[1]=playback_speed_correction
+values[1]=real 1 5.
+
+# constants
+value_names[2]=one
+values[2]=real 1 1.
+value_names[3]=zero_result
+values[3]=real #STATE_SIZE# 0.
+
+# state and aux variables
+value_names[4]=user_index
+values[4]=real 1 0.
+value_names[5]=user_input
+values[5]=real #INPUT_BITMAP_SIZE# 0.
+value_names[6]=key_pressed
+values[6]=real 1 0.
+value_names[7]=key_pressed_previous
+values[7]=real 1 0.
+value_names[8]=key_pressed_leading_edge
+values[8]=real 1 0.
+value_names[9]=manual_result_index
+values[9]=real 1 0.
+value_names[10]=manual_result
+values[10]=real #STATE_SIZE# 0.
+value_names[11]=manual_reward
+values[11]=real 1 0.
+value_names[12]=manual_goal_index
+values[12]=real 1 0.
+value_names[13]=user_event
+values[13]=real 1 0.
+value_names[14]=baby_event
+values[14]=real 1 0.
+value_names[15]=buffered_out_elem
+values[15]=real #INPUT_BITMAP_SIZE# 0.
+value_names[16]=buffered_out_eos
+values[16]=real 1 0.
+value_names[17]=prediction
+values[17]=real 1 0.
+value_names[18]=inputType_nextElem
+values[18]=real 1 0.
+value_names[19]=inputType_resetSeq
+values[19]=real 1 0.
+value_names[20]=inputType_finalizeSeq
+values[20]=real 1 0.
+value_names[21]=buffered_out_interval
+values[21]=real 1 0.1
+# computed internally
+value_names[22]=playback_speed
+values[22]=real 1 0.
+value_names[23]=playback_at_intervals
+values[23]=real 1 0.
+value_names[24]=playback_event_thr
+values[24]=real 1 0.

@@ -1,0 +1,14 @@
+BL_constant_module
+number_of_values=4
+
+value_names[0]=plan
+values[0]=real {{ indiv_som_size }} 0.
+
+value_names[1]=result
+values[1]=real {{ state_size }} 0.
+
+value_names[2]=reward
+values[2]=real 1 0.
+
+value_names[3]=activation_map
+values[3]=real {{ plan_som_size }} 0.

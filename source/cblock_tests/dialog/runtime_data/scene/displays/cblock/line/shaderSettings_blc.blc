@@ -1,0 +1,7 @@
+BL_identity_connector
+shader_data[0]=shaderSettings/startVertex[0]
+shader_data[1]=shaderSettings/startVertex[1]
+shader_data[2]=shaderSettings/startVertex[2]
+shader_data[3]=shaderSettings/endVertex[0]
+shader_data[4]=shaderSettings/endVertex[1]
+shader_data[5]=shaderSettings/endVertex[2]

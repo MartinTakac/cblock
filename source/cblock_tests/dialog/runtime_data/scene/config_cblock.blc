@@ -1,0 +1,41 @@
+BL_linear_transformation_connector
+
+config_cblock/perform_calculate=cblock/core/control/at_start
+# Most of the initial param values in cblock work across its applications; if you need to change a specific value (for example those that depend on the nature of raw input, such as dist_from_goal/activtion sensitivity), do it here, i.e. outside cblock. This will prevent overwriting your defaults when cblock is updated. 
+
+###########
+# turn off at_start so that it's only done once, at the beginning - this line should always stay here as is.
+cblock/core/control/at_start=0
+
+#####################
+# the rest are initial param values specific to your application of cblock
+
+# the following line is crucial for sucessful input connection, never forget to set indiv type properly.
+# whether the input is 10x10 bitmap or x,y position
+cblock/cblockParams/indiv_xy=0
+
+# in letters demo, there's no straightforward way to set cblock/cblockInputs/state properly at the end of a self-generated  word, hence plan-SOM training should be disabled in goal-driven mode (e.g. for drawing it's not a problem, since the state comes from a drawing board).
+cblock/cblockParams/plan_learn_goal_driven=0
+
+# similar to above - this applies to plan-SOM when predicting from desired goal state (= result)
+cblock/plan_som/asomConsts/qmlSensitivityResult=2
+
+####
+# surprise & error related:
+# at surprise, KL-divergence can go to infinity. To prevent running average of error to go crazy, we truncate the KL-divergence error at surp_trunc_value
+cblock/cblockParams/surp_trunc_value=5
+
+# multiplicative thr on avg (surp if KL-error>thr*avg)
+cblock/cblockParams/surprise_avg_mult=1.
+
+# the value to which sliding error_avg is set at the beginning and then reset, when reset_weights
+cblock/core/control/error_avg_reset_value=2.5
+####
+
+cblock/seq_som/asomConsts/qmlSensitivityTrain=30
+cblock/seq_som/asomConsts/qmlSensitivityPredict=30
+cblock/seq_som/asomConsts/qmlCompareNoise=0.95
+cblock/seq_som/asomConsts/qmlBestMatchThreshold=0.95
+cblock/seq_som/alpha_gains/context_train=0.7
+cblock/seq_som/alpha_gains/context=0.7
+cblock/seq_som/alpha_gains/context_gd=0.7

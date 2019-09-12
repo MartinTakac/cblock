@@ -1,0 +1,12 @@
+{
+    "cmake.sourceDirectory": "${workspaceRoot}/source",
+    "cmake.generator": "Unix Makefiles",
+    "cmake.configureArgs": [
+        "-D",
+        "CMAKE_VERBOSE_MAKEFILE:BOOL=OFF",
+        "-D",
+        "THIRD_PARTY:STRING=/usr/src/third_party"
+    ],
+    "cmake.buildDirectory": "${workspaceRoot}/source/build_linux",
+    "C_Cpp.configurationWarnings": "Disabled"
+}

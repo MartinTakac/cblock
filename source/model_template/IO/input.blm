@@ -1,0 +1,24 @@
+BL_constant_module
+number_of_values=7
+
+# sync/control signals:
+# a new-input signals for control_cycle (set in connect_inputs)
+value_names[0]=ready_nextElem
+values[0]=real 1 0.
+value_names[1]=ready_resetSeq
+values[1]=real 1 0.
+value_names[2]=ready_finalizeSeq
+values[2]=real 1 0.
+# reset signal - set by control_cycle, when inputs copied from IO/input into core/control. connect_Inputs turns off ready when it receives reset
+value_names[3]=reset
+values[3]=real 1 0.
+
+# the sequential element for chunking if ready_nextElem=1 (set in connect_inputs after conversion)
+value_names[4]=seq_element
+values[4]=real {{ indiv_som_size }} 0.
+
+# state and reward are buffered when finalizeSeq to preserve them till cycle gets to training plan_SOM. For other purposes, the current state and reward are used
+value_names[5]=state_buffered
+values[5]=real {{ state_size }} 0.
+value_names[6]=reward_buffered
+values[6]=real 1 0.

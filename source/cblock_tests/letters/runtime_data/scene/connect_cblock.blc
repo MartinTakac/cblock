@@ -1,0 +1,210 @@
+BL_container_connector
+
+################
+# reset debug status on user's button press 
+BL_identity_connector
+connect_cblock/perform_calculate=cblock/deb_control_cycle/reset_all_debugs
+
+cblock/deb_control_cycle/status=cblock/deb_control_cycle/zeros
+cblock/deb_connect_Inputs/status=cblock/deb_connect_Inputs/zeros
+cblock/deb_connect_cblock/status=cblock/deb_connect_cblock/zeros
+
+################
+# reset cblockInputs to zero on reset
+BL_identity_connector
+#BL_linear_transformation_connector
+connect_cblock/perform_calculate=cblock/cblockInputs/reset
+
+#cblock/deb_connect_cblock/status[0]=cblock/deb_connect_cblock/status[0]+1
+
+cblock/cblockInputs/ready=cblock/core/control/zero
+cblock/cblockInputs/inputType_nextElem=cblock/core/control/zero
+cblock/cblockInputs/inputType_finalizeSeq=cblock/core/control/zero
+cblock/cblockInputs/inputType_resetSeq=cblock/core/control/zero
+cblock/cblockInputs/reward=cblock/core/control/zero
+cblock/cblockInputs/state=cblock/core/control/zeros
+
+###########
+# read cblock's output when ready, turn on prediction when good - this will return back on input as aby event when playback_LIF fires
+BL_linear_transformation_connector
+connect_cblock/perform_calculate=cblock/cblockOutputs/ready
+
+cblock/cblockOutputs/reset=1
+
+control/prediction=cblock/cblockOutputs/contains_prediction*cblock/cblockOutputs/good_enough>0 ? cblock/cblockOutputs/plan_good_enough : 0
+# control/prediction affects playback_LIF/input_voltages below
+control/buffered_out_elem=cblock/cblockOutputs/predicted_bitmap
+control/buffered_out_eos=cblock/cblockOutputs/eos_predicted+cblock/cblockOutputs/goal_reached>0 ? 1 : 0
+
+
+#####################
+# do always 
+BL_linear_transformation_connector
+
+# set LIF speed and check voltage, set trigger back to zero. 
+playback_LIF/membrane_frequency_constant=control/playback_speed
+playback_LIF/input_frequency_constants[0]=playback_LIF/membrane_frequency_constant
+playback_LIF/trigger=0
+playback_LIF/input_voltages[0]=control/allow_playback*control/prediction>0 ? 1 : 0
+control/baby_event=playback_LIF/voltage>0.9 ? 1 : 0
+#cblock/core/measures_scrollDisplay/input_values[4]=playback_LIF/voltage
+
+# determine whether the user just turned on autotraining with a slider
+training_control/trigger_autotrain_leading_edge=training_control/trigger_automatic_training_qml>training_control/trigger_autotrain_prev ? 1 : 0
+training_control/trigger_autotrain_prev=training_control/trigger_automatic_training_qml
+training_control/steps_so_far_in_this_batch=training_control/trigger_autotrain_leading_edge>0 ? 0 : training_control/steps_so_far_in_this_batch
+training_control/automatic_training=training_control/do_autotrain_steps>training_control/steps_so_far_in_this_batch ? 1 : 0
+
+# also monitor when the output ready was turned off due to reset - then the cycle is finished and feed a new element
+training_control/output_ready_just_turned_off=training_control/output_ready_prev>cblock/cblockOutputs/ready ? 1 : 0
+training_control/output_ready_prev=cblock/cblockOutputs/ready
+# set cblockOutputs/reset back to zero, if it worked (just turned off ready)
+cblock/cblockOutputs/reset=training_control/output_ready_just_turned_off>0 ? 0 : cblock/cblockOutputs/reset
+# off signal can be delayed to slow down autotraining for debug purposes
+output_ready_off_delayed/off.input=training_control/output_ready_just_turned_off
+
+# Time to feed the new auto-training input if user turned it on or if autotraining has been on and a training step just finished (set in the previous pass through this container connector). 
+training_control/new_input=training_control/automatic_training*training_control/trigger_autotrain_leading_edge+training_control/automatic_training*output_ready_off_delayed/off.output
+
+#####################
+# if new autotraining input, advance the iterator index
+BL_linear_transformation_connector
+connect_cblock/perform_calculate=training_control/new_input
+
+training_control/iterator=training_control/iterator+1
+training_control/total_autotrain_steps=training_control/total_autotrain_steps+1
+training_control/steps_so_far_in_this_batch=training_control/steps_so_far_in_this_batch+1
+#training_control/new_input=training_set/size>training_control/iterator ? training_control/new_input : 0
+training_control/iterator=training_set/size>training_control/iterator ? training_control/iterator : 0
+
+#####################
+# reset training step counters when reset weights
+BL_linear_transformation_connector
+connect_cblock/perform_calculate=cblock/cblockParams/reset_all_weights
+
+training_control/total_autotrain_steps=0
+training_control/iterator=0
+#training_control/steps_so_far_in_this_batch=0
+# enough if user resets steps so far by pressing autotrain
+
+#####################
+# fill in the new input from training set at iterator index
+BL_identity_connector
+connect_cblock/perform_calculate=training_control/new_input
+
+training_control/letter_index=training_set/data[training_control/iterator]
+training_control/reward=training_set/reward[training_control/iterator]
+training_control/word_index=training_set/result[training_control/iterator]
+training_control/result=training_control/zero_result
+
+#####################
+# just create 1-hot result code at word index
+BL_identity_connector
+connect_cblock/perform_calculate=training_control/word_index
+
+training_control/result[training_control/word_index]=training_control/one
+
+#####################
+# fill in the rest of training input
+BL_linear_transformation_connector
+connect_cblock/perform_calculate=training_control/new_input
+
+training_control/eos=training_control/letter_index>0 ? 0 : 1
+training_control/discard=0>training_control/letter_index ? 1 : 0
+training_control/letter_index=training_control/letter_index>0 ? training_control/letter_index : 0
+
+#############
+# detect user's keyboard input and combine with automatic (automatic has precedence if both)
+BL_linear_transformation_connector
+
+control/key_pressed=pulse_a+pulse_b+pulse_c+pulse_d+pulse_e+pulse_f+pulse_g+pulse_h+pulse_i+pulse_j+pulse_k+pulse_l+pulse_m+pulse_n+pulse_o+pulse_p+pulse_q+pulse_r+pulse_s+pulse_t+pulse_u+pulse_v+pulse_w+pulse_x+pulse_y+pulse_z+cblock/cblockParams/resetSeq_qml+cblock/cblockParams/finalizeSeq_qml
+control/key_pressed_leading_edge=control/key_pressed>control/key_pressed_previous ? 1 : 0
+control/key_pressed_previous=control/key_pressed
+
+# generated index can be overwritten with keyboard input
+control/user_index=cblock/cblockParams/resetSeq_qml+cblock/cblockParams/finalizeSeq_qml>0?0:control/user_index
+control/user_index=pulse_a>0?1:control/user_index
+control/user_index=pulse_b>0?2:control/user_index
+control/user_index=pulse_c>0?3:control/user_index
+control/user_index=pulse_d>0?4:control/user_index
+control/user_index=pulse_e>0?5:control/user_index
+control/user_index=pulse_f>0?6:control/user_index
+control/user_index=pulse_g>0?7:control/user_index
+control/user_index=pulse_h>0?8:control/user_index
+control/user_index=pulse_i>0?9:control/user_index
+control/user_index=pulse_j>0?10:control/user_index
+control/user_index=pulse_k>0?11:control/user_index
+control/user_index=pulse_l>0?12:control/user_index
+control/user_index=pulse_m>0?13:control/user_index
+control/user_index=pulse_n>0?14:control/user_index
+control/user_index=pulse_o>0?15:control/user_index
+control/user_index=pulse_p>0?16:control/user_index
+control/user_index=pulse_q>0?17:control/user_index
+control/user_index=pulse_r>0?18:control/user_index
+control/user_index=pulse_s>0?19:control/user_index
+control/user_index=pulse_t>0?20:control/user_index
+control/user_index=pulse_u>0?21:control/user_index
+control/user_index=pulse_v>0?22:control/user_index
+control/user_index=pulse_w>0?23:control/user_index
+control/user_index=pulse_x>0?24:control/user_index
+control/user_index=pulse_y>0?25:control/user_index
+control/user_index=pulse_z>0?26:control/user_index
+
+# now it includes discard and complete, both user pressed or automatic-trained
+control/user_index=training_control/new_input>0 ? training_control/letter_index : control/user_index
+control/inputType_finalizeSeq=training_control/new_input>0 ? training_control/eos : cblock/cblockParams/finalizeSeq_qml
+control/inputType_resetSeq=training_control/automatic_training>0 ? training_control/discard : cblock/cblockParams/resetSeq_qml
+control/user_event=training_control/new_input+control/key_pressed_leading_edge>0 ? 1 : 0
+
+# connect state and reward if new user event, otherwise stays as is (to not destroy state+reward resulting from playback, if any)
+cblock/cblockInputs/state=control/user_event>0 ? control/manual_result : cblock/cblockInputs/state 
+cblock/cblockInputs/reward=control/user_event>0 ? control/manual_reward : cblock/cblockInputs/reward
+cblock/cblockInputs/state=control/user_event*training_control/automatic_training>0 ? training_control/result : cblock/cblockInputs/state
+cblock/cblockInputs/reward=control/user_event*training_control/automatic_training>0 ? training_control/reward : cblock/cblockInputs/reward
+
+training_control/new_input=0
+
+########
+# set user_input to a letter bitmap 
+BL_identity_connector
+connect_cblock/perform_calculate=control/user_event
+
+# control/user_index==0 is not a problem as letters/values[0] is empty bitmap
+control/user_input=letters/values[control/user_index]
+
+############
+# play back predicted content
+BL_linear_transformation_connector
+connect_cblock/perform_calculate=control/baby_event
+
+playback_LIF/input_voltages[0]=0
+playback_LIF/trigger=1
+
+cblock/cblockInputs/inputType_nextElem=control/buffered_out_eos>0 ? 0 : 1
+cblock/cblockInputs/input_bitmap=cblock/cblockInputs/inputType_nextElem*control/buffered_out_elem
+cblock/cblockInputs/inputType_finalizeSeq=control/buffered_out_eos
+cblock/cblockInputs/inputType_resetSeq=0
+
+# for the moment, reward reflects predicted eos when baby acting (for demos where state is properly set, it is better to use cblock/cblockOutputs/goal_reached, or just any external reward)
+cblock/cblockInputs/reward=control/buffered_out_eos 
+# TODO NOTE: for letters demo, cblock/cblockInputs/state is not set properly if a word is self-generated, hence plan-SOM training should be disabled in goal-driven mode.
+cblock/cblockInputs/ready=1
+
+###################
+# this comes after baby event, so that if user acts at the same time, s/he overrides baby's action
+BL_linear_transformation_connector
+connect_cblock/perform_calculate=control/user_event
+
+cblock/cblockInputs/input_bitmap=control/user_input
+cblock/cblockInputs/inputType_nextElem=control/user_index>0 ? 1 : 0
+cblock/cblockInputs/inputType_finalizeSeq=control/inputType_finalizeSeq
+cblock/cblockInputs/inputType_resetSeq=control/inputType_resetSeq
+cblock/cblockInputs/ready=1
+
+#################
+BL_identity_connector
+# debug
+continuous_2=cblock/core/control/prediction_error
+continuous_3=cblock/core/control/error_avg
+continuous_4=cblock/cblockOutputs/buffered_seq_length
+continuous_5=training_control/total_autotrain_steps
