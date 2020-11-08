@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=20
+number_of_values=22
 
 # sync/control signals:
 # a new-input signal (set by cblock to 1 when new prediction ready, and to 0 when reset signal received)
@@ -71,3 +71,8 @@ values[18]=real 1 0.
 
 value_names[19]=plan_SOM_trained_activity_map
 values[19]=real {{ plan_som_size }} 0.
+
+value_names[20]=plan_output_x
+values[20]=real 1 0.
+value_names[21]=plan_output_y
+values[21]=real 1 0.

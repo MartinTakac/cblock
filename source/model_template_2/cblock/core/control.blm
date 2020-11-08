@@ -13,7 +13,7 @@ values[3]=real {{ state_size }} 0.
 value_names[4]=zeros_bitmap
 values[4]=real {{ input_bitmap_size }} 0.
 
-# for config_cblock and other initialization connetors that should only be evaluated once
+# for config_cblock and other initialization connectors that should only be evaluated once
 value_names[5]=at_start
 values[5]=real 1 1
 

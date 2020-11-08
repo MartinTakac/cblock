@@ -1,0 +1,92 @@
+BL_container_connector
+
+BL_linear_transformation_connector
+############
+# seq_som
+
+# activity
+displays/seq_som/container/1/displayPanel/texture.displayPanel.data=cblock/seq_som/asom/activation_map
+
+# input-related
+displays/seq_som/container/2/displayPanel/texture.displayPanel.data=cblock/seq_som/TD_inspection/control/inspect>0 ? cblock/seq_som/outputs/context : cblock/seq_som/inputs/context
+displays/seq_som/container/3/displayPanel/texture.displayPanel.data=cblock/seq_som/outputs/crisp_next
+displays/seq_som/container/4/displayPanel/texture.displayPanel.data=cblock/seq_som/input_gates/next>0 ? cblock/seq_som/inputs/next : cblock/seq_som/outputs/next
+displays/seq_som/container/4/displayPanel/texture.displayPanel.data=cblock/seq_som/TD_inspection/control/inspect>0 ? cblock/seq_som/outputs/next : displays/seq_som/container/4/displayPanel/texture.displayPanel.data
+displays/seq_som/container/5/displayPanel/texture.displayPanel.data=cblock/seq_som/outputs/eos
+displays/seq_som/container/6/displayPanel/texture.displayPanel.data=cblock/seq_som/TD_inspection/control/inspect>0 ? cblock/seq_som/outputs/current : cblock/seq_som/inputs/current
+displays/seq_som/container/7/displayPanel/texture.displayPanel.data=cblock/cblockInputs/inputType_finalizeSeq
+displays/seq_som/container/8/displayPanel/texture.displayPanel.data=cblock/cblockInputs/reward
+displays/seq_som/container/9/displayPanel/texture.displayPanel.data=cblock/cblockInputs/state
+displays/seq_som/container/10/displayPanel/texture.displayPanel.data=cblock/seq_som/TD_inspection/control/inspect>0 ? cblock/seq_som/outputs/tonic : cblock/seq_som/inputs/tonic
+
+#plastic
+displays/seq_som/container/11/displayPanel/texture.displayPanel.data=cblock/seq_som/asom/plastic
+
+# tr
+displays/seq_som/container/12/displayPanel/texture.displayPanel.data=cblock/seq_som/asom/training_record
+
+# position of cursor in TR
+displays/seq_som/container/13/displayPanel/transformation.translate_x=50.0*cblock/seq_som/cursor/x+0.0
+displays/seq_som/container/13/displayPanel/transformation.translate_y=50.0*cblock/seq_som/cursor/y+0.0
+
+#############
+# plan_som
+
+# act mask
+displays/plan_som/container/1/displayPanel/texture.displayPanel.data=cblock/plan_som/asom/activation_mask
+
+# activity
+displays/plan_som/container/2/displayPanel/texture.displayPanel.data=cblock/plan_som/asom/activation_map
+
+#inputs
+displays/plan_som/container/3/displayPanel/texture.displayPanel.data=cblock/plan_som/inputs/plan
+displays/plan_som/container/4/displayPanel/texture.displayPanel.data=cblock/plan_som/inputs/result
+displays/plan_som/container/5/displayPanel/texture.displayPanel.data=cblock/plan_som/inputs/reward
+
+#outputs
+displays/plan_som/container/6/displayPanel/texture.displayPanel.data=cblock/plan_som/outputs/plan
+displays/plan_som/container/7/displayPanel/texture.displayPanel.data=cblock/plan_som/outputs/result
+displays/plan_som/container/8/displayPanel/texture.displayPanel.data=cblock/plan_som/outputs/reward
+
+#plastic
+displays/plan_som/container/9/displayPanel/texture.displayPanel.data=cblock/plan_som/asom/plastic
+
+# tr
+displays/plan_som/container/10/displayPanel/texture.displayPanel.data=cblock/plan_som/asom/training_record
+
+# cursor in TR
+displays/plan_som/container/11/displayPanel/transformation.translate_x=55.0*cblock/plan_som/cursor/x+0.0
+displays/plan_som/container/11/displayPanel/transformation.translate_y=55.0*cblock/plan_som/cursor/y+0.0
+
+# goal
+displays/plan_som/container/12/displayPanel/texture.displayPanel.data=cblock/planning/goal/alpha_reward
+displays/plan_som/container/13/displayPanel/texture.displayPanel.data=cblock/planning/goal/reward
+displays/plan_som/container/14/displayPanel/texture.displayPanel.data=cblock/planning/goal/state
+displays/plan_som/container/15/displayPanel/texture.displayPanel.data=cblock/core/control/aux_result_alphas_combined
+
+# goal buffered
+displays/plan_som/container/16/displayPanel/texture.displayPanel.data=cblock/planning/goal_buffered/alpha_reward
+displays/plan_som/container/17/displayPanel/texture.displayPanel.data=cblock/planning/goal_buffered/reward
+displays/plan_som/container/18/displayPanel/texture.displayPanel.data=cblock/planning/goal_buffered/alpha_goal_state_components_combined
+displays/plan_som/container/19/displayPanel/texture.displayPanel.data=cblock/planning/goal_buffered/state
+
+############
+# cblock
+displays/cblock/container/1/displayPanel/texture.displayPanel.data=cblock/cblockOutputs/goal_reached
+displays/cblock/container/2/displayPanel/texture.displayPanel.data=cblock/cblockParams/indiv_xy>0 ? cblock/IO/xy_input_som/training_record : cblock/IO/bitmap_input_som/training_record
+# 3 - measures are below to update only when needed (effectivity reasons?)
+displays/cblock/container/4/displayPanel/texture.displayPanel.data=cblock/cblockOutputs/plan_good_enough
+displays/cblock/container/5/displayPanel/texture.displayPanel.data=cblock/core/control/stage
+displays/cblock/container/6/displayPanel/texture.displayPanel.data=cblock/core/control/surprise
+
+# application-specific:
+# input letter bitmap
+displays/cblock/container/7/displayPanel/texture.displayPanel.data=cblock/cblockInputs/input_bitmap
+# predicted letter bitmap 
+displays/cblock/container/8/displayPanel/texture.displayPanel.data=cblock/cblockOutputs/predicted_bitmap
+
+# measures
+BL_identity_connector
+# Only update when needed
+display_cblock/perform_calculate=cblock/core/measures_scrollDisplay/updated
+displays/cblock/container/3/displayPanel/texture.displayPanel.data=cblock/core/measures_scrollDisplay/texture_data

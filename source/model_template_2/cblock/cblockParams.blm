@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=36
+number_of_values=37
 
 # manual control signals
 value_names[0]=resetSeq_qml
@@ -120,3 +120,6 @@ values[34]=real 1 {{ cblockParams.reset_at_interval_timeout }}
 # cblock will resetSeq if max interval reached even while waiting for the first elem (feature required by Dialog crew)
 value_names[35]=reset_if_no_first_timeout
 values[35]=real 1 {{ cblockParams.reset_if_no_first_timeout }}
+
+value_names[36]=non_negative_effects
+values[36]=real 1 {{ cblockParams.non_negative_effects }}

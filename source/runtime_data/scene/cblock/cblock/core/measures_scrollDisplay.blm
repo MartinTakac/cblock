@@ -1,0 +1,53 @@
+BL_scrolling_display_module
+
+# Width of display
+time_size=500
+# Height of display
+value_size=100
+
+time_step=0.001
+tick_time_step_s=1.
+tick_red=0.5
+tick_green=0.5
+tick_blue=0.5
+
+use_model_time=1.
+
+# Number of lines to draw
+number_of_inputs=5
+input_values=0.
+
+# Line colour: red: 
+input_red[0]=1.
+input_green[0]=0.
+input_blue[0]=0.
+input_minimums[0]=-0.01
+input_maximums[0]=1.03
+
+# Line colour: green:
+input_red[1]=0.
+input_green[1]=1.
+input_blue[1]=0.
+input_minimums[1]=-0.03
+input_maximums[1]=1.04
+
+# Line colour: yellow: 
+input_red[2]=1.
+input_green[2]=1.
+input_blue[2]=0.
+input_minimums[2]=-0.04
+input_maximums[2]=1.01
+
+# Line colour: blue: 
+input_red[3]=0.
+input_green[3]=0.
+input_blue[3]=1.
+input_minimums[3]=-0.02
+input_maximums[3]=1.05
+
+# Line colour: white: 
+input_red[4]=1.
+input_green[4]=1.
+input_blue[4]=1.
+input_minimums[4]=-0.02
+input_maximums[4]=1.02

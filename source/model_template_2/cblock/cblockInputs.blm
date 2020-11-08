@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=15
+number_of_values=16
 
 # sync/control signals:
 # a new-input signal (set from outside cblock)
@@ -61,3 +61,6 @@ values[13]=real {{ plan_som_size }} 0.
 # to be able to update goal to inferred after surprise
 value_names[14]=plan_TD_influence
 values[14]=real 1 0.
+
+value_names[15]=reset_plan_IOR
+values[15]=real 1 0.

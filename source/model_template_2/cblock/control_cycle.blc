@@ -9,6 +9,17 @@ control_cycle/perform_calculate=cblockOutputs/reset
 
 cblockOutputs/ready=core/control/zero
 
+BL_linear_transformation_connector
+planning/control/reset_plan_IOR_leading_edge=cblockInputs/reset_plan_IOR>planning/control/reset_plan_IOR_prev ? 1 : 0
+planning/control/reset_plan_IOR_prev=cblockInputs/reset_plan_IOR
+
+#####################
+# reset plan IOR if button click
+BL_identity_connector
+control_cycle/perform_calculate=planning/control/reset_plan_IOR_leading_edge
+
+planning/control/reset_ior_internal=core/control/one
+
 #####################
 # turn off load_dump output ready if reset
 BL_identity_connector
@@ -127,6 +138,17 @@ plan_som/asom/perform_time_step=core/control/one
 core/control/error_avg=core/control/error_avg_reset_value
 core/control/stage=core/control/reset_stage
 core/control/restart_seq=core/control/one
+
+# reset inputs for display
+seq_som/inputs/context=core/control/zeros
+seq_som/inputs/current=core/control/zeros
+seq_som/inputs/next=core/control/zeros
+seq_som/inputs/tonic=core/control/zeros
+plan_som/inputs/plan=core/control/zeros
+plan_som/inputs/result=planning/control/zeros_state
+plan_som/inputs/reward=core/control/zero
+planning/goal_buffered/state=planning/control/zeros_state
+planning/control/ior=planning/control/zeros_ior
 # restart will clear buffer, tonic, ctx and current and go to S5 or S6
 
 ###################
@@ -164,6 +186,15 @@ control_cycle/perform_calculate=IO/TD_inspection/control/inspect
 #IO/xy_output_som/top_down_activation=IO/TD_inspection/control/result
 #IO/xy_output_som/perform_time_step=IO/indiv_type/xy
 IO/bitmap_output_som/top_down_activation=IO/TD_inspection/control/result
+IO/bitmap_output_som/perform_time_step=IO/indiv_type/bitmap
+
+#MT-change-1: (added the connector below)
+###########
+# Seq SOM inspection IO link
+BL_linear_transformation_connector
+control_cycle/perform_calculate=seq_som/TD_inspection/control/seq_som_is_top_down
+
+IO/bitmap_output_som/top_down_activation=seq_som/outputs/next
 IO/bitmap_output_som/perform_time_step=IO/indiv_type/bitmap
 
 
@@ -256,6 +287,9 @@ core/prediction_wta/perform_time_step=1
 
 # chunk_init_state==cblockInputs/state at this moment, so delta_achieved=0. This has to be compared to delta_desired (dif bw goal state and current state set above) to see if the goal is not trivially satisfied
 planning/control/delta_achieved=cblockInputs/state-planning/control/chunk_init_state
+# if non_negative_effects=1, truncate negative components
+planning/control/delta_achieved=planning/control/zeros_state>cblockParams/non_negative_effects*planning/control/delta_achieved ? planning/control/zeros_state : planning/control/delta_achieved
+
 planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : cblockInputs/state
 planning/dist_from_goal/input_values[0:{{ state_last_index }}]=planning/control/aux_result
 planning/dist_from_goal/input_values[{{ state_size }}]=cblockInputs/reward
@@ -272,6 +306,9 @@ core/control/stage[9]=1
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[7]
 
+
+cblockOutputs/plan_output_x=plan_som/asom/output_x
+cblockOutputs/plan_output_y=plan_som/asom/output_y
 plan_som/asom/perform_time_step=0
 plan_som/asom/activation_mask=plan_som/asomConsts/default_mask
  
@@ -291,7 +328,7 @@ core/control/kick_start=cblockParams/kick_start_gain
 
 # the results of below will be used for plan IOR next time the system goes into S6  
 planning/xy_to_loc_som/input_values[0]=plan_som/asom/output_x
-planning/xy_to_loc_som/input_values[1]=plan_som/asom/output_y
+planning/xy_to_loc_som/input_values[1]=-1*plan_som/asom/output_y+1
 planning/plan_wta/input_values=plan_som/asom/activation_map
 planning/xy_to_loc_som/perform_time_step=planning/control/goal_driven
 planning/plan_wta/perform_time_step=planning/control/goal_driven
@@ -323,6 +360,9 @@ plan_som/asom/perform_time_step=1
 planning/control/chunk_init_state=cblockInputs/state
 #  desired delta = goal state - init state
 planning/control/delta_desired=planning/goal/state-planning/control/chunk_init_state
+# if non_negative_effects=1, truncate negative components
+planning/control/delta_desired=planning/control/zeros_state>cblockParams/non_negative_effects*planning/control/delta_desired ? planning/control/zeros_state : planning/control/delta_desired
+
 planning/goal_buffered/state=cblockParams/use_delta_based_plans>0 ? planning/control/delta_desired : planning/goal/state
 planning/goal_buffered/reward=planning/goal/reward
 planning/goal_buffered/alpha_goal_state_components_combined=core/control/aux_result_alphas_combined
@@ -337,10 +377,14 @@ planning/dist_from_goal/alphas[0:{{ state_last_index }}]=core/control/aux_result
 planning/dist_from_goal/alphas[{{ state_size }}]=planning/goal/alpha_reward
 
 # inhibit previous winner and its surrounding
-planning/control/ior=planning/control/ior+planning/control/ior_surrounding*planning/xy_to_loc_som/activation_map+planning/plan_wta/output_values
-planning/control/ior=planning/control/ior>plan_som/asomConsts/som_size_ones ? plan_som/asomConsts/som_size_ones : planning/control/ior
 planning/control/ior=planning/control/ior_decay*planning/control/ior
+planning/control/ior_patch=planning/control/ior_surrounding*planning/xy_to_loc_som/activation_map>planning/control/ior_patch_thr ? plan_som/asomConsts/som_size_ones : planning/control/zeros_ior
+planning/control/ior=planning/control/ior+planning/control/ior_patch
+#+planning/plan_wta/output_values
+planning/control/ior=planning/control/ior>plan_som/asomConsts/som_size_ones ? plan_som/asomConsts/som_size_ones : planning/control/ior
 
+planning/control/ior=planning/control/reset_ior_internal>0 ? planning/control/zeros_ior : planning/control/ior
+planning/control/reset_ior_internal=0
 # no ior in plan inspection mode
 plan_som/asom/activation_mask=cblockInputs/goal_plan_inspection>0 ? plan_som/asomConsts/default_mask : plan_som/asomConsts/default_mask-planning/control/ior
 plan_som/asom/activation_mask=plan_som/asomConsts/som_size_zeros>plan_som/asom/activation_mask ? plan_som/asomConsts/som_size_zeros : plan_som/asom/activation_mask
@@ -363,6 +407,8 @@ control_cycle/perform_calculate=core/control/stage[5]
 
 core/interval_LIF/trigger=0
 planning/plan_timeout_LIF/trigger=0
+cblockOutputs/plan_output_x=plan_som/asom/output_x
+cblockOutputs/plan_output_y=plan_som/asom/output_y
 plan_som/asom/perform_time_step=0
 cblockOutputs/plan_SOM_trained_activity_map=plan_som/asomConsts/plasticity>0 ? plan_som/asom/activation_map : cblockOutputs/plan_SOM_trained_activity_map
 plan_som/asomConsts/plasticity=0
@@ -374,6 +420,7 @@ seq_som/asom/activation_mask=seq_som/asomConsts/default_mask
 cblockOutputs/ready=1
 # cblockOutputs/good_enough=0 so that playback is not triggered (because no prediction)
 cblockOutputs/good_enough=0
+cblockOutputs/plan_good_enough=1
 cblockOutputs/contains_prediction=0
 cblockOutputs/surprise=0
 cblockOutputs/eos_predicted=0
@@ -409,6 +456,9 @@ core/control/stage[4]=0
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[3]
 
+
+cblockOutputs/plan_output_x=plan_som/asom/output_x
+cblockOutputs/plan_output_y=plan_som/asom/output_y
 plan_som/asom/perform_time_step=0
 seq_som/asom/perform_time_step=1
  
@@ -463,6 +513,9 @@ core/interval_LIF/trigger=0
 #buffer is non-empty, so start time measurement
 core/interval_LIF/input_voltages[0]=1
 
+cblockOutputs/plan_output_x=plan_som/asom/output_x
+cblockOutputs/plan_output_y=plan_som/asom/output_y
+
 plan_som/asom/perform_time_step=0
 
 # evaluate, whether the actual element was a surprise
@@ -510,7 +563,7 @@ BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[0]
 
 plan_som/asom/perform_time_step=cblockParams/display_plan_som_real_time+plan_som/TD_inspection/control/inspect
-seq_som/asom/perform_time_step=cblockParams/display_seq_som_real_time+seq_som/TD_inspection/control/inspect
+seq_som/asom/perform_time_step=cblockParams/display_seq_som_real_time+seq_som/TD_inspection/control/seq_som_is_top_down
 
 planning/plan_timeout_LIF/membrane_frequency_constant=cblockParams/master_LIF_speed*planning/control/plan_timeout_speed
 planning/plan_timeout_LIF/input_frequency_constants[0]=planning/plan_timeout_LIF/membrane_frequency_constant
@@ -604,7 +657,6 @@ core/actual_next_wta/perform_time_step=core/control/one
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][0:{{ seq_som_current_last_index }}]=core/control/current
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][{{ seq_som_next_first_index }}:{{ seq_som_next_last_index }}]=core/control/next
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][{{ seq_som_ctx_first_index }}:{{ seq_som_ctx_last_index }}]=core/control/context
-core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][{{ seq_som_ctx_first_index }}:{{ seq_som_ctx_last_index }}]=core/control/context
 core/seq_buffer/associative_self_organizing_map[0][0][cblockOutputs/buffered_seq_length][{{ buffer_interval_index }}]=core/control/interval
 
 core/control/buffer_occupancy[cblockOutputs/buffered_seq_length]=core/control/one
@@ -669,8 +721,16 @@ core/interval_LIF/membrane_frequency_constant=0
 core/interval_LIF/input_frequency_constants[0]=0
 
 
-planning/control/delta_achieved=IO/input/state_buffered-planning/control/chunk_init_state
-planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : IO/input/state_buffered
+#MT!!! planning/control/delta_achieved=IO/input/state_buffered-planning/control/chunk_init_state
+planning/control/delta_achieved=cblockInputs/state-planning/control/chunk_init_state
+
+# if non_negative_effects=1, truncate negative components
+planning/control/delta_achieved=planning/control/zeros_state>cblockParams/non_negative_effects*planning/control/delta_achieved ? planning/control/zeros_state : planning/control/delta_achieved
+
+#MT!!! planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : IO/input/state_buffered
+planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : cblockInputs/state
+
+
 plan_som/inputs/plan=core/control/tonic_input
 plan_som/inputs/result=planning/control/aux_result
 plan_som/inputs/reward=IO/input/reward_buffered
@@ -720,7 +780,8 @@ core/control/context=core/control/initial_ctx
 core/control/interval=0
 
 # record the state - the init state of the next chunk
-planning/control/chunk_init_state=IO/input/state_buffered
+#MT!!! planning/control/chunk_init_state=IO/input/state_buffered
+planning/control/chunk_init_state=cblockInputs/state
 core/control/input_weight=1
 # prediction of seq_SOM is not updated, because nothing changed
 

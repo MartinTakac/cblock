@@ -1,0 +1,9 @@
+BL_identity_connector
+load_maps_blc/perform_calculate=asom_save/retrieved
+
+###LOAD MAPS
+# Retrieving the saved maps
+xy_input_som/associative_self_organizing_map=asom_save/xy_map_retrieve.value
+xy_input_som/training_record=asom_save/xy_training_record_retrieve.value
+bitmap_input_som/associative_self_organizing_map=asom_save/bitmap_map_retrieve.value
+bitmap_input_som/training_record=asom_save/bitmap_training_record_retrieve.value
