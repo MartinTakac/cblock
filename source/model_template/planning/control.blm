@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=15
+number_of_values=22
 
 # parameters
 value_names[0]=internal_goal_reached_reward
@@ -49,3 +49,24 @@ values[13]=real {{ state_size }} 0.
 
 value_names[14]=delta_desired
 values[14]=real {{ state_size }} 0.
+
+value_names[15]=zeros_ior
+values[15]=real {{ plan_som_size }} 0.
+
+value_names[16]=reset_ior_internal
+values[16]=real 1 0.
+
+value_names[17]=ior_patch_thr
+values[17]=real {{ plan_som_size }} {{ planning.control.ior_patch_thr }}
+
+value_names[18]=ior_patch
+values[18]=real {{ plan_som_size }} 0.
+
+value_names[19]=zeros_state
+values[19]=real {{ state_size }} 0.
+
+value_names[20]=reset_plan_IOR_leading_edge
+values[20]=real 1 0.
+
+value_names[21]=reset_plan_IOR_prev
+values[21]=real 1 0.

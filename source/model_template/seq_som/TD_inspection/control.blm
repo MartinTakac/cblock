@@ -1,5 +1,5 @@
 BL_constant_module
-number_of_values=4
+number_of_values=5
 
 # resulting map for tdi
 value_names[0]=result
@@ -14,3 +14,7 @@ values[2]=real 1 0.
 # turn on/off inspection
 value_names[3]=inspect
 values[3]=real 1 0.
+
+# agregating dreaming and TD inspection in connect_dreaming.blc
+value_names[4]=seq_som_is_top_down
+values[4]=real 1 1.

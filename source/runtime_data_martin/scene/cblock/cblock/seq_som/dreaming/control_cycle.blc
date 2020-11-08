@@ -1,0 +1,79 @@
+BL_linear_transformation_connector
+
+##########
+
+# all stage transitions S1 -> S2 are such that S2>S1 (except going back to stage 0), 
+# and at the same time stage-testing conditions must be in decreasing order, 
+# so that if a state changes to some S, its conditions will only fire the next time this blc is executed. 
+
+# do always
+combined_wta/associative_self_organizing_map=control/base
+control/noise=random_generator/values
+xy_to_loc_som/activation_sensitivity=control/patch_sensitivity
+control/habituation_map=control/base_map_was_reset+control/reset_habituation_map>0 ? control/zeros : control/habituation_map
+
+######## stage 2: loc_mask and xy_to_loc_som's patch have been computed. Assign result and habituate (IOR) 
+
+control/result_aux=control/one_cell_patch>0? loc_mask/mask[0] : xy_to_loc_som/activation_map
+control/result=control/stage[2]>0 ? control/result_aux : control/result
+
+# compute habituation
+control/habituation_map=control/stage[2]>0 ? control/habituation_map+control/result : control/habituation_map
+control/habituation_map=control/habituation_map>control/ones ? control/ones : control/habituation_map
+
+# go back to S0
+control/stage[0]=control/stage[2]>0 ? 1 : control/stage[0]
+control/stage[2]=0
+
+######## stage 1: combined_wta has new output ready (because combined_wta/associative_self_organizing_map=control/base
+# and combined_wta/use_soft_output=0., the output is the value of control/base at the winning location) 
+
+control/result=control/stage[1]>0 ? control/zeros : control/result
+control/habituation_map=control/stage[1]>0 ? control/hab_decay*control/habituation_map : control/habituation_map
+
+# winner is good enough if position set manually, or if picked position has high enough value in control/base
+control/winner_good_enough=combined_wta/output_values>control/result_thr ? 1 : control/manual_pos
+control/winner_not_good_enough=-1.*control/winner_good_enough+1.
+
+control/combined_x =control/stage[1]*control/winner_good_enough>0 ? combined_wta/output_x : control/combined_x
+control/combined_y =control/stage[1]*control/winner_good_enough>0 ? -1*combined_wta/output_y+1 : control/combined_y
+
+# find and set winning location (from combined map or manual)
+control/x=control/manual_pos>0 ? control/manual_x : control/combined_x
+control/y=control/manual_pos>0 ? control/manual_y : control/combined_y
+
+# set input to xy_to_loc_som to create a patch_sensitivity-determined patch around x,y, or a mask to create one-cell patch 
+#transform the location to a patch and set as result
+xy_to_loc_som/input_values[0]=control/stage[1]*control/winner_good_enough>0 ? control/x : xy_to_loc_som/input_values[0]
+xy_to_loc_som/input_values[1]=control/stage[1]*control/winner_good_enough>0 ? control/y : xy_to_loc_som/input_values[1]
+loc_mask/location_x=control/stage[1]*control/winner_good_enough>0 ? control/x : loc_mask/location_x
+loc_mask/location_y=control/stage[1]*control/winner_good_enough>0 ? -1*control/y+1 : loc_mask/location_y
+
+# prepare new random values for the next cycle
+random_generator/trigger=control/stage[1]
+
+# go to S2 if position good enough, otherwise go back to S0
+control/stage[2]=control/stage[1]*control/winner_good_enough>0 ? 1 : control/stage[2]
+control/stage[0]=control/stage[1]*control/winner_not_good_enough>0 ? 1 : control/stage[0]
+control/stage[1]=0
+
+######## stage 0: wait for tick and, when tick, prepare combination wta map
+
+# combine maps
+control/combined_map=control/stage[0]*control/tick>0 ? control/base-control/noise_level*control/base+control/noise_level*control/noise-control/hab_influence*control/habituation_map : control/combined_map
+
+# trim combined_map to have each element between (0,1)
+control/combined_map=control/combined_map>control/ones ? control/ones : control/combined_map
+control/combined_map=control/combined_map<control/zeros ? control/zeros : control/combined_map
+
+# set as tda to wta som
+combined_wta/top_down_activation=control/stage[0]*control/tick>0 ? control/combined_map : combined_wta/top_down_activation
+
+# go to S1
+control/stage[1]=control/stage[0]*control/tick>0 ? 1 : control/stage[1]
+control/stage[0]=control/tick>0 ? 0 : control/stage[0]
+
+###########
+
+combined_wta/perform_time_step=control/stage[1]
+xy_to_loc_som/perform_time_step=control/stage[2]-control/one_cell_patch

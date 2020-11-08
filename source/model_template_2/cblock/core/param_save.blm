@@ -1,0 +1,12 @@
+BL_file_memory_module
+memories_file_name=param_save.csv
+number_of_memories=2
+memories[0]=value
+memory_names[0]=error_avg
+error_avg.value=real 1 0.
+memories[1]=value
+memory_names[1]=after_first_cycle
+after_first_cycle.value=real 1 0.
+#memories[2]=value
+#memory_names[2]=error_var
+#error_var.value=real 1 0.

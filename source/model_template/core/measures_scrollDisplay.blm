@@ -17,35 +17,35 @@ use_model_time=1.
 number_of_inputs=5
 input_values=0.
 
-# Line colour: red: entropy
+# Line colour: red: 
 input_red[0]=1.
 input_green[0]=0.
 input_blue[0]=0.
 input_minimums[0]=-0.01
 input_maximums[0]=1.03
 
-# Line colour: green: KL prediction error
+# Line colour: green:
 input_red[1]=0.
 input_green[1]=1.
 input_blue[1]=0.
 input_minimums[1]=-0.03
-input_maximums[1]=5.1
+input_maximums[1]=1.04
 
-# Line colour: yellow: dist from goal
+# Line colour: yellow: 
 input_red[2]=1.
 input_green[2]=1.
 input_blue[2]=0.
 input_minimums[2]=-0.04
 input_maximums[2]=1.01
 
-# Line colour: blue: goal timeout LIF voltage
+# Line colour: blue: 
 input_red[3]=0.
 input_green[3]=0.
 input_blue[3]=1.
 input_minimums[3]=-0.02
 input_maximums[3]=1.05
 
-# Line colour: white: plan_som entropy
+# Line colour: white: 
 input_red[4]=1.
 input_green[4]=1.
 input_blue[4]=1.

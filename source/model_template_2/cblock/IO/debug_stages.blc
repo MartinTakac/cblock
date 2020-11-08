@@ -1,0 +1,22 @@
+BL_identity_connector
+
+# DEPRECATED: 
+#input_control/debug_stages_none[0]=input_control/S0
+#input_control/debug_stages_none[1]=input_control/init_dispatch_elem
+#input_control/debug_stages_none[2]=input_control/init_none
+#input_control/debug_stages_none[3]=input_control/S3
+
+input_control/debug_stages_xy[0]=input_control/S0
+input_control/debug_stages_xy[1]=input_control/init_dispatch_elem
+input_control/debug_stages_xy[2]=input_control/init_xy
+input_control/debug_stages_xy[3]=input_control/S1_xy
+input_control/debug_stages_xy[4]=input_control/S2_xy
+input_control/debug_stages_xy[5]=input_control/S3
+
+input_control/debug_stages_bitmap[0]=input_control/S0
+input_control/debug_stages_bitmap[1]=input_control/init_dispatch_elem
+input_control/debug_stages_bitmap[2]=input_control/init_bitmap
+input_control/debug_stages_bitmap[3]=input_control/S1_bitmap
+input_control/debug_stages_bitmap[4]=input_control/S2_bitmap
+input_control/debug_stages_bitmap[5]=input_control/S3
+

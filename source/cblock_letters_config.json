@@ -1,0 +1,378 @@
+{
+    "variables": {
+        "input_bitmap_dim_x": 10,
+        "input_bitmap_dim_y": 10,
+        "state_dim_x": 100,
+        "state_dim_y": 1,
+        "indiv_som_dim_x": 10,
+        "indiv_som_dim_y": 10,
+        "buffer_capacity_dim_x": 10,
+        "buffer_capacity_dim_y": 10,
+        "seq_som_dim_x": 50,
+        "seq_som_dim_y": 50,
+        "plan_som_dim_x": 30,
+        "plan_som_dim_y": 30,
+        "cblockParams": {
+            "entropy_thr": 0.35,
+            "goal_reached_thr": 0.9,
+            "indiv_xy": 0,
+            "inspect_buf_index": -1,
+            "interval_LIF_speed": 2,
+            "kick_start_gain": 0,
+            "master_LIF_speed": 1,
+            "plan_goodness_thr": 0.1,
+            "plan_learn_goal_driven": 0,
+            "plan_learn_non_goal_driven": 1,
+            "plan_top_down_on_seq_gain_goal_driven": 1,
+            "plan_top_down_on_seq_gain_non_goal_driven": 0.99,
+            "prev_avg_err_mix": 0.9,
+            "prev_context_mix": 0.6,
+            "reset_at_interval_timeout": 0,
+            "reset_if_no_first_timeout": 0,
+            "seq_learn_goal_driven": 0,
+            "seq_learn_non_goal_driven": 1,
+            "smoothing": 0.0000000000001,
+            "surp_trunc_value": 5,
+            "surprise_alphas_till_eos_gd": 0,
+            "surprise_alphas_till_eos_ngd": 1,
+            "surprise_avg_mult": 2,
+            "tonic_decay": 0.6,
+            "use_delta_based_plans": 1,
+            "winner_match_surprise": 0
+        },
+        "planning": {
+            "control": {
+                "internal_goal_reached_reward": 0,
+                "plan_timeout_speed": 1.2,
+                "ior_decay": 0.4,
+                "noise_level": 0,
+                "ior_surrounding": 0
+            },
+            "xy_to_loc_som": {
+                "activation_sensitivity": 500
+            }
+        },
+        "seq_som": {
+            "alpha_gains": {
+                "tonic": 0.9,
+                "context": 0.7,
+                "current": 0.2,
+                "next": 0,
+                "eos": 0,
+                "interval": 0,
+                "tonic_gd": 0.9,
+                "context_gd": 0.3,
+                "current_gd": 0.1,
+                "next_gd": 0,
+                "eos_gd": 0,
+                "interval_gd": 0,
+                "tonic_surprise": 0.05,
+                "context_surprise": 0.2,
+                "current_surprise": 0.4,
+                "next_surprise": 0,
+                "eos_surprise": 0,
+                "interval_surprise": 0,
+                "tonic_train": 0.9,
+                "context_train": 0.4,
+                "current_train": 0.2,
+                "next_train": 0.1,
+                "eos_train": 0,
+                "interval_train": 0
+            },
+            "asomConsts": {
+                "qmlSensitivityTrain": 20,
+                "qmlSensitivityPredict": 20,
+                "qmlSoftOutput": 1,
+                "qmlUseTrPrior": 1,
+                "qmlLfc": 1000,
+                "qmlSigma": 0.6,
+                "qmlCompareNoise": 0.9,
+                "qmlBestMatchThreshold": 0.9,
+                "qmlBestMatchLfcMult": 0.01,
+                "qmlTrainingRecordDecay": 1
+            }
+        },
+        "plan_som": {
+            "asomConsts": {
+                "qmlSensitivityJustPlan": 15,
+                "qmlSensitivityResult": 2.5,
+                "qmlSensitivityJustReward": 25,
+                "qmlSoftOutput": 1,
+                "qmlUseTrPrior": 1,
+                "qmlLfc": 900,
+                "qmlSigma": 0.6,
+                "qmlCompareNoise": 0.4,
+                "qmlBestMatchThreshold": 0.5,
+                "qmlBestMatchLfcMult": 0,
+                "qmlTrainingRecordDecay": 1
+            }
+        },
+        "IO": {
+            "xy_som_consts": {
+                "qmlSensitivity": 150,
+                "qmlCompareNoise": 0.5,
+                "qmlBestMatchThreshold": 0.9,
+                "qmlBestMatchLfcMult": 0
+            },
+            "bitmap_som_consts": {
+                "qmlSensitivity": 15,
+                "qmlCompareNoise": 0.3,
+                "qmlBestMatchThreshold": 0.9,
+                "qmlBestMatchLfcMult": 0
+            }
+        }
+    },
+    "dependent_variables": {
+        "input_bitmap_size": {
+            "operation": ".",
+            "depends_on": [
+                "input_bitmap_dim_x",
+                "input_bitmap_dim_y"
+            ]
+        },
+        "indiv_som_size": {
+            "operation": ".",
+            "depends_on": [
+                "indiv_som_dim_x",
+                "indiv_som_dim_y"
+            ]
+        },
+        "buffer_capacity": {
+            "operation": ".",
+            "depends_on": [
+                "buffer_capacity_dim_x",
+                "buffer_capacity_dim_y"
+            ]
+        },
+        "buffer_element_size": {
+            "operation": "+",
+            "depends_on": [
+                "indiv_som_size",
+                "indiv_som_size",
+                "indiv_som_size",
+                1
+            ]
+        },
+        "buffer_total_size": {
+            "operation": "*",
+            "depends_on": [
+                "buffer_capacity",
+                "buffer_element_size"
+            ]
+        },
+        "bitmap_som_weights": {
+            "operation": ".",
+            "depends_on": [
+                "indiv_som_dim_x",
+                "indiv_som_dim_y",
+                "input_bitmap_dim_x",
+                "input_bitmap_dim_y"
+            ]
+        },
+        "xy_som_weights": {
+            "operation": ".",
+            "depends_on": [
+                "indiv_som_dim_x",
+                "indiv_som_dim_y",
+                2
+            ]
+        },
+        "state_size": {
+            "operation": ".",
+            "depends_on": [
+                "state_dim_x",
+                "state_dim_y"
+            ]
+        },
+        "state_last_index": {
+            "operation": "-",
+            "depends_on": [
+                "state_size",
+                1
+            ]
+        },
+        "seq_som_size": {
+            "operation": ".",
+            "depends_on": [
+                "seq_som_dim_x",
+                "seq_som_dim_y"
+            ]
+        },
+        "seq_som_input_size": {
+            "operation": "+",
+            "depends_on": [
+                "indiv_som_size",
+                "indiv_som_size",
+                "indiv_som_size",
+                "indiv_som_size",
+                1,
+                1
+            ]
+        },
+        "seq_som_weights": {
+            "operation": ".",
+            "depends_on": [
+                "seq_som_size",
+                "seq_som_input_size"
+            ]
+        },
+        "seq_som_current_last_index": {
+            "operation": "-",
+            "depends_on": [
+                "indiv_som_size",
+                1
+            ]
+        },
+        "seq_som_next_first_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_current_last_index",
+                1
+            ]
+        },
+        "seq_som_next_last_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_current_last_index",
+                "indiv_som_size"
+            ]
+        },
+        "seq_som_ctx_first_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_next_last_index",
+                1
+            ]
+        },
+        "seq_som_ctx_last_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_next_last_index",
+                "indiv_som_size"
+            ]
+        },
+        "buffer_interval_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_ctx_last_index",
+                1
+            ]
+        },
+        "seq_som_tonic_first_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_ctx_last_index",
+                1
+            ]
+        },
+        "seq_som_tonic_last_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_ctx_last_index",
+                "indiv_som_size"
+            ]
+        },
+        "seq_som_eos_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_tonic_last_index",
+                1
+            ]
+        },
+        "seq_som_interval_index": {
+            "operation": "+",
+            "depends_on": [
+                "seq_som_eos_index",
+                1
+            ]
+        },
+        "plan_som_size": {
+            "operation": ".",
+            "depends_on": [
+                "plan_som_dim_x",
+                "plan_som_dim_y"
+            ]
+        },
+        "plan_som_input_size": {
+            "operation": "+",
+            "depends_on": [
+                "indiv_som_size",
+                1,
+                "state_size"
+            ]
+        },
+        "plan_som_input_layers": {
+            "operation": "+",
+            "depends_on": [
+                2,
+                "state_size"
+            ]
+        },
+        "plan_som_input_layers_last_index": {
+            "operation": "-",
+            "depends_on": [
+                "plan_som_input_layers",
+                1
+            ]
+        },
+        "plan_som_weights": {
+            "operation": ".",
+            "depends_on": [
+                "plan_som_size",
+                "plan_som_input_size"
+            ]
+        },
+        "plan_som_plan_last_index": {
+            "operation": "-",
+            "depends_on": [
+                "indiv_som_size",
+                1
+            ]
+        },
+        "plan_som_result_first_index": {
+            "operation": "+",
+            "depends_on": [
+                "plan_som_plan_last_index",
+                1
+            ]
+        },
+        "plan_som_result_last_index": {
+            "operation": "+",
+            "depends_on": [
+                "plan_som_plan_last_index",
+                "state_size"
+            ]
+        },
+        "plan_som_reward_index": {
+            "operation": "+",
+            "depends_on": [
+                "plan_som_result_last_index",
+                1
+            ]
+        },
+        "state_reward": {
+            "operation": "+",
+            "depends_on": [
+                "state_size",
+                1
+            ]
+        },
+        "xy_to_loc_som_weights": {
+            "operation": "calculate_som_weights_str",
+            "depends_on": [
+                "plan_som_dim_x",
+                "plan_som_dim_y"
+            ]
+        }
+    },
+    "excluded_folders_to_copy": [
+        ".test",
+        ".git",
+        ".svn",
+        "scripts"
+    ],
+    "scripts": [
+        "scripts/reformat_all_constant_modules.py"
+    ],
+    "custom_operations_lib": "scripts/custom_operations_lib.py"
+}

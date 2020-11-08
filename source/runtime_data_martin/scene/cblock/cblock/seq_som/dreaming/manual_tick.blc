@@ -1,0 +1,6 @@
+BL_linear_transformation_connector
+
+# disable this file, if manual tick generated otherwise than with a button
+manual_tick/trailing_edge=manual_tick/previous-manual_tick/button_pressed
+manual_tick/previous=manual_tick/button_pressed
+control/manual_next_tick=manual_tick/trailing_edge

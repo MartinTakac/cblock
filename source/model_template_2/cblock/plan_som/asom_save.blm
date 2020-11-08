@@ -1,0 +1,9 @@
+BL_file_memory_module
+memories_file_name=asom_save.csv
+number_of_memories=2
+memories[0]=value
+memory_names[0]=map
+map.value=real {{ plan_som_weights }} 0.
+memories[1]=value
+memory_names[1]=training_record
+training_record.value=real {{ plan_som_size }} 0.

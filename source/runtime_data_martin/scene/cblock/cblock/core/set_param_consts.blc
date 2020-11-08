@@ -1,0 +1,12 @@
+BL_linear_transformation_connector
+
+# saving
+paramConsts/saveWeightsLead=paramConsts/qmlSaveWeights>paramConsts/saveWeightsPrev ? 1 : 0
+paramConsts/saveWeightsPrev=paramConsts/qmlSaveWeights
+
+paramConsts/loadWeightsLead=paramConsts/qmlLoadWeights>paramConsts/loadWeightsPrev ? 1 : 0
+paramConsts/loadWeightsPrev=paramConsts/qmlLoadWeights
+
+param_save/time_index=param_save/number_of_times-1
+
+param_save/retrieve=paramConsts/loadWeightsLead>0.?1.:0.

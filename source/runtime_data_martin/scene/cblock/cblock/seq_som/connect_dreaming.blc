@@ -1,0 +1,19 @@
+BL_linear_transformation_connector
+
+# (dreaming merged with TD inspection from inspect_SOM.blc)
+
+input_gates/TD_activation=dreaming/control/dream>0 ? 1 : TD_inspection/control/inspect
+inputs/TD_activation_map=dreaming/control/dream>0 ? dreaming/control/result : TD_inspection/control/result
+
+dreaming/control/base=asom/training_record
+
+# signal to dreaming that asom is reset, so that it resets its IOR map
+dreaming/control/base_map_was_reset=asom/reset_map 
+
+# cursor in the top block's weight map 
+cursor/is_visible=dreaming/control/dream>0 ? dreaming/control/winner_good_enough : TD_inspection/control/inspect
+cursor/x=dreaming/control/dream>0 ? dreaming/control/x : TD_inspection/control/manual_x
+cursor/y=dreaming/control/dream>0 ? dreaming/control/y : TD_inspection/control/manual_y
+
+TD_inspection/control/seq_som_is_top_down=TD_inspection/control/inspect+dreaming/control/dream
+

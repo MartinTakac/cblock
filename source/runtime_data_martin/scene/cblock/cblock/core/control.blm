@@ -1,0 +1,125 @@
+BL_constant_module
+number_of_values=47
+
+# constants
+value_names[0]=zero
+values[0]=real 1 0.
+value_names[1]=one
+values[1]=real 1 1.
+value_names[2]=zeros
+values[2]=real 100 0.
+value_names[3]=zeros_state
+values[3]=real 1200 0.
+value_names[4]=zeros_bitmap
+values[4]=real 110 0.
+
+# for config_cblock and other initialization connectors that should only be evaluated once
+value_names[5]=at_start
+values[5]=real 1 1
+
+value_names[6]=stage
+values[6]=real 10 1. 0.
+# when resetting, set stage=reset_stage, but also reset_seq=1, this will set the stage accordingly 
+value_names[7]=reset_stage
+values[7]=real 10 0.
+value_names[8]=goal_inspection_stage
+values[8]=real 10 0. 0. 0. 0. 0. 0. 1. 0. 
+value_names[9]=prediction_error
+values[9]=real 1 0.
+value_names[10]=error_avg
+values[10]=real 1 0.
+value_names[11]=error_avg_reset_value
+values[11]=real 1 2.
+value_names[12]=surprise
+values[12]=real 1 0.
+
+value_names[13]=plan_top_down_on_seq
+values[13]=real 1 0.
+
+value_names[14]=input_weight
+values[14]=real 1 1.
+value_names[15]=tonic_input
+values[15]=real 100 0.
+value_names[16]=context
+values[16]=real 100 0.
+value_names[17]=initial_ctx
+values[17]=real 100 0.
+value_names[18]=current
+values[18]=real 100 0.
+value_names[19]=next
+values[19]=real 100 0.
+
+value_names[20]=init_next_elem
+values[20]=real 1 0.
+value_names[21]=restart_seq
+values[21]=real 1 0.
+value_names[22]=init_finalize
+values[22]=real 1 0.
+value_names[23]=training_step
+values[23]=real 1 0.
+value_names[24]=after_first_cycle
+values[24]=real 1 0. 
+
+value_names[25]=buffered_seq_length
+values[25]=real 1 0.
+value_names[26]=max_seq_length
+values[26]=real 1 0.
+value_names[27]=training_index
+values[27]=real 1 0.
+
+value_names[28]=plan_som_from_plan_only
+values[28]=real 1 0.
+
+value_names[29]=kick_start
+values[29]=real 1 0.
+
+value_names[30]=aux_result_alphas_combined
+values[30]=real 1200 0.
+
+value_names[31]=buffer_occupancy
+values[31]=real 100 0.
+
+value_names[32]=buffer_capacity_zeros
+values[32]=real 100 0.
+
+value_names[33]=buf_display_index
+values[33]=real 1 0.
+
+value_names[34]=valid_buf_display_index
+values[34]=real 1 0.
+
+value_names[35]=prediction_winner
+values[35]=real 1 0.
+
+value_names[36]=actual_winner
+values[36]=real 1 0.
+
+value_names[37]=winner_mismatch
+values[37]=real 1 0.
+
+value_names[38]=surprise_since_last_eos
+values[38]=real 1 0.
+
+value_names[39]=surprise_alphas_till_eos
+values[39]=real 1 0.
+
+value_names[40]=all_soms_loaded
+values[40]=real 1 0.
+
+value_names[41]=seq_som_loaded
+values[41]=real 1 0.
+
+value_names[42]=plan_som_loaded
+values[42]=real 1 0.
+
+value_names[43]=IO_soms_loaded
+values[43]=real 1 0.
+
+value_names[44]=load
+values[44]=real 1 0.
+
+value_names[45]=dump
+values[45]=real 1 0.
+
+value_names[46]=interval
+values[46]=real 1 0.
