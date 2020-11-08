@@ -1,9 +1,0 @@
-BL_constant_module
-number_of_values=3
-
-value_names[0]=certain_enough
-values[0]=real 1 0.
-value_names[1]=predicted_distribution
-values[1]=real 100 0.
-value_names[2]=entropy
-values[2]=real 1 0.
