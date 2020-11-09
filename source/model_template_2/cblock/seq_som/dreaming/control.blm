@@ -25,15 +25,15 @@ values[9]=real 1 0.
 
 # dreaming base (training record) 
 value_names[10]=base
-values[10]=real 2500 0.
+values[10]=real {{ seq_som_size }} 0.
 value_names[11]=base_map_was_reset
 values[11]=real 1 0.
 
 # resulting map for tdi
 value_names[12]=result
-values[12]=real 2500 0.
+values[12]=real {{ seq_som_size }} 0.
 value_names[13]=result_aux
-values[13]=real 2500 0.
+values[13]=real {{ seq_som_size }} 0.
 value_names[14]=x
 values[14]=real 1 0.
 value_names[15]=y
@@ -47,7 +47,7 @@ values[17]=real 1 1.
 
 # combined map (the one wta picks the winner from)
 value_names[18]=combined_map
-values[18]=real 2500 0.
+values[18]=real {{ seq_som_size }} 0.
 value_names[19]=combined_x
 values[19]=real 1 0.
 value_names[20]=combined_y
@@ -63,13 +63,13 @@ values[23]=real 1 0.
 
 # noise
 value_names[24]=noise
-values[24]=real 2500 0.
+values[24]=real {{ seq_som_size }} 0.
 value_names[25]=noise_level
 values[25]=real 1 0.1
 
 # habituation
 value_names[26]=habituation_map
-values[26]=real 2500 0.
+values[26]=real {{ seq_som_size }} 0.
 value_names[27]=hab_decay
 values[27]=real 1 0.7
 value_names[28]=hab_influence
@@ -80,12 +80,13 @@ values[29]=real 1 0.
 
 #general
 value_names[30]=ones
-values[30]=real 2500 1.
+values[30]=real {{ seq_som_size }} 1.
 value_names[31]=zeros
-values[31]=real 2500 0.
+values[31]=real {{ seq_som_size }} 0.
 
 value_names[32]=one
 values[32]=real 1 1.
+
 
 
 

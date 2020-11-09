@@ -16,4 +16,3 @@ cursor/x=dreaming/control/dream>0 ? dreaming/control/x : TD_inspection/control/m
 cursor/y=dreaming/control/dream>0 ? dreaming/control/y : TD_inspection/control/manual_y
 
 TD_inspection/control/seq_som_is_top_down=TD_inspection/control/inspect+dreaming/control/dream
-

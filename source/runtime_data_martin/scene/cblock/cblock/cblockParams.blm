@@ -122,4 +122,4 @@ value_names[35]=reset_if_no_first_timeout
 values[35]=real 1 0
 
 value_names[36]=non_negative_effects
-values[36]=real 1 1.
+values[36]=real 1 1.0

@@ -14,7 +14,6 @@ values[2]=real 1 15
 # when non-zero alphas include resulting state
 value_names[3]=qmlSensitivityResult
 values[3]=real 1 0.01
-#values[3]=real 1 1
 # when only reward alpha is non-zero, like in prediction from reward only
 value_names[4]=qmlSensitivityJustReward
 values[4]=real 1 20

@@ -6,18 +6,16 @@ value_names[0]=internal_goal_reached_reward
 values[0]=real 1 0
 
 value_names[1]=ior_decay
-#values[1]=real 1 0.4
-values[1]=real 1 1.
+values[1]=real 1 1.0
 
 value_names[2]=noise_level
 values[2]=real 1 0
 
 value_names[3]=plan_timeout_speed
-#values[3]=real 1 1.2
 values[3]=real 1 0.1
 
 value_names[4]=ior_surrounding
-values[4]=real 1 1.
+values[4]=real 1 1.0
 
 # state variables
 value_names[5]=goal_driven

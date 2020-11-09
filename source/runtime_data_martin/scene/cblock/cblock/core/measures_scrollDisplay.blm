@@ -24,14 +24,14 @@ input_blue[0]=0.
 input_minimums[0]=-0.01
 input_maximums[0]=1.03
 
-# Line colour: green 
+# Line colour: green
 input_red[1]=0.
 input_green[1]=1.
 input_blue[1]=0.
 input_minimums[1]=-0.03
 input_maximums[1]=1.04
 
-# Line colour: yellow 
+# Line colour: yellow
 input_red[2]=1.
 input_green[2]=1.
 input_blue[2]=0.

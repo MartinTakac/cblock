@@ -16,16 +16,9 @@ void main (void)
 #else
 	Itex=texture(shader_texture_0,texture_coordinate);
 #endif
-
-
-vec4 frag_colour = vec4(0.0,0.0,0.0,1.);
-frag_colour.r=1.-Itex.r;
-frag_colour.g=1.-Itex.g;
-frag_colour.b=1.-Itex.b;
-
 #if __VERSION__ < 130
-	gl_FragColor=frag_colour;
+	gl_FragColor=Itex;
 #else
-	bl_frag_colour=frag_colour;
+	bl_frag_colour=Itex;
 #endif
 }

@@ -11,12 +11,13 @@ BL_container_connector
 #                          DEPRECATED! -> init_none -> S3 -> S0
 
 ###
-# load indiv output SOMs - must be in this connector, because here are weights of input indiv SOMs copied to output indiv SOMs
 
 BL_identity_connector
 connect_Inputs/perform_calculate=cblockParams/reset_all_weights
 
 IO/input/state_buffered=planning/control/zeros_state
+
+# load indiv output SOMs - must be in this connector, because here are weights of input indiv SOMs copied to output indiv SOMs
 BL_identity_connector
 connect_Inputs/perform_calculate=IO/asom_save/retrieved
 
