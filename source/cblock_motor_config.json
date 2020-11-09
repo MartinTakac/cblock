@@ -365,6 +365,13 @@
                 "plan_som_dim_x",
                 "plan_som_dim_y"
             ]
+        },
+        "xy_to_loc_som_weights_dreaming": {
+            "operation": "calculate_som_weights_str",
+            "depends_on": [
+                "seq_som_dim_x",
+                "seq_som_dim_y"
+            ]
         }
     },
     "excluded_folders_to_copy": [
