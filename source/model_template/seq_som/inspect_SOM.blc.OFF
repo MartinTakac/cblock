@@ -1,5 +1,6 @@
 BL_identity_connector
 
+# merged into connect_dreaming.blc
 input_gates/TD_activation=TD_inspection/control/inspect
 inputs/TD_activation_map=TD_inspection/control/result
 

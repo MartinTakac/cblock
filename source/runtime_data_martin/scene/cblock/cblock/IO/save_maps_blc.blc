@@ -1,9 +1,0 @@
-BL_linear_transformation_connector
-save_maps_blc/perform_calculate=asomConsts/saveWeightsLead
-###SAVE MAPS
-# Saving the ASOM 
-asom_save/save=asomConsts/saveWeightsLead
-asom_save/xy_map_save.value=xy_input_som/associative_self_organizing_map
-asom_save/xy_training_record_save.value=xy_input_som/training_record
-asom_save/bitmap_map_save.value=bitmap_input_som/associative_self_organizing_map
-asom_save/bitmap_training_record_save.value=bitmap_input_som/training_record

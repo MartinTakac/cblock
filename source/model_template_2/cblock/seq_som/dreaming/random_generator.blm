@@ -1,7 +1,0 @@
-BL_vector_random_module
-number_of_values={{ seq_som_size }}
-type=UNIFORM_RANDOM
-minimum=0.
-maximum=1.
-#time_step=0.1
-trigger=1

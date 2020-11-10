@@ -1,7 +1,0 @@
-BL_identity_connector
-load_maps_blc/perform_calculate=asom_save/retrieved
-
-###LOAD MAPS
-# Retrieving the saved maps
-asom/associative_self_organizing_map=asom_save/map_retrieve.value
-asom/training_record=asom_save/training_record_retrieve.value

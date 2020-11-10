@@ -18,7 +18,7 @@ void main (void)
 #endif
 
 
-vec4 frag_colour = vec4(0.0,0.0,0.0,0.9);
+vec4 frag_colour = vec4(0.0,0.0,0.0,1.);
 frag_colour.r=1.-Itex.r;
 frag_colour.g=1.-Itex.g;
 frag_colour.b=1.-Itex.b;

@@ -306,7 +306,6 @@ core/control/stage[9]=1
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[7]
 
-
 cblockOutputs/plan_output_x=plan_som/asom/output_x
 cblockOutputs/plan_output_y=plan_som/asom/output_y
 plan_som/asom/perform_time_step=0
@@ -385,6 +384,7 @@ planning/control/ior=planning/control/ior>plan_som/asomConsts/som_size_ones ? pl
 
 planning/control/ior=planning/control/reset_ior_internal>0 ? planning/control/zeros_ior : planning/control/ior
 planning/control/reset_ior_internal=0
+
 # no ior in plan inspection mode
 plan_som/asom/activation_mask=cblockInputs/goal_plan_inspection>0 ? plan_som/asomConsts/default_mask : plan_som/asomConsts/default_mask-planning/control/ior
 plan_som/asom/activation_mask=plan_som/asomConsts/som_size_zeros>plan_som/asom/activation_mask ? plan_som/asomConsts/som_size_zeros : plan_som/asom/activation_mask
@@ -455,7 +455,6 @@ core/control/stage[4]=0
 # stage 3: plan_som computed the plan, now set it back on the seq_som tonic input. Also connect the predicted state and reward to cblockOutputs
 BL_linear_transformation_connector
 control_cycle/perform_calculate=core/control/stage[3]
-
 
 cblockOutputs/plan_output_x=plan_som/asom/output_x
 cblockOutputs/plan_output_y=plan_som/asom/output_y
@@ -720,7 +719,6 @@ planning/plan_timeout_LIF/input_frequency_constants[0]=0
 core/interval_LIF/membrane_frequency_constant=0
 core/interval_LIF/input_frequency_constants[0]=0
 
-
 #MT!!! planning/control/delta_achieved=IO/input/state_buffered-planning/control/chunk_init_state
 planning/control/delta_achieved=cblockInputs/state-planning/control/chunk_init_state
 
@@ -729,7 +727,6 @@ planning/control/delta_achieved=planning/control/zeros_state>cblockParams/non_ne
 
 #MT!!! planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : IO/input/state_buffered
 planning/control/aux_result=cblockParams/use_delta_based_plans>0 ? planning/control/delta_achieved : cblockInputs/state
-
 
 plan_som/inputs/plan=core/control/tonic_input
 plan_som/inputs/result=planning/control/aux_result
@@ -782,6 +779,7 @@ core/control/interval=0
 # record the state - the init state of the next chunk
 #MT!!! planning/control/chunk_init_state=IO/input/state_buffered
 planning/control/chunk_init_state=cblockInputs/state
+
 core/control/input_weight=1
 # prediction of seq_SOM is not updated, because nothing changed
 
