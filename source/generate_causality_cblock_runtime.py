@@ -6,5 +6,5 @@ runtime_generator = RuntimeGenerator()
 #                                   Path("./runtime_data/scene/cblock"),
 #                                   Path("./cblock_letters_config.json"))
 runtime_generator.generate_runtime(Path("./model_template"),
-                                   Path("../../motor_cblock_generated/cblock"),
-                                   Path("./cblock_motor_config.json"))
+                                   Path("../../cblock_generated/cblock"),
+                                   Path("./cblock_causality_config.json"))

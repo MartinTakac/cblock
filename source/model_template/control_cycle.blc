@@ -328,6 +328,7 @@ core/control/kick_start=cblockParams/kick_start_gain
 # the results of below will be used for plan IOR next time the system goes into S6  
 planning/xy_to_loc_som/input_values[0]=plan_som/asom/output_x
 planning/xy_to_loc_som/input_values[1]=-1*plan_som/asom/output_y+1
+#planning/xy_to_loc_som/input_values[1]=plan_som/asom/output_y
 planning/plan_wta/input_values=plan_som/asom/activation_map
 planning/xy_to_loc_som/perform_time_step=planning/control/goal_driven
 planning/plan_wta/perform_time_step=planning/control/goal_driven
@@ -576,6 +577,9 @@ core/control/init_next_elem=IO/input/ready_nextElem
 core/control/restart_seq=IO/input/ready_resetSeq
 core/control/init_finalize=IO/input/ready_finalizeSeq
 
+cblockOutputs/goal_reached_degree=planning/control/goal_driven>0 ? cblockOutputs/goal_reached_degree : 0
+cblockOutputs/goal_reached=planning/control/goal_driven>0 ? cblockOutputs/goal_reached : 0
+
 core/control/stage[0]=core/control/init_next_elem+core/control/restart_seq+core/control/init_finalize>0 ? 0 : 1
 # the stage to go to is set in each branch
 
@@ -777,8 +781,8 @@ core/control/context=core/control/initial_ctx
 core/control/interval=0
 
 # record the state - the init state of the next chunk
-#MT!!! planning/control/chunk_init_state=IO/input/state_buffered
-planning/control/chunk_init_state=cblockInputs/state
+planning/control/chunk_init_state=IO/input/state_buffered
+#planning/control/chunk_init_state=cblockInputs/state
 
 core/control/input_weight=1
 # prediction of seq_SOM is not updated, because nothing changed
